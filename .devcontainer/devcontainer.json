@@ -1,0 +1,6 @@
+{
+		"name": "weblatex",
+		"image": "danteev/texlive:latest", // https://github.com/dante-ev/docker-texlive
+		"remoteUser": "root", // Do not change this
+		"features": {}
+}
