@@ -1,7 +1,32 @@
 \chapter{Signal Simulation}
 Because the signal process for \dbrem occurs in the detector instead of the initial state, it must be built into the \gf simulation of the detector reponse instead of directly imported as an initial state from an event generator.
-In order to efficiently produce signal events, the cross section is then multiplied by fixed biasing factors for each \aprime mass. 
+In order to efficiently produce signal events, events are generated with $\epsilon$ set to one and the cross section is multiplied by fixed biasing factors for each \aprime mass. 
+Additionally, the interaction is only enabled within the HCAL endcap, and is disabled after the \aprime is produced to avoid non-physical events with multiple \dbrem interactions that could be caused by the increased interaction probability.
+The increased interaction rate biases events towards the center of the detector, as deeper regions see a reduced number of muons due to earlier \dbrem interactions.
+This bias is rougly proportional to the fraction of muons undergoing \dbrem squared, so the bias factors are selected to ensure that this rate is below 0.23. 
+A table of the biasing factors used, as well as the corresponding signal rate per incident muon, is presented in \cref{table:dbrem_biasfactors}.
 
+\begin{table}[h]
+    \centering
+    \spacerows{1.2}
+    \begin{center}
+        \begin{tabular}{@{}l rr@{}}
+            \toprule
+            \aprime Mass (\SI{}{\giga\eV})& Bias Factor & Interaction Rate\\
+            \midrule
+            0.2&800&0.22\\
+            0.4&1200&0.10\\
+            0.6&1600&0.06\\
+            0.8&2500&0.04\\
+            1.0&3200&0.04\\
+            \bottomrule
+        \end{tabular}
+        \caption{
+            Bias factors used in \dbrem generation.
+        }
+        \label{table:dbrem_biasfactors}
+    \end{center}
+\end{table}
 
 \section{Technique}
 \label{sec:technique}
@@ -10,7 +35,7 @@ The physics of \dbrem was implemented in \gf via the creation of an additional p
 \gf discretizes the simulation of physics into "steps" of time. 
 During each step of particle simulation, \gf uses the total cross section all possible physics interactions for that particle to determine which, if any, interactions should occur, then modifies the particle kinematics and generates secondaries as necessary. 
 In this implementation, the cross section is calculated by performing a numerical integration of the \ww approximation.
-The relative accuracy of this approximation for the energy range used in CMS is presented in \cref{fig:mu_xsec}.
+The relative accuracy of this approximation for the energy range used in CMS is shown in \cref{fig:mu_xsec}.
 The result depends on the mass of the \aprime,  the energy of the incident muon, and the material it passes through. 
 
 While the total cross section given by the numerical integral of the \ww approximation is effective for the purposes of this analysis, it was found that the differential result it produces has significant deviations from \mg, particularly in the limits of large angular scatters and high \aprime energy. 
@@ -30,19 +55,31 @@ To circumvent these issues the simulation does not construct outgoing muons by s
     \label{fig:mu_xsec}
 \end{figure}
 
-Through study of \mg events produced over a range of incident muon energies, two variables with distributions that vary slowly with incident energy were identified: the fraction of the incident kinetic energy imparted to the scattered muon and the transverse momentum of that muon with respect to the incident particle. 
+Through study of \mg events produced over a range of incident muon energies, two variables with distributions that vary slowly with incident energy were identified: the fraction of the incident kinetic energy imparted to the scattered muon and the transverse momentum of that muon with respect to the incident particle (\cref{fig:efrac_pt}). 
 Because of this slow variation with incident energy, we can sample these variables from a set of previously simulated \mg events at a ``nearby'' energy and rescale them to the desired initial energy without introducing large error. 
 The two variables are correlated, so they must be sampled together. 
 The scaling from a sampled \mg incident energy to the actual \gf incident energy has been found effective over a wide range; nevertheless, the differences become more pronounced as the relative distance between the sampled and true incident energies increases.
 The impact of these variations is limited by using fine-binned energies in the sampled \mg libraries, and a systematic uncertainty is assessed by scaling each event to the second-nearest available energy to account for these potential differences. 
 
-When \gf determines that a \dbrem event should occur in the simulation, the process selects a random event from the nearest available muon energy and target material in the loaded \mg library. 
-\gf then creates a new muon with the same transverse momentum as the sampled event and scales the outgoing kinetic energy to match the fraction of incident kinetic energy of the sampled muon, then randomly selects an azimuthal angle with respect to the initial muon momentum. 
-In the rare case where the total energy of the new muon is smaller than the selected transverse momentum, alternate events will be sampled until one is found with a scaled final energy larger than its transverse momentum. 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/muon_energy_comp_efrac.pdf}
+    \hspace{0.01\textwidth}
+    \includegraphics[width=0.45\textwidth]{figures/muon_energy_comp_pt.pdf}
+    \caption[
+        Sampling variables used for \dbrem simulation.
+    ]{
+        The outgoing muon energy fraction (left) and transverse (right) for muons incident on copper. Despite large shifts in the incident muon energy, the two distributions of the two variables remain relatively constant. 
+    }
+    \label{fig:efrac_pt}
+\end{figure}
 
-The simulation assumes that the scattered nucleus does not receive sufficient momentum to produce an observable signal in the detector; therefore, no \gf particle for the scattered nucleus is created and, as a result, energy and momentum cannot be precisely conserved using only the \aprime and scattered muon.
-Because the \aprime is not visible in our detector this conservation violation is not relevant for the simulation. 
-In searches with visible \aprime and muon signatures this effect would introduce un-accounted for correlations between the secondaries, but with an invisible \aprime only the muon requires correct kinematics and an arbitrary outgoing \aprime can be produced to aid with the analysis.  
+When \gf determines that a \dbrem event should occur in the simulation, the process selects a random event from the nearest available muon energy and target material in the loaded \mg library. 
+\gf then creates a muon with the same transverse momentum as the sampled event and scales the outgoing kinetic energy to match the fraction of incident kinetic energy of the sampled muon, then randomly selects an azimuthal angle with respect to the initial muon momentum. 
+In the rare case where the rescaled total energy of the deflected muon would be smaller than the selected transverse momentum, alternate events are sampled until one is found with final energy larger than its transverse momentum. 
+
+The simulation assumes that the scattered nucleus does not receive sufficient momentum to produce an observable signal in the detector; therefore, no \gf particle for the scattered nucleus is created and, as a result, energy and momentum cannot be precisely conserved using only the \aprime and scattered muon. 
+In searches with visible \aprime and muon signatures this effect would introduce un-accounted for correlations between the secondaries, but with an invisible \aprime only the muon requires correct kinematics and an arbitrary outgoing \aprime can be produced.  
 The simulation produces an \aprime using only conservation of momentum so that the incident muon can be reconstructed from simulation-level information about the \aprime and the scattered muon.
 No physics processes are been implemented for the emitted \aprime to ensure that it remains invisible to the detector.
 
@@ -93,10 +130,23 @@ Because the kinematics have small variation with scattering material, all \dbrem
 \section{Validation}
 \label{sec:validation}
 
-Comparing the recoil muon kinematics produced using this scaling procedure to a sample of \mg events at the target incident energy shows that this procedure does not significantly distort the distributions.
+Comparing the recoil muon kinematics produced using this scaling procedure to a sample of \mg events at the target incident energy shows that this procedure does not significantly distort the distributions (\cref{fig:dbrem_validation}).
 Moreover, these figures show that the scaling procedure more-closely resembles the ``true" \mg distribution the smaller the scaling distance is.
 
-The outgoing muon angle is less well reconstructed using this procedure; however, the distributions stay within roughly 10\% of the \mg distributions when the difference between sampled incident energy and target incident energy is kept below 10\%.
-This procedure \emph{does not} reconstruct the sign of the outgoing muon's z-momentum, so it is always chosen to be positive.
-This choice produces the only large deviation between the scaling procedure and \mg that is at a low ($< 1$\%) relative rate. 
-Backwards-going muons tend to have very small z-momenta, and so should appear signal-like even if they go formwards instead.
+The outgoing muon angle is less well reconstructed using this procedure; however, the distributions stay within roughly 10\% of the \mg distributions for small scaling distances and scattering angles.
+Large muon scattering angles are generally accompanied by very low outgoing energies, producing strongly signal-like events regardless of the outgoing angle. 
+This procedure \emph{does not} reconstruct the sign of the outgoing muon's z-momentum, so it is always chosen to be positive. 
+Due to the low rate of large scatters and the low outgoing muon energy of these events, the deviations seen above scattering angles of \SI{0.5}{\radian} do not significantly impact the signal efficiency.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/muon_efrac_cumulative_ratio.pdf}
+    \hspace{0.01\textwidth}
+    \includegraphics[width=0.45\textwidth]{figures/muon_lead_ang.pdf}
+    \caption[
+        Validation of simulated \dbrem kinematics.
+    ]{
+        The outgoing muon energy fraction for various scaling distances in copper, lead, and tungsten (left) and the muon deflection angle (right) for muons incident on lead.
+    }
+    \label{fig:dbrem_validation}
+\end{figure}
