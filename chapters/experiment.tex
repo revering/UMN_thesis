@@ -5,14 +5,33 @@
 \label{detector}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The compact muon solenoid (CMS) detector is one of two general-purpose detectors located at the large hadron collider (LHC).
+The compact muon solenoid (CMS) detector is one of two general-purpose detectors located at the large hadron collider (LHC) near Geneva, Switzerland. The LHC consists of two counter-rotating proton beams in a 27 km ring which cross at several designated points, producing particle collisions with center-of-mass energies near \SI{13.7}{\tera\eV}. 
+One of these crossing points is in the center of the CMS detector, where 'bunches' of $\thicksim10^{11}$ protons collide every \SI{25}{\nano\second} in a FIND NUMBER beam spot. 
+On average, each bunch crossing has 32 proton-proton interactions, though most are 'pileup' interactions from proton scattering or other unwanted processes.
+Occasionally, these collisions will produce exotic, high energy interactions between the quarks within the protons. 
+The proton interactions produce large numbers of secondary particles which radiate outward from the beam spot, and the detector measures and identifies these particles in order to reconstruct the physics processes that occurred during the collisions. 
+While the bunches interact at a rate of \SI{40}{\mega\hertz}, the large amount of data produced in each collision and the limited data transfer and storage ability limits the final readout to $\thicksim$\SI{1000}{\hertz}.
+To obtain this dramatic reduction in event rate, a triggering system is used to rapidly determine 'interesting' events and keep full information from those collisions while discarding any other interactions. 
+
+To successfully achieve these goals, the CMS detector must be able to rapidly identify outgoing particles from a large number of collisions, separate them into individual interactions, determine when physics processes of interest have occurred, and accurately measure and read out all final state particles in triggered events in order to allow for detailed reconstruction. 
+To achieve this, the CMS detector consists of several subsystems located concentrically around the collision point. 
+Starting from the center, particles first pass through the pixel and strip trackers, which precisely measure the position of charged particles to determine trajectories and vertex locations, as well as their momenta.
+Next, particles energy the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers and measuring the resulting energy deposits.
+After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures neutral hadrons and other less interacting particles which may pass through the ECAL by having many layers of dense absorber to induce hardonic showers interleaved with scintillator layers to measure the resulting energy.
+Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas chambers which all track the motion of muons, as they are the only particles visible to our detector which are unlikely to be stopped in the calorimeters.
+In addition to the detecting subsystems, the central feature of the CMS detector is a superconducting solenoid located between the HCAL and muon chambers, which produces a \SI{3.8}{\tesla} magnetic field along the axis of the beam. 
+A steel return yoke is located within the muon chambers to capture the fringe field from the solenoid, producing a field in the opposite direction to aid with the measurement of muon momenta.
+The large magnetic field provided by the solenoid allows for increased precision in particle momentum over shorter path lengths, and the relatively small size of the resulting detector and the use of the return yoke for muon measurements give the detector its name.
 
 \section{Tracker}
+The innermost part of the detector is the CMS tracker, which uses silicon and pixel strips to measure ionizing radiation from collision products.
+
 
 \section{ECAL}
 
 \section{HCAL}
+The CMS hadronic calorimeter (HCAL) consists of (number) alternating layers of Brass absorber and scintillator. 
 
 \subsection{The HCAL endcap upgrade}
-
+In 2018, the 
 \section{Muon Systems}
