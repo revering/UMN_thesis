@@ -21,7 +21,28 @@ After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures 
 Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas chambers which all track the motion of muons, as they are the only particles visible to our detector which are unlikely to be stopped in the calorimeters.
 In addition to the detecting subsystems, the central feature of the CMS detector is a superconducting solenoid located between the HCAL and muon chambers, which produces a \SI{3.8}{\tesla} magnetic field along the axis of the beam. 
 A steel return yoke is located within the muon chambers to capture the fringe field from the solenoid, producing a field in the opposite direction to aid with the measurement of muon momenta.
-The large magnetic field provided by the solenoid allows for increased precision in particle momentum over shorter path lengths, and the relatively small size of the resulting detector and the use of the return yoke for muon measurements give the detector its name.
+The large magnetic field provided by the solenoid allows for increased precision in particle momentum over shorter path lengths, and the relatively small size of the resulting detector and use of the return yoke for muon measurements give the detector its name.
+
+To best describe particle momenta and take advantage of the nearly cylindrical symmetry of the detector, a special coordinate system is defined. 
+The Z-axis is chosen to be oriented along the beam line, and the transverse distance from it is referred to as $\rho$. 
+Instead of the polar angle $\theta$, we instead use the pseudorapidity $\eta$. 
+
+\begin{equation}
+    \label{eq:pseudo}
+    \eta = - log \left[tan\left(\theta \over 2\right)\right]
+\end{equation}
+
+In special relativity, rapidity ($y$) is a measure of relativistic velocity with the feature that differences in rapidity are invariant under Lorentz transformations along the z-axis.
+The definition of particle rapidity is shown in \cref{eq:rapidity}, where E is the particle's total energy and p$_z$ is its z-momentum.
+\begin{equation}
+    \label{eq:rapidity}
+    y = {{1} \over {2}} ~ln \left({E+p_z}\over{E-p_z}\right)
+\end{equation}
+
+Pseudorapidity is constructed to form an analogue of rapidity using only geometric information, and converges to match rapidity in the high-energy limit when particle mass is negligible.
+Pseudorapidity is zero when perpendicular to the beam, and approaches positive and negative infinity along the z axis. 
+By using $\eta$, selections using the angular separation of particles do not have strong dependence on longitudinal momentum and the overall distribution of outgoing collision products is nearly uniform instead of strongly peaked towards zero and $\pi$ as it is using $\theta$.  
+The angular distance in this coordinate system is defined as $\Delta R = \sqrt{(\eta_1-\eta_2)^2+(\phi_1-\phi_2)^2}$.
 
 \section{Tracker}
 The innermost part of the detector is the CMS tracker, which uses silicon and pixel strips to measure ionizing radiation from collision products.
