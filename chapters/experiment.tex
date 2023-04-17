@@ -29,14 +29,14 @@ Instead of the polar angle $\theta$, we instead use the pseudorapidity $\eta$.
 
 \begin{equation}
     \label{eq:pseudo}
-    \eta = - log \left[tan\left(\theta \over 2\right)\right]
+    \eta = - log \left[tan\left(\frac{\theta}{2}\right)\right]
 \end{equation}
 
 In special relativity, rapidity ($y$) is a measure of relativistic velocity with the feature that differences in rapidity are invariant under Lorentz transformations along the z-axis.
 The definition of particle rapidity is shown in \cref{eq:rapidity}, where E is the particle's total energy and p$_z$ is its z-momentum.
 \begin{equation}
     \label{eq:rapidity}
-    y = {{1} \over {2}} ~ln \left({E+p_z}\over{E-p_z}\right)
+    y = \frac{1}{2} ~ln \left(\frac{E+p_z}{E-p_z}\right)
 \end{equation}
 
 Pseudorapidity is constructed to form an analogue of rapidity using only geometric information, and converges to match rapidity in the high-energy limit when particle mass is negligible.
@@ -45,8 +45,26 @@ By using $\eta$, selections using the angular separation of particles do not hav
 The angular distance in this coordinate system is defined as $\Delta R = \sqrt{(\eta_1-\eta_2)^2+(\phi_1-\phi_2)^2}$.
 
 \section{Tracker}
-The innermost part of the detector is the CMS tracker, which uses silicon and pixel strips to measure ionizing radiation from collision products.
+The innermost part of the detector is the CMS tracker, which uses silicon detectors arranged in pixels and strips to measure ionizing radiation from collision products. 
+A full description of this detector can be found in Reference \cite{trackerTDR}.
+When ionizing particles pass through the silicon sensors, they excite electron-hole pairs within the silicon, which are collected via an applied electic field in the material and produce an output current pulse in the readout electronics.
+The positions of these deposits in the silicon are then used to reconstruct the tracks of charged particles.
+Using tracks, the charge and momentum of particles can be determined through their curvature in the magnetic field and particle trajectories can be extrapolated to the collision point in order to group tracks from the same interaction into vertices. 
+High positional resolution is very important for track reconstruction to resolve individual vertices and separate pileup interactions as well as to precisely determine the track curvature over the length of the tracker. 
 
+The pixel detectors are positioned in the inner part of the CMS tracker, where the high particle density requires the best position resolution. 
+The pixel detector was upgraded in 2017 \cite{pixelUpgrade}, and the upgraded version is used for the description here and all of the data samples used. 
+The individual pixels are made of 100 $\times$ \SI{150}{\micro\meter} sensors which are placed in three disks in the endcap ($1.5<\eta<2.5$) region and four layers in the barrel ($\eta<1.5$) region, and have the short axis aligned in the radial direction so that measurements of curvature in $\phi$ from the magnetic field will have increased resolution from the smaller cell size. 
+The resulution is further increased to sub-cell precision through charge-sharing from capacitive coupling to adjacent cells, resulting in final position resolution on the order of \SI{10}{\micro\meter} along the short axis and \SI{20}{\micro\meter} in the longitudinal direction.
+
+In deeper parts of the tracking system, the increased spatial dimension and reduced particle density reduces the need for pixel resolution and instead silicon strips of up to \SI{10}{\centi\meter} in length are used. 
+In the barrel region, 10 strip layers are present, reaching up to \SI{110}{\centi\meter} from the beam, and the strips are oriented slightly off-axis in alternating layers to increase the resolution in the z-direction. 
+In the endcap, the strips are oriented perpendicularly to the beam in 12 disks up to a radial distance of \SI{270}{\centi\meter}.
+Hits in the strip tracker have typical resolutions near \SI{200}{\micro\meter} in the Z-direction and \SI{20}{\micro\meter} in the radial direction.
+
+The combination of pixel and strip trackers results in very good track reconstruction efficiency and position and momentum resolution.
+Muon tracks are reconstructed with $>99\%$ efficiency over the entire $\eta$ range of the tracker, and vertices are reconstructed with resolutions near \SI{50}{\micro\meter}.
+Because higher energy tracks have less curvature, the \pt resolution of tracks decreases as the \pt itself increases. Tracks with typical \pt and $\eta$ used in this analysis (\pt near \SI{100}{\giga\eV} and $1.4<\eta<2.4$) have resolutions near 4$\%$. 
 
 \section{ECAL}
 
