@@ -95,7 +95,7 @@ While this method of sampling significantly lowers the precision of the energy m
 The HCAL endcaps have 17 active layers of plastic scintillator and \SI{8}{\centi\meter} absorber, covering 1.4$<\eta<$2.4 and extending to $\lvert z \rvert<$ \SI{5.6}{\meter}, with a total radiation length near 200 X$_0$. 
 The thickness of ECAL and HCAL is sufficient to stop nearly all mesons and hadrons produced in the collision, leaving only neutrinos, which are not visible in the detector, and muons. 
 The scintillaton light from the sampling layers is collected in wavelength-shifting fibers, then transported to readout electronics.
-This light collection is done in the HCAL barrel (and Endcaps, prior to the 2018 upgrade \cref{sec:hcalUpgrade}) by hybrid photodiodes (HPDs). 
+This light collection is done in the HCAL barrel (and Endcaps, prior to 2018) by hybrid photodiodes (HPDs). 
 During readout, scintillation light from successive HPDs is summed together into 'towers', reducing the available depth information to one or two depths, depending on the detector location.
 
 In the ECAL endcap, radiation damage to the scintillating tiles caused by high particle flux neccesitated the replacement of the avalanche photodiodes with silicon photomultipliers (SiPMs) in 2018, which have three times better photon detection efficiency than HPDs.  
@@ -105,8 +105,8 @@ Using this, energy information from HE after the SiPM installation is now groupe
 \begin{figure}[!htpb]
 	   \centering
 	      \includegraphics[width=\textwidth]{figures/HE_upgrade.jpg}
-	         \topcaption{The CMS HCAL geometry before (left) and after (right) the SiPM installation. Each rectangle represents a cell, and like-colored cells in HCAL at each i$\eta$ and i$\phi$ are summed to create a 'hit' at the depth represented by their color. These hits are the most granular HE information available. As the upgrade was only performed in HE for 2018 data taking, individual depth information is only available in the endcap for this analysis.}
-		    \label{fig:HElayout}
+		 \caption[The 2018 HE upgrade]{The CMS HCAL geometry before (left) and after (right) the SiPM installation. Each rectangle represents a cell, and like-colored cells in HCAL at each i$\eta$ and i$\phi$ are summed to create a 'hit' at the depth represented by their color. These hits are the most granular HE information available. As the upgrade was only performed in HE for 2018 data taking, individual depth information is only available in the endcap for this analysis.}
+	    \label{fig:HElayout}
 \end{figure}
 
 As a consequence of the improved photon resolution from the HPD replacement, muon energy deposits are now visible in HE when they were below the noise floor for the HPDs. 
@@ -116,7 +116,4 @@ Potential signal tracks are thus required to be in the endcap, as the barrel reg
 In the readout chain, the HCAL sensors are grouped into 'sectors' containing clusters of cells. During the 2018 data taking two sectors could not be operated, resulting an a roughly 40 degree section with effectively no HCAL information. Similiarly to the inactive ECAL regions, these inoperable sectors could result in missing energy from showers within them, and so nearby tracks are excluded from the search. 
 To avoid these regions, all signal tracks are required to be outside of the region of -3.0$<\eta<$ -1.3 and -1.57$<\phi<$-0.87, removing roughly 10$\%$ of potential tracks.
 
-\subsection{The HCAL endcap upgrade}
-\label{sec:hcalUpgrade}
-In 2018, the 
 \section{Muon Systems}
