@@ -5,12 +5,10 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: danteev/texlive:latest
     
     steps:
     - uses: actions/checkout@v1
-    - name: Install the required packages
-      run: sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-pictures texlive-science --fix-missing
     - name: Build the Thesis
       run: make
     - uses: actions/upload-artifact@master
