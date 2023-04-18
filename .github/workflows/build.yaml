@@ -7,8 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name : Update apt-get
+      run: sudo apt-get update
     - name: Install the required packages
-      run: sudo apt-get install texlive-latex-base texlive-latex-extra texlive-pictures texlive-science 
+      run: sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-pictures texlive-science
     - name: Build the Thesis
       run: make
     - uses: actions/upload-artifact@master
