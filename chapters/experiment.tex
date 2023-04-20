@@ -117,3 +117,45 @@ In the readout chain, the HCAL sensors are grouped into 'sectors' containing clu
 To avoid these regions, all signal tracks are required to be outside of the region of -3.0$<\eta<$ -1.3 and -1.57$<\phi<$-0.87, removing roughly 10$\%$ of potential tracks.
 
 \section{Muon Systems}
+After the tracker, ECAL, and HCAL, all standard model particles are expected to be absorbed except for muons and neutrinos, due to their small interaction cross sections.
+While neutrinos are invisible to our detector, muons are electrically charged and so will deposit visible ionization.
+To capture this and therefore identify and measure muons, muon chambers are placed outside of the solenoid which use this ionization to construct muon tracks.
+
+In the barrel region, $\lvert\eta\rvert<$1.2, drift tube (DT) detectors measure the position of passing muons from ionization of contained gas. 
+Each drift tube consists of a gas-filled metallic prism with an anode wire in the center and the metallic shell used as a cathode.
+When passing muons produce ionization particles within the gas, a large applied voltage causes an avalanche effect which amplifies the number of electrons and ions which drift to the wires producing a measureable signal.
+The DT detectors are arranged in four 'stations' of increasing distance from the collision point, each containing several layers of 2.3$\times$\SI{4.2}{\centi\meter} cells, reaching up to a radial distance of \SI{7.5}{\meter}. 
+The inner three stations have 8 layers of DT cells arranged perpendicularly to the beam axis and 4 layers parallel to it, while the outermost station only contains the perpendicular layers.
+Each DT station is able to measure muon postions with longitudinal precision from 100 to \SI{300}{\micro\meter} and transverse precision from  60 to \SI{70}{\micro\meter}, allowing for precise measurements of muon \pt. 
+
+In the endcaps, 0.9$<\lvert\eta\rvert<$2.4, cathode strip chambers (CSCs) are used instead of DTs due to the uneven magnetic field and increased radiation environment.
+The CSCs operate on similar principles to the DTs, collecting ions and ionization electrons produced by muons passing through a contained gas. 
+Instead of individual cells, each CSC layer uses anode wires stretched between cathode layers which are segmented into strips to provide positional information. 
+By arranging the anode wires perpendicularly to the cathode strips, 2-D positional information can be measured by combining the cathode and anode location. 
+Each CSC chamber consists of six layers, and four disks of two chambers each are located at staggered positions in the endcaps, shown in \cref{fig:cscLayout}. 
+The CSC chambers have similar resolution to the DTs, with the spatial resolution from each chamber ranging from 60 to \SI{120}{\micro\meter}.
+
+In addition to the CSCs and DTs, the muon system contains resistive plate chambers (RPCs). 
+Each DT chamber has one or two RPCs attached to it, and several CSCs have accompanying RPCs up to $\eta<$1.8. 
+The RPCs follow the same gas ionization principles used in the CSCs and DTs, but use segmented metallic plates for both the anode and cathode.
+The DTs have much worse position resolution than the other two detectors, on the order of \SI{1}{\centi\meter}, but have an improved timing resolution of up to \SI{1}{\nano\second} to compliment the position measurements from the other systems.
+
+\begin{figure}[h]
+    \includegraphics[width=0.9\textwidth]{figures/cms_quadrant_run_ii.pdf}
+    \centering
+    \caption[Muon chamber layout in Run 2]{The muon chamber layout in one quadrant of CMS. The steel used for the return yoke is shown in dark grey, while the DTs, CSCs, and RPCs are shown in tan, green, and blue, respectively.}
+    \label{fig:cscLayout}
+\end{figure}
+
+\section{Triggering}
+The CMS trigger is performed using a two-stage approach. The first layer is the level one (L1) trigger, which uses limited event information to reduce the incoming event rate from \SI{40}{\mega\hertz} to about \SI{100}{\kilo\hertz}. 
+Because of the high rate requirement, the L1 trigger uses dedicated hardware to make trigger descisions using simplified versions of the event reconstruction.
+In the 2018 dataset the L1 trigger uses only the muon chambers and calorimeters and includes no information from the tracker.
+Clustering algorithms are used to reconstruct ECAL and HCAL to form electron, photon, jet, and hadronic $\tau$ candidates, while basic tracking algorithms are used to reconstruct muon candidates from hits in the muon chambers.
+The L1 candidates in the event are then checked against existing selections for object kinematics and multiplicities, and events are chosen based on target physics of interest chosen by the CMS collaboration.
+
+Events that pass the L1 trigger are then sent to the high-level trigger (HLT), which uses the full event information to make the more sophisticated final selections and reduce the event rate to near \SI{100}{\hertz}.
+The increased calculation time allowed by the lower rate of events from the L1 trigger allows HLT to perform more complex object reconstruction and event selection than L1 using off-detector electronics, which calculated for L1 objects which match the requirements for HLT 'paths'.
+Each path runs reconstruction and filtering steps for the specific objects and detector regions it defines.
+For example, the isolated muon path (used in this analysis) reconstructs information from the muon systems and tracker near L1 muons which may pass the isolation and pt requirements of the path, stopping the calculation if the event fails the requirements at any point.
+Events which fulfill all of the requirements of any HLT path are saved, and the RAW data from the event is stored for later reconstruction. 
