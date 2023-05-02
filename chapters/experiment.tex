@@ -36,6 +36,7 @@ Instead of the polar angle $\theta$, we use the pseudorapidity $\eta$,
 
 In special relativity, rapidity ($y$) is a measure of relativistic velocity with the feature that differences in rapidity are invariant under Lorentz transformations along the z-axis.
 The definition of particle rapidity is shown in \cref{eq:rapidity}, where E is the particle's total energy and p$_z$ is its z-momentum.
+
 \begin{equation}
     \label{eq:rapidity}
     y = \frac{1}{2} ~ln \left(\frac{E+p_z}{E-p_z}\right)
@@ -102,7 +103,7 @@ Hadronic showers are primarily induced in the absorber, while the energy of the 
 While this sampling method significantly lowers the precision of the energy measurement, it allows most of the detector material to be made of relatively cheap absorber instead of scintillating material, which results in a very substantial cost difference due to the large amount of material required to stop high-energy hadrons.
 The HCAL endcaps have 17 active layers of plastic scintillator and \SI{8}{\centi\meter} absorber, covering 1.4$<\eta<$2.4 and extending to $\lvert z \rvert<$ \SI{5.6}{\meter}, with a total radiation length near 200 X$_0$. 
 The thickness of ECAL and HCAL is sufficient to stop nearly all mesons and hadrons produced in the collision, leaving only neutrinos, which are not visible in the detector, and muons. 
-As the effective fixed target cross section for \db is proportional to the thickness of the target, the large quantity of brass used in HCAL makes it the ideal location to produce potential signal events.
+As the effective fixed target cross section for \dbrem is proportional to the thickness of the target, the large quantity of brass used in HCAL makes it the ideal location to produce potential signal events.
 During data taking, the scintillaton light from the sampling layers is collected in wavelength-shifting fibers then transported to readout electronics.
 This light collection is done in the HCAL barrel (and Endcaps, prior to 2018) by hybrid photodiodes (HPDs). 
 Scintillation light from successive HPDs is summed together into 'towers' during readout, reducing the available depth information to one or two depths depending on location within the detector.
@@ -173,7 +174,7 @@ Events which fulfill all of the requirements of any HLT path are saved, and the 
 \section{Muon Reconstruction}
 Muon reconstruction in CMS aims to convert event data of individual hits in the muon chambers and tracker into information about the underlying particle that produced those hits.
 This reconstruction is critical in this search, as tagging muons must be identified with very fhigh purity to reduce background from fakes and energy loss from signal events may appear as lowered energy in the reconstructed muons or interfere with their reconstruction such that it fails entirely.
-A full description of the muon reconstruction, as well as the resulting efficiency and resolution, can be seen in \cite{ref:Sirunyan_2018}.
+A full description of the muon reconstruction, as well as the resulting efficiency and resolution, can be seen in \cite{Sirunyan2018}.
 
 
 First, hits from within a DT or CSC station are locally fit into tracks to form muon 'segments'.
