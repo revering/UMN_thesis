@@ -1,8 +1,273 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% event_selection.tex: Select of showering and tracking events:
+% event_selection.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Event Selection}
-\label{event_selection_chapter}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Analysis Strategy}
+\label{analysis}
+A key challenge for this type of analysis is the identification of muons without relying on information from the muon chambers, as energy loss from \db may cause signal muons to have large mismatches in the tracker and muon chamber hits or fail to reach the muon chambers at all.
+Additionally, muon candidates must be selected with very high purity to eliminate potential backgrounds from misidentified muons which lose energy via decay or standard model showing in insensitive detector material.
+For these reasons, a tag-and-probe method is used, where high-quality 'tagging' muons reconstructed with full muon chamber information are paired with 'probe' tracks.
+By requiring that the tag and probe have an invariant mass near the mass of the Z and pass several isolation requirements designed to remove non-muon tracks, probe tracks can be selected which have high likelihoods of originating from muons.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Once probe tracks are selected, they can then be extrapolated into the HCAL and CSCs in order to search for evidence of missing energy that may have been caused by the production of an \aprime.
+Signal events are split into two categories based on the presence of nearby standalone muons.
+'Complete disappearance' events have no nearby standalone muons, and correspond to events where the track is fully stopped before reaching the muon chambers or suffers a complete reconstruction failure within them.
+'Partial disappearance' events have standalone muons nearby to the probe track, but have large energy differences in the reconstructed standalone muon and the selected track.
+In the complete disappearance region a cut-based selection is used to create the final signal selection, while in the partial disappearance region a BDT is used to better differentiate potential signal events from background.
+
+\section{Event Selection}
+\subsection{Base Event Selection}
+The initial process of pairing probe tracks with tagging muons is referred to as the Base Event Selection, and is used in both the signal regions and a variety of control regions.
+
+Tagging muons are required to have \pt$>$\SI{26}{\giga\eV} to be above the trigger turn-on and $\eta<$2.4 to be within the detector. 
+As discussed in \cref{sec:muonReco} the tagging muons must be global muons, and have several additional requirements applied to avoid potential fakes.
+The global fit of potential tag muons must have $\chi^2<$10, and include at least hit from the muon chambers. 
+They must also have muon segments in at least two muon stations.
+The inner track must have a transverse impact parameter $<$\SI{2}{\milli\meter} and longitudinal impact parameter $<$\SI{5}{\milli\meter} to the primary vertex, with at least one pixel hit and six tracker layer hits.
+Tagging muons are required to be isolated from other particles to further reduce backgrounds from fake muons or mismeasured energy caused by mismatched tracks or excess energy loss in the detector.
+This isolation is defined as the ratio of the transverse energy of neutral hadrons and photons from pileup plus the transverse momentum of all charged hadrons from the primary vertex minus half the transverse energy of charged hadrons from pileup in a $\Delta$R cone of 0.4 to the transverse momentum of the muon, and is required to be less than 15$\%$.
+Lastly, the tagging muons must pass the requirements for the isolated muon triggers used, as several scale factors are applied with the assuption that the tagging muon was the particle which fired the trigger.
+
+Probe tracks are required to have \pt$>$\SI{20}{\giga\eV} to reduce the rate of fake muons, and 1.45$<\eta<$2.4 to be within the HCAL endcap.
+They must also have $\Delta\mathrm{R}>$0.2 to the tagging muon to remove events early in the selection where the probe track and tagging muon originate from the same process.
+Only tracks which pass the 'high-purity' selections in CMS track selection are used, a category which is defined by selections for the minimum number of tracker layers with hits, the maximum number of layers with missing hits, the reduced $\chi^2$ of the resulting fit, and several other requirements relating to the precision with witch the initial vertex position is measured.
+The exact values used to define a high-purity track vary depending on the track parameters and several iterations of attempted track fitting, and a full description of the high-purity selection and track fitting process can be found in \cite{trackFitting}.
+Lastly, probe tracks are selected to have longitudinal impact parameters $<$\SI{0.5}{\milli\meter} and transverse impact parameters $<$\SI{0.05}{\milli\meter} to the beam line to further reduce the rate of fake tracks.
+
+The probe track must be well isolated to remove non-muon backgrounds and events with significant muon scattering from standard model processes. 
+The probe tracker isolation, defined as the \pt sum of all other tracks within a $\Delta$R cone of 0.3 originating from the same primary vertex divided by the \pt of the selected track, must be less than 0.05.
+In the ECAL, the energy sum of all hits with energy greater than \SI{0.3}{\giga\eV} in a $\Delta$R cone of 0.4 to the probe track must be less than \SI{10}{\giga\eV}.
+Similarly, the energy sum of all HCAL hits within a $\Delta$R cone of 0.3 to the probe track must be less than \SI{30}{\giga\eV}. 
+As mentioned in \cref{sec:detector}, potential probe tracks must be in the active ECAL and HCAL regions so that these isolation requirements can be effectively applied.
+
+Once the potential tagging muons and probe tracks have been chosen, each track is paired with each muon to search for pairs which are likely to originate from a Z boson.
+Successful pairs must have oppositely charged tag and probe particles, and fit using the \kf algorithm to form a shared verted with reduced $\chi^2<$3.
+In the signal region the pair must have an invariant mass between 80 and \SI{100}{\giga\eV} to be near the Z-mass, while several control regions extend this range from 50 to \SI{150}{\giga\eV}.
+Once a pair is chosen, the pairing of the tagging muon to all other tracks in the event without quality or geometric acceptances is checked for any other potential matches.
+Any tagging muons which pass the pairing requirements with these alternate tracks are rejected to remove events where the tagging muon originates from a Z decay but the second muon has a poor track or fails geometric acceptance, potentially allowing an unassociated particle track to be selected as the probe.
+Similarly, tagging muons which pass the pairing requirements with any other global muon in the event with $\Delta$R greater than 1.0 to the selected probe are rejected to reduce background events where the second muon from the Z decay may has a poorly reconstructed track.
+
+
+%\subsection{Signal Selection}
+%After using the base event selection to identify tracks which are likely to originate from muons, an additional categorization is made to search for \dbrem-like event features.
+%Our selections for disappearance depend on two aspects: nearby muon chamber information and individual hits in the HCAL. Distributions of standalone muon and HCAL features for signal and background events are presented in Figure \ref{fig:staDEandHEE}.
+%While the signal kinematics favor large energy loss of the incident muon, the deflecting angle and change in deposited HE energy tend to be small. Using energy in projected cells increases our sensitivity in simulated signal samples compared to collecting all cells within a $\Delta\mathrm{R}$ cone, but a small fraction of background events were observed with no HCAL hits in the selected cells (Figure \ref{fig:hitsStandaloneDr}). This can occur when uncertainty in the muon trajectory due to differences in energy or small scatterings cause the muon to miss the expected cells, or when the muon undergoes a hard scattering process in the detector support material. To avoid these events where the probe muon may not reach the HCAL, a requirement that at least two HCAL cells along the trajectory see a hit is included.
+%In the complete disappearance region, an additional requirement of no CSC hits nearby the projected probe track trajectory is added to avoid backgrounds from hadronic punch through events or poorly reconstructed muon tracks that fail to form a standalone muon. The distance to the nearest CSC hit for signal and background MC is shown in Figure \ref{fig:signalSelectionVars}.
+%Studies of the invariant mass of the tag/probe pair in signal and background events found no significant shifts in the position of the Z-peak due to uncertainties from using only the track information (Figure \ref{fig:signalSelectionVars}), and so signal events are selected with invariant masses from 80 to 100 \GeV.
+%Events are selected and split into orthogonal categories by the following method:
+%\begin{itemize}
+%    \item [$\bigstar$]Both Regions
+%    \begin{itemize}
+%       \item Tag/probe invariant mass $>80$ and $<100$ GeV.
+%    \end{itemize}
+%    \item [$\bigstar$] Complete Disappearance
+%    \begin{itemize}
+%       \item No standalone muons with $\Delta\mathrm{R}<$1.0 to probe,
+%       \item No CSC or RPC hits with $\Delta\mathrm{R}<$0.05 to probe,
+%       \item $>1$ hit in HCAL along the probe trajectory.
+%       \item $<10$ GeV in HCAL hits along probe trajectory.
+%    \end{itemize}
+%    \item [$\bigstar$] Partial Disappearance
+%    \begin{itemize}
+%       \item Standalone muon with $\Delta\mathrm{R}<$1.0 to probe.
+%       \item Standalone muon energy is $<40\%$ of probe track energy.
+%       \item Probe trajectory is not near an HE cell edge. (Section \ref{sec:edgeEvents})
+%    \end{itemize}
+%\end{itemize}
+%The selections in the complete disappearance region are chosen to have very strong background rejection, and a single bin counting experiment is done to measure the signal strength.
+%In the partial region, the required missing HE hit and energy difference of the nearby standalone muon alone are not sufficient to separate signal from background and a fit is performed using a BDT trained using several relevant input features of signal and DY MC background.
+%
+%\subsubsection{Partial Disappearance Region Boosted Decision Tree}
+%
+%To improve the discrimination of signal events from background DY events in the partial region, a ``Gradient" Boosted Decision Tree (BDT) has been trained to discriminate signal from background. The BDT techniques are provided by the XGBoost framework interfaced with Scikit-learn.
+%In this framework, the form of the BDT is a \emph{gradient boosting} algorithm.
+%Gradient boosting can be viewed as the minimization of the error function through the \emph{steepest descent} (also known as \emph{gradient descent}) method.
+%
+%\subsubsection*{Input variables}
+%
+%Since the main goal is to separate DY production from the Dark Brem process, the training is performed on DY MC events against the Dark Brem signal sample events with $M_{A'}=0.2,~0.4,~0.6,~0.8,~1.0~\GeV$.
+%For the signal sample events, events weights are assigned such that the sum of weights are identical for each signal point.
+%According to the physics properties of the two processes, 21 discriminating variables are used in the training, as described here:
+%probe track kinematics ($\pt$, $\eta$, $\phi$, charge, $\Delta\mathrm{R}$ to nearest CSC segment, and the $\Delta\mathrm{R}$ to the nearest CSC hit in each station), standalone muon kinematics ($\phi$, energy, track $\chi^2$, $\Delta\mathrm{R}$ to probe track, $\Delta\phi$ to the probe track multiplied by the track charge, and the difference in energy to probe track divided by probe track energy), and the HCAL energy in each depth along probe trajectory.
+%
+%The distributions of these discriminating variables normalized to unity for various signal points and DY background are shown in Fig~\ref{fig:inputVariablesTrack}--\ref{fig:inputVariablesStaMu}.
+%
+%The performance of these variables in the DY MC has been studied using data from the hard Bremsstrahlung control region (Sec.~\ref{sec:HardBrem}).
+%The data vs MC distribution of the kinematic variables of the probe track prior to entering the HCAL can be seen in Fig.~\ref{fig:ProbeTrackKinematics} and show good agreement.
+%The performance of the input variables related to the standalone muon has also been studied using the hard Bremsstrahlung control region where good agreement is seen between data and MC standalone muon features.
+%The performance of muon energy deposits in HE and the CSC hit performance of muons is studied and the results and corrections applied are described in Section~\ref{sec:HCALmuonCR}.
+%
+%\subsubsection*{Architecture}
+%
+%The internal parameters of the BDT were chosen by performing a randomized search on the parameters, where each setting is sampled from a distribution of possible parameter values.
+%For each set of BDT parameters, the training data is split into 5 randomly sampled, independent subsets, also called \emph{folds}.
+%The BDT is trained with 4 of the folds and tested with the remaining fold. And then this procedure is repeated 5 times.
+%For each testing fold, the weighted mean squared error is used as a figure of merit to evaluate the BDT performance.
+%The average weighted mean squared error from the 5 testing folds is used as the overall figure of merit for a set of BDT parameters.
+%Fifty sets of BDT parameters are randomly sampled and the set with the highest figure of merit is used for the BDT.
+%
+%The list of BDT parameters and their sampled values are:
+%\begin{itemize}
+%\item \textbf{n\_estimators:} The number of gradient boosted trees. Sampled as a random integer between 60 and 400.
+%\item \textbf{max\_depth:} The maximum tree depth. Sampled as a random integer between 2 and 6.
+%\item \textbf{sub-sample:} The fraction of the training sample that is randomly selected and used to train each tree. Sampled from a uniform distribution between 0.5 and 1.
+%\item \textbf{learning\_rate:} The weighting factor that is applied to corrections by new trees when they are added to the model. Sampled from a uniform distribution between 0.2 and 1.
+%\item \textbf{gamma:} Minimum loss reduction required to make a further partition on a leaf node of the tree. Sampled from a uniform distribution between 0 and 0.3.
+%\item \textbf{colsample\_bytree:} The fraction of training features randomly selected that will be used by each tree. Sampled from a uniform distribution between 0.1 and 1.
+%\item \textbf{min\_child\_weight:} The minimum sum of instance weight needed in a node. Sampled from a uniform distribution between 0 and 2.
+%\item \textbf{reg\_alpha:} L1 regularization term on weights. Increasing this value makes the model more conservative. Sampled from a uniform distribution between 0 and 2.
+%\item \textbf{reg\_lambda:} L2 regularization term on weights. Increasing this value makes the model more conservative. Sampled from a uniform distribution between 0 and 8.
+%\end{itemize}
+%
+%The values of these parameters in the BDT with the highest figure of merit are shown in Table~\ref{tab:BDTparameters}.
+%\begin{table}[htbp]
+%  \topcaption{
+%     The internal parameters of the BDT after the randomized search.
+%  }
+%  \centering
+%  \label{tab:BDTparameters}
+%    \begin{tabular}{ c c }
+%\hline
+%Parameter & Value \\
+%\hline
+%n\_estimators & 257 \\
+%max\_depth & 4 \\
+%subsample & 0.677 \\
+%learning\_rate & 1.170 \\
+%gamma & 0.161\\
+%colsample\_bytree & 0.769 \\
+%min\_child\_weight & 0.775\\
+%reg\_alpha & 0.314\\
+%reg\_lambda & 0.536\\
+%\hline
+%    \end{tabular}
+%\end{table}
+%An additional BDT parameter is optimized prior to the optimization of above BDT parameters, scale\_pos\_weight. This parameter is an additional scale that is applied to the weight of the signal events.
+%In order to strengthen the performance of the BDT, it is necessary for the BDT to focus on the properties of the DY background so that most of the DY events receive low BDT scores.
+%To ensure this, the weight of the signal sample events needs to be scaled down. To determine the optimal value, the expected limit in the partial disappearance region is used a a figure of merit.
+%Fig~\ref{fig:posWeightOptimization} shows the expected limits for various scale\_pos\_weight values, showing that a value of $0.001$ is optimal for all signal points.
+%\subsubsection*{Cross validation}
+%
+%In order to evaluate the BDT on our limited MC sample, we perform k-fold cross validation.
+%This procedure is described in the previous section and is performed on the entire DY MC and signal samples with the BDT parameters that have been optimized in the previous section.
+%We perform a 5-fold validation which across the 5 folds returns a mean log loss of $0.349$ with a standard deviation of $0.015$.
+%The low log loss score indicates that each trained BDT is accurately predicting the testing dataset for each fold.
+%And since the standard deviation is only about 5\% of the mean, this indicates that for each fold the BDT is being trained to a similar level of accuracy and the BDT training is not highly dependent on the training dataset.
+%A ranking of the variables importance can be seen in Fig~\ref{fig:BDTimportance}. The BDT is trained with ratio of positive weights to negative weights set to $0.001$.
+%\subsubsection*{BDT Selection}
+%
+%To further increase the sensitivity of the partial disappearance region, a selection is applied to the BDT distribution and all events with a higher BDT score are used as a single bin to search for signal.
+%This BDT selection is chosen by optimizing the expected limits for all of the signal mass points.
+%The optimal selection is BDT score $>0.98$.
+%The distributions of the BDT input variables normalized to unity for various signal points and DY background that have BDT scores about this selection are shown in Fig~\ref{fig:inputVariablesTrack_HighBDTscores}--\ref{fig:inputVariablesStaMu_HighBDTscores}.
+%\subsection{Signal Efficiency}
+%The efficiency of the signal selection in each category for simulated signal events is presented in tables \ref{tab:totalDisappearCutFlow}-\ref{tab:partialDisappearCutFlow}. Lighter mass dark photons have smaller energy loss and angular deviations, leading to less dramatic signal features and lower selection efficiencies. While the selection variables have significant separation between signal and background at all mass points, the relatively large widths of the HE energy, standalone muon momentum, and standalone muon $\Delta\mathrm{R}$ distributions in DY events (Figs. \ref{fig:staDEandHEE}-\ref{fig:hitsStandaloneDr}) limit the achievable signal efficiency. As signal must be separated from $\mathcal{O}(\sim10^{7}$) muons, very strong requirements are required to reject DY backgrounds.
+%\begin{table}[htbp]
+%\topcaption{Cut flow of the Complete Disappearance category scaled to the fraction of total events passing the base event selection.}
+%\label{tab:totalDisappearCutFlow}
+%\centering
+%\cmsTable{
+%    \begin{tabular}{ c | c | cccccc }
+%       \hline
+%    Cut & DY & A'=0.2 & A'=0.4 & A'=0.6 & A'=0.8 & A'=1.0\\
+%    \hline
+%    Tag/Probe Invariant Mass $>$90 and $<$100 \GeV&0.91&0.91&0.91&0.91&0.91&0.91\\
+%            No Standalone Muon with $\Delta$R$<$1.0 to Probe&4.0$\times10^{-4}$&0.02&0.05&0.08&0.10&0.09\\
+%            No CSC or RPC hits with $\Delta$R$<$0.05 to Probe&$<$4.4$\times10^{-6}$&0.01&0.03&0.05&0.07&0.07\\
+%            $<$10 GeV in HCAL hits along Probe track trajectory&$<$4.4$\times10^{-6}$&0.01&0.03&0.05&0.07&0.07\\
+%\hline
+% \end{tabular}
+%}
+%\end{table}
+%\begin{table}[htbp]
+%\topcaption{Cut flow of the Partial Disappearance category scaled to the fraction of total events passing the base event selection.}
+%\label{tab:partialDisappearCutFlow}
+%\centering
+%\cmsTable{
+%    \begin{tabular}{ c | c | cccccc }
+%       \hline
+%
+%Cut & DY &A'=0.2 & A'=0.4 & A'=0.6 & A'=0.8 & A'=1.0\\
+%            \hline
+%            Tag/Probe Invariant Mass $>$90 and $<$100 \GeV&0.91&0.91&0.91&0.91&0.91&0.91\\
+%            Standalone Muon with $\Delta$R$<$1.0 to Probe&0.91&0.89&0.86&0.83&0.81&0.82\\
+%            Probe track not on HE cell edge & 0.54&0.54&0.51&0.50&0.48&0.49\\
+%            Standalone muon $\Delta$ E/E$<$-0.6& 0.02&0.20&0.21&0.21&0.19&0.16\\
+%            BDT score $> 0.98$&$7\times10^{-5}$&0.05&0.08&0.09&0.104&0.09\\
+%            \hline
+% \end{tabular}
+%}
+%\end{table}
+%
+%\section{Background Estimation}
+%Backgrounds are divided into two categories: events where the probe track originates from a muon and events where the probe track is produced by any other particle.
+%Muon backgrounds are predicted using Z to $\mu\mu$ MC and control regions are defined to validate standalone muon features, HE energy deposits, and the reconstruction performance of individual CSC stations.
+%
+%Non-muon ("$\mu+$X") backgrounds are predicted using data driven methods.
+%In the complete disappearance region, events with tag/probe invariant masses far from the Z-peak are fit with a non-peaking function and extrapolated into the signal region. The resulting off-peak prediction is compared with a same-sign control region to confirm that the background does not originate from charge correlated processes.
+%In the partial disappearance region, the off-peak region has too large of a DY contribution to perform a similar fit, so instead events with same-sign tag/probe pairs are used to directly determine the expected rate and BDT scores of potential $\mu+$X backgrounds.
+%Additional MC is used for Z decays to hadrons or $\tau$ particles to validate the use of a non-peaking background function and confirm that the off-peak region effectively includes them.
+%
+%\subsection{Muon Backgrounds}
+%Standard model DY backgrounds occur when the base event selection successfully finds a probe track which matches to a muon, but the muon passes the signal selection without undergoing a Dark Bremsstrahlung. This can occur either when muons lose energy via conventional physics interactions without producing enough excess energy to reject the event or when the muon signature in HE and the CSC chambers is missed.
+%We control the muon interaction backgrounds through study of data control regions and simulated DY containing large energy deposits in HCAL, as well as specially simulated DY with missing CSC hits required. The location-dependent rate of missing CSC hits in each depth is corrected using the methods described in Section \ref{sec:missingCSC}.
+%As these backgrounds can be produced through a combination of muon energy loss and poor muon reconstruction, the predicted backgrounds are made using a combination of both studies. In the complete disappearance region, the validated DY simulation is used with the missing CSC hit studies to produce the number of expected missed muons. In the partial disappearance region, the DY MC is used to train the BDT and predict the expected number of DY background events, with corrections and uncertainties from these validations and control regions applied.
+%\subsubsection{Missed Muons}
+%
+%Events with a muon matched to the probe track may pass the complete disappearance selections by having the muon fail to produce hits in any CSC station due to poor reconstruction. This can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. This missed muon background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. The rate of missed muons depends only on the kinematics of the selected track, and is otherwise expected to be independent of the initial process if there are no fake muons chosen. As the DY process produces the vast majority of selected muons, only simulated events produced from Z decays are considered.
+%
+%To efficiently simulate these events, DY events are generated with a filter requiring at most one nearby CSC hit. An additional correction is applied to account for CSC regions that have worse performance in data by counting events with only one nearby CSC hit in those regions as having zero, with event weights proportional to the difference in CSC segment reconstruction efficiency (See Section \ref{sec:missingCSC}). Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8\fbinv of Run 2. This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section \ref{sec:HardBrem}.
+%
+%\subsection{Non-Muon Probes}
+%Non-Muon ("$\mu+X$") events occur when a tagging muon is paired with a probe track that does not originate from the decay of a Z boson. $\mu+X$ could potentially be a significant source of background events, as hadrons misidentified as muons in the tracker would likely be stopped in HE, mimicking signal events. Unlike signal events, the muon energy loss in these backgrounds should produce visible energy deposits within the calorimeters.
+%
+%As "Non-Muon" refers specifically to the probe track, DY$\rightarrow\mu\mu$ events can contribute to this region when one muon is reconstructed well and is used as the tag while the other is out of detector acceptance or is reconstructed poorly. In these cases, an un-associated track may be selected as the probe and a non-muon background can be produced from a DY$\rightarrow\mu\mu$ event. This corresponds to roughly 5$\%$ of the expected $\mu$+X background.
+%We predict the frequency of $\mu+X$ events via data driven methods using control regions of events with invariant masses far from the Z-peak or with same-sign tag/probe pairs.
+%In the complete disappearance region, the off-peak events are fit with a non-peaking function to predict the background in the signal region, and the same-sign control region is used to validate our assumptions of the background shape and non-correlated charge.
+%In the partial disappearance region, the DY contribution to the off-peak region is too large to make an effective fit, and so the same-sign control region is used to determine the BDT score of $\mu$+X events and directly predict the background rate.
+%
+%\subsubsection{Off Peak Control Region}
+%In the off-peak control region, the full total disappearance selections are applied with invariant mass requirement inverted to be far from the Z-peak ($M_{\mu\mu}$ $<70$ or $>110\GeV$). The resulting region contains very little DY contribution due to the invariant mass and total disappearance requirement and so contains almost entirely $\mu+X$ background. By fitting the off-peak region using a non-peaking background function (Eq. \ref{eq:bkgfunc}) derived using a control region of poorly isolated probe tracks (Appendix \ref{sec:muPlusX}), the expected rate in the signal region can be predicted entirely from data. While the complete signal selection does not contain a large enough sample size in MC to compare to data, by removing the HCAL isolation requirements the rates in data and MC are increased enough to test the chosen functional form and verify that the observed rate is close to the most significant expected backgrounds. Good agreement between data and MC is seen in this subset of events (Fig. \ref{fig:offpeakfit}, left).
+%
+%Due to the small number of events in the off-peak control region after fully applying the HCAL isolation requirements, we apply Kernel Density Estimated smoothing to the data points to avoid bias from bins with zero events in the fit (Fig. \ref{fig:offpeakfit}, right). Two separate smoothings are done for events below and above the excluded region, with tuning factors of 5 and 1.2, respectively. The results of this fit are used to predict the $\mu+$X background in the complete disappearance region, but are dependent on the assumption of a smooth functional form. Two separate fits are performed - one directly using the background function on the smoothed data, and one by first fitting data events in the non-isolated region and then re-scaling the result to the isolated region. The re-scaled fit has less statistical uncertainty due to the larger sample size in the non-isolated region, but does not include any potential change in shape due to applying the isolation requirements. The free fit predicts 6$\pm$3 background events, while the re-scaled non-isolated fit predicts 4.9$\pm$0.3 events. The re-scaled fit is taken as the central value of the predicted yield, and the difference between the two is taken as a systematic uncertainty on the choice of fitting function.
+%subsubsection{Non-Muonic Z decays}
+%The most significant expected background that might produce an invariant mass peak in within the signal region comes from non-muonic Z decays, such as Z to $\tau\tau$ events where one $\tau$ decays leptonically and produces a good tag muon, while the other might decay into a pion or other particle which fakes a probe muon. To study these events, DY events which match the selected probes to gen level $\tau$ particles were studied to confirm that they did not produce an invariant mass peak within the signal region and it was observed that they have a smoothly falling distribution which will be included by the existing fit (Fig. \ref{fig:ZtoTauTau}).
+%MC samples of hadronic Z decays were also analyzed to determine whether they would be sufficiently covered by the off-peak control region. Because of the very low rate of hadronic Z MC events passing the probe isolation requirements, the invariant mass distribution was measured without applying track or ECAL isolation requirements (Fig. \ref{fig:ZtoTauTau}). As observed in Z to $\tau\tau$ events, the additional particles produced in the hadronic decays of the Z boson shift the invariant mass of the tag and probe such that there is no longer a peak near the Z mass and these potential background sources will be included by the off-peak control region.
+%
+%
+%\begin{equation} \label{eq:bkgfunc}
+%f(s)=A(s-B)e^{-Cs} 
+%\end{equation}
+%\subsubsection{Same Sign Control Region}
+%\label{sec:sameSign}
+%As the most significant non-muon probe backgrounds are expected to be produced by processes without charge-correlated tags and probes, the rate of these events with same-sign pairs should be very close to the rate with opposite-sign pairs, and a same-sign control region can be defined to verify that and cross-check the expected background rates. The same-sign control region is defined with the tag and probe charge requirement inverted and otherwise identical selections for both the complete and partial disappearance regions. Because of the close similarity to the signal region, the BDT scores of partial disappearance background events in this control region can be used to predict the expected background rate from $\mu+$X events. In the current skim 14.73 \fbinv of 2018 data was available and one same-sign event passed the partial region selection. That event has a BDT score of $<$0.001. In Figure \ref{fig:sameSign}, the same-sign events in the complete disappearance region are plotted along with the fit function from the off-peak control region scaled to the same luminosity. The expected same-sign rate is within uncertainty of the measured rate, indicating that there is not an excess of opposite-sign events and that the assumption that the background is primarily from non-charge-correlated pairs is valid.
+%\subsection{Signal Contamination}
+%\label{sec:SigContamination}
+%A table of the relative rates of signal in each control region to each signal region for all mass points is presented in Table \ref{tab:SigCont}.
+%In the Off-peak control region, signal contamination would increase the predicted $\mu+X$ background by being included in the non-peaking fit applied to the control region. Using the functional form of the off-peak fit used in Figure \ref{fig:offpeakfit}, each signal event in the off-peak control region will add 0.5 expected $\mu+X$ events. Because of the strongly peaking nature of the signal events in invariant mass, signal contamination would reduce the observed by at most $2.5\%$ for all signal masses and regions.
+%
+%While the off-peak signal contamination is small enough that it can be used to predict the rate of background $\mu$+X events, it is significant enough to prevent the use of the region as validation for the partial disappearance region. The signal contamination rate is almost entirely produced by the peaking shape of the invariant mass distribution, and any corrections or uncertainties derived using off-peak partial disappearance resulting from signal contamination would scale with the peaking DY shape instead of the smooth $\mu$+X background, resulting in a loss of signal near 100$\%$.
+%
+%For the same-sign control region, signal contamination would produce a peak in the invariant mass distribution reducing the quality of the fit. No MC signal events passed the signal selection with a same-sign requirement for the tag muon and probe track, and no excess of same-sign events is observed near the Z peak in data.
+%
+%In the hard Bremsstrahlung control region, signal contamination could result in shifts in the expected rate of Standard Model Bremsstrahlung and increased uncertainty in the measurement of HE energy deposits. Signal events are less likely to have hard Bremsstrahlung events before producing dark matter due to the dependence of the production cross section on muon energy, and less likely to deposit large amounts of energy in HE after a dark matter interaction due to reduced available muon energy. In addition, DY events in the hard Bremsstrahlung control region appear much more background-like than in the signal region due to energy loss from SM processes. As a result, background events pass the requirement of BDT score $>0.98$ much more frequently in the hard Bremmstrahlung control region than the signal region, while signal events have similar BDT score distributions in both regions. The combination of these effects results in an expected signal loss of 4$\%$ from signal contamination in the corrections derived in the hard Bremsstrahlung region.
+%begin{table}[htp]
+%        \topcaption{The fraction of signal events in each control region relative to the corresponding signal region.}
+%        \label{tab:SigCont}
+%        \centering
+%        \cmsTable{
+%                \begin{tabular} { c| c | c c c c c }
+%                \hline
+%                        Signal Region&Control Region&A'=0.2\GeV&A'=0.4\GeV&A'=0.6\GeV&A'=0.8\GeV&A'=1.0\GeV\\
+%                        \hline
+%                        &Off Peak&0.04&0.05&0.03&0.06&0.02\\
+%                        Total Disappearance&Same Sign&$<$0.003&$<$0.003&$<$0.003&$<$0.004&$<$0.005\\
+%                        &Hard Bremsstrahlung&0.01&0.02&0.02&0.01&0.01\\
+%                        \hline
+%                        &Off Peak&0.04&0.04&0.04&0.03&0.04\\
+%                        Partial Disappearance&Same Sign&$<$5$\times10^{-5}$&$<$1$\times10^{-4}$&$<$2$\times10^{-4}$&$<$3$\times10^{-4}$&$<$5$\times10^{-5}$\\
+%                        &High HCAL&0.01&0.01&0.01&0.01&0.02\\
+%
+%                \hline
+%                \end{tabular}
+%        }
+%\end{table}
