@@ -5,25 +5,26 @@
 \label{detector}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The compact muon solenoid (CMS) detector is one of two general-purpose detectors located at the large hadron collider (LHC) near Geneva, Switzerland. The LHC consists of two counter-rotating proton beams in a 27 km ring which cross at several designated points, producing particle collisions with center-of-mass energies near \SI{13.7}{\tera\eV}. 
-One of these crossing points is in the center of the CMS detector, where 'bunches' of $\thicksim10^{11}$ protons collide every \SI{25}{\nano\second} in a beam spot less than 3 by \SI{0.2}{\centi\meter} in size. 
-On average, each bunch crossing has 32 proton-proton interactions, though most are 'pileup' interactions from proton scattering or other unwanted processes.
+The Compact Muon Solenoid (CMS) detector is one of two general-purpose detectors located at the large hadron collider (LHC) near Geneva, Switzerland. 
+Within the LHC, two counter-rotating proton beams in a 27 km ring cross at several designated points, producing particle collisions with center-of-mass energies near \SI{13.7}{\tera\eV}. 
+One of these crossing points is in the center of the CMS detector, where 'bunches' of $\thicksim10^{11}$ protons collide every \SI{25}{\nano\second} in a beam spot less than \SI{3}{\centi\meter} in length and by \SI{20}{\micro\meter} in width. 
+On average, each bunch crossing currently has 32 proton-proton interactions, though most are 'pileup' interactions from soft QCD.
 Occasionally, these collisions will produce exotic, high energy interactions between the quarks within the protons. 
-These interactions emit large numbers of secondary particles which radiate outward from the beam spot, and the detector measures and identifies these particles in order to reconstruct the physics processes that occurred during the collisions. 
+Together, the primary and pileup interactions emit large numbers of secondary particles which radiate outward from the beam spot and the detector measures and identifies these particles in order to reconstruct the physics processes that occurred during the collisions. 
 While the bunches interact at a rate of \SI{40}{\mega\hertz}, the large amount of data produced in each collision and the limited data transfer and storage ability limits the final readout to $\thicksim$\SI{1}{\kilo\hertz}.
-To produce this dramatic reduction in event rate a triggering system is used to rapidly determine 'interesting' events and keep full information from those collisions while discarding any other interactions. 
 
 To successfully operate as a general purpose physics machine, the CMS detector must be able to rapidly identify outgoing particles from a large number of collisions, separate them into individual interactions, determine when physics processes of interest have occurred, record full event information in triggered events, and lastly accurately reconstruct final state particles in order to allow for detailed physics analysis. 
 
-To fulfill the necessary timing, resolution, and particle identification requirements the CMS detector is split into several subsystems located concentrically around the collision point in a roughly cylindrical shape (\cref{fig:detector}). 
+To fulfill the necessary timing, resolution, and particle identification requirements the CMS detector is split into several subsystems located concentrically around the collision point in a roughly cylindrical shape (\Cref{fig:detector}). 
 Starting from the center, particles first pass through the pixel and strip trackers, which measure the position of charged particles to determine their vertex locations, trajectories, and momenta.
-Next, particles energy the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers and measuring the resulting energy deposits.
+Next, particles enter the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers and measuring the resulting energy deposits.
 After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures neutral hadrons and other less frequently interacting particles which may pass through the ECAL. This is done by having many layers of dense absorber which induce hadronic showers, interleaved with scintillator layers to measure the resulting energy.
 Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas chambers which all track the motion of muons, as they are the only known particles visible to our detector which are unlikely to be stopped in the calorimeters.
 
 In addition to the detecting subsystems, the central feature of the CMS detector is a superconducting solenoid located between the HCAL and muon chambers, which produces a \SI{3.8}{\tesla} magnetic field along the axis of the beam. 
 A steel return yoke is located within the muon chambers to capture the fringe field from the solenoid, producing a field in the opposite direction to aid with the measurement of muon momenta.
-The strong magnetic field provided by the solenoid reduces the neccesary detector size to measure particle momentum and increased resolution of the measured \pt, and the relatively small size of the resulting detector and use of the return yoke for muon measurements give the detector its name.
+The strong magnetic field provided by the solenoid reduces the neccesary detector size to measure particle momentum and increase the precision of the measured \pt. 
+The relatively small size of the resulting detector and use of the return yoke for muon measurements give the detector its name.
 
 To best describe particle momenta and take advantage of the nearly cylindrical symmetry of the detector, a special coordinate system is defined. 
 The Z-axis is chosen to be oriented along the beam line, and the transverse distance from it is referred to as $\rho$. 
@@ -31,15 +32,15 @@ Instead of the polar angle $\theta$, we use the pseudorapidity $\eta$,
 
 \begin{equation}
     \label{eq:pseudo}
-    \eta = - log \left[tan\left(\frac{\theta}{2}\right)\right]
+    \eta = - \log \left[\tan\left(\frac{\theta}{2}\right)\right]
 \end{equation}
 
 In special relativity, rapidity ($y$) is a measure of relativistic velocity with the feature that differences in rapidity are invariant under Lorentz transformations along the z-axis.
-The definition of particle rapidity is shown in \cref{eq:rapidity}, where E is the particle's total energy and p$_z$ is its z-momentum.
+The definition of particle rapidity is shown in \Cref{eq:rapidity}, where E is the particle's total energy and p$_z$ is its z-momentum.
 
 \begin{equation}
     \label{eq:rapidity}
-    y = \frac{1}{2} ~ln \left(\frac{E+p_z}{E-p_z}\right)
+    y = \frac{1}{2} ~\ln \left(\frac{E+p_z}{E-p_z}\right)
 \end{equation}
 
 Pseudorapidity is constructed to form an analogue of rapidity using only geometric information, and converges to match rapidity in the high-energy limit when particle mass is negligible.
@@ -73,7 +74,7 @@ In the endcap, the strips are oriented perpendicularly to the beam in 12 disks u
 Hits in the strip tracker have typical resolutions near \SI{200}{\micro\meter} in the Z-direction and \SI{20}{\micro\meter} in the $\phi$ direction.
 
 The combination of pixel and strip trackers results in very good track reconstruction efficiency and position and momentum resolution.
-Muon tracks are reconstructed with $>99\%$ efficiency over the entire $\eta$ range of the tracker, and vertices are reconstructed with resolutions near \SI{50}{\micro\meter}.
+Muon tracks are reconstructed with $>99\%$ efficiency over the entire $\eta$ range of the tracker, and vertices from multiple tracks originating at the same point are reconstructed with resolutions near \SI{50}{\micro\meter}.
 Because higher energy tracks have less curvature, the \pt resolution of tracks decreases as the \pt itself increases. Tracks with typical \pt and $\eta$ used in this analysis (\pt near \SI{100}{\giga\eV} and $1.4<\eta<2.4$) have resolutions near 4$\%$. 
 
 \begin{figure}[h]
@@ -94,21 +95,21 @@ crystal.
 The crystals are tapered and arranged projectively at a slight angle to minimize inter-crystal gaps, pointing roughly \SI{3}{\degree} away from the collision point. 
 They are about 23 cm, or 25 $X_0$, in depth, and have a transverse size of 2.2 $\times$ \SI{2.2}{\centi\meter^2} in the barrel and 2.9$\times$\SI{2.9}{\centi\meter^2} in the endcap. 
 Each endcap is divided vertically into two 'Dees', each with 3660 crystals grouped into 5x5 units called 'Supercrystals'. 
-During 2018 data taking, several supercrystals within the ECAL endcaps observed problems during data quality monitoring, and were 'masked' to remove their measurements from the total energy sums \cref{fig:EEmasks}, removing roughly 2$\%$ of the total ECAL area.
+During 2018 data taking, several supercrystals within the ECAL endcaps observed problems during data quality monitoring, and were 'masked' to remove their measurements from the total energy sums \Cref{fig:EEmasks}, removing roughly 2$\%$ of the total ECAL area.
 Accurate measurements of ECAL deposits are necessary to reject potential backgrounds tracks with energy loss in ECAL.
 To avoid potential backgrounds from tracks with missing energy from showers in these masked regions, signal tracks are required to have $\Delta R>0.1$ to any masked supercrystal.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\textwidth]{figures/EEChannelMasks.png}
     \centering
-    \caption{EE Channel Masks in Ultra Legacy 2018 MC Conditions \cite{EcalDPG}.}
+	\caption[Masked ECAL cells]{Transverse slices of the two ECAL endcaps showing the channel status for 2018 data taking. Active channels are in light gray, while inactive channels are colored dark red. The 3x3 squares of inactive tiles represent the inactive superclusters, with three in the negative $\eta$ endcap (left) and four in the positive $\eta$ endcap (right). In this view, the beam line is located at the center of the each ring, and the position of the cells from the middle of their respective center roughly corresponds to their position in $\rho$. \cite{EcalDPG}. While there are many individual inactive cells throughout both endcaps, no excess in background was observed outside of the inactive superclusters due to the diffuse nature of the electromagnetic showers in those events.}
     \label{fig:EEmasks}
 \end{figure}
 
 \section{HCAL}
 The CMS hadronic calorimeter (HCAL) is a sampling calorimeter, which consists of alternating layers of brass absorber and plastic scintillator. 
 Hadronic showers are primarily induced in the absorber, while the energy of the shower is sampled in each layer of scintillator and the sampled energy is used to estimate the total energy of the shower. 
-While this sampling method significantly lowers the precision of the energy measurement, it allows most of the detector material to be made of relatively cheap absorber instead of scintillating material, which results in a very substantial cost difference due to the large amount of material required to stop high-energy hadrons.
+While this sampling method lowers the precision of the energy measurement, it allows most of the detector material to be made of relatively cheap absorber instead of scintillating material, which results in a very substantial cost reduction due to the large amount of material required to stop high-energy hadrons.
 The HCAL endcaps have 17 active layers of plastic scintillator and \SI{8}{\centi\meter} absorber, covering 1.4$<\eta<$2.4 and extending to $\lvert z \rvert<$ \SI{5.6}{\meter}, with a total radiation length near 200 X$_0$. 
 The thickness of ECAL and HCAL is sufficient to stop nearly all mesons and hadrons produced in the collision, leaving only neutrinos, which are not visible in the detector, and muons. 
 As the effective fixed target cross section for \dbrem is proportional to the thickness of the target, the large quantity of brass used in HCAL makes it the ideal location to produce potential signal events.
@@ -118,7 +119,7 @@ Scintillation light from successive HPDs is summed together into 'towers' during
 
 In the HCAL endcap (HE), radiation damage to the scintillating tiles caused by high particle flux neccesitated the replacement of the avalanche photodiodes with silicon photomultipliers (SiPMs) in 2018, which have three times better photon detection efficiency than HPDs.  
 The SiPMs also have smaller footprints than the HPDs, allowing for more of them to be placed in the volume previously occupied by the HPDs and reducing the need for depth summation before readout. 
-Using this, energy information from HE after the SiPM installation is now grouped into 6-7 depths as shown in \cref{fig:HElayout}.
+Using this, energy information from HE after the SiPM installation is now grouped into 6-7 depths as shown in \Cref{fig:HElayout}.
 
 \begin{figure}[!htpb]
 	   \centering
@@ -127,9 +128,9 @@ Using this, energy information from HE after the SiPM installation is now groupe
 	    \label{fig:HElayout}
 \end{figure}
 
-As a consequence of the improved photon resolution from the HPD replacement, muon energy deposits are now visible in HE when they were below the noise floor for the HPDs. 
+As a consequence of the improved photon resolution from the HPD replacement, muon energy deposits are now clearly visible in HE when they were absorbed by the noise floor for the HPDs. 
 This, in addition to the improved depth segmentation, provide very powerful tools for separating muon tracks from backgrounds as well as observing potential signal events.
-The selected tracks are thus required to be in the endcap, as the barrel regions do not have the resolution to effectively observe muons or reject missing energy from standard model processes or non-muon tracks.
+Selected probe tracks for this analysis are thus required to be in the endcap, as the barrel regions do not have the resolution to effectively observe muons or reject missing energy from standard model processes or non-muon tracks.
 
 In the readout chain, the HCAL sensors are grouped into 'sectors' containing clusters of cells. During the 2018 data taking two sectors could not be operated, resulting an a roughly 40 degree section with effectively no HCAL information. Similiarly to the inactive ECAL regions, these inoperable sectors could result in missing energy from showers within them, and so nearby tracks are excluded from the search. 
 To avoid these regions, all probe tracks are required to be outside of the region of -3.0$<\eta<$ -1.3 and -1.57$<\phi<$-0.87, removing roughly 10$\%$ of potential tracks.
@@ -151,13 +152,13 @@ In the endcaps, 0.9$<\lvert\eta\rvert<$2.4, cathode strip chambers (CSCs) are us
 The CSCs operate on similar principles to the DTs, collecting ions and ionization electrons produced by muons passing through a contained gas. 
 Instead of individual cells, each CSC layer uses anode wires stretched between cathode layers which are segmented into strips to provide positional information. 
 By arranging the anode wires perpendicularly to the cathode strips, 2-D positional information can be measured by combining the cathode and anode location. 
-Each CSC chamber consists of six layers, and four disks of two chambers each are located at staggered positions in the endcaps, shown in \cref{fig:cscLayout}. 
+Each CSC chamber consists of six layers, and four disks of two chambers each are located at staggered positions in the endcaps, shown in \Cref{fig:cscLayout}. 
 The CSC chambers have similar resolution to the DTs, with the spatial resolution from each chamber ranging from 60 to \SI{120}{\micro\meter}.
 
 In addition to the CSCs and DTs, the muon system contains resistive plate chambers (RPCs). 
 Each DT chamber has one or two RPCs attached to it, and several CSCs have accompanying RPCs up to $\eta<$1.8. 
 The RPCs follow the same gas ionization principles used in the CSCs and DTs, but use segmented metallic plates for both the anode and cathode.
-The DTs have much worse position resolution than the other two detectors, on the order of \SI{1}{\centi\meter}, but have an improved timing resolution of up to \SI{1}{\nano\second} to compliment the position measurements from the other systems.
+The RPCs have much worse position resolution than the other two detectors, on the order of \SI{1}{\centi\meter}, but have an improved timing resolution of up to \SI{1}{\nano\second} to compliment the position measurements from the other systems.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\textwidth]{figures/cms_quadrant_run_ii.pdf}
@@ -191,7 +192,7 @@ Each standalone muon is then propagated back to the collision point through the 
 The back-propagated muon is compared to each track from the silicon tracker in the event, and if a track is found with a similar trajectory the hits from the two candidates are combined into a global track.
 An additional \kf algorithm is then used on the global track to make a global fit using the full information, creating a 'global' muon. 
 In addition to the back-propagation, the tracking system tracks are extrapolated outward to the muon systems using the same assumptions, and any tracks which have at least one nearby muon segment are paired with those segments to form 'tracker' muons. 
-When tracker, standalone, and global muons overlap, the candidate objects are combined into a single PF object with separate references to the output of each reconstruction algorithm preserved.
+When tracker, standalone, and global muons overlap, the candidate objects are combined into a single "particle flow" muon with separate references to the output of each reconstruction algorithm preserved.
 
 In this work, we use both standalone and global muons. 
 For the tagging muon, the high purity requirements make global muons the best choice of reconstruction algorithm. 

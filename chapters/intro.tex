@@ -5,30 +5,37 @@
 \label{intro_chapter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{itemize}
+The rotation curves did not only indicate that the mass distribution of the galaxies studied did not match the luminous matter - the increasing velocities to the outermost stars suggests that this excess matter extended some distance beyond the galaxy itself. 
+Basic calculations found that, if Newtonian gravity still held, the excess matter must outweigh the known matter by a significant margin. 
+Many theories have been presented to explain these observations, but one of the best motivated theories currently known is that of some unknown "dark matter" particle, which would exist in great abundance throughout the universe and interact very feebly, if at all, with normal matter.
+Particulate dark matter is largely favored due to several astronomical observations beyond direct measurement of rotation curves.
 
-\item Chapter 1 introduces the analytic goals pursued in this thesis.
 
-\item Chapter 2 briefly presents the history of, and science behind, the
-subjects presented in this thesis.
+The strong motivation for a particle explanation of dark matter has lead to an extremely broad scientific program to search for its detection beyond astronomical observations. 
+While the mass density and distribution of dark matter is well constrained, almost nothing is currently known about its origins, mass, and interactions.
+Potential dark matter particle candidates cover an extremely wide range of masses, from \SI{10^{-22}}{\eV}, where the de Broglie wavelength of dark matter becomes too large for the observed galactic structure, to \SI{5\times10^{19}}{\giga\eV}, where proton interaction with CMB photons would make the universe opaque to high energy photons over large distances.
+To help narrow the range of potential signals, several classes of dark matter are defined which have promising features beyond reproducing the correct astronomical observations. 
 
-\item In Chapter 3 the experiment is outlined.
+Among these is light dark matter, where dark matter may interact with standard model particles via mixing with the electromagnetic force. 
+This type of mixing would allow dark matter to be produced in the early universe by interactions in the quark-gluon plasma, which would subsequently 'freeze-out', leaving behind the observed relic density seen today. 
+Additionally, thermal relic models produce target cross sections for any given dark matter mass as the freeze-out point and corresponding cross section are constrained by the necessary number density to match the known mass density, creating useful experimental goals.
+If these mixing terms between dark matter and standard model photons exist, then physics interactions which produce standard model photons could instead produce 'dark' photons, massive vector bosons with very weak couplings to standard model matter.
 
-\item Chapter 4 describes the simulation process used in the analysis.
+In this thesis, a search for a dark-photon like signal is performed by looking for 'disappearing' muons in the compact muon solenoid (CMS) experiment. 
+As muons pass through materials, they can emit photons through a process known as 'Bremsstrahlung'. 
+If Bremsstrahlung were to occur with a dark photon instead of a photon, the emitted \aprime would be kinematically favored to carry most of the incoming muon momentum and would appear invisible to our detector, causing the muon to 'disappear', or have large energy loss without visible energy deposits within the detector.
+By measuring the rate that muons disappear within the detector, limits can be set on the frequency of this potential interaction and thus the amplitude of potential mixing between light dark matter and standard model matter.
 
-\item Chapter 5 follows the chain of reconstruction software used to obtain
-meaningful results from data.
+By looking for new physics interactions between muons and the detector itself, the CMS detector is used as a 'fixed target' experiment rather than the standard collision experiment, where the most relevant physics happens in the initial interaction.
+This poses several unique challenges for the analysis.
+Muons must be identified with reduced detector information, as the target signal process will modify their behavior and break assumptions used in the standard particle reconstruction algorithms.
+Triggers must be identified which keep signal events at reasonable rates.
+Rather than simulating the new physics process in an external event generator and importing it into the detector simulation, it must be directly written into the simulation of the detector response, with the ability to calculate the total and differential cross section in a variety of materials over a range of incident muon energies to accurately simulate the interaction for any given muon.
 
-\item Chapter 6 hashes out the strategy for analysis and presents the data and
-simulated sets that will be used in the analysis.
+To accomplish this, muons are selected which originate from Z-bosons, which peak strongly in invariant mass near \SI{90}{\giga\eV}, so that one muon can be used to trigger the event and the other can be extrapolated into the detector to search for potential energy loss.
+Because the probability of a fixed target interaction occuring is proportional to the amount of material traversed, we focus on muons passing through the CMS hadronic calorimeter, which forms the thickest sensitive part of the detector.
+Lastly, signal events are categorized into two regions based on their behaviors in the muon systems, the outermost part of the detector. 
+Events with no reconstructed muons nearby are classified as 'complete disappearance', while those with large energy differences between the probe track and the muon chamber track are classified as 'partial disappearance' events.
+By using these two categories, the rate of muons undergoing invisible energy loss is determined and then used to set a limit on the potential coupling between standard model photons and potential dark matter mediators.
 
-\item Chapter 7 demonstrates the implementation of the event selection
-processes.
-
-\item In Chapter 8 those events selected in Chapter 7 are analyzed.
-
-\item Chapter 9 presents a final discussion of the analyses presented in the
-thesis.
-
-\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
