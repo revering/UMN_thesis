@@ -40,21 +40,23 @@ As a further simplification, the necessary phase space for the interaction can b
 For the approximation to hold, the energy of the beam must be much larger than the mass of the new particle (in this case, the \aprime) and the lepton mass so that the assumption of only transverse interactions with the photon fields holds. 
 
 For a high energy muon incident on some nucleus in the detector, the calculation begins by finding the effective photon flux integrated over t, the four-momentum transfer in the collision. 
-This integrated flux, $\chi$, is shown in \Cref{eq:chi, eq:utilde, eq:adefs}, where $E_0$ is the initial muon energy, $m_\mu$ is the muon mass, $m_A$ is the dark photon mass, $m_p$ is the proton mass, $\mu_p$ is the magnetic moment of the proton, and Z and A are the proton number and atomic mass of the target material.
+This integrated flux, $\chi$, is shown in \Cref{eq:chi}, where $E_0$ is the initial muon energy, $m_\mu$ is the muon mass, $m_A$ is the dark photon mass, $m_p$ is the proton mass, $\mu_p$ is the magnetic moment of the proton, and Z and A are the proton number and atomic mass of the target material.
 The first term in this integral represents the  elastic scattering component, proportional to the electron screening form factor $a$ and finite nuclear size $d$, which dominates at small \aprime masses .
 The second term represents inelastic scatters, proportional to the inelastic atomic form factor $a'$, which itself is split into nuclear and atomic form factors and becomes comparable to the elastic term for larger \aprime masses ($m_A'>$\SI{1}{\giga\eV}).
-More information on this calculation can be found in references \cite{ref:kim_1973} and \cite{ref:tsai_1974}. 
+More information on this calculation can be found in references \cite{kim_1973} and \cite{tsai_1974}. 
 
 \begin{equation}
 	\label{eq:chi}
 	\chi = \int^{E_0^2}_{t_{min}} dt \left( \frac{Z^2a^4t^2}{(1+a^2t)^2(1+t/d)^2}+\frac{Za_p^4t^2}{(1+a_p^2t)^2(1+t/0.71)^8}\left(1+\frac{t(\mu_p^2-1)}{4m_p^2}\right)^2\right)\frac{t-t_{min}}{t^2}
 \end{equation}
+
 \begin{equation}
 	\label{eq:utilde}
 	\tilde{u} = -xE_0^2\theta^2 - m_A^2\frac{1-x}{x} - m_\ell^2x
 	\quad
 	t_{min} = \left(\frac{\tilde{u}}{2E_0(1-x)}\right)^2
 \end{equation}
+
 \begin{equation}
 	\label{eq:adefs}
 	a = \frac{111.0}{m_e Z^{1/3}}
