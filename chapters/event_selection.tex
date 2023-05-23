@@ -79,7 +79,7 @@ Gradient boosting can be viewed as the minimization of the error function throug
 
 \subsubsection*{Input variables}
 
-Since the main goal is to separate DY production from the Dark Brem process, the training is performed on DY MC events against the Dark Brem signal sample events with $M_{A'}=0.2,~0.4,~0.6,~0.8,~1.0~\GeV$.
+Since the main goal is to separate DY production from the Dark Brem process, the training is performed on DY MC events against the Dark Brem signal sample events with $M_{A'}=0.2,~0.4,~0.6,~0.8,~1.0~GeV$.
 For the signal sample events, events weights are assigned such that the sum of weights are identical for each signal point.
 According to the physics properties of the two processes, 21 discriminating variables are used in the training, as described here:
 probe track kinematics ($\pt$, $\eta$, $\phi$, charge, $\Delta\mathrm{R}$ to nearest CSC segment, and the $\Delta\mathrm{R}$ to the nearest CSC hit in each station), standalone muon kinematics ($\phi$, energy, track $\chi^2$, $\Delta\mathrm{R}$ to probe track, $\Delta\phi$ to the probe track multiplied by the track charge, and the difference in energy to probe track divided by probe track energy), and the HCAL energy in each depth along probe trajectory.
@@ -115,7 +115,7 @@ The list of BDT parameters and their sampled values are:
 
 The values of these parameters in the BDT with the highest figure of merit are shown in Table~\ref{tab:BDTparameters}.
 \begin{table}[htbp]
-  \topcaption{
+  \caption{
      The internal parameters of the BDT after the randomized search.
   }
   \centering
@@ -157,10 +157,10 @@ The distributions of the BDT input variables normalized to unity for various sig
 \subsection{Signal Efficiency}
 The efficiency of the signal selection in each category for simulated signal events is presented in tables \ref{tab:totalDisappearCutFlow}-\ref{tab:partialDisappearCutFlow}. Lighter mass dark photons have smaller energy loss and angular deviations, leading to less dramatic signal features and lower selection efficiencies. While the selection variables have significant separation between signal and background at all mass points, the relatively large widths of the HE energy, standalone muon momentum, and standalone muon $\Delta\mathrm{R}$ distributions in DY events (Figs. \ref{fig:staDEandHEE}-\ref{fig:hitsStandaloneDr}) limit the achievable signal efficiency. As signal must be separated from $\mathcal{O}(\sim10^{7}$) muons, very strong requirements are required to reject DY backgrounds.
 \begin{table}[htbp]
-\topcaption{Cut flow of the Complete Disappearance category scaled to the fraction of total events passing the base event selection.}
+\caption{Cut flow of the Complete Disappearance category scaled to the fraction of total events passing the base event selection.}
 \label{tab:totalDisappearCutFlow}
 \centering
-\cmsTable{
+
     \begin{tabular}{ c | c | cccccc }
        \hline
     Cut & DY & A'=0.2 & A'=0.4 & A'=0.6 & A'=0.8 & A'=1.0\\
@@ -171,17 +171,15 @@ The efficiency of the signal selection in each category for simulated signal eve
             $<$10 GeV in HCAL hits along Probe track trajectory&$<$4.4$\times10^{-6}$&0.01&0.03&0.05&0.07&0.07\\
 \hline
  \end{tabular}
-}
 \end{table}
 \begin{table}[htbp]
-\topcaption{Cut flow of the Partial Disappearance category scaled to the fraction of total events passing the base event selection.}
-\label{tab:partialDisappearCutFlow}
-\centering
-\cmsTable{
-    \begin{tabular}{ c | c | cccccc }
-       \hline
+        \caption{Cut flow of the Partial Disappearance category scaled to the fraction of total events passing the base event selection.}
+        \label{tab:partialDisappearCutFlow}
+        \centering
+        \begin{tabular}{ c | c | cccccc }
+                \hline
 
-Cut & DY &A'=0.2 & A'=0.4 & A'=0.6 & A'=0.8 & A'=1.0\\
+                Cut & DY &A'=0.2 & A'=0.4 & A'=0.6 & A'=0.8 & A'=1.0\\
             \hline
             Tag/Probe Invariant Mass $>$90 and $<$100 \GeV&0.91&0.91&0.91&0.91&0.91&0.91\\
             Standalone Muon with $\Delta$R$<$1.0 to Probe&0.91&0.89&0.86&0.83&0.81&0.82\\
@@ -190,7 +188,6 @@ Cut & DY &A'=0.2 & A'=0.4 & A'=0.6 & A'=0.8 & A'=1.0\\
             BDT score $> 0.98$&$7\times10^{-5}$&0.05&0.08&0.09&0.104&0.09\\
             \hline
  \end{tabular}
-}
 \end{table}
 
 \section{Background Estimation}
@@ -210,7 +207,7 @@ As these backgrounds can be produced through a combination of muon energy loss a
 
 Events with a muon matched to the probe track may pass the complete disappearance selections by having the muon fail to produce hits in any CSC station due to poor reconstruction. This can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. This missed muon background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. The rate of missed muons depends only on the kinematics of the selected track, and is otherwise expected to be independent of the initial process if there are no fake muons chosen. As the DY process produces the vast majority of selected muons, only simulated events produced from Z decays are considered.
 
-To efficiently simulate these events, DY events are generated with a filter requiring at most one nearby CSC hit. An additional correction is applied to account for CSC regions that have worse performance in data by counting events with only one nearby CSC hit in those regions as having zero, with event weights proportional to the difference in CSC segment reconstruction efficiency (See Section \ref{sec:missingCSC}). Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8\fbinv of Run 2. This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section \ref{sec:HardBrem}.
+To efficiently simulate these events, DY events are generated with a filter requiring at most one nearby CSC hit. An additional correction is applied to account for CSC regions that have worse performance in data by counting events with only one nearby CSC hit in those regions as having zero, with event weights proportional to the difference in CSC segment reconstruction efficiency (See Section \ref{sec:missingCSC}). Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section \ref{sec:HardBrem}.
 
 \subsection{Non-Muon Probes}
 Non-Muon ("$\mu+X$") events occur when a tagging muon is paired with a probe track that does not originate from the decay of a Z boson. $\mu+X$ could potentially be a significant source of background events, as hadrons misidentified as muons in the tracker would likely be stopped in HE, mimicking signal events. Unlike signal events, the muon energy loss in these backgrounds should produce visible energy deposits within the calorimeters.
@@ -234,7 +231,7 @@ f(s)=A(s-B)e^{-Cs}
 \end{equation}
 \subsubsection{Same Sign Control Region}
 \label{sec:sameSign}
-As the most significant non-muon probe backgrounds are expected to be produced by processes without charge-correlated tags and probes, the rate of these events with same-sign pairs should be very close to the rate with opposite-sign pairs, and a same-sign control region can be defined to verify that and cross-check the expected background rates. The same-sign control region is defined with the tag and probe charge requirement inverted and otherwise identical selections for both the complete and partial disappearance regions. Because of the close similarity to the signal region, the BDT scores of partial disappearance background events in this control region can be used to predict the expected background rate from $\mu+$X events. In the current skim 14.73 \fbinv of 2018 data was available and one same-sign event passed the partial region selection. That event has a BDT score of $<$0.001. In Figure \ref{fig:sameSign}, the same-sign events in the complete disappearance region are plotted along with the fit function from the off-peak control region scaled to the same luminosity. The expected same-sign rate is within uncertainty of the measured rate, indicating that there is not an excess of opposite-sign events and that the assumption that the background is primarily from non-charge-correlated pairs is valid.
+As the most significant non-muon probe backgrounds are expected to be produced by processes without charge-correlated tags and probes, the rate of these events with same-sign pairs should be very close to the rate with opposite-sign pairs, and a same-sign control region can be defined to verify that and cross-check the expected background rates. The same-sign control region is defined with the tag and probe charge requirement inverted and otherwise identical selections for both the complete and partial disappearance regions. Because of the close similarity to the signal region, the BDT scores of partial disappearance background events in this control region can be used to predict the expected background rate from $\mu+$X events. In the current skim 14.73 $\fbinv$ of 2018 data was available and one same-sign event passed the partial region selection. That event has a BDT score of $<$0.001. In Figure \ref{fig:sameSign}, the same-sign events in the complete disappearance region are plotted along with the fit function from the off-peak control region scaled to the same luminosity. The expected same-sign rate is within uncertainty of the measured rate, indicating that there is not an excess of opposite-sign events and that the assumption that the background is primarily from non-charge-correlated pairs is valid.
 \subsection{Signal Contamination}
 \label{sec:SigContamination}
 A table of the relative rates of signal in each control region to each signal region for all mass points is presented in Table \ref{tab:SigCont}.
@@ -245,11 +242,9 @@ While the off-peak signal contamination is small enough that it can be used to p
 For the same-sign control region, signal contamination would produce a peak in the invariant mass distribution reducing the quality of the fit. No MC signal events passed the signal selection with a same-sign requirement for the tag muon and probe track, and no excess of same-sign events is observed near the Z peak in data.
 
 In the hard Bremsstrahlung control region, signal contamination could result in shifts in the expected rate of Standard Model Bremsstrahlung and increased uncertainty in the measurement of HE energy deposits. Signal events are less likely to have hard Bremsstrahlung events before producing dark matter due to the dependence of the production cross section on muon energy, and less likely to deposit large amounts of energy in HE after a dark matter interaction due to reduced available muon energy. In addition, DY events in the hard Bremsstrahlung control region appear much more background-like than in the signal region due to energy loss from SM processes. As a result, background events pass the requirement of BDT score $>0.98$ much more frequently in the hard Bremmstrahlung control region than the signal region, while signal events have similar BDT score distributions in both regions. The combination of these effects results in an expected signal loss of 4$\%$ from signal contamination in the corrections derived in the hard Bremsstrahlung region.
-begin{table}[htp]
-        \topcaption{The fraction of signal events in each control region relative to the corresponding signal region.}
+\begin{table}[htp]
         \label{tab:SigCont}
         \centering
-        \cmsTable{
                 \begin{tabular} { c| c | c c c c c }
                 \hline
                         Signal Region&Control Region&A'=0.2\GeV&A'=0.4\GeV&A'=0.6\GeV&A'=0.8\GeV&A'=1.0\GeV\\
@@ -264,5 +259,5 @@ begin{table}[htp]
 
                 \hline
                 \end{tabular}
-        }
+                \caption{The fraction of signal events in each control region relative to the corresponding signal region.}
 \end{table}
