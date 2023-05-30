@@ -9,7 +9,7 @@ This bias is rougly proportional to the fraction of muons undergoing \dbrem squa
 A table of the biasing factors used, as well as the corresponding signal rate per incident muon, is presented in \cref{table:dbrem_biasfactors}.
 Simulated events that have no \dbrem or do not pass the base event selection are discarded.
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \spacerows{1.2}
     \begin{center}
@@ -93,7 +93,7 @@ As muons in this region are rare and this search is not sensitive to muons which
 The disagreement at very small energies (x$<0.02$) is of much greater concern. 
 These very low energy muons can have very different signatures in the detector with slight changes in momentum, as a difference of a few \SI{}{\giga\eV} can greatly alter the probability of the muon to reach the muon chambers before being fully absorbed or deflected away by the magnetic field.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includegraphics[width=0.9\textwidth]{figures/wwXcomp.pdf}
 	\caption[\ww and \mg Outgoing Energy]{The fraction of the initial kinetic energy carried by the outgoing muon in \mg and using the \ww approximation. While the differences at large energy fractions are a small fraction of events and do not match the target kinematics of this search, the sharp peak seen at very low energies using \ww could result in substantial inaccuracy in predictions of the signal efficiency.}
 	\label{fig:wwMgComp}
@@ -159,14 +159,14 @@ Because the kinematics have small variation with scattering material, all \dbrem
 Lastly, the process is only enabled within the HCAL endcap and, separately, the ECAL endcap (\Cref{fig:HEbrems,fig:EEbrems}).
 Only those regions are considered for potential signal sources due to the large uncertainty or low total material in other regions of the detector and surrounding support structure.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includegraphics[width=0.9\textwidth]{figures/HCALbrems.pdf}
 	\centering
 	\caption{The locations of simulated \dbrem events within the CMS HCAL endcap}
 	\label{fig:HEbrems}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includegraphics[width=0.9\textwidth]{figures/ECALbrems.pdf}
 	\centering
 	\caption{The locations of simulated \dbrem events within the CMS ECAL endcap}
@@ -186,7 +186,7 @@ Only those regions are considered for potential signal sources due to the large 
     \label{fig:dbrem_material}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \spacerows{1.2}
     \begin{center}
@@ -263,6 +263,7 @@ As long as the simulated muons have the same kinematics as those in data, the ra
 \begin{equation}
 	\label{eq:datarate}
 	\epsilon^2 = frac{n_{data}}{\langle \sigma_0 l\rangle}
+\end{equation}
 
 \begin{equation}
 	\label{eq:fixedLumi}
@@ -272,19 +273,3 @@ As long as the simulated muons have the same kinematics as those in data, the ra
 Due to the use of signal events per selection muon, the final limits on $\epsilon$ have no direct dependency on the collision luminosity and so avoid its associated luminosity uncertainty, but instead have uncertainty related to the accuracy of the modeling of the detector.
 While the CMS detector is calibrated to accurately simulate its response to energetic particles, the simulation may have small variations in the simulated geometry that are resolved through energy response calibration when they are really produced by material simulation differences.
 This systematic uncertainty is estimated by assuming that it may result in at most one more or one less absorber layer along the trajectory of any given muon, producing overall $\pm$5$\%$ and $\pm$5$\%$ systematic uncertainties within the HCAL and ECAL, respectively.
-
-\begin{figure}[h]
-	\includegraphics[width=0.9\textwidth]{figures/HCALbrems.png}
-	\centering
-	\caption{The locations of simulated \dbrem events within the CMS HCAL endcap}
-	\label{fig:HEbrems}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics[width=0.9\textwidth]{figures/ECALbrems.png}
-	\centering
-	\caption{The locations of simulated \dbrem events within the CMS ECAL endcap}
-	\label{fig:EEbrems}
-\end{figure}
-
-
