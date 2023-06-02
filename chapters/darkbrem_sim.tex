@@ -3,7 +3,7 @@ Because the signal process for \dbrem occurs between outgoing particles from the
 The initial state used for signal simulation is the DY process decaying to two muons, with identical settings to the background DY generation other than the enabled signal process. 
 
 In order to efficiently produce signal events, $\epsilon$ is set to one and the cross section is multiplied by fixed biasing factors for each \aprime mass. 
-Additionally, the interaction is only enabled within the HCAL endcap and is disabled after the \aprime is produced to avoid non-physical events with multiple \dbrem interactions that could be caused by the increased interaction probability.
+Additionally, the interaction is only enabled within the HCAL and ECAL endcaps (\Cref{fig:HEbrems,fig:EEbrems}), and is disabled after the \aprime is produced to avoid non-physical events with multiple \dbrem interactions that could be caused by the increased interaction probability.
 The increased interaction rate biases events towards the center of the detector, as deeper regions see a reduced number of muons due to earlier \dbrem interactions.
 This bias is rougly proportional to the fraction of muons undergoing \dbrem squared, so the bias factors are selected to have rates less than 5$\%$. 
 A table of the biasing factors used, as well as the corresponding signal rate per incident muon, is presented in \cref{table:dbrem_biasfactors}.
@@ -156,21 +156,13 @@ The kinematics of the outgoing muon depend weakly on the composition of the targ
 The core assumptions of the scaling technique, slow variation of transverse momentum and outgoing energy fraction spectra with respect to incident energy, are found to remain valid across a wide range of target materials while the underlying distributions of those variables have small dependences on the material type (\cref{fig:dbrem_material}).
 Because the kinematics have small variation with scattering material, all \dbrem interactions in this analysis are scaled from samples produced with a copper target, which is the most frequent \dbrem initiating material in the CMS HCAL endcap (See Table \ref{table:dbrem_material}).
 
-Lastly, the process is only enabled within the HCAL endcap and, separately, the ECAL endcap (\Cref{fig:HEbrems,fig:EEbrems}).
-Only those regions are considered for potential signal sources due to the large uncertainty or low total material in other regions of the detector and surrounding support structure.
-
 \begin{figure}[ht]
-	\includegraphics[width=0.9\textwidth]{figures/HCALbrems.pdf}
+	\includegraphics[width=0.45\textwidth]{figures/HCALbrems.pdf}
 	\centering
-	\caption{The locations of simulated \dbrem events within the CMS HCAL endcap}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/ECALbrems.pdf}
+	\caption[Simulated \dbrem Locations]{The locations of simulated \dbrem events within the CMS HCAL (left) and ECAL (right) endcaps.}
 	\label{fig:HEbrems}
-\end{figure}
-
-\begin{figure}[ht]
-	\includegraphics[width=0.9\textwidth]{figures/ECALbrems.pdf}
-	\centering
-	\caption{The locations of simulated \dbrem events within the CMS ECAL endcap}
-	\label{fig:EEbrems}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -262,7 +254,7 @@ As long as the simulated muons have the same kinematics as those in data, the ra
 
 \begin{equation}
 	\label{eq:datarate}
-	\epsilon^2 = frac{n_{data}}{\langle \sigma_0 l\rangle}
+	\epsilon^2 = \frac{n_{data}}{\langle \sigma_0 l\rangle}
 \end{equation}
 
 \begin{equation}
