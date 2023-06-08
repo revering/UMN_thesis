@@ -128,8 +128,11 @@ Using this, energy information from HE after the SiPM installation is now groupe
 	    \label{fig:HElayout}
 \end{figure}
 
-As a consequence of the improved photon resolution from the HPD replacement, muon energy deposits are now clearly visible in HE when they were absorbed by the noise floor for the HPDs. 
-This, in addition to the improved depth segmentation, provide very powerful tools for separating muon tracks from backgrounds as well as observing potential signal events.
+To reduce the data rate and the storage requirements, HCAL channels which fail to exceed set energy thresholds during data taking are not read out. 
+This 'zero-suppression' is necessary for the detector to meet the strict timing requirements set by the number of collisions and the high frequency of the beam, but can distort the spectra of muon energy depositions by removing tails in the lower region of their energy depositions.
+The increase in energy resolution from the SiPM upgrade greatly reduces this distortion by moving typical muon energy deposits further from the zero suppression threshold.
+ 
+This improvement in muon energy resolution, in addition to the improved depth segmentation, provide very powerful tools for separating muon tracks from backgrounds as well as observing potential signal events.
 Selected probe tracks for this analysis are thus required to be in the endcap, as the barrel regions do not have the resolution to effectively observe muons or reject missing energy from standard model processes or non-muon tracks.
 
 In the readout chain, the HCAL sensors are grouped into 'sectors' containing clusters of cells. During the 2018 data taking two sectors could not be operated, resulting an a roughly 40 degree section with effectively no HCAL information. Similiarly to the inactive ECAL regions, these inoperable sectors could result in missing energy from showers within them, and so nearby tracks are excluded from the search. 

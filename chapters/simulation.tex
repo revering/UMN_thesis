@@ -82,6 +82,20 @@ By selecting events with high-quality tagging muons which pass the trigger requi
 All MC events are then applied a weight based on the relative rate of their tagging muons passing the trigger in data and MC, and a systematic uncertainty in this trigger efficiency is applied by changing the trigger efficiency by one standard deviation.
 To ensure that this efficiency is calculated for the correct muon, all tagging muons selected are required to pass the isolated muon trigger used in this search.
 
+\subsection{Muon Energy Scale Corrections}
+While this analysis has a weak overall sensitivity to the tagging muon kinematics, small differences that may be present between simulation and data in the tagging muon energy could cause shifts in the invariant mass distribution which change the event acceptance rate.
+Simulated bias effects which are asymmetric in charge, such as mismodelling of the magnetic field, could also introduce bias into the expected charge distribution of the selected probe tracks.
+To account for these potential differences, muon energy scale corrections are applied using the Rochester method \cite{rochester_corr}.
+
+The Rochester method is a data-driven correction to reconstructed muon energies as a function of $\eta$, $\phi$, and charge.
+The correction is derived using a two-step approach which uses $Z/\gamma* /rightarrow \mu\mu$ events.
+In the first step, DY events are generated for a perfectly aligned detector by smearing the generator level momentum using a function that replicates the experimental resolution as a function of $\eta$. 
+Corrections for both data and MC are then derived by requiring that the average $1/p_t^\mu$ of muons from Z decays matches the perfectly-aligned MC.
+
+In the second step, further corrections are derived for each $\eta-\phi$ bin so that the reconstructed Z mass is the same as the perfectly aligned detector. 
+This step removes scatter in average Z mass which can result from the first step due to variations in muon efficiency between $\eta-\phi$ bins that are not perfectly modeled in MC. 
+The muon energy scale corrections are applied to all tagging muons, and uncertainties in the resulting muon momentum are included as an overall systematic based on the change in signal efficiency produced when varying them by one standard deviation.
+
 \subsection{HCAL Efficiencies}
 The response of the HCAL to muons is important in this study to reject events with large energy deposits as well as events where the selected probe did not reach the calorimeters.
 In addition, the depth-by-depth information can be used to search for evidence of a change in muon energy within HCAL as a signature of a \dbrem.
