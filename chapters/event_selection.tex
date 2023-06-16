@@ -23,9 +23,9 @@ As discussed in \cref{sec:muonReco} the tagging muons must be global muons, and 
 The global fit of potential tag muons must have $\chi^2<$10, and include at least hit from the muon chambers. 
 They must also have muon segments in at least two muon stations.
 The inner track must have a transverse impact parameter $<$\SI{2}{\milli\meter} and longitudinal impact parameter $<$\SI{5}{\milli\meter} to the primary vertex, with at least one pixel hit and six tracker layer hits.
-Tagging muons are required to be isolated from other particles to further reduce backgrounds from fake muons or mismeasured energy caused by mismatched tracks or excess energy loss in the detector.
+Tagging muons are required to be isolated from other particles to further reduce backgrounds from fake muons or mis-measured energy caused by mismatched tracks or excess energy loss in the detector.
 This isolation is defined as the ratio of the transverse energy of neutral hadrons and photons from pileup plus the transverse momentum of all charged hadrons from the primary vertex minus half the transverse energy of charged hadrons from pileup in a $\Delta$R cone of 0.4 to the transverse momentum of the muon, and is required to be less than 15$\%$.
-Lastly, the tagging muons must pass the requirements for the isolated muon triggers used, as several scale factors are applied with the assuption that the tagging muon was the particle which fired the trigger.
+Lastly, the tagging muons must pass the requirements for the isolated muon triggers used, as several scale factors are applied with the assumption that the tagging muon was the particle which fired the trigger.
 
 Probe tracks are required to have \pt$>$\SI{20}{\giga\eV} to reduce the rate of fake muons, and 1.45$<\eta<$2.4 to be within the HCAL endcap.
 They must also have $\Delta\mathrm{R}>$0.2 to the tagging muon to remove events early in the selection where the probe track and tagging muon originate from the same process.
@@ -40,10 +40,10 @@ Similarly, the energy sum of all HCAL hits within a $\Delta$R cone of 0.3 to the
 As mentioned in \cref{sec:detector}, potential probe tracks must be in the active ECAL and HCAL regions so that these isolation requirements can be effectively applied.
 
 Once the potential tagging muons and probe tracks have been chosen, each track is paired with each muon to search for pairs which are likely to originate from a Z boson.
-Successful pairs must have oppositely charged tag and probe particles, and fit using the \kf algorithm to form a shared verted with reduced $\chi^2<$3.
+Successful pairs must have oppositely charged tag and probe particles, and fit using the \kf algorithm to form a shared vertex with reduced $\chi^2<$3.
 In the signal region the pair must have an invariant mass between 80 and \SI{100}{\giga\eV} to be near the Z-mass, while several control regions extend this range from 50 to \SI{150}{\giga\eV}.
 Once a pair is chosen, the pairing of the tagging muon to all other tracks in the event without quality or geometric acceptances is checked for any other potential matches.
-Any tagging muons which pass the pairing requirements with these alternate tracks are rejected to remove events where the tagging muon originates from a Z decay but the second muon has a poor track or fails geometric acceptance, potentially allowing an unassociated particle track to be selected as the probe.
+Any tagging muons which pass the pairing requirements with these alternate tracks are rejected to remove events where the tagging muon originates from a Z decay but the second muon has a poor track or fails geometric acceptance, potentially allowing an un-associated particle track to be selected as the probe.
 Similarly, tagging muons which pass the pairing requirements with any other global muon in the event with $\Delta$R greater than 1.0 to the selected probe are rejected to reduce background events where the second muon from the Z decay may has a poorly reconstructed track.
 
 
@@ -57,18 +57,18 @@ A requirement that at least two HCAL cells along the probe trajectory is applied
 In addition to the standalone muon requirements, no CSC hits are allowed to be within $\Delta$R of 0.05 to the probe track in order to reject events where hadrons pass through HCAL without fully showering and deposit some energy in the muon chambers, as well as events that may have muon deposits in the CSCs and significant failures in muon reconstruction such that no standalone muons are formed.
 To further reduce the background from non-muon tracks, the sum of the HCAL energy along the track trajectory must be less than \SI{10}{\giga\eV}. 
 
-In the partial disappearance region, the nearby standalone muon requirement greatly reduces the rate of non-muon tracks, and instead the primary backgrounds come from muons which have standard model Bremsstrahung or other scattering processes, as well as muons with poor reconstruction in the CSCs causing mismeasured energy.
+In the partial disappearance region, the nearby standalone muon requirement greatly reduces the rate of non-muon tracks, and instead the primary backgrounds come from muons which have standard model Bremsstrahlung or other scattering processes, as well as muons with poor reconstruction in the CSCs causing mis-measured energy.
 To efficiently select events an initial requirement that the largest energy standalone muon within $\Delta$R of 1.0 has less than 40$\%$ of the probe track energy is applied, but because of the relatively large energy uncertainty of standalone muons several thousand background muons from DY events will still be selected.
 The loss of energy due to a \dbrem interaction produces a wide variety of event features.
 Standalone muons in \dbrem events have lower energy, and are displaced in $\phi$ from extra curvature in the magnetic field due to their lower momentum, which appears both in the reconstructed trajectory of the standalone muon and in displacement of the individual hits in each CSC station from the extrapolated track trajectory.
-They also tend to have better quality tracks than backgrounds from mismeasured muons, as their reduced energy originates from a real energy loss instead of a poorly reconstructed muon track.
+They also tend to have better quality tracks than backgrounds from mis-measured muons, as their reduced energy originates from a real energy loss instead of a poorly reconstructed muon track.
 In the HCAL, \dbrem can appear as either slightly higher energy in each depth due to the increased path length from the angular deviation caused by the \dbrem, or as missing hits in deeper layers when the trajectory change is large enough for the track to miss expected cells entirely.
-Because of the large range of signal-like event features potentially complicacted correlations between them, a binary decision tree (BDT) is trained to score how signal-like any given event is and events with very high scores are classified as signal.
+Because of the large range of signal-like event features potentially complicated correlations between them, a binary decision tree (BDT) is trained to score how signal-like any given event is and events with very high scores are classified as signal.
 
 The BDT is trained using a collection of 20 input variables, which can be broken down into five basic classes. 
 First are the probe track kinematics ($\pt$, $\eta$, $\phi$, charge), which can be used to account for correlations relating to the position of the track in the detector, as well as potential effects from the total energy of the track.
 Next are the CSC segments around the track trajectory, input as the $\Delta\mathrm{R}$ to the nearest CSC hit in each station, which is used to select events with extra displacement or missing hits in the CSCs.
-Third are the standalone muon kinematics ($\phi$, energy, and track $\chi^2$), which select for track quality to help reject mismeasured tracks.
+Third are the standalone muon kinematics ($\phi$, energy, and track $\chi^2$), which select for track quality to help reject mis-measured tracks.
 To help explicitly look for differences in energy and trajectory, the $\Delta\mathrm{R}$ and $\Delta\phi$ between the probe track and the standalone muon are input. 
 Additionally, the $\Delta\$phi$ is multiplied by the track charge to explicitly use the trajectory change in the direction expected by the magnetic field.
 Lastly, the HCAL energy in each depth along probe trajectory to search for excess energy from standard model processes as well as potential signal-like features of consistently higher energy or missing hits in several depths.

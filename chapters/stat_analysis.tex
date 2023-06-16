@@ -4,13 +4,13 @@
 \chapter{Statistical Analysis}
 \label{analysis_chapter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Several statistical techniques are used in this analysis in order to interperet measured data and predicted results in terms of limits on production rates and physical couplings.
+Several statistical techniques are used in this analysis in order to interpret measured data and predicted results in terms of limits on production rates and physical couplings.
 Developed over many years of analyses, these techniques are widely used across particle physics experiments, and provide consistent ways to produce and quantify limits on physical quantities and the statistical strength of a given measurement.
 
 \subsection{Maximum Likelihood Fits}
 The basic structure of this search is a counting experiment, where some number of data events are observed, and consist of some potential number of signal events $s$ along side of background events $b$. 
 The predictions for both signal and background have underlying uncertainties which are handled through the introduction of nuisance parameters such that both $s$ and $b$ become functions of these nuisances.
-When an observation of event counts in data is made, it is desireable to determine the most likely set of parameters, both signal and nuisance, that could produce it. 
+When an observation of event counts in data is made, it is desirable to determine the most likely set of parameters, both signal and nuisance, that could produce it. 
 To determine this set of parameters, we perform maximum likelihood fits, following the approach presented in \cite{conway2011}. 
 
 The expected occupation of any given bin is assumed to follow a Poisson distribution based on the expected number of signal and background events, such that the probability $P$ of observing a quantity $n$ of events is given by \Cref{eq:poisProb}.
@@ -34,7 +34,7 @@ By taking the product of this probability for each analysis bin $i$ in each sign
 where $n_i$ represents the events in any particular bin and $P_i$ uses the particular $s$ and $b$ for that bin.
 
 By maximizing this likelihood function, the most probable set of parameters can be found which produces the observed data, and limits on the potential signal strength can be set.
-In practice it is often more convienient to perform this maximization by instead minimizing the negative logarithm of the likelihood, which occurs at the identical point in parameter space but is often easier to find numerically.
+In practice it is often more convenient to perform this maximization by instead minimizing the negative logarithm of the likelihood, which occurs at the identical point in parameter space but is often easier to find numerically.
 
 \subsection{Shape Uncertainties and MC Fluctuations}
 Several uncertainties in this analysis result in distortions of the shape of the observed spectrum, such as the muon trigger and identification efficiencies.
@@ -50,13 +50,13 @@ As this Taylor expansion does not fully reproduce the true behavior of the spect
 where $\rho_i$ is the shifted expected efficiency of bin i and $\rho_{i}^+$,$\rho_{i}^-$, and $\rho_{i}^0$ are the up-shifted, down-shifted, and nominal efficiencies, respectively.
 Beyond this region the morphing is projected linearly so to avoid large deviations. 
 
-Using this method, the correlated shape uncertainties can be incorporated as single variabled nuisance parameters in the maximum likelihood fits, and optimized in the same way as the signal and multiplicative uncertainties.
+Using this method, the correlated shape uncertainties can be incorporated as single variable nuisance parameters in the maximum likelihood fits, and optimized in the same way as the signal and multiplicative uncertainties.
 
 While the Poissonian probability and log likelihood maximization presented in \Cref{eq:poisProb} account for fluctuations due to limited sample size in data events with the built in Poisson distributions, they do not properly account for potential fluctuations in the expected events of signal or background which could be caused by limited MC sample sizes.
 This effect is accounted for using the Barlow-Beeston method \cite{BarlowBeeston}, where a separate nuisance parameter multiplying the number of events for each event source in each bin is introduced.
 
 By nominally setting this parameter to one and constraining it with a prior distribution, a log normal in this case, the likelihood of each particular bin can also be optimized to balance potential fluctuations in the number of expected events with that of observed events.
-This method introduces a large number of free parameters that must be fit in the likelihood, as each bin gains an independant parameter describing this multiplication.
+This method introduces a large number of free parameters that must be fit in the likelihood, as each bin gains an independent parameter describing this multiplication.
 This is managed by independently optimizing the contents of each bin, as these fluctuations from limited sample sizes are uncorrelated, allowing the computation complexity to be greatly reduced.
 
 \subsection{Significance and Limit Setting}
@@ -75,11 +75,11 @@ To calculate these p-values, we begin by defining the profile likelihood ration 
 where $\hat{\mu}$ and $\hat{\theta}$ represent the values of the signal strength and nuisance parameters which maximize the likelihood function, and $\hat{\hat{\theta}}$ the nuisance parameters which maximize the likelihood at a given value of $\mu$. 
 This ratio represents the relative probability of a given signal strength relative to the optimal value, with values near one representing good agreement between data and the chosen value of $\mu$. 
 
-Mathematically, it is convienient to define a test statistic $t_\mu$, such that 
+Mathematically, it is convenient to define a test statistic $t_\mu$, such that 
 \begin{equation}
     t_\mu = -2 \ln \lambda (\mu)
 \end{equation}
-with higher values of $t_\mu$ representing larger incompatability of the test with observation. 
+with higher values of $t_\mu$ representing larger incompatibility of the test with observation. 
 In searches like this one where signal appears only as an excess, it is useful to constrain the test statistic to values of $\mu$ which are greater than zero, and to define a special test statistic $q_0$ when testing potential discovery,
 \begin{equation}
     q_0 = 
@@ -97,7 +97,7 @@ The p-value quantifying the level of disagreement with data is then computed as
 \end{equation}
 where $q_{0,obs}$ is the observed value of $q_0$ which maximizes the likelihood function and $f(q_0|0)$ is the distribution function of the $q_0$ under the assumption of a background-only hypothesis.
 
-There are several ways of determining the probability density function used to calculate the significane.
+There are several ways of determining the probability density function used to calculate the significance.
 For experiments with small sample sizes, 'toy' experiments which randomly choose true values of $\mu$ and measure the resulting values of $q_0$ can be used to generate the approximate pdf $f(q_0|0)$. 
 Following the methods in \cite{Cowan_2011}, the cumulative probability $F(q_0,\mu')$ of this distribution can be approximated (becoming exact in the large sample limit) as 
 \begin{equation}
@@ -111,7 +111,7 @@ Using the definition of the p-value and this probability density function, the s
 \end{equation} 
 While this simple form of the significance is an excellent approximation for large sample sizes, due to the small expected number of events in this search the distribution $f(q_0|\mu')$ is instead derived using numerical techniques.
 
-In addition to calculating the significance of rejecting a background-only approximation, in the event of no observed signal it is valueable to set a limit by determining the maximum signal strength which could be present while being consistent with the measured data.
+In addition to calculating the significance of rejecting a background-only approximation, in the event of no observed signal it is valuable to set a limit by determining the maximum signal strength which could be present while being consistent with the measured data.
 In this case, we define a test statistic corresponding to the disagreement between observation and any assumed true signal
 \begin{equation}
     q_\mu = 
@@ -150,7 +150,7 @@ To reduce the necessary computing time, a widely used asymptotic approximation o
 where $q_{\mu,A}$ is the test statistic evaluated with the 'Asimov' data set, where all fluctuations are set to zero and only the expected background and nominal nuisance parameters are present.
 
 By finding the value of $\mu$ where $CL_s$=0.05 for any given A' mass, we can then exclude any values of the signal strength stronger than that value of $\mu$ with a confidence of 95$\%$. 
-Often in these types of experiments fluctations in the background may cause the produced limit to be much stronger or weaker than expected. 
+Often in these types of experiments fluctuations in the background may cause the produced limit to be much stronger or weaker than expected. 
 To better allow for comparison between experiments, and to differentiate between fluctuations and changes in experimental sensitivity with some signal variable, such limit plots often show the observed limit alongside the expected limit, where the $CL_s$ exclusion is calculated assuming a background-only model.
 Cases where more events are seen than expected will then have weaker observed limits than expected, while downward fluctuations in background will appear as stronger than expected exclusions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%}}}

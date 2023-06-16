@@ -22,7 +22,7 @@ This is typically split into an initial event generation step which simulates th
 
 In this analysis the hard scatter is simulated using \mg, which calculates the matrix elements of a given interaction, which encodes the probability of a given initial state to produce outgoing particles of particular energies and momenta.
 \mg calculates the matrix element using Feynman diagrams and rules to perturbatively calculate the matrix element at a given order in the number of diagrams considered.
-Due to the relative insentisitivity in this analysis to the precision of the initial state muons, leading order diagrams are used to calculate this matrix element to reduce the required computation time.
+Due to the relative insensitivity in this analysis to the precision of the initial state muons, leading order diagrams are used to calculate this matrix element to reduce the required computation time.
 For all MC samples used, version 2.6.5 of \mg is used to generate hard scatters involving the Drell-Yan process at leading order. 
 
 Before entering the detector, the resulting products of the hard scatter can decay further or emit radiation.
@@ -54,7 +54,7 @@ The simulated detector responses from \geant are then reconstructed using identi
 \section{Monte Carlo Corrections}
 Differences in generated MC samples and data that could impact variables relevant to this search can arise from many possible sources.
 The response of the detector to high-energy particles can be very difficult to model accurately, as it may depend on the exact detector configuration and geometry, the complex interactions that the particle undergoes, and the efficiency of the particular electronics used to read the signal out.
-Some parts of the detector do not have precise aligment schemes to position each subcomponent, which can cause missing signals in expected locations or appearance in unexpected ones. 
+Some parts of the detector do not have precise alignment schemes to position each sub-component, which can cause missing signals in expected locations or appearance in unexpected ones. 
 The data taking conditions, such as the exact configuration of the magnetic field, the efficiency of each channel in each detector, and the zero suppression thresholds applied can change as each run progresses in ways that are difficult to replicate in simulation.
 To produce the best possible match between MC simulations and data, several corrections are applied to known quantities in MC to match those observed in control regions in data to remove or constrain potential differences due to these effects.
 
@@ -107,7 +107,7 @@ The HCAL energy is then collected in each depth along the trajectory of the trac
 
 Initial studies of the muon energy deposits found significant excesses in data of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing' hits (\Cref{fig:missingHits}. 
 Study of these events found that events with many missing hits correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and may be caused by differences in light collection efficiency with particle position that are not replicated in simulation or gaps between cells causing small regions of missing coverage.
-To ensure that the HCAL energy variables used as inputs for signal selection are well modeled, events that have track trajectories near the edge of a HE cell are not considered for the partial disapperance region, where the individual depth information is used as part of the selection.
+To ensure that the HCAL energy variables used as inputs for signal selection are well modeled, events that have track trajectories near the edge of a HE cell are not considered for the partial disappearance region, where the individual depth information is used as part of the selection.
 Events are defined to be near a cell edge when the projected track passes within $\Delta\phi<$0.004 or $\Delta\eta<$0.016 to the edge of any cell in HE.
 
 \begin{figure}[ht]
@@ -142,12 +142,12 @@ As a result, estimates of the distribution of pileup vertices are used during th
 Pileup events may produce jets which are mistakenly identified as muons or are in the vicinity of a probe track and cause it to fail isolation requirements, so potential differences in the number of pileup jets between data and MC could impact the expected signal strength.
 
 To perform this re-weighting, histograms of the amount of pileup observed in data are divided by those used to generate the MC samples to find the weight for each potential number of pileup interactions (\Cref{fig:pileup}).
-The number of pileup interactions used for this reweighting is not directly the number of pileup vertices in the event, which is dependent on the vertex reconstruction efficiency in the event and can introduce large systematic errors and biases.
+The number of pileup interactions used for this re-weighting is not directly the number of pileup vertices in the event, which is dependent on the vertex reconstruction efficiency in the event and can introduce large systematic errors and biases.
 Instead, the rate of pileup is determined from the product of the total inelastic pp cross section in CMS and the instantaneous luminosity, defined as the luminosity measured over each 23 second period ("lumisection") in CMS.
 The amount of pileup in each event is then found by dividing this rate by the collision frequency.
 
 As a result of this process, the measured pileup has a systematic uncertainty produced by uncertainty on the measured total pp inelastic cross section as well as the instantaneous luminosity. 
-These effects are included as a pileup reweighting uncertainty by varying the product of cross section and luminosity by one standard deviation in each direction.
+These effects are included as a pileup re-weighting uncertainty by varying the product of cross section and luminosity by one standard deviation in each direction.
 For the pileup calculation, the nominal total inelastic cross section of $\sigma_{pp}=$\SI{69.2}{\milli\barn} was used with an overall uncertainty of $\pm4.6\%$\cite{pileupCx}.
 
 \begin{figure}[ht]
@@ -155,7 +155,7 @@ For the pileup calculation, the nominal total inelastic cross section of $\sigma
 	\includegraphics[width=0.45\textwidth]{figures/PileupDists.pdf}
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/PileupRatioDists.pdf}
-        \caption[Pileup Re-weighting Histograms]{The number of pileup interactions (left) and the pileup reweighting factors (right) derived from their ratio.}
+        \caption[Pileup Re-weighting Histograms]{The number of pileup interactions (left) and the pileup re-weighting factors (right) derived from their ratio.}
         \label{fig:pileup}
 \end{figure}
 
