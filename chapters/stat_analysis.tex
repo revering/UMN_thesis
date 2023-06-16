@@ -70,7 +70,7 @@ In this way, a large significance means that the data is very likely to contain 
 
 To calculate these p-values, we begin by defining the profile likelihood ration $\lambda(\mu)$, 
 \begin{equation}
-   \lambda (\mu) = \frac{L(\mu, \hat{\hat{\theta}}){L(\hat{\mu},\hat{\theta})}
+   \lambda (\mu) = \frac{L(\mu, \hat{\hat{\theta}})}{L(\hat{\mu},\hat{\theta})}
 \end{equation}
 where $\hat{\mu}$ and $\hat{\theta}$ represent the values of the signal strength and nuisance parameters which maximize the likelihood function, and $\hat{\hat{\theta}}$ the nuisance parameters which maximize the likelihood at a given value of $\mu$. 
 This ratio represents the relative probability of a given signal strength relative to the optimal value, with values near one representing good agreement between data and the chosen value of $\mu$. 
@@ -93,15 +93,15 @@ By defining the test statistic as zero for any signal strength below zero, we ex
 
 The p-value quantifying the level of disagreement with data is then computed as
 \begin{equation}
-	p_0 = \int_{q_0,obs}^{\inf} f(q_0|0) dq_0
+	p_0 = \int_{q_0,obs}^{\infty} f(q_0|0) dq_0
 \end{equation}
 where $q_{0,obs}$ is the observed value of $q_0$ which maximizes the likelihood function and $f(q_0|0)$ is the distribution function of the $q_0$ under the assumption of a background-only hypothesis.
 
 There are several ways of determining the probability density function used to calculate the significane.
 For experiments with small sample sizes, 'toy' experiments which randomly choose true values of $\mu$ and measure the resulting values of $q_0$ can be used to generate the approximate pdf $f(q_0|0)$. 
-Following the methods in \cite{Cowan_2011}, this cumulative probability $F(q_0,\mu')$ of this distribution can be approximated (becoming exact in the large sample limit) as 
+Following the methods in \cite{Cowan_2011}, the cumulative probability $F(q_0,\mu')$ of this distribution can be approximated (becoming exact in the large sample limit) as 
 \begin{equation}
-	F(q_0|\mu') \Phi \left( \sqrt{q_0} - \frac{\mu'}{\sigma} \right)
+	F(q_0|\mu') = \Phi \left( \sqrt{q_0} - \frac{\mu'}{\sigma} \right)
 \end{equation}
 where $\Phi$ is the cumulative Gaussian distribution, where $\sigma$ is the standard deviation of the assumed Gaussian distribution of $\mu'$ which can be determined from the covariance matrix of the optimized parameters.
 
@@ -121,7 +121,7 @@ In this case, we define a test statistic corresponding to the disagreement betwe
         \end{cases}
 \end{equation}
 similarly to $q_0$, but in comparison to a fixed true value of $\mu$ instead of 0. 
-In addition to setting a non-zero value of $\mu$, the $q_\mu$ inverts the ranges where $q_\mu$ is zero so that values of $\hat{\mu}}$ which are greater than $\mu$ are set to zero.
+In addition to setting a non-zero value of $\mu$, the $q_\mu$ inverts the ranges where $q_\mu$ is zero so that values of $\hat{\mu}$ which are greater than $\mu$ are set to zero.
 For the purposes of setting a limit, regions where $\hat{\mu}>\mu$ do not represent less compatibility with $\mu$ than observation, so this region is excluded from the test.
 
 Following the procedure used for exclusion significance, it can be shown that the significance of the limit $Z_\mu$ can be approximated as
