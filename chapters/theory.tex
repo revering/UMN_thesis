@@ -46,7 +46,7 @@ A potential renormalizable interaction which can be introduced to the SM which c
 
 \begin{equation}
 	\label{eq:LDMlagrangian}
-	\mathcal{L} = - frac{\epsilon}{2} B^{\mu\nu}F'_{\mu\nu}
+	\mathcal{L} = - \frac{\epsilon}{2} B^{\mu\nu}F'_{\mu\nu}
 \end{equation}
 
 For small mixing paramater $\epsilon$ and light gauge bosons, these new couplings align with those of the SM photon \cite{Bauer_2018} and so this new gauge boson is referred to as the "dark photon", or A'.
@@ -96,6 +96,27 @@ This could potentially be explained by a dark matter signal which preferentially
 A muon-philic cross section would also have a larger thermal relic cross section, as requiring a muon or tau coupling in its production reduces the available paths in its creation and so requires increasing the remaining cross section to achieve the same freeze-out number density.
 
 \section{Z-Bosons and the DY Process}
+For muons to potentially interact within the CMS detector and produce dark photons, they must first be created within the initial collision.
+Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for very high signal acceptance the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in very high rates of non-muon backgrounds.
+
+To help control these backgrounds, muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce opposite-sign pairs of muons.
+Because they are produced from the decays of mediator particles, the invariant mass of the dimuon pairs produced in these resonances peaks sharply near the particle mass, with a width proportional to its lifetime. 
+By using muons from particle resonances, one outgoing muon can be used to 'tag' the event, and the other can be used to 'probe' its response in the detector to search for non-standard interactions. 
+
+While many such resonances exist in CMS (\Cref{fig:diMuonSpectrum}), this search targets muon originating the decay of Z bosons, due to their higher energy of the produced muons and the reduced rates of non-resonant muon pairs near the Z mass.
+Z bosons are the neutral carrier of the nuclear weak force, which unlike the electromagnetic and nuclear strong forces has massive force carrying bosons.
+Specifically, the Z boson mass is near \SI{90}{\giga\eV}, 
+Z bosons will decay into dilepton pairs with nearly equal rates between electrons, muons, and taus. 
+
+The Z boson resonance in dimuon pairs is primarily produced through the Drell-Yan (DY) process, in which a pair of quarks in the initial hadron collision annihilate to a Z boson which subsequently decays into leptons.
+The typical invariant mass of dimuon pairs produced in the DY process with minimal selection requirements is shown in figure \ref{dmuonInvMass}, along with the typical muon energy in \ref{dimuonEnergy}.
+
+\begin{figure}[ht]
+	\label{fig:diMuonSpectrum}
+	\centering
+	\caption[Inclusive dimuon spectrum in CMS]{The dimuon invariant mass spectrum in the CMS high-level trigger. Each peak represents one or more particle resonances. Figure from \cite{cmsMuonPerformance}}
+	\includegraphics[width=0.5\textwidth]{figures/cms_diMuonSpectrum.jpg}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

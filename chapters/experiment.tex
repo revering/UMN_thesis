@@ -184,10 +184,11 @@ For example, the isolated muon path (used in this analysis) reconstructs informa
 Events which fulfill all of the requirements of any HLT path are saved, and the event is stored for later reconstruction.
 
 \section{Muon Reconstruction}
+\label{sec:muonReco}
 Muon reconstruction in CMS aims to convert event data of individual hits in the muon chambers and tracker into information about the underlying particle that produced those hits.
 For the purposes of this search, tagging muons must be identified with very high purity to reduce background from fakes. 
 Additionally, energy loss from signal events may appear as lowered energy in the reconstructed muons or interfere with their reconstruction such that it fails entirely, so detailed information about the reconstructed muons is used to identify potential signal events.
-A full description of the muon reconstruction, as well as the resulting efficiency and resolution, can be seen in \cite{Sirunyan2018}.
+A full description of the muon reconstruction, as well as the resulting efficiency and resolution, can be seen in \cite{cmsMuonPerformance}.
 
 First, hits from within a DT or CSC station are locally fit into tracks to form muon 'segments'.
 The muon segments, along with any nearby RPC hits, are then fit together using a Kalman-Filter algorithm to form 'standalone' muons, which use only information from the muon chambers and the collision point.

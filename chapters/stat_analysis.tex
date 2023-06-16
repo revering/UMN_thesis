@@ -1,0 +1,157 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% analysis.tex: Disappearing Muon Analysis:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Statistical Analysis}
+\label{analysis_chapter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Several statistical techniques are used in this analysis in order to interperet measured data and predicted results in terms of limits on production rates and physical couplings.
+Developed over many years of analyses, these techniques are widely used across particle physics experiments, and provide consistent ways to produce and quantify limits on physical quantities and the statistical strength of a given measurement.
+
+\subsection{Maximum Likelihood Fits}
+The basic structure of this search is a counting experiment, where some number of data events are observed, and consist of some potential number of signal events $s$ along side of background events $b$. 
+The predictions for both signal and background have underlying uncertainties which are handled through the introduction of nuisance parameters such that both $s$ and $b$ become functions of these nuisances.
+When an observation of event counts in data is made, it is desireable to determine the most likely set of parameters, both signal and nuisance, that could produce it. 
+To determine this set of parameters, we perform maximum likelihood fits, following the approach presented in \cite{conway2011}. 
+
+The expected occupation of any given bin is assumed to follow a Poisson distribution based on the expected number of signal and background events, such that the probability $P$ of observing a quantity $n$ of events is given by \Cref{eq:poisProb}.
+\begin{equation}
+	\label{eq:poisProb}
+	P(n) = \frac{(s+b)^{n}e^{-(s+b)}}{(s+b)!}
+\end{equation}
+As the potential cross section of the signal is unknown, we parameterize $s$ in terms of a signal strength $\mu$ such that
+\begin{equation}
+	s_0 = \mu s
+\end{equation}
+where $s_0$ is the nominal signal shown in \Cref{eq:poisProb} such that
+\begin{equation}
+	P(n) = \frac{(\mu s+b)^{n}e^{-(\mu s+b)}}{(\mu s+b)!}
+\end{equation}
+
+By taking the product of this probability for each analysis bin $i$ in each signal region, the Poisson likelihood for the full analysis is found as
+\begin{equation}
+	\mathcal{L} = \Pi_{i} P_i (n_i)
+\end{equation}
+where $n_i$ represents the events in any particular bin and $P_i$ uses the particular $s$ and $b$ for that bin.
+
+By maximizing this likelihood function, the most probable set of parameters can be found which produces the observed data, and limits on the potential signal strength can be set.
+In practice it is often more convienient to perform this maximization by instead minimizing the negative logarithm of the likelihood, which occurs at the identical point in parameter space but is often easier to find numerically.
+
+\subsection{Shape Uncertainties and MC Fluctuations}
+Several uncertainties in this analysis result in distortions of the shape of the observed spectrum, such as the muon trigger and identification efficiencies.
+These uncertainties can affect both the shape and overall normalization, and are incorporated by first altering the parameters in MC simulation and re-calculating the shifted distributions, following the procedure presented in \cite{conway2011}.
+To reduce computation time, all shape uncertainty shifts calculated in this analysis use only the nominal distributions and shifts up and down by one standard deviation.
+
+These three shapes are made into a continuous estimate in each bin using a morphing parameter $f$, nominally zero with a Gaussian uncertainty with a standard deviation of one.
+By using the values of the up- and down-shifted bin values as measures of the first-order Taylor expansion around the nominal value, we can then extrapolate the shift for any given f. 
+As this Taylor expansion does not fully reproduce the true behavior of the spectral distortion, notably, setting $f$ to $\pm$1 does not exactly recreate the value of the shifted distribution, we incorporate this a Lagrange interpolation for values of $|f|<$1 such that
+\begin{equation}
+	\rho_i = \frac{f(f-1)}{2}\rho_{i}^{-} - (f-1)(f+1)\rho_{i}^0 + \frac{f(f+1)}{2}\rho_{i}^{+}
+\end{equation}
+where $\rho_i$ is the shifted expected efficiency of bin i and $\rho_{i}^+$,$\rho_{i}^-$, and $\rho_{i}^0$ are the up-shifted, down-shifted, and nominal efficiencies, respectively.
+Beyond this region the morphing is projected linearly so to avoid large deviations. 
+
+Using this method, the correlated shape uncertainties can be incorporated as single variabled nuisance parameters in the maximum likelihood fits, and optimized in the same way as the signal and multiplicative uncertainties.
+
+While the Poissonian probability and log likelihood maximization presented in \Cref{eq:poisProb} account for fluctuations due to limited sample size in data events with the built in Poisson distributions, they do not properly account for potential fluctuations in the expected events of signal or background which could be caused by limited MC sample sizes.
+This effect is accounted for using the Barlow-Beeston method \cite{BarlowBeeston}, where a separate nuisance parameter multiplying the number of events for each event source in each bin is introduced.
+
+By nominally setting this parameter to one and constraining it with a prior distribution, a log normal in this case, the likelihood of each particular bin can also be optimized to balance potential fluctuations in the number of expected events with that of observed events.
+This method introduces a large number of free parameters that must be fit in the likelihood, as each bin gains an independant parameter describing this multiplication.
+This is managed by independently optimizing the contents of each bin, as these fluctuations from limited sample sizes are uncorrelated, allowing the computation complexity to be greatly reduced.
+
+\subsection{Significance and Limit Setting}
+It is useful to convert an optimized likelihood into some measure of the significance of an observation and its consistency with a background-only assumption or some hypothesized signal strength. 
+This significance is generally presented in terms of the p-value, the probability for the observed data to be produced by a given set of parameters. 
+As the distribution of the p-value is generally Gaussian, by taking its inverse cumulative Gaussian transformation the significance can be presented in terms of $\sigma$, the number of typical deviations from expectation required to produce the observed result.
+
+Thus, large significance corresponds to a lower probability of the chosen set of parameters producing the observed data.
+Generally, significances are presented in terms of a background-only assumption. 
+In this way, a large significance means that the data is very likely to contain some non-background like events, while a small significance is consistent with no observed signal.
+
+To calculate these p-values, we begin by defining the profile likelihood ration $\lambda(\mu)$, 
+\begin{equation}
+   \lambda (\mu) = \frac{L(\mu, \hat{\hat{\theta}}){L(\hat{\mu},\hat{\theta})}
+\end{equation}
+where $\hat{\mu}$ and $\hat{\theta}$ represent the values of the signal strength and nuisance parameters which maximize the likelihood function, and $\hat{\hat{\theta}}$ the nuisance parameters which maximize the likelihood at a given value of $\mu$. 
+This ratio represents the relative probability of a given signal strength relative to the optimal value, with values near one representing good agreement between data and the chosen value of $\mu$. 
+
+Mathematically, it is convienient to define a test statistic $t_\mu$, such that 
+\begin{equation}
+    t_\mu = -2 \ln \lambda (\mu)
+\end{equation}
+with higher values of $t_\mu$ representing larger incompatability of the test with observation. 
+In searches like this one where signal appears only as an excess, it is useful to constrain the test statistic to values of $\mu$ which are greater than zero, and to define a special test statistic $q_0$ when testing potential discovery,
+\begin{equation}
+    q_0 = 
+	\begin{cases} 
+		-2 \ln \lambda(0) & \hat{\mu} \geq 0\\
+                 0                & \hat{\mu} < 0 
+        \end{cases}
+\end{equation}
+where $\lambda(0)$ is the profile likelihood ratio with $\mu=$0. 
+By defining the test statistic as zero for any signal strength below zero, we explicitly define fluctuations with any negative signal strength as background-like, even if the resulting fit has large deviations away from expectation, as this points to some systematic error rather than the presence of a negative signal.
+
+The p-value quantifying the level of disagreement with data is then computed as
+\begin{equation}
+	p_0 = \int_{q_0,obs}^{\inf} f(q_0|0) dq_0
+\end{equation}
+where $q_{0,obs}$ is the observed value of $q_0$ which maximizes the likelihood function and $f(q_0|0)$ is the distribution function of the $q_0$ under the assumption of a background-only hypothesis.
+
+There are several ways of determining the probability density function used to calculate the significane.
+For experiments with small sample sizes, 'toy' experiments which randomly choose true values of $\mu$ and measure the resulting values of $q_0$ can be used to generate the approximate pdf $f(q_0|0)$. 
+Following the methods in \cite{Cowan_2011}, this cumulative probability $F(q_0,\mu')$ of this distribution can be approximated (becoming exact in the large sample limit) as 
+\begin{equation}
+	F(q_0|\mu') \Phi \left( \sqrt{q_0} - \frac{\mu'}{\sigma} \right)
+\end{equation}
+where $\Phi$ is the cumulative Gaussian distribution, where $\sigma$ is the standard deviation of the assumed Gaussian distribution of $\mu'$ which can be determined from the covariance matrix of the optimized parameters.
+
+Using the definition of the p-value and this probability density function, the significance for the background-only measurement $Z_0$ is then given by
+\begin{equation}
+	Z_0 = \sqrt{q_0}
+\end{equation} 
+While this simple form of the significance is an excellent approximation for large sample sizes, due to the small expected number of events in this search the distribution $f(q_0|\mu')$ is instead derived using numerical techniques.
+
+In addition to calculating the significance of rejecting a background-only approximation, in the event of no observed signal it is valueable to set a limit by determining the maximum signal strength which could be present while being consistent with the measured data.
+In this case, we define a test statistic corresponding to the disagreement between observation and any assumed true signal
+\begin{equation}
+    q_\mu = 
+	\begin{cases} 
+		-2 \ln \lambda(\mu) & \hat{\mu} \leq \mu\\
+                 0                & \hat{\mu} > \mu 
+        \end{cases}
+\end{equation}
+similarly to $q_0$, but in comparison to a fixed true value of $\mu$ instead of 0. 
+In addition to setting a non-zero value of $\mu$, the $q_\mu$ inverts the ranges where $q_\mu$ is zero so that values of $\hat{\mu}}$ which are greater than $\mu$ are set to zero.
+For the purposes of setting a limit, regions where $\hat{\mu}>\mu$ do not represent less compatibility with $\mu$ than observation, so this region is excluded from the test.
+
+Following the procedure used for exclusion significance, it can be shown that the significance of the limit $Z_\mu$ can be approximated as
+\begin{equation}
+	Z_\mu = \sqrt{q_\mu}
+\end{equation}
+in the large event limit, though as before the probability distribution function for small sample sizes must be determined using toy MC.
+
+With this significance in place, we can then define a confidence level (CL) band, the range at which the signal can be excluded up to some chosen value $\alpha$ of the probability, which by convention is set to 0.05.
+A straightforward estimate for this confidence level is the probability that the observed signal be as or less probable than the background+signal hypothesis.
+Known as CL$_{s+b}$, this is found as the p-value of the observed test statistic under the signal+background assumption,
+\begin{equation}
+	CL_{s+b} = p(q_{\mu}^{obs}|\mu s +b)
+\end{equation}
+
+As discussed in \cite{ATLAS:2011tau}, the $CL_{s+b}$ limit can be problematic in cases with downward fluctuations of the background. 
+By construction, $CL_{s+b}$ will exclude zero-strength signals at a rate of 5$\%$, solely due to downward fluctuations of the background.
+To limit the impact of these cases, a modified frequentist approach is adopted wherein $CL_{s+b}$ is divided by the background-only limit $CL_b$, calculated by "tossing" pseudo-data for only-background assumptions to find the probability that the observation is produced only from background.
+The ratio of $CL_{s+b}$ and $CL_{b}$ is referred to as $CL_s$, and is required to be less than or equal to 0.05 to declare a 95$\%$ exclusion. 
+
+The $CL_s$ quantity is constructed by integrating the probability density functions of the $q_\mu$ test statistic for both signal and background and background-only models, both of which require MC methods in their calculation. 
+To reduce the necessary computing time, a widely used asymptotic approximation of $CL_s$ is used, given by
+\begin{equation}
+	CL_s = \frac{1-\Phi(\sqrt{q_\mu})}{\Phi(\sqrt{q_{\mu,A}-\sqrt{q_\mu}})}
+\end{equation}
+where $q_{\mu,A}$ is the test statistic evaluated with the 'Asimov' data set, where all fluctuations are set to zero and only the expected background and nominal nuisance parameters are present.
+
+By finding the value of $\mu$ where $CL_s$=0.05 for any given A' mass, we can then exclude any values of the signal strength stronger than that value of $\mu$ with a confidence of 95$\%$. 
+Often in these types of experiments fluctations in the background may cause the produced limit to be much stronger or weaker than expected. 
+To better allow for comparison between experiments, and to differentiate between fluctuations and changes in experimental sensitivity with some signal variable, such limit plots often show the observed limit alongside the expected limit, where the $CL_s$ exclusion is calculated assuming a background-only model.
+Cases where more events are seen than expected will then have weaker observed limits than expected, while downward fluctuations in background will appear as stronger than expected exclusions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%}}}
+
