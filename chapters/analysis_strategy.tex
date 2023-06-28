@@ -1,0 +1,59 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% event_selection.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Analysis Strategy}
+\label{analysis}
+A key challenge for this type of analysis is the identification of muons without relying on information from the muon chambers, as energy loss from \dbrem may cause signal muons to have large mismatches in the tracker and muon chamber hits or fail to reach the muon chambers at all.
+Additionally, muon candidates must be selected with very high purity to eliminate potential backgrounds from misidentified muons which lose energy via decay or standard model showing in insensitive detector material.
+For these reasons, a tag-and-probe method is used, where high-quality 'tagging' muons reconstructed with full muon chamber information are paired with 'probe' tracks.
+By requiring that the tag and probe have an invariant mass near the mass of the Z and pass several isolation requirements designed to remove non-muon tracks, probe tracks can be selected which have high likelihoods of originating from muons.
+
+Once probe tracks are selected, they can then be extrapolated into the HCAL and CSCs in order to search for evidence of missing energy that may have been caused by the production of an \aprime.
+Signal events are split into two categories based on the presence of nearby standalone muons.
+'Complete disappearance' events have no nearby standalone muons, and correspond to events where the track is fully stopped before reaching the muon chambers or suffers a complete reconstruction failure within them.
+'Partial disappearance' events have standalone muons nearby to the probe track, but have large energy differences in the reconstructed standalone muon and the selected track.
+In the complete disappearance region a cut-based selection is used to create the final signal selection, while in the partial disappearance region a BDT is used to better differentiate potential signal events from background.
+
+\section{Event Selection}
+\subsection{Base Event Selection}
+The initial process of pairing probe tracks with tagging muons is referred to as the Base Event Selection, and is used in both the signal regions and a variety of control regions.
+
+Tagging muons are required to have \pt$>$\SI{26}{\giga\eV} to be above the trigger turn-on and $\eta<$2.4 to be within the detector. 
+As discussed in \cref{sec:muonReco} the tagging muons must be global muons, and have several additional requirements applied to avoid potential fakes.
+The global fit of potential tag muons must have $\chi^2<$10, and include at least hit from the muon chambers. 
+They must also have muon segments in at least two muon stations.
+The inner track must have a transverse impact parameter $<$\SI{2}{\milli\meter} and longitudinal impact parameter $<$\SI{5}{\milli\meter} to the primary vertex, with at least one pixel hit and six tracker layer hits.
+Tagging muons are required to be isolated from other particles to further reduce backgrounds from fake muons or mis-measured energy caused by mismatched tracks or excess energy loss in the detector.
+This isolation is defined as the ratio of the transverse energy of neutral hadrons and photons from pileup plus the transverse momentum of all charged hadrons from the primary vertex minus half the transverse energy of charged hadrons from pileup in a $\Delta$R cone of 0.4 to the transverse momentum of the muon, and is required to be less than 15$\%$.
+Lastly, the tagging muons must pass the requirements for the isolated muon triggers used, as several scale factors are applied with the assumption that the tagging muon was the particle which fired the trigger.
+
+Probe tracks are required to have \pt$>$\SI{20}{\giga\eV} to reduce the rate of fake muons, and 1.45$<\eta<$2.4 to be within the HCAL endcap.
+They must also have $\Delta\mathrm{R}>$0.2 to the tagging muon to remove events early in the selection where the probe track and tagging muon originate from the same process.
+Only tracks which pass the 'high-purity' selections in CMS track selection are used, a category which is defined by selections for the minimum number of tracker layers with hits, the maximum number of layers with missing hits, the reduced $\chi^2$ of the resulting fit, and several other requirements relating to the precision with witch the initial vertex position is measured.
+The exact values used to define a high-purity track vary depending on the track parameters and several iterations of attempted track fitting, and a full description of the high-purity selection and track fitting process can be found in \cite{trackFitting}.
+Lastly, probe tracks are selected to have longitudinal impact parameters $<$\SI{0.5}{\milli\meter} and transverse impact parameters $<$\SI{0.05}{\milli\meter} to the beam line to further reduce the rate of fake tracks.
+
+The probe track must be well isolated to remove non-muon backgrounds and events with significant muon scattering from standard model processes. 
+The probe tracker isolation, defined as the \pt sum of all other tracks within a $\Delta$R cone of 0.3 originating from the same primary vertex divided by the \pt of the selected track, must be less than 0.05.
+In the ECAL, the energy sum of all hits with energy greater than \SI{0.3}{\giga\eV} in a $\Delta$R cone of 0.4 to the probe track must be less than \SI{10}{\giga\eV}.
+Similarly, the energy sum of all HCAL hits within a $\Delta$R cone of 0.3 to the probe track must be less than \SI{30}{\giga\eV}. 
+As mentioned in \cref{sec:detector}, potential probe tracks must be in the active ECAL and HCAL regions so that these isolation requirements can be effectively applied.
+
+Once the potential tagging muons and probe tracks have been chosen, each track is paired with each muon to search for pairs which are likely to originate from a Z boson.
+Successful pairs must have oppositely charged tag and probe particles, and fit using the \kf algorithm to form a shared vertex with reduced $\chi^2<$3.
+In the signal region the pair must have an invariant mass between 80 and \SI{100}{\giga\eV} to be near the Z-mass, while several control regions extend this range from 50 to \SI{150}{\giga\eV}.
+Once a pair is chosen, the pairing of the tagging muon to all other tracks in the event without quality or geometric acceptances is checked for any other potential matches.
+Any tagging muons which pass the pairing requirements with these alternate tracks are rejected to remove events where the tagging muon originates from a Z decay but the second muon has a poor track or fails geometric acceptance, potentially allowing an un-associated particle track to be selected as the probe.
+Similarly, tagging muons which pass the pairing requirements with any other global muon in the event with $\Delta$R greater than 1.0 to the selected probe are rejected to reduce background events where the second muon from the Z decay may has a poorly reconstructed track.
+
+
+\subsection{Signal Selection}
+After using the base event selection to identify tracks which are likely to originate from muons, an additional categorization is made to search for \dbrem-like event features. 
+Events are determined to have complete muon disappearance when there are no standalone muons reconstructed within $\Delta$R of 1.0 to the probe track, and to have partial disappearance when the highest energy standalone muon within the $\Delta$R cone of 1.0 has at most 40$\%$ of the probe track energy.
+Several additional selections are applied to each region to further separate the signal from background events.
+
+In the complete disappearance region, the primary backgrounds originate from non-muon probe tracks which then decay or shower within HCAL. 
+A requirement that at least two HCAL cells along the probe trajectory is applied to remove events where the probe particle may shower in ECAL or the support structure and not reach HCAL at all.
+In addition to the standalone muon requirements, no CSC hits are allowed to be within $\Delta$R of 0.05 to the probe track in order to reject events where hadrons pass through HCAL without fully showering and deposit some energy in the muon chambers, as well as events that may have muon deposits in the CSCs and significant failures in muon reconstruction such that no standalone muons are formed.
+To further reduce the background from non-muon tracks, the sum of the HCAL energy along the track trajectory must be less than \SI{10}{\giga\eV}. 
+
