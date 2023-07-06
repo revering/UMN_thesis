@@ -16,9 +16,14 @@ Standard model DY backgrounds occur when the base event selection successfully f
 This can occur either when muons lose energy via conventional physics interactions without producing enough visible energy in the detector to reject the event or when the muon signature in HE and the CSC chambers is missed.
 Often, some combination of both effects is present as muons with altered energy from interactions within the detector can have genuine deflections causing them to pass through fewer stations in the muon chambers, greatly increasing the probability of missing their signatures.
 
-The primary difficulty of muon backgrounds is the lack of control regions enriched in muon backgrounds and not containing siginificant signal contamination.
-Useful control regions in data would require selecting muons without using the muon chambers, as these backgrounds could have entirely missed muons or large differences from the expected muon energy due to missed calorimeter deposits or muon reconstruction failures.
-Because of this difficulty in defining signal regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both regions using MC and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
+The primary difficulty of muon backgrounds is the lack of control regions enriched in muon backgrounds without containing significant signal contamination.
+Like signal events, muon backgrounds have opposite-sign pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
+Muon backgrounds can have slightly higher HCAL isolation than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem, but these high energy scatters produce large differences in the muon chamber response.
+
+Due to this difficulty in defining signal regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both regions using MC and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
+
+
+
 
 //Split muon background sources into high-E scatters and missed muons
 We control the muon interaction backgrounds through study of data control regions and simulated DY containing large energy deposits in HCAL, as well as specially simulated DY with missing CSC hits required. The location-dependent rate of missing CSC hits in each depth is corrected using the methods described in Section \ref{sec:missingCSC}.
