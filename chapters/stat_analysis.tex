@@ -5,24 +5,24 @@
 \label{analysis_chapter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Several statistical techniques are used in this analysis in order to interpret measured data and predicted results in terms of limits on production rates and physical couplings.
-Developed over many years of analyses, these techniques are widely used across particle physics experiments, and provide consistent ways to produce and quantify limits on physical quantities and the statistical strength of a given measurement.
+Developed over many years of high energy physics experiments, these techniques are widely used across particle physics and provide consistent ways to produce and quantify limits on physical quantities and the statistical strength of any given measurement.
 
-\subsection{Maximum Likelihood Fits}
-The basic structure of this search is a counting experiment, where some number of data events are observed, and consist of some potential number of signal events $s$ along side of background events $b$. 
-The predictions for both signal and background have underlying uncertainties which are handled through the introduction of nuisance parameters such that both $s$ and $b$ become functions of these nuisances.
+\section{Maximum Likelihood Fits}
+The basic structure of this search is a counting experiment, where some number of data events are observed and compared with of some potential number of signal events $s$ along side of expected background events $b$. 
+The predictions for both signal and background have underlying uncertainties which are handled through the introduction of 'nuisance' parameters such that both $s$ and $b$ become functions of these nuisances.
 When an observation of event counts in data is made, it is desirable to determine the most likely set of parameters, both signal and nuisance, that could produce it. 
-To determine this set of parameters, we perform maximum likelihood fits, following the approach presented in \cite{conway2011}. 
+To determine this set of parameters, we perform maximum likelihood fits, following the approach presented here and in \cite{conway2011}. 
 
 The expected occupation of any given bin is assumed to follow a Poisson distribution based on the expected number of signal and background events, such that the probability $P$ of observing a quantity $n$ of events is given by \Cref{eq:poisProb}.
 \begin{equation}
 	\label{eq:poisProb}
 	P(n) = \frac{(s+b)^{n}e^{-(s+b)}}{(s+b)!}
 \end{equation}
-As the potential cross section of the signal is unknown, we parameterize $s$ in terms of a signal strength $\mu$ such that
+As the potential cross section of the signal is unknown, we parameterize $s$ in terms of a signal strength $\mu$,
 \begin{equation}
 	s_0 = \mu s
 \end{equation}
-where $s_0$ is the nominal signal shown in \Cref{eq:poisProb} such that
+where $s_0$ is the nominal signal shown in \Cref{eq:poisProb}
 \begin{equation}
 	P(n) = \frac{(\mu s+b)^{n}e^{-(\mu s+b)}}{(\mu s+b)!}
 \end{equation}
@@ -33,22 +33,23 @@ By taking the product of this probability for each analysis bin $i$ in each sign
 \end{equation}
 where $n_i$ represents the events in any particular bin and $P_i$ uses the particular $s$ and $b$ for that bin.
 
-By maximizing this likelihood function, the most probable set of parameters can be found which produces the observed data, and limits on the potential signal strength can be set.
-In practice it is often more convenient to perform this maximization by instead minimizing the negative logarithm of the likelihood, which occurs at the identical point in parameter space but is often easier to find numerically.
+By maximizing this likelihood function, the most probable set of parameters can be found which produces the observed data and limits on the potential signal strength can be set.
+In practice it is often more convenient to perform this maximization by instead minimizing the negative logarithm of the likelihood, which occurs at an identical point in parameter space but can be easier to find numerically.
 
 \subsection{Shape Uncertainties and MC Fluctuations}
-Several uncertainties in this analysis result in distortions of the shape of the observed spectrum, such as the muon trigger and identification efficiencies.
-These uncertainties can affect both the shape and overall normalization, and are incorporated by first altering the parameters in MC simulation and re-calculating the shifted distributions, following the procedure presented in \cite{conway2011}.
+Several uncertainties in this analysis result in distortions of the shape of the observed spectrum. 
+For example, the muon trigger and identification efficiencies can change the expected distribution of the invariant mass, the resulting nuisance parameter of which must be implemented as a correlated change across the invariant mass bins.
+These uncertainties can affect both the shape and overall normalization, and are incorporated by first altering the underlying parameters in MC simulation and re-calculating the shifted distributions, following the procedure presented in \cite{conway2011}.
 To reduce computation time, all shape uncertainty shifts calculated in this analysis use only the nominal distributions and shifts up and down by one standard deviation.
 
-These three shapes are made into a continuous estimate in each bin using a morphing parameter $f$, nominally zero with a Gaussian uncertainty with a standard deviation of one.
-By using the values of the up- and down-shifted bin values as measures of the first-order Taylor expansion around the nominal value, we can then extrapolate the shift for any given f. 
-As this Taylor expansion does not fully reproduce the true behavior of the spectral distortion, notably, setting $f$ to $\pm$1 does not exactly recreate the value of the shifted distribution, we incorporate this a Lagrange interpolation for values of $|f|<$1 such that
+These three shapes are made into a continuous estimate in each bin using a morphing parameter $f$ which is nominally zero with a Gaussian uncertainty with a standard deviation of one.
+By using the values of the up- and down-shifted bin values as measures of the first-order Taylor expansion around the nominal value in each bin, we can then extrapolate the shift for any given f. 
+As this Taylor expansion does not fully reproduce the true behavior of the spectral distortion, notably failing to exactly recreate the original shifts when setting $f$ to $\pm$1, we incorporate a Lagrange interpolation for values of $|f|<$1 such that
 \begin{equation}
 	\rho_i = \frac{f(f-1)}{2}\rho_{i}^{-} - (f-1)(f+1)\rho_{i}^0 + \frac{f(f+1)}{2}\rho_{i}^{+}
 \end{equation}
 where $\rho_i$ is the shifted expected efficiency of bin i and $\rho_{i}^+$,$\rho_{i}^-$, and $\rho_{i}^0$ are the up-shifted, down-shifted, and nominal efficiencies, respectively.
-Beyond this region the morphing is projected linearly so to avoid large deviations. 
+Beyond this region the morphing is projected linearly to avoid large deviations. 
 
 Using this method, the correlated shape uncertainties can be incorporated as single variable nuisance parameters in the maximum likelihood fits, and optimized in the same way as the signal and multiplicative uncertainties.
 
@@ -59,7 +60,7 @@ By nominally setting this parameter to one and constraining it with a prior dist
 This method introduces a large number of free parameters that must be fit in the likelihood, as each bin gains an independent parameter describing this multiplication.
 This is managed by independently optimizing the contents of each bin, as these fluctuations from limited sample sizes are uncorrelated, allowing the computation complexity to be greatly reduced.
 
-\subsection{Significance and Limit Setting}
+\section{Significance and Limit Setting}
 It is useful to convert an optimized likelihood into some measure of the significance of an observation and its consistency with a background-only assumption or some hypothesized signal strength. 
 This significance is generally presented in terms of the p-value, the probability for the observed data to be produced by a given set of parameters. 
 As the distribution of the p-value is generally Gaussian, by taking its inverse cumulative Gaussian transformation the significance can be presented in terms of $\sigma$, the number of typical deviations from expectation required to produce the observed result.
@@ -72,15 +73,15 @@ To calculate these p-values, we begin by defining the profile likelihood ration 
 \begin{equation}
    \lambda (\mu) = \frac{L(\mu, \hat{\hat{\theta}})}{L(\hat{\mu},\hat{\theta})}
 \end{equation}
-where $\hat{\mu}$ and $\hat{\theta}$ represent the values of the signal strength and nuisance parameters which maximize the likelihood function, and $\hat{\hat{\theta}}$ the nuisance parameters which maximize the likelihood at a given value of $\mu$. 
+where $\hat{\mu}$ and $\hat{\theta}$ represent the values of the signal strength and nuisance parameters which maximize the likelihood function and $\hat{\hat{\theta}}$ the nuisance parameters which maximize the likelihood at a given value of $\mu$. 
 This ratio represents the relative probability of a given signal strength relative to the optimal value, with values near one representing good agreement between data and the chosen value of $\mu$. 
 
-Mathematically, it is convenient to define a test statistic $t_\mu$, such that 
+Mathematically, it is convenient to define test statistics $t_\mu$, such that 
 \begin{equation}
     t_\mu = -2 \ln \lambda (\mu)
 \end{equation}
 with higher values of $t_\mu$ representing larger incompatibility of the test with observation. 
-In searches like this one where signal appears only as an excess, it is useful to constrain the test statistic to values of $\mu$ which are greater than zero, and to define a special test statistic $q_0$ when testing potential discovery,
+In searches like this one where signal appears only as an excess, it is useful to constrain the test statistic to values of $\mu$ which are greater than zero and so define a special test statistic $q_0$:
 \begin{equation}
     q_0 = 
 	\begin{cases} 
@@ -97,15 +98,16 @@ The p-value quantifying the level of disagreement with data is then computed as
 \end{equation}
 where $q_{0,obs}$ is the observed value of $q_0$ which maximizes the likelihood function and $f(q_0|0)$ is the distribution function of the $q_0$ under the assumption of a background-only hypothesis.
 
-There are several ways of determining the probability density function used to calculate the significance.
-For experiments with small sample sizes, 'toy' experiments which randomly choose true values of $\mu$ and measure the resulting values of $q_0$ can be used to generate the approximate pdf $f(q_0|0)$. 
-Following the methods in \cite{Cowan_2011}, the cumulative probability $F(q_0,\mu')$ of this distribution can be approximated (becoming exact in the large sample limit) as 
+There are several ways of determining this probability density function used to calculate the significance.
+For experiments with small sample sizes, 'toy' experiments which randomly choose true values of $\hat{\mu}$ and measure the resulting values of $q_0$ can be used to generate the approximate pdf $f(q_0|0)$. 
+
+Alternately, by following the methods in \cite{Cowan_2011}, the cumulative probability $F(q_0,\mu')$ of this distribution can be approximated (becoming exact in the large sample limit) as 
 \begin{equation}
 	F(q_0|\mu') = \Phi \left( \sqrt{q_0} - \frac{\mu'}{\sigma} \right)
 \end{equation}
-where $\Phi$ is the cumulative Gaussian distribution, where $\sigma$ is the standard deviation of the assumed Gaussian distribution of $\mu'$ which can be determined from the covariance matrix of the optimized parameters.
+where $\Phi$ is the cumulative Gaussian distribution and $\sigma$ is the standard deviation of the assumed Gaussian distribution of $\mu'$ which can be determined from the covariance matrix of the optimized parameters.
 
-Using the definition of the p-value and this probability density function, the significance for the background-only measurement $Z_0$ is then given by
+Setting $\mu'$ to zero to match the background-only case and using the definition of the p-value and this probability density function, the significance for the background-only measurement $Z_0$ is then given by
 \begin{equation}
 	Z_0 = \sqrt{q_0}
 \end{equation} 
