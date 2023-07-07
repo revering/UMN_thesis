@@ -40,16 +40,26 @@ The tree optimization and re-weighting is then continued for several iterations 
 The main advantage of tree boosting is that it allows many weak classifiers in the individual trees to be combined into one strong classifier using the ensemble output score.
 In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework \cite{XGBoost} interfaced with Scikit-learn \cite{scikit}. 
 
+The BDT is trained using only the signal masses and DY MC background, as the preselection and standalone muon requirements alone are significant enough to reduce $\mu+X$ events to manageable levels. 
+
 \subsection{Inputs}
-There are 21 event variables which are used as inputs to the BDT, which can be grouped into 5 rough categories.
+There are 21 event variables which are used as inputs to the BDT, which can be grouped into five categories.
 
 The first are variables related to the probe track kinematics. 
 The $p_t$, $\eta$, $\phi$, and charge of the probe track are used in order to allow the network to encode effects which may be local to certain regions of the detector.
 As the CSCs have known gaps in particular depths and regions of poor reconstruction, these variables can help identify tracks which may be expected to have lower quality.
 
-Second are the standalone muon kinematics, specifically its energy and $\chi^{2}$.
+Second are the standalone muon kinematics, specifically its energy and $\chi^{2}$ %\Cref{fig:staKin}).
 The $\chi^{2}$ of the standalone muon fit is used to measure its quality, and helps to separate muons with genuine energy loss from those with poor fits.
 The overall standalone muon energy is used in addition to the difference in standalone muon and probe track energy in case there are energy-dependent factors that may be lost when using only the relative measure.
+
+%\begin{figure}[htpb]
+%	\label{fig:staKin}
+%	\includegraphics[width=0.45\textwidth]{figures/}
+%	\hspace{0.01\textwidth}
+%	\includegraphics[width=0.45\textwidth]{figures/}
+%	\caption[short caption]{long caption}
+%\end{figure}
 
 The third category are the CSC segment distances.
 In each CSC station, the minimum $\Delta$R is measured from each CSC segment to the projected probe track at its position of closest approach to that segment.
@@ -68,6 +78,7 @@ The primary challenge with training the partial region BDT is the imbalance betw
 Because \dbrem is expected to be a rare process, there are should be many more background events than signal events in the data sample, and background rejection must be strongly prioritized over signal purity.
 
 To represent this, signal events are given reduced weights to replicate their lower relative rate and increase the importance of background rejection.
+Prior to optimization of the other parameters, a scan of this signal weight is made and the value which produces the strongest signal limit is selected.
 To reduce the necessary validation and simplify the network, each signal mass is combined into one training input and weighted to give equal importance to each mass.
 
 The internal parameters of the BDT are chosen using a randomized search, where each parameter is sampled from a flat distribution of possible values for a large number of trials.
