@@ -8,10 +8,10 @@ Several statistical techniques are used in this analysis in order to interpret m
 Developed over many years of high energy physics experiments, these techniques are widely used across particle physics and provide consistent ways to produce and quantify limits on physical quantities and the statistical strength of any given measurement.
 
 \section{Maximum Likelihood Fits}
-The basic structure of this search is a counting experiment, where some number of data events are observed and compared with of some potential number of signal events $s$ along side of expected background events $b$. 
-The predictions for both signal and background have underlying uncertainties which are handled through the introduction of 'nuisance' parameters such that both $s$ and $b$ become functions of these nuisances.
+The basic structure of this search is a counting experiment, where some number of data events are observed and compared with some potential number of signal events $s$ along side of expected background events $b$. 
+The predictions for both signal and background have underlying uncertainties which are handled through the introduction of 'nuisance' parameters $\theta$ such that both $s$ and $b$ become functions of these nuisances $s(\theta)$ and $b(\theta)$.
 When an observation of event counts in data is made, it is desirable to determine the most likely set of parameters, both signal and nuisance, that could produce it. 
-To determine this set of parameters, we perform maximum likelihood fits, following the approach presented here and in \cite{conway2011}. 
+To determine this set of parameters we perform maximum likelihood fits, following the approach presented here and in \cite{conway2011}. 
 
 The expected occupation of any given bin is assumed to follow a Poisson distribution based on the expected number of signal and background events, such that the probability $P$ of observing a quantity $n$ of events is given by \Cref{eq:poisProb}.
 \begin{equation}
@@ -22,7 +22,7 @@ As the potential cross section of the signal is unknown, we parameterize $s$ in 
 \begin{equation}
 	s_0 = \mu s
 \end{equation}
-where $s_0$ is the nominal signal shown in \Cref{eq:poisProb}
+where $s_0$ is the nominal signal shown in \Cref{eq:poisProb} resulting in a probability
 \begin{equation}
 	P(n) = \frac{(\mu s+b)^{n}e^{-(\mu s+b)}}{(\mu s+b)!}
 \end{equation}
@@ -31,9 +31,9 @@ By taking the product of this probability for each analysis bin $i$ in each sign
 \begin{equation}
 	\mathcal{L} = \Pi_{i} P_i (n_i)
 \end{equation}
-where $n_i$ represents the events in any particular bin and $P_i$ uses the particular $s$ and $b$ for that bin.
+where $n_i$ represents the events in any particular bin and $P_i$ uses the specific $s_i$ and $b_i$ for that bin.
 
-By maximizing this likelihood function, the most probable set of parameters can be found which produces the observed data and limits on the potential signal strength can be set.
+By maximizing this likelihood function, the most probable set of nuisance parameters and signal strength can be found which produces the observed data, and limits on the maximum signal strength can be set.
 In practice it is often more convenient to perform this maximization by instead minimizing the negative logarithm of the likelihood, which occurs at an identical point in parameter space but can be easier to find numerically.
 
 \subsection{Shape Uncertainties and MC Fluctuations}
@@ -42,8 +42,8 @@ For example, the muon trigger and identification efficiencies can change the exp
 These uncertainties can affect both the shape and overall normalization, and are incorporated by first altering the underlying parameters in MC simulation and re-calculating the shifted distributions, following the procedure presented in \cite{conway2011}.
 To reduce computation time, all shape uncertainty shifts calculated in this analysis use only the nominal distributions and shifts up and down by one standard deviation.
 
-These three shapes are made into a continuous estimate in each bin using a morphing parameter $f$ which is nominally zero with a Gaussian uncertainty with a standard deviation of one.
-By using the values of the up- and down-shifted bin values as measures of the first-order Taylor expansion around the nominal value in each bin, we can then extrapolate the shift for any given f. 
+These three shapes are made into a continuous estimate in each bin using a morphing parameter $f$ which is nominally zero and has Gaussian uncertainty with a standard deviation of one.
+By using the values of the up- and down-shifted bin values as measures of the first-order Taylor expansion around the nominal value in each bin, we can then extrapolate the shift for any given $f$. 
 As this Taylor expansion does not fully reproduce the true behavior of the spectral distortion, notably failing to exactly recreate the original shifts when setting $f$ to $\pm$1, we incorporate a Lagrange interpolation for values of $|f|<$1 such that
 \begin{equation}
 	\rho_i = \frac{f(f-1)}{2}\rho_{i}^{-} - (f-1)(f+1)\rho_{i}^0 + \frac{f(f+1)}{2}\rho_{i}^{+}
@@ -67,7 +67,7 @@ As the distribution of the p-value is generally Gaussian, by taking its inverse 
 
 Thus, large significance corresponds to a lower probability of the chosen set of parameters producing the observed data.
 Generally, significances are presented in terms of a background-only assumption. 
-In this way, a large significance means that the data is very likely to contain some non-background like events, while a small significance is consistent with no observed signal.
+In this way, a large significance means that the data is very likely to contain some non-background-like events, while a small significance is consistent with no observed signal.
 
 To calculate these p-values, we begin by defining the profile likelihood ration $\lambda(\mu)$, 
 \begin{equation}
