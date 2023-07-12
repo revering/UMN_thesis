@@ -31,6 +31,63 @@ Developed over several decades through close collaboration between theory and ex
 Despite this success, there are several missing pieces in the SM such as gravity, neutrino masses, dark energy, and most significant to this paper, dark matter.
 While these phenomena are observed in experiments, the lack of full information about the nature of the particles themselves or their interaction prevent their inclusion in the SM, and so keep it from being a complete description of all observed particle interactions.  
 
+\section{Particulate Dark Matter}
+
+%Graviational Lensing / Bullet Cluster
+
+%Cosmic Microwave Background
+Some of the most detailed measurements of the relative abundance of dark matter come from observations of the cosmic microwave background (CMB).
+The CMB is radiation which originated in the early universe, when SM matter consisted of hydrogen and helium plasma and free electrons.
+Because of scattering with these free electrons, the universe was opaque on cosmological scales until the plasma cooled and was converted into a gas. 
+At this point, thermal radiation from the plasma could travel through the universe without significant scattering probability, and these photons can be observed today as the CMB, constant microwave radiation that is visible from every direction \Cref{fig:CMB}.
+
+\begin{figure}
+	\label{fig:CMB}
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/cmb.png}
+	\caption[The CMB temperature anisotropy]{\cite{PlanckCMB}.}
+\end{figure}
+
+The conversion of primordial plasma into a hydrogen and helium gas occurred when the universe was roughly 400,000 years old, and the CMB therefore provides an image of its temperature and density distribution at that time.
+While the primordial plasma was nearly homogeneous, there were slight variations of order one part in ten thousand, which later grew by gravitational attraction and led to the formation of galaxies and stars \cite{Hurki-Suonio}.
+By studying these anisotropies, the dynamics of the baryon-photon plasma can be inferred, and several properties of early cosmology, including the mass density of dark matter, can be determined.
+
+The anisotropy of the CMB is measured through correlations in the temperature of different points as a function of the length scale between them. 
+As the CMB forms a 'sphere' of the observable sky, these distance are expressed as length scales, and it is convienient to analyze them as expansions of spherical harmonics, which can be shown to only depend on the order of the angular scale parameter $l$. 
+By measuring the pertubation of the CMB and decomposing it into sperical harmonics, the angular power spectrum can be measured \Cref{fig:CMBpowerSpectrum}, from which details about the composition of the early universe can be inferred.
+
+The angular power spectrum of the CMB consists of a series of peaks of decreasing amplitude with increasing multiple moments. 
+At large scales, $\theta >> $\ang{1}, the distances between spatial points are larger than the Hubble distance between them, and therefore cannot have any dynamic evolution in the primordial plasma.
+At smaller scales, $\theta < $\ang{1}, the perturbations are close enough to communicate before the plasma condenses, and so can show evidence of plasma dynamics.
+
+\begin{figure}
+	\label{fig:CMBpowerSpectrum}
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/cmb_power_spectrum.png}
+	\caption[The temperature angular power spectrum of the CMB]{\cite{PlanckCMB}.}
+\end{figure}
+
+Initially, anisotopies are present from quantum fluctuations which expanded to cosmological scales during inflation.
+Regions with increased densities then attract the photon-baryon fluid gravitationally, amplifying the flucutation.
+This increased density then causes a corresponding increase in the temperature of these regions and thus their radiation pressure, which eventually overcomes the gravitational attraction and begins to push the fluid out of the region. 
+This pattern of gravitational and radiation driven motion form acoustic oscillations with Fourier modes that oscillate at frequencies dependant on the sound speed in the baryon-photon fluid.
+
+The expansion of the universe causes the sound speed and plasma density to change with time, with the notable effect that the perturbation amplitude is maximal at angular scales which are at their extrema when the photons decoupled. 
+This produces the peak structure seen in the CMB power spectra, with each maximum corresponding to an acoustic mode with frequency which happened to be at a maximum during the time of decoupling.
+
+Beyond solely acoustic oscillations, this pattern is also strongly impacted by the presence of dark matter.
+Initially distributed similarly to the photon-baryon plasma, dark matter will also be drawn into gravitational wells caused by regions of increased density produced by quantum flucutations before inflation.
+Unlike SM matter, dark matter has very little or no radiation pressure, and thus will not directly undergo acoustic oscillations with the plasma. 
+Only interacting via gravitational potential, dark matter follows the plasma into the gravitational wells but not leaving from the radiation pressure. 
+
+Due to this interaction difference, the presence of dark matter significantly changes the oscillation frequency and the relative amplitude of each acoustic peak.
+The angular power spectrum can thus be fit with a seven parameter cold dark matter model and produce strong constraints on the abundance of dark matter.
+Through these fits, the mass density of dark matter in the universe is determined to be \SI{4.1e-27}{\kilo\gram\per\meter\squared} \cite{PlanckCMB}, roughly 5 times more than the total abundance of SM matter.
+
+%Structure Formation
+
+%Baryogenesis
+
 \section{Thermal Dark Matter}
 To help identify dark matter signatures that may be visible in a detector based experiment, several assumptions can be made relating to its nature. 
 The primary one made here is a thermal origin for dark matter.
@@ -46,10 +103,9 @@ By combining this number density with the observed astronomical mass density, th
 
 \section{Light Dark Matter}
 Traditional searches for thermal dark matter have tended to focus on models which interact via the nuclear weak force, which have relatively larger dark matter mass requirements (M$>\sim$few GeV), and so are easier to observe with indirect detection experiments searching for collisions of halo dark matter particles with passive detectors.
-While this larger mass, weakly interacting phase space is well-covered from a wide variety of experiments, dark matter could also be explained using mediators in a 'light' mass region, ~MeV to ~GeV, which act as a 'portal' to couple dark sector particles to the SM \cite{darkSectors}.
+While this larger mediator mass, weakly interacting phase space is well-covered from a wide variety of experiments, dark matter could also be explained using mediators in a 'light' mass region, ~MeV to ~GeV, which act as a 'portal' to couple dark sector particles to the SM \cite{darkSectors}.
 
-
-A potential renormalizable interaction which can be introduced to the SM which could create this light coupling is a kinetic mixing between a new gauge boson with field strength $F'_{\mu\nu}$ and the hypercharge field $B^{\mu\nu}$ through the operator $\mathcal{L}$ (\Cref{eq:LDMlagrangian}). 
+A simple renormalizable interaction which can be introduced to the SM which could create this light coupling is a kinetic mixing between a new gauge boson with field strength $F'_{\mu\nu}$ and the hypercharge field $B^{\mu\nu}$ through the operator $\mathcal{L}$ (\Cref{eq:LDMlagrangian}). 
 
 \begin{equation}
 	\label{eq:LDMlagrangian}
@@ -106,8 +162,7 @@ A muon-philic cross section would also have a larger thermal relic cross section
 
 \section{Z-Bosons and the DY Process}
 For muons to potentially interact within the CMS detector and produce dark photons, they must first be created within the initial collision.
-Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for very high signal acceptance the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in very high rates of non-muon backgrounds.
-
+Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for very high signal rate the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
 To help control these backgrounds, muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce opposite-sign pairs of muons.
 Because they are produced from the decays of mediator particles, the invariant mass of the dimuon pairs produced in these resonances peaks sharply near the particle mass, with a width proportional to its lifetime. 
 By using muons from particle resonances, one outgoing muon can be used to 'tag' the event, and the other can be used to 'probe' its response in the detector to search for non-standard interactions. 
