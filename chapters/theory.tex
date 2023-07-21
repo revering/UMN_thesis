@@ -34,22 +34,69 @@ While these phenomena are observed in experiments, the lack of full information 
 \section{Particulate Dark Matter}
 
 %Graviational Lensing / Bullet Cluster
+In addition to observations of excess mass in galaxies and nubulae from excess velocity in stellar motion, there are several other observations which indicate a particle origin for dark matter and constrain some aspects of its properties. 
+While the velocities alone could be explained by alternate theories, such as non-luminous interstellar gas or modified newtonian dynamics, successful dark matter theories must address these additional astronomical observations as well. 
+
+One of the best tools available to observe the dark matter distribution in the modern universe is gravitational lensing data \cite{Massey_2010}.
+When photons pass through the warped spacetime of a gravitational field, their trajectories are deflected.
+Massive objects, such as clusters of galaxies or dark matter, can create gravitational fields which deflect light rays analagously to a refracting lens.
+When viewed from earth, light from distant objects can pass through these 'lenses' and be distorted or amplified, and through measuring this distortion the total mass required to produce it can be determined.
+
+\begin{figure}
+	\label{fig:gravLensing}
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/grav_lensing.jpg}
+	\caption[Gravitational lensing of galaxy cluster CL0024+17]{ Color composite image of the galaxy cluster CL 0024+17. Ring-like distortions can be seen in projected images around the cluster due to lensing, as well as several cases where multiple images are formed from a single source. Five multiple images of a single magnified source are labeled as A1-5, while other potential candidates for multiple images are labelled as B1-B2 and C1-C2 \cite{jee2007}.}
+\end{figure}
+
+Gravitational lensing is traditionally split into 'strong' and 'weak' lensing regimes. 
+In strong lensing, the space-time warping is strong enough for light to travel multiple paths along the lens and still reach the observer, resulting in light spreading into rings when lensed directly past a large mass, or potentially producing multiple images in lenses with complex shape.
+Strong lensing can also occur in a 'microlensing' effect, where a source is directly along the line of sight to a star or other small object such that a lensing effect can be produced.
+Because of the extremely small cross sectional area these stars that light must pass to produce microlensing, these events are typically observed transiently, as a background object passes directly behind a microlens and experiences a temporary magnification. 
+
+In weak lensing, the light deflection is small, often appearing as local linear transformations of magnification, shear, and rotation. 
+While difficult to measure directly, the images of multiple galaxies passing through the same dark matter halo will have identical shear transformations, producing correlations in their shapes.
+By measuring these correlations over nominally uncorrelated galaxy shapes, the shear strength of this weak lensing can be statistically determined, allowing for measurements of dark matter distributions without requiring very high density.
+Like traditional lenses, gravitational lenses are most effective when they are halfway between the source and observers on earth, though contributions from lensing along the entire path length impact the observed image.
+
+Maps of the distribution of dark matter in the universe can be created by studying the lensing effect on light from distant galaxies which passes through dark matter clusters, even in cases where the luminous matter is insufficient to make direct velocity measurements, such as outer radii in galaxy halos beyond the range of the visible stars.
+Lensing data produces many important observations for determining the properties of dark matter.
+Using strong lensing data, the total mass of galaxy clusters can be measured, measuring the dark matter abundance to be roughly five times greater than luminous matter.
+From microlensing data it can be determined that dark matter in our galaxy does not originate from free-floating, planet-sized non-luminous rock, as these 'free' planets would occasionally pass directly between earth and distant stars, causing temporary changes in brightness that have not been observed in microlensing surveys.
+
+A particularly striking example of a particle dark matter comes from the bullet cluster, shown in \Cref{fig:bullet}. 
+Galaxy clusters are formed from galaxies, interstellar gas, and dark matter.
+In normal galaxy clusters these three constituents occupy the same general space and so their signatures are difficult to separate.
+Unlike traditional clusters, the bullet cluster is formed from two galaxy clusters that collided around 150 million years ago. 
+Because the galaxies and stars within the clusters are well spaced, their collision cross section was small, and most passed through without undergoing any collisions.
+Unlike the galaxies, the interstellar gas in the clusters was uniformly spread and had a large interaction cross section causing it to be slowed by the collision, separating the gas from the main galaxy clusters and forming a shock front in the smaller of the two.
+
+\begin{figure}
+	\label{fig:bullet}
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/bullet_cluster.jpg}
+	\caption[Visible, x-ray, and gravitational lensing images of the bullet cluster]{ A combined optical, gravitational, and x-ray image of the bullet cluster. Galaxies are shown in orange and white, while the x-ray image of the intracluster gas is in pink and the gravitational lensing data in blue. The mass distribution from lensing data is shown to remain with the galaxies and exhibit no signs of slowing from the collision, while the intracluster gas is greatly slowed and produces a collision shockwave in the smaller of the two clusters. X-ray: NASA/CXC/CfA/ M.Markevitch et al.; Lensing Map: NASA/STScI; ESO WFI; Magellan/U.Arizona/ D.Clowe et al. Optical image: NASA/STScI; Magellan/U.Arizona/D.Clowe et al.}
+\end{figure}
+
+By combining images of the cluster using visible light, showing the distribution of galaxies, x-ray emissions, produced from hot interstellar gas, and gravitational lensing, showing the total mass distribution, the behavior of each component during the collision can be seen. 
+Crucially, the gravitational lensing data shows that the mass of the cluster lies with the main body of the stars while still representing a much larger mass than expected from only the luminous matter. 
+This eliminates interstellar gasses of SM particles as a potential source of dark matter, and also provides constraints on the dark matter self interaction rate \cite{Randall_2008}, as the two diffuse dark matter halos passed through each other without discernable drag from collisions.
 
 %Cosmic Microwave Background
 Some of the most detailed measurements of the relative abundance of dark matter come from observations of the cosmic microwave background (CMB).
 The CMB is radiation which originated in the early universe, when SM matter consisted of hydrogen and helium plasma and free electrons.
 Because of scattering with these free electrons, the universe was opaque on cosmological scales until the plasma cooled and was converted into a gas. 
-At this point, thermal radiation from the plasma could travel through the universe without significant scattering probability, and these photons can be observed today as the CMB, constant microwave radiation that is visible from every direction \cite{kurkisuonio} (\Cref{fig:CMB}).
+At this point, thermal radiation from the plasma could travel through the universe without significant scattering probability, and these photons can be observed today as the CMB, constant microwave radiation that is visible from every direction (\Cref{fig:CMB}).
 
 \begin{figure}[htpb]
 	\label{fig:CMB}
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/cmb.png}
-	\caption[The CMB temperature anisotropy]{\cite{PlanckCMB}.}
+	\includegraphics[width=0.9\textwidth]{figures/cmb.png}
+	\caption[The CMB temperature anisotropy]{The temperature anisotropy of the CMB. Outlined in gray are regions of high microwave background, primarily aligned with the main body of the milky way, which are treated specially to reduce their backgrounds \cite{PlanckCMB}.}
 \end{figure}
 
 The conversion of primordial plasma into a hydrogen and helium gas occurred when the universe was roughly 400,000 years old, and the CMB therefore provides an image of its temperature and density distribution at that time.
-While the primordial plasma was nearly homogeneous, there were slight variations of order one part in ten thousand, which later grew by gravitational attraction and led to the formation of galaxies and stars \cite{Hurki-Suonio}.
+While the primordial plasma was nearly homogeneous, there were slight variations of order one part in ten thousand, which later grew by gravitational attraction and led to the formation of galaxies and stars \cite{kurkisuonio}.
 By studying these anisotropies, the dynamics of the baryon-photon plasma can be inferred, and several properties of early cosmology, including the mass density of dark matter, can be determined.
 
 The anisotropy of the CMB is measured through correlations in the temperature of different points as a function of the length scale between them. 
@@ -63,10 +110,9 @@ At smaller scales, $\theta < $\ang{1}, the perturbations are close enough to com
 \begin{figure}[htpb]
 	\label{fig:CMBpowerSpectrum}
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/cmb_power_spectrum.png}
-	\caption[The temperature angular power spectrum of the CMB]{\cite{PlanckCMB}.}
+	\includegraphics[width=0.8\textwidth]{figures/cmb_power_spectrum.png}
+	\caption[The temperature angular power spectrum of the CMB]{The temperature angular power spectrum of the CMB. The points correspond to measured data from the Planck satellite, while the line is formed from a best-fit to a six-parameter cold dark matter model \cite{PlanckCMB}.}
 \end{figure}
-
 
 Initially, anisotopies are present from quantum fluctuations which expanded to cosmological scales during inflation.
 Regions with increased densities then attract the photon-baryon fluid gravitationally, amplifying the flucutation.
@@ -86,21 +132,46 @@ The angular power spectrum can thus be fit with a seven parameter cold dark matt
 Through these fits, the mass density of dark matter in the universe is determined to be \SI{4.1e-27}{\kilo\gram\per\meter\squared} \cite{PlanckCMB}, roughly 5 times more than the total abundance of SM matter.
 
 %Structure Formation
+Through these cycles of gravitational compression and radiation-pressure driven expansion, dark matter tends to be collected into nodes and filaments of increased mass. 
+These collections of dark matter have profound impacts on structure formation in the universe after the plasma combines into gas.
+By providing centers of gravitational attraction, the dark matter clusters greatly increase the rate at which stars and galaxies form.
+
+In models constructed using only gas from the condensed plasma with mass anisotropy matching the known distribution of the CMB, star formation occurs at much longer timescales than is known from astronomical observations, and the resulting distribution of the modern universe shows much greater uniformity. 
+By using information from weak lensing, the current structure of dark matter halos can be measured, and compared with various simulations of structure formation to test the validity of different dark matter models.
+
+In addition to the total mass and initial distribution of dark matter, these models also provide information on the possible temperature of dark matter.
+Cold dark matter models, where dark matter decouples from SM matter at lower temperatures, , the lower relative velocity allows the gravitational attraction to dominate dark matter dynamics, forming clusters similar to those observed today.
+In models with higher temperature dark matter the thermal motion plays a much larger role, resulting in chaotic waves of dark matter which do not form these clusters and can destroy structure in SM matter when they pass near it and disrupt the gravitational wells.
 
 %Baryogenesis
+An additional observation indicating that dark matter cannot be explained by standard model matter comes from simulations of big-bang nucleosynthesis. 
+In the first few minutes after the big bang, hydrogen, helium, deuterium, and lithium are produced from the quark-gluon plasma. 
+The relative production of these light elements depends on the total Baryon density during nucleosynthesis, and thus can be used to determine the total density of baryons in the early universe (\Cref{fig:baryogenesis}).
+
+\begin{figure}
+	\label{fig:baryogenesis}
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/baryogenesis.png}
+	\caption[Relative Light Baryon Abundancies]{The relative abundancies of primordial nuclei as a function of the total baryon density and the 'critical' density, the matter density requred to produce the observed flat curvature of the universe. The boxes represent observed estimates of the primordial abundancies, and the shaded blue region the range of densities determined from deuterium, the most precisely measured of the abundancies. Figure from \cite{charbonnel2002}.}
+\end{figure}
+
+Direct observations of the baryon density have large uncertainties due to the significant fraction of non-luminous matter contained in interstellar gas, but using this method precise measurements can be made without relying on estimations of the proportion of luminous to non-luminous matter.
+Comparing this measurement of the total baryon density in the universe to the total mass density observed from cosmological observations, it is seen that the baryon density is roughly 4\% of the total \cite{Tytler_200}, indicating that a very significant portion of the total mass density in the universe must originate from some beyond the standard model source.
 
 \section{Thermal Dark Matter}
-To help identify dark matter signatures that may be visible in a detector based experiment, several assumptions can be made relating to its nature. 
-The primary one made here is a thermal origin for dark matter.
+While a particulate explanation of dark matter is well motivated, very little can be concluded about its properties, and a very wide range of potential models can be searched for in experiments.
+To help identify dark matter signatures that may be visible in a detector based experiment, several assumptions are be made relating to its nature, the first being a thermal origin for dark matter.
+
 The core assumption of thermal dark matter models is that the interaction between dark matter and SM matter is significant enough that for some period of time in the early universe dark matter was in thermal equilibrium with standard model matter.
 This allows dark matter to be produced simultaneously with SM matter during the universe's inception rather than as a separate process, and also requires that dark matter have some coupling to SM matter, which would also be necessary for its observation in an experiment like CMS.
 
 This thermal equilibrium is achieved to due the high temperature and density of the early universe where, despite small SM couplings, dark matter particles can be frequently produced through interactions with standard model particles and produce standard model particles through their own interactions and decays.
-As the universe expands and cools, the rate of these interactions decreases until the dark matter interaction rate fall below the Hubble expansion rate and "freezes out", leaving thermal equilibrium with SM matter and leaving its phase-space distribution subject only to the universe expansion and eventual structure formation \cite{thermalDM}.
+As the universe expands and cools, the relatively large mediator mass causes the production of dark matter from collisions of SM particles to cease, thermally decoupling SM matter from dark matter.
+After dark matter production ceases, its annihilation continues for some time until the expansion of the universe causes the density to fall, reducing the interaction rate below the Hubble expansion rate so that dark matter "freezes out", leaving a fixed number density of dark matter with its phase-space distribution subject only to the universe expansion and eventual structure formation \cite{thermalDM}.
 
 For any given thermal dark matter model a 'relic target' cross section can be calculated - the cross section required to produce the density of dark matter seen today.
-For any given cross section, the thermal relic model will set a specific freeze-out temperature and number density.
-By combining this number density with the observed astronomical mass density, the thermal relic cross section can be related directly to a dark matter mass, with heavier particles requiring lower number densities and therefore later freeze-out temperatures and larger interaction cross sections.
+For any given dark matter coupling strength, the thermal relic model will set a specific freeze-out temperature and number density.
+By combining this number density with the observed astronomical mass density, the coupling strength can be related directly to a dark matter mass, with heavier particles requiring lower number densities and therefore later freeze-out temperatures and larger interaction cross sections.
 
 \section{Light Dark Matter}
 Traditional searches for thermal dark matter have tended to focus on models which interact via the nuclear weak force, which have relatively larger dark matter mass requirements (M$>\sim$few GeV), and so are easier to observe with indirect detection experiments searching for collisions of halo dark matter particles with passive detectors.
