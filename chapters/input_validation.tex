@@ -90,6 +90,73 @@ By using the parameters with the average mean squared error, the optimum paramet
 
 The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used, the weighting factor of each new tree, the loss reduction requred to create new leaves, and fraction of features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
 
-
 \subsection{Validation}
+A control region consisting of probe tracks with large HCAL isolation ($>$\SI{30}{\giga\eV}) is used to validate the performance of the BDT using data.
+The HCAL energy requirement tends to select for muons which have had hard SM scatters within the detector, and thus have more signal-like features in the muon chambers and more background-like features in the HCAL.
+
+Events with poor HCAL isolation also select for $\mu+X$ backgrounds at a much larger rate than in the signal region.
+In order to estimate their impact, data events with the equivalent HCAL isolation requirement and same-sign tag/probe pairs are used.
+Though these events do not contain $\mu$+X backgrounds from charge correlated processes, they can be used to provide an estimate for the distribution and relative scale of the overall backgrounds.
+
+The distributions of the standalone muon $\Delta$E/E, $\chi^{2}$, and $\Delta\phi$ are shown in \Cref{fig:BDTstavalid}. 
+Differences between data and MC are observed for some regions of all three variables, particularly at low muon energy, high standalone muon reduced $\chi^{2}$, and $\Delta\phi$ with magnitude near 0.2. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/standaloneMuonValidation.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/standaloneMuonChiValidation.pdf}
+	\vspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/standaloneMuonPhiValidation.pdf}
+        \caption[Standalone Muon Validation]{Standalone muon variables used as inputs to the partial region BDT measured in the high HCAL energy control region. Discrepancies are present in events with very low standalone muon $\Delta$E/E, large reduced $\chi^{2}$, and $\Delta\phi$ of $~|$0.2$|$.}
+        \label{fig:BDTstavalid}
+\end{figure}
+
+The distributions of the distance to the nearest CSC hit in each muon station is presented in \Cref{fig:BDTcscvalid}. 
+Some differences between MC and data are observed in the CSC $\Delta$R distributions as well. 
+As with the tag-muon aligned segments, station 1 has significant excesses of events with large $\Delta$R to the nearest hit and no nearby hits, while the other three depths have better overall agreement but overestimate the rates of events with intermediate $\Delta$R to the nearest in the range of 0.1 to 2.
+
+\begin{figure}[htbp]
+	\label{fig:BDTcscvalid}
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/highHcal_cscDr_station0.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/highHcal_cscDr_station1.pdf}
+	\vspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/highHcal_cscDr_station2.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/highHcal_cscDr_station3.pdf} 
+        \caption[CSC Segment Validation]{The distance to the nearest CSC segment in each station measured along the probe track trajectory for partial disappearance events in the high HCAL energy control region. Events with no CSC hits in a station within $\Delta$R of 2 are assigned a value of -1.}
+\end{figure}
+
+Despite these modeling differences, the BDT scores of events in this region do not see substantial differences between data and MC (\Cref{fig:BDTscorevalid}).
+This is likely due to counteracting influences from the poorly modeled features, and the relatively small absolute event rates in these regions. 
+Events with more missing CSC hits will appear more signal-like due to the potential for lower reconstructed standalone energy and larger $\Delta$R, but also have correspondingly higher $\chi^{2}$, reducing their output scores.
+As expected, the region is relatively shifted to higher BDT scores than the overall DY background due to the more signal-like event features in this region produced by energy loss to standard model processes in the HCAL. 
+
+\begin{figure}[htbp]
+	\label{fig:BDTscorevalid}
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/highHcal_BDTScore.pdf}
+        \caption[BDT Validation in the High HCAL Energy Control Region]{The distribution of BDT scores for data and DY MC events in the high HCAL control region.}
+\end{figure}
+
+Because of the significant difference in event features between the signal region and the high-HCAL control region, these comparisons cannot be used to directly derive scale factors to correct MC. 
+Instead, the potential impact of these variation can be estimated by adjusting MC features to match data within the control region and testing the resulting impact on the output BDT score.
+As applying all potential corrections simultaneously may introduce counter-acting effects, the relative scale of these uncertainties is estimated by individually varying the most impactful variables.
+
+To perform this, scale factors are derived from the ratio of the CSC hit distances by taking the ratio of the data and MC plots in each depth. 
+These scale factors are then applied to DY MC in the signal region as a function of $\Delta$R in each depth and the magnitude of the resulting change in the background acceptance is applied as an overall uncertainty on the DY background prediction in the partial disappearance region. 
+The shift in the overall DY BDT distribution with the CSC scale factors applied can be seen in \Cref{fig:BDTsfvalid}.
+
+\begin{figure}[htbp]
+	\label{fig:BDTsfvalid}
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/highHcal_cscSF.pdf}
+        \caption[BDT Score Variance with Applied CSC Scale Factors]{The disribution of BDT output scores for DY Mc events with and without CSC scale factors applied.}
+\end{figure}
+
+In the signal region (BDT > 0.98), the application of the scale factors produces 8$\%$ fewer DY events in the signal region, which is included as a systematic
+uncertainty on the rate of DY background in the partial disappearance region. 
+
 

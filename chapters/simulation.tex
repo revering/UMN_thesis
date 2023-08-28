@@ -27,18 +27,18 @@ For all MC samples used, version 2.6.5 of \mg is used to generate hard scatters 
 
 Before entering the detector, the resulting products of the hard scatter can decay further or emit radiation.
 Here, the outgoing leptons from the DY process can emit photons and gluon radiation from the initial quarks before collision can create outgoing quarks that must be converted into hadrons. 
-This process is performed using parton shower (PS) models, which simulate the process of high energy quarks emitting radiation to produce more quarks and other particles while losing energy with each radiation step until the quarks have low enough energy to interact with each other and form hadrons, resulting in a jet of hadrons and other particles.
+This process is performed using parton shower models, which simulate the process of high energy quarks emitting radiation to produce more quarks and other particles while losing energy with each radiation step until the quarks have low enough energy to interact with each other and form hadrons, resulting in a jet of hadrons and other particles.
 The hadronization step is performed using \pythia, which uses 'tunes' of parameter settings to best match the showering and hadronization process with the physics of interest. 
 All simulations performed in this analysis use the CP5 tune of \pythia \cite{pythia_tune}. 
 
 As an additional input to this process, the distributions of potential initial states must be determined.
-While CMS as a whole collides protons, the hard interaction in the initial collision occurs between individual quarks within them.
-The quantum numbers of a proton are determined from its valence quarks, two up flavored and one down flavored, but the full description of a proton must include the gluons holding them together as well as quarks that can arise from quark-antiquark production through those gluons. 
+While the LHC formally collides protons, the hard interaction in the initial collision occurs between individual quarks within them.
+The quantum numbers of a proton are determined from its valence quarks, two up-flavored and one down-flavored, but the full description of a proton must include the gluons holding them together as well as quarks that can arise from quark-antiquark production through those gluons. 
 Together, the proton constituents are referred to as partons, and their relative distribution must be included in the simulation to describe accurate initial states of the collision.
 
 Parton distribution functions (PDFs) represent the probability to find a parton of a given flavor with a particular fraction of the proton's momentum at a fixed energy scale.
 To fully calculate the cross section of an interaction in CMS, the matrix element showing the probability of any two partons to produce that interaction must be integrated over all possible partons and momentum fractions and weighted by the corresponding PDF. 
-Several different schemes are used to calculate these functions, and in this analysis the $NNPDF31\_nnlo\_as\_0118$ PDF \cite{nnpdf} is used for all simulated samples.
+Several different schemes are used to calculate these functions, and in this analysis the $NNPDF31$\_$nnlo$\_$as$\_$0118$ PDF \cite{nnpdf} is used for all simulated samples.
 
 \section{Detector Response Simulation}
 
@@ -65,7 +65,7 @@ While the custom selections used to find signal events are unique enough that a 
 The muon efficiency correction uses a tag-and-probe technique much like the one used to select signal in this analysis, where events with two opposite sign muons are selected in order to find muons which are likely to originate from the decays of Z bosons.
 One muon is required to pass strict selection criteria and is known as the tag muon, while the other must pass a loose selection criteria and is known as the probe muon.
 By studying the rate of the probe muon passing various id requirements beyond those used for selection, the efficiency of reconstructed muons passing any given selection can be studied as a function of muon kinematics, and corrections can be derived to match MC reconstruction efficiencies to those seen in data. 
-A complete description of the tag-and-probe techniques and muon efficiencies can be found in \cite{Sirunyan2018}.
+A complete description of the tag-and-probe techniques and muon efficiencies can be found in \cite{cmsMuonPerformance}.
 
 The use of muons from Z decays leads to a very close similarities expected kinematics of the probe muons used in this search, but would also include potential signal events in their efficiency calculations. 
 Signal contamination in the muon efficiency studies would result in small reductions in muon reconstruction efficiency as selected probes could have undergone \dbrem which would reduce the quality of the reconstructed muons due to the large energy loss. 
@@ -97,6 +97,7 @@ This step removes scatter in average Z mass which can result from the first step
 The muon energy scale corrections are applied to all tagging muons, and uncertainties in the resulting muon momentum are included as an overall systematic based on the change in signal efficiency produced when varying them by one standard deviation.
 
 \subsection{HCAL Efficiencies}
+\label{sec:HCALeff}
 The response of the HCAL to muons is important in this study to reject events with large energy deposits as well as events where the selected probe did not reach the calorimeters.
 In addition, the depth-by-depth information can be used to search for evidence of a change in muon energy within HCAL as a signature of a \dbrem.
 In order to use this level of detail, the muon HCAL deposits in MC must be validated and corrected to match those seen in data.
@@ -111,16 +112,15 @@ To ensure that the HCAL energy variables used as inputs for signal selection are
 Events are defined to be near a cell edge when the projected track passes within $\Delta\phi<$0.004 or $\Delta\eta<$0.016 to the edge of any cell in HE.
 
 \begin{figure}[ht]
-        \label{fig:missingHits}
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/hcalAllMissingHits.pdf}
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/hcalMissingHits.pdf}
         \caption[Missing muon hits in HE]{The number of HE depths along tagging muon trajectories below \SI{0.1}{\giga\eV} for all selected muons (left) and for those not near HE cell edges (right). Significant excess in events with many missing hits is seen in data events with tracks near cell edges.}
+        \label{fig:missingHits}
 \end{figure}
 
 \begin{figure}[ht]
-        \label{fig:cellEdges}
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/HEEdgeDistance_all_smallCell.pdf}
         \hspace{0.01\textwidth}
@@ -130,16 +130,18 @@ Events are defined to be near a cell edge when the projected track passes within
         \includegraphics[width=0.45\textwidth]{figures/HEEdgeDistance_multMissing.pdf}
 
         \caption[Muon distances to HE cell edges]{The distance of closest approach (DCA) to any HE cell edge for tagging muons used to validate HE hits. Events with more than two missing hits (right) are clustered near the edges of HE cells, while the overall distribution of tracks is spread evenly across the cell size. The vertical splitting reflects the two different cell sizes in the detector, although the cell size is not observed to significantly change the size of the regions with many missing hits.}
+        \label{fig:cellEdges}
 \end{figure}
 
 After removing the on-edge events, small variations in the energy of muons in HE are still observed. 
 To correct for these differences, event weights are derived for each depth in HE as a function of the energy in that depth based on the difference observed between DY MC and data.
-Additionally, to avoid potential differences in the simulated zero-suppression thresholds which may cause significant changes in events with very low HE energy, all HE hits below \SI{0.1}{\giga\eV} are set to zero.
+Additionally, to avoid potential differences in the simulated zero-suppression thresholds which may cause significant changes in events with very low HE energy, all HE hits with reconstructed energy below \SI{0.1}{\giga\eV} are set to zero.
 
 \subsection{Pileup Correction}
 Generation of simulated events generally occurs during the data taking period, when the exact pileup distribution is not well known.
-As a result, estimates of the distribution of pileup vertices are used during the initial MC generation, and after data taking is complete and the resulting pileup distribution is measured the simulated events are re-weighted to recreate the observed pileup.
-Pileup events may produce jets which are mistakenly identified as muons or are in the vicinity of a probe track and cause it to fail isolation requirements, so potential differences in the number of pileup jets between data and MC could impact the expected signal strength.
+As a result, estimates of the distribution of pileup vertices are used during the initial MC generation. 
+After data taking is complete and the resulting pileup distribution is measured, the simulated events are re-weighted to recreate the observed pileup.
+Pileup events may produce particles which are mistakenly identified as muons or are in the vicinity of a probe track and cause it to fail isolation requirements, so potential differences in the number of pileup particles between data and MC could impact the expected signal strength.
 
 To perform this re-weighting, histograms of the amount of pileup observed in data are divided by those used to generate the MC samples to find the weight for each potential number of pileup interactions (\Cref{fig:pileup}).
 The number of pileup interactions used for this re-weighting is not directly the number of pileup vertices in the event, which is dependent on the vertex reconstruction efficiency in the event and can introduce large systematic errors and biases.

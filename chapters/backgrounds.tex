@@ -21,18 +21,25 @@ Like signal events, muon backgrounds have opposite-sign pairs, and have nearly i
 Muon backgrounds can have slightly higher HCAL isolation than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem, but these high energy scatters produce large differences in the muon chamber response.
 
 Due to this difficulty in defining signal regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both regions using MC and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
+For the complete disappearance region, control regions containing tight-ID muons are used to predict the probability of a muon failing to produce a muon segment in any given muon chamber, and corrections are derived for differences observed in data and simulation.
+For partial disappearance events, events with large energy deposits in HCAL aligned with the probe muons are used to validate the simulation of standalone muon reconstruction, as well as the performance of the BDT on data events and the simulated rate of SM muon Bremsstrahlung.
+As these backgrounds can be produced through a combination of muon energy loss and poor muon reconstruction, the predicted backgrounds are made using a combination of both studies.
 
-
-
-
-//Split muon background sources into high-E scatters and missed muons
-We control the muon interaction backgrounds through study of data control regions and simulated DY containing large energy deposits in HCAL, as well as specially simulated DY with missing CSC hits required. The location-dependent rate of missing CSC hits in each depth is corrected using the methods described in Section \ref{sec:missingCSC}.
-As these backgrounds can be produced through a combination of muon energy loss and poor muon reconstruction, the predicted backgrounds are made using a combination of both studies. In the complete disappearance region, the validated DY simulation is used with the missing CSC hit studies to produce the number of expected missed muons. In the partial disappearance region, the DY MC is used to train the BDT and predict the expected number of DY background events, with corrections and uncertainties from these validations and control regions applied.
 \subsubsection{Missed Muons}
+Events with a muon matched to the probe track may pass the complete disappearance selections by having the muon fail to produce hits in any CSC station due to poor reconstruction. 
+These 'missed muon' events can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. 
+This background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. 
 
-Events with a muon matched to the probe track may pass the complete disappearance selections by having the muon fail to produce hits in any CSC station due to poor reconstruction. This can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. This missed muon background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. The rate of missed muons depends only on the kinematics of the selected track, and is otherwise expected to be independent of the initial process if there are no fake muons chosen. As the DY process produces the vast majority of selected muons, only simulated events produced from Z decays are considered.
+The rate of missed muons depends only on the kinematics of the selected track, and is otherwise expected to be independent of the initial process. 
+As the DY process produces the vast majority of selected muons, only simulated events produced from Z decays are used to determine the rate of missed muon backgrounds.
+The rate of missed muons is predicted directly from the number of simulated muons passing the total disappearance selection.
+The simulation includes muon backgrounds from both SM scattering of the muon within the HCAL and missed muon segments, as both effects are included in the detector response.
 
-To efficiently simulate these events, DY events are generated with a filter requiring at most one nearby CSC hit. An additional correction is applied to account for CSC regions that have worse performance in data by counting events with only one nearby CSC hit in those regions as having zero, with event weights proportional to the difference in CSC segment reconstruction efficiency (See Section \ref{sec:missingCSC}). Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section \ref{sec:HardBrem}.
+Additional corrections are applied to account for CSC regions that have worse performance in data than in simulated events based on control regions containing CSC hits aligned with the tight-ID tagging muon.
+While tight-ID muons are required to have at least two muon segments along their trajectories, the other two CSC stations frequently do not contain muon segments due to gaps in the detector or regions of reduced performance.
+The rate of finding muon segments nearby these tight-ID muons is measured for each muon station as a function of $\eta$ and $\phi$, 
+
+by counting events with only one nearby CSC hit in those regions as having zero, with event weights proportional to the difference in CSC segment reconstruction efficiency (See Section \ref{sec:missingCSC}). Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section \ref{sec:HardBrem}.
 
 \subsection{Non-Muon Backgrounds}
 Non-Muon ("$\mu+X$") events occur when a tagging muon is paired with a probe track that does not originate from the decay of a Z boson. 
