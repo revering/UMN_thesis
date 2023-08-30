@@ -107,9 +107,7 @@ As the global muon associated with the tag may have improved trajectory accuracy
 The HCAL energy is then collected in each depth along the trajectory of the track, and the distributions of energy are compared in data and DY MC. 
 
 Initial studies of the muon energy deposits found significant excesses in data of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing' hits (\Cref{fig:missingHits}. 
-Study of these events found that events with many missing hits correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and may be caused by differences in light collection efficiency with particle position that are not replicated in simulation or gaps between cells causing small regions of missing coverage.
-To ensure that the HCAL energy variables used as inputs for signal selection are well modeled, events that have track trajectories near the edge of a HE cell are not considered for the partial disappearance region, where the individual depth information is used as part of the selection.
-Events are defined to be near a cell edge when the projected track passes within $\Delta\phi<$0.004 or $\Delta\eta<$0.016 to the edge of any cell in HE.
+Study of these events found that events with many missing hits correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and are likely caused by a combination of effects from differences in light collection efficiency with particle position that are not replicated in simulation, gaps between cells causing small regions of missing coverage, and misalignment between the CMS tracker and HCAL in reconstruction.
 
 \begin{figure}[ht]
 	\centering
@@ -132,6 +130,35 @@ Events are defined to be near a cell edge when the projected track passes within
         \caption[Muon distances to HE cell edges]{The distance of closest approach (DCA) to any HE cell edge for tagging muons used to validate HE hits. Events with more than two missing hits (right) are clustered near the edges of HE cells, while the overall distribution of tracks is spread evenly across the cell size. The vertical splitting reflects the two different cell sizes in the detector, although the cell size is not observed to significantly change the size of the regions with many missing hits.}
         \label{fig:cellEdges}
 \end{figure}
+
+Anomalous low-hit events that are produced by misalignment between the HE and the tracker in reconstruction will have correlations between the probe track trajectory and the ∆η and ∆φ to cell edges which produce significant missing hits. 
+To study these correlations, the η edge and φ edge events are first categorized into ’φ-edge’ and ’η-edge’ using requirements of |∆φ| <0.004 a |∆η| <0.016, respectively. 
+By defining tag-aligned probe track data events which are not near φ edges as well as similar tag-aligned events which are not near η edges, the two patterns can be separated and correlations in the cell edge distances which produce many missing hits and the probe track trajectory can be found. 
+The minimum ∆φ in non-η-edge events with multiple missing hits is shown as a function of φ in \Cref{fig:phiEdgeCorr}, and the minimum ∆η in non-φ-edge events with multiple missing hits is shown as a function of η for both endcaps in \Cref{fig:etaEdgeCorr}.
+
+\begin{figure}[htpb]
+    \includegraphics[width=0.45\textwidth]{figures/phiEdgeEventsData.png} 
+    \centering
+	\caption[$\phi$ edge correlations in missing HCAL muon hits.]{The minimum $\Delta\phi$ to any HE cell edge and the probe track $\phi$ trajectory for tag-aligned probe tracks with multiple missing hits. A sinusoidal dependence on the region with significant missing hits is observed, which is consistent with a relative shift in y between the HCAL and the tracker between data and reconstruction. The region outlined with a dashed red line indicates 'on-edge' events in $\phi$.}
+    \label{fig:phiEdgeCorr}
+\end{figure}
+
+\begin{figure}[htpb]
+    \includegraphics[width=0.45\textwidth]{figures/posEtaEdgeEventsData.png} 
+    \hspace{0.01\textwidth}
+    \includegraphics[width=0.45\textwidth]{figures/negEtaEdgeEventsData.png}
+    \centering
+	\caption[$\eta$ edge correlations in missing HCAL muon hits.]{The minimum $\Delta\eta$ to any HE cell edge and the probe track $\phi$ trajectory for tag-aligned probe tracks with multiple missing hits in the positive (left) and negative (right) HCAL endcaps. The events with multiple missing hits have a strong dependence on the sign of $\Delta\eta$ to the missing cell edges. The regions outlined with dashed red lines indicate 'on-edge' events in $\eta$.}
+    \label{fig:etaEdgeCorr}
+\end{figure}
+
+To accounting for these correlations, the 'on-edge' requirements are chosen to be dependent on the probe track trajectory as well as the cell edge distance. 
+Probe tracks are designated as on-edge in $\eta$ if -0.002$<\Delta\eta<$0.016 and the probe track trajectory has $\eta<0$, or if -0.016$<\Delta\eta<$0.002 and the probe track trajectory
+has $\eta>0$.
+Probe tracks are designated as on-edge in $\phi$ if -0.001$<\Delta\phi<$0.004 and the probe track trajectory has $|\phi|>\pi/$2, or if -0.004$<\Delta\phi<$0.001 and the probe track trajectory has $|\phi|<\pi/$2.
+
+Events which are on-edge in $\eta$, $\phi$, or both are excluded from the partial disappearance region due to the significant differences observed between data and MC in the individual HE hits, which are necessary in that region to remove soft SM Bremsstrahlung backgrounds.
+In complete disappearance events, the HCAL hits are implemented using sums of all HCAL cells within a $\Delta$R cone of 0.3, which is sufficiently large to include all adjacent cells and so does not have visible differences due to this misalignment.
 
 After removing the on-edge events, small variations in the energy of muons in HE are still observed. 
 To correct for these differences, event weights are derived for each depth in HE as a function of the energy in that depth based on the difference observed between DY MC and data.
