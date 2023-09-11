@@ -2,6 +2,7 @@
 % input_validation.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Partial Disappearance Event Classification}
+\label{sec:BDT}
 Unlike the total disappearance region, where rejecting standalone muons and limiting calorimeter energy is sufficient to control muon backgrounds, the partial disappearance region must separate potential signal events based on a large number of input features, often with subtle correlations between them.
 The primary distinguishing feature of signal events in this region is a large mismatch in the energy of the nearest standalone muon and the selected probe track, but the requirement that the standalone muon have less than 30$\%$ of the probe track still leaves several thousand background events.
 
@@ -91,6 +92,7 @@ By using the parameters with the average mean squared error, the optimum paramet
 The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used, the weighting factor of each new tree, the loss reduction requred to create new leaves, and fraction of features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
 
 \subsection{Validation}
+\label{sec:BDTvalid}
 A control region consisting of probe tracks with large HCAL isolation ($>$\SI{30}{\giga\eV}) is used to validate the performance of the BDT using data.
 The HCAL energy requirement tends to select for muons which have had hard SM scatters within the detector, and thus have more signal-like features in the muon chambers and more background-like features in the HCAL.
 
