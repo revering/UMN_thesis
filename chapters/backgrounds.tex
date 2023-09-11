@@ -3,43 +3,54 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Backgrounds}
 \label{backgrounds}
-There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data.
-Wherever possible, this rate is determined using control regions in data, where orthogonal selections to the signal region are applied in order to find regions enriched in backgrounds to study their properties and extrapolate their rate to the final selection.
+There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data as a limit of the signal strength for beyond the standard model processes.
+Wherever possible, the backgrounds are determined using control regions in data where orthogonal selections to the signal region are applied in order to find regions enriched in backgrounds to study their properties and extrapolate their rate to the final selection.
 
 Heuristically, the backgrounds in this search are split into two types: those where the probe track is produced by a muon ("muon backgrounds") and those where it is produced by any other particle in the event ($\mu+X$ events).
 In practice, the invariant mass of the tag/probe pair is the primary feature used to distinguish events with non-muon probes, as muon-system and calorimeter information are heavily used in the signal definition and therefore unavailable for simple definitions of control regions.
-As a result, the $\mu+X$ backgrounds include any processes which do not have a peak near the Z-mass, effectively serving as a background of events without muons from Z decays.
-While these muons from other sources could potentially produce signal events in the same manner as muons from Z bosons, the much smaller relative rate causes this choice to have very little impact on the resulting sensitivity.
+As a result, the $\mu+X$ backgrounds include any processes where the invariant mass of the tag and probe pair does not peak near the Z-mass, effectively serving as a background of events without muons from Z decays.
+While these muons from other sources could potentially produce signal events in the same manner as muons from Z bosons, the much smaller relative rate causes this choice to have a negligible impact on the resulting signal sensitivity.
 
 \subsection{Muon Backgrounds}
-Standard model DY backgrounds occur when the base event selection successfully finds a probe track which matches to a muon originating from a Z boson which then muon passes the signal selection without undergoing a Dark Bremsstrahlung. 
+Standard model DY backgrounds occur when the base event selection successfully finds a probe track which matches to a muon originating from a Z boson which then passes the signal selection without undergoing a Dark Bremsstrahlung. 
 This can occur either when muons lose energy via conventional physics interactions without producing enough visible energy in the detector to reject the event or when the muon signature in HE and the CSC chambers is missed.
-Often, some combination of both effects is present as muons with altered energy from interactions within the detector can have genuine deflections causing them to pass through fewer stations in the muon chambers, greatly increasing the probability of missing their signatures.
+Often, some combination of both effects is present, as muons with altered energy from interactions within the detector can have genuine deflections causing them to pass through fewer stations in the muon chambers, greatly increasing the probability of missing their signatures.
 
-The primary difficulty of muon backgrounds is the lack of control regions enriched in muon backgrounds without containing significant signal contamination.
-Like signal events, muon backgrounds have opposite-sign pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
-Muon backgrounds can have slightly higher HCAL isolation than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem, but these high energy scatters produce large differences in the muon chamber response.
+The primary difficulty of muon backgrounds is the lack of control regions enriched in muon backgrounds which do not contain significant signal contamination.
+Like signal events, muon backgrounds have opposite-sign tag and probe pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
+Muon backgrounds tend to have slightly higher HCAL energy deposits than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem.
+Unfortunately, events with large HCAL deposits have correspondingly large rates of SM Bremsstrahlung, which produces genuine muon deflections and significantly alters the observed behavior within the muon chambers.
+As a result, the high-HCAL control region is useful for validating the performance of the muon chamber behavior for signal-like events, but cannot be used to directly extrapolate a background rate into the signal region. 
 
-Due to this difficulty in defining signal regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both regions using MC and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
+Due to the difficulty in defining control regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both complete and partial disappearance events using MC, and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
 For the complete disappearance region, control regions containing tight-ID muons are used to predict the probability of a muon failing to produce a muon segment in any given muon chamber, and corrections are derived for differences observed in data and simulation.
 For partial disappearance events, events with large energy deposits in HCAL aligned with the probe muons are used to validate the simulation of standalone muon reconstruction, as well as the performance of the BDT on data events and the simulated rate of SM muon Bremsstrahlung.
-As these backgrounds can be produced through a combination of muon energy loss and poor muon reconstruction, the predicted backgrounds are made using a combination of both studies.
+Additionally, events with low BDT scores are used to validate the simulation of non-signal-like muons, as well as the performance of the BDT in scoring them.
+
 
 \subsubsection{Missed Muons}
-Events with a muon matched to the probe track may pass the complete disappearance selections by having the muon fail to produce hits in any CSC station due to poor reconstruction. 
+In complete disappearance events, muon backgrounds may pass the signal selection by having the muon fail to produce hits in any CSC station due to poor reconstruction. 
 These 'missed muon' events can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. 
 This background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. 
 
-The rate of missed muons depends only on the kinematics of the selected track, and is otherwise expected to be independent of the initial process. 
+Because of the tight isolation requirements applied in the probe track selection, the rate of missed muons depends only on the kinematics of the selected track and is otherwise expected to be independent of the initial process. 
 As the DY process produces the vast majority of selected muons, only simulated events produced from Z decays are used to determine the rate of missed muon backgrounds.
-The rate of missed muons is predicted directly from the number of simulated muons passing the total disappearance selection.
 The simulation includes muon backgrounds from both SM scattering of the muon within the HCAL and missed muon segments, as both effects are included in the detector response.
 
-Additional corrections are applied to account for CSC regions that have worse performance in data than in simulated events based on control regions containing CSC hits aligned with the tight-ID tagging muon.
-While tight-ID muons are required to have at least two muon segments along their trajectories, the other two CSC stations frequently do not contain muon segments due to gaps in the detector or regions of reduced performance.
-The rate of finding muon segments nearby these tight-ID muons is measured for each muon station as a function of $\eta$ and $\phi$, 
+To account for potential differences in the efficiency of the simulated CSC response, corrections are applied to the simulated events based on the position-dependent CSC reconstruction efficiency measured using control regions containing CSC hits aligned with tight-ID muons.
+While these tight-ID muons are required to have at least two muon segments along their trajectories, the other two CSC stations frequently do not contain muon segments due to gaps in the detector or regions of reduced performance.
+The rate of finding muon segments within $\Delta$R$<$0.05 of the tight-ID muon is measured for each CSC station as a function of $\eta$ and $\phi$, and the ratios of the measured efficiencies in data and simulation are taken to identify regions which are not effectively simulated.
 
-by counting events with only one nearby CSC hit in those regions as having zero, with event weights proportional to the difference in CSC segment reconstruction efficiency (See Section \ref{sec:missingCSC}). Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section \ref{sec:HardBrem}.
+To correct for these differences, simulated events which have only one nearby CSC segment are counted as complete disappearance events with weights corresponding to the relative efficiency for the CSC station and location where the segment was observed, to represent the fraction of events that should have failed reconstruction using the efficiency in data.
+These corrections increase the expected muon background rate by 22$\%$, and their uncertainties are dominated by the statistical uncertainty resulting from the sample size of simulated DY events with one or fewer nearby CSC segments.
+Events with multiple nearby CSC segments are not included in this correction, as the product of the CSC efficiency differences across multiple CSC stations reduces the impact below the 1$\%$ level, significantly smaller than the overall uncertainty of the expected background.
+
+Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. 
+This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section.
+
+\subsubsection{Partial Disappearance Muon Backgrounds}
+Muon backgrounds in partial disappearance events are also predicted using simulation.
+
 
 \subsection{Non-Muon Backgrounds}
 Non-Muon ("$\mu+X$") events occur when a tagging muon is paired with a probe track that does not originate from the decay of a Z boson. 
