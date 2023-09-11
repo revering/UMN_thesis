@@ -3,15 +3,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Backgrounds}
 \label{backgrounds}
-There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data as a limit of the signal strength for beyond the standard model processes.
+There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data as a limit on the signal strength of beyond the standard model processes.
 Wherever possible, the backgrounds are determined using control regions in data where orthogonal selections to the signal region are applied in order to find regions enriched in backgrounds to study their properties and extrapolate their rate to the final selection.
 
 Heuristically, the backgrounds in this search are split into two types: those where the probe track is produced by a muon ("muon backgrounds") and those where it is produced by any other particle in the event ($\mu+X$ events).
 In practice, the invariant mass of the tag/probe pair is the primary feature used to distinguish events with non-muon probes, as muon-system and calorimeter information are heavily used in the signal definition and therefore unavailable for simple definitions of control regions.
 As a result, the $\mu+X$ backgrounds include any processes where the invariant mass of the tag and probe pair does not peak near the Z-mass, effectively serving as a background of events without muons from Z decays.
-While these muons from other sources could potentially produce signal events in the same manner as muons from Z bosons, the much smaller relative rate causes this choice to have a negligible impact on the resulting signal sensitivity.
+While these muons from other sources could potentially produce signal events in the same manner as muons from Z bosons, their much smaller relative rate causes this choice to have a negligible impact on the resulting signal sensitivity.
 
-\subsection{Muon Backgrounds}
+\section{Muon Backgrounds}
 Standard model DY backgrounds occur when the base event selection successfully finds a probe track which matches to a muon originating from a Z boson which then passes the signal selection without undergoing a Dark Bremsstrahlung. 
 This can occur either when muons lose energy via conventional physics interactions without producing enough visible energy in the detector to reject the event or when the muon signature in HE and the CSC chambers is missed.
 Often, some combination of both effects is present, as muons with altered energy from interactions within the detector can have genuine deflections causing them to pass through fewer stations in the muon chambers, greatly increasing the probability of missing their signatures.
@@ -20,15 +20,15 @@ The primary difficulty of muon backgrounds is the lack of control regions enrich
 Like signal events, muon backgrounds have opposite-sign tag and probe pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
 Muon backgrounds tend to have slightly higher HCAL energy deposits than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem.
 Unfortunately, events with large HCAL deposits have correspondingly large rates of SM Bremsstrahlung, which produces genuine muon deflections and significantly alters the observed behavior within the muon chambers.
-As a result, the high-HCAL control region is useful for validating the performance of the muon chamber behavior for signal-like events, but cannot be used to directly extrapolate a background rate into the signal region. 
+As a result, the control regions with large HCAL energy near the probe track are useful for validating the performance of the muon chamber behavior for signal-like events, but cannot be used to directly extrapolate a background rate into the signal region. 
 
 Due to the difficulty in defining control regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both complete and partial disappearance events using MC, and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
 For the complete disappearance region, control regions containing tight-ID muons are used to predict the probability of a muon failing to produce a muon segment in any given muon chamber, and corrections are derived for differences observed in data and simulation.
-For partial disappearance events, events with large energy deposits in HCAL aligned with the probe muons are used to validate the simulation of standalone muon reconstruction, as well as the performance of the BDT on data events and the simulated rate of SM muon Bremsstrahlung.
-Additionally, events with low BDT scores are used to validate the simulation of non-signal-like muons, as well as the performance of the BDT in scoring them.
+For partial disappearance events, events with large energy deposits in HCAL aligned with the probe muons are used to validate the simulation of standalone muon reconstruction in events with deflected muons.
+To reduce muon backgrounds, a binary decision tree (BDT) is trained to separate muon backgrounds from signal events, and the large HCAL energy region is also used to validate the performance of the BDT on data events and the simulated rate of SM muon Bremsstrahlung.
+Additionally, events with low BDT scores are used to validate the simulation of non-signal-like muons as well as the performance of the BDT in scoring them.
 
-
-\subsubsection{Missed Muons}
+\subsection{Missed Muons}
 In complete disappearance events, muon backgrounds may pass the signal selection by having the muon fail to produce hits in any CSC station due to poor reconstruction. 
 These 'missed muon' events can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. 
 This background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. 
@@ -73,25 +73,27 @@ Events with multiple nearby CSC segments are not included in this correction, as
 Using this simulation, 4.6$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. 
 This background prediction accounts for backgrounds both from failed reconstruction and hard Brem or other scattering processes, and relies on the accuracy of the muon scattering in simulation as validated in Section.
 
-\subsubsection{Partial Disappearance Muon Backgrounds}
+\subsection{Partial Disappearance Muon Backgrounds}
 While the requirements of no nearby Standalone muons, CSC segments, or RPC hits are sufficient in the complete disappearance region to reduce muon backgrounds to a manageable level, the missing energy requirement (standalone muon energy $<$40$\%$ of probe track energy) alone still results in several thousand selected DY muons due to the relatively poor resolution of the standalone muon reconstruction.
 To reduce this background, a binary decision tree is trained to separate potential signal events from muon backgrounds, which is described in detail in \Cref{sec:BDT}.
 
 The expected muon background after applying the BDT selection is determined by scaling the expected BDT score distribution of simulated DY events by the total number of events which pass the base partial disappearance selection.
-The resulting background prediction is thus directly dependent on this simulated BDT score distribution, and it is validated using multiple control regions to compare the simulation of the input variables used and the resulting effect on the BDT score.
+The resulting background prediction is thus directly dependent on this simulated BDT score distribution, which is validated using multiple control regions to compare the simulation of the input variables used and the resulting effect on the BDT score.
 This validation is presented in \Cref{sec:BDTvalid}, and is used to calculate systematic uncertainties on the number of expected muon backgrounds resulting from differences in the simulated inputs and resulting BDT scores.
 
-\subsection{Non-Muon Backgrounds}
-Non-Muon ("$\mu+X$") events occur when a tagging muon is paired with a probe track that does not originate from the decay of a Z boson. 
-Non-Muon tracks are very likely to be stopped by the calorimeters or to decay within them, mimicking signal events by having little or no ionization in the muon chambers. 
+\section{Non-Muon Backgrounds}
+Non-muon ("$\mu+X$") events occur when a tagging muon is paired with a probe track that does not originate from the decay of a Z boson. 
+Non-muon tracks are very likely to be stopped by the calorimeters or to decay within them, mimicking signal events by having little or no ionization in the muon chambers. 
 Unlike signal events, the interactions of these backgrounds in the calorimeters should produce visible energy deposits which can be used to reject the event.
 Most importantly, $\mu+X$ events will not have a sharp peak in the tag/probe invariant mass like signal.
-Because of this, control regions with inverted invariant mass selections can be defined which are composed nearly entirely of $\mu+X$ events and simultaneous fits of the invariant mass to peaking and non-peaking functions can be performed, allowing for an entirely data-driven estimation of the background rate.
+Because of this, control regions with inverted invariant mass selections can be defined which are composed nearly entirely of $\mu+X$ events to observe their properties, and simultaneous fits of the invariant mass to peaking and non-peaking functions can be performed in the signal regions allowing for entirely data-driven estimations of the background rate.
 
-Among the possible particles which may produce the misidentified probe tracks, of particular interest are charged mesons such as pions or kaons, which may decay into muons as they pass through the detector.
-As the neutrinos produced in these decays are invisible to the detector, charged mesons decaying into muons could appear very similar to signal events, with the misidentified meson acting as the initial muon and the muon produced in the decay acting as a deflected muon with energy loss to a neutrino instead of a dark photon.
+Among the possible particles which may produce the misidentified probe tracks, of particular interest are charged mesons such as pions or kaons, which may decay into a muon and neutrino pair as they pass through the detector.
+As the neutrino produced in these decays is not observed by the detector, these decaying charged mesons could appear very similar to signal events, with the misidentified meson acting as the initial muon and the muon produced in the decay acting as a deflected muon with energy loss to a neutrino instead of a dark photon.
+
 The overall rate of these meson backgrounds is reduced by several factors.
-First, the initial meson must decay within the detector, and must do so before undergoing significant showering in the detector.
+First, the initial meson must decay within the detector to a signal-like final state, and must do so before undergoing significant showering in the detector.
+The typical branching fractions to final states with muons and neutrinos and the relatively long lifetimes of these mesons, along with their lorentz boosts when decaying in the lab frame, produces decay rates on the order of 0.1$\%$ for most mesons without accounting for other possible interactions.
 Secondly, the low mass of the neutrino favors the muon carrying most of the outgoing momentum in the collision, so that only a small fraction of meson decays result in significant energy differences between the outgoing muon and the initial meson.
 Lastly, the mesons produced in the collision are rarely isolated, and are generally produced in jets of particles which are likely to cause the event to fail the isolation selections.
 
@@ -99,42 +101,60 @@ While $\mu+X$ backgrounds specifically refer to events where the selected probe 
 In these cases, an un-associated track may be selected as the probe and a non-muon background can be produced from a DY$\rightarrow\mu\mu$ event. 
 This corresponds to roughly 5$\%$ of the expected $\mu$+X background.
 
-The frequency of $\mu+X$ events is predicted via data driven methods using control regions of events with invariant masses far from the Z-peak or with same-sign tag/probe pairs.
+The properties of $\mu+X$ events are observed using control regions of events with invariant masses far from the Z-peak or with same-sign tag/probe pairs.
 In both signal regions, the off-peak events are fit with a non-peaking function to predict the nominal background in the signal region, and the same-sign control region is used to validate our assumptions of the background shape and non-correlated charge.
-In the partial disappearance region, the DY contribution to the off-peak region is too large to make an effective fit, and so the same-sign control region is used to determine the BDT score of $\mu$+X events and directly predict the background rate.
+In the complete disappearance region, the off-peak events are also used to set the threshold used for the HCAL isolation by optimizing the signal strength of the final fit as a function of isolation and the resulting expected $\mu$+X background and signal efficiency.
 
-\subsubsection{Off Peak Control Region}
-In the off-peak control region, the full total disappearance selections are applied with invariant mass requirement inverted to be far from the Z-peak ($M_{\mu\mu}$ $<70$ or $>110\GeV$). 
-The resulting region contains very little DY contribution due to the invariant mass and total disappearance requirement and so contains almost entirely $\mu+X$ background. 
-By fitting the off-peak region using a non-peaking background function (Eq. \ref{eq:bkgfunc}) derived using a control region of poorly isolated probe tracks (Appendix \ref{sec:muPlusX}), the expected rate in the signal region can be predicted entirely from data. 
-While the complete signal selection does not contain a large enough sample size in MC to compare to data, by removing the HCAL isolation requirements the rates in data and MC are increased enough to test the chosen functional form and verify that the observed rate is close to the most significant expected backgrounds. Good agreement between data and MC is seen in this subset of events (Fig. \ref{fig:offpeakfit}, left).
+For the final simultaneous fits, the $\mu+X$ background is fit using a non-peaking background with nominal fit shape and amplitude from the off-peak control regions, and the combined signal and muon backgrounds are fit using the DY invariant mass shape from data in order to account for potential inaccuracies in the simulated DY invariant mass distribution.
+Events used to find this shape are selected using events with two tight-ID muons which otherwise pass the kinematic, pairing, and isolation requirements used for the base event selection.
 
-The results of this fit are used to predict the $\mu+$X background in the complete disappearance region, but are dependent on the assumption of a smooth functional form. 
-Two separate fits are performed - one directly using the background function on the smoothed data, and one by first fitting data events in the non-isolated region and then re-scaling the result to the isolated region. 
+\subsection{Off Peak Control Region}
+In the off-peak control region, the full signal selections are applied with the invariant mass requirement inverted to be far from the Z-peak ($M_{\mu\mu}$ $<70$ or $>110$ \GeV). 
+The resulting region contains very little DY contribution due to its strongly peaking shape, resulting in a very pure sample of $\mu+X$ background events. 
+By fitting the off-peak region using a non-peaking background function (\Cref{eq:bkgfunc}) derived using a control region of poorly isolated probe tracks, the expected rate in the signal region can be predicted entirely from data. 
+The results of this fit for data events in the complete disappearance off-peak events as well as data and MC events without HCAL or ECAL isolation requirements is shown in \Cref{fig:offpeakfit}.
+
+\begin{equation} 
+    \label{eq:bkgfunc}
+    f(s)=A+B(s-C)e^{-Ds} 
+\end{equation}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/offPeakCr_noIso.pdf}
+    \hspace{0.01\textwidth}
+    \includegraphics[width=0.45\textwidth]{figures/offPeakCr_fit.pdf} 
+     \caption[$\mu$+X background fits in the off-peak control region]{The invariant mass distribution in the signal region without HCAL isolation requirements for data and MC (left), and the complete disappearance off-peak control region fit in data (right).}
+    \label{fig:offpeakfit}
+ \end{figure}
+ 
+
+This fit is then used to predict the nominal $\mu+$X background amplitude in the complete disappearance region, but is dependent on the chosen functional form. 
+Two separate fits are performed - one 'free' fit which directy uses the background function, and one which first fits data events in the non-isolated region and then re-scales the result to the isolated region. 
 The re-scaled fit has less statistical uncertainty due to the larger sample size in the non-isolated region, but does not include any potential change in shape due to applying the isolation requirements. 
-The free fit predicts 6$\pm$3 background events, while the re-scaled non-isolated fit predicts 4.9$\pm$0.3 events. The re-scaled fit is taken as the central value of the predicted yield, and the difference between the two is taken as a systematic uncertainty on the choice of fitting function.
+The free fit results in a 15$\%$ larger expected background than the re-scaled fit. 
+The re-scaled fit is taken as the central value of the predicted yield, and the difference between the two is applied to the signal region fit as a shape uncertainty.
 
-subsubsection{Non-Muonic Z decays}
+\subsection{Non-Muonic Z decays}
 A potential $\mu$+X background which could have a peaking invariant mass which does not follow the assumption of a smoothly falling distribution used in its fit are Z bosons which decay to hadrons or $\tau$ leptons.
 These events can produce potentially dangerous backgrounds in cases where one $\tau$ decays leptonically and produces a good tag muon, while the other might decay into a pion or other particle which fakes a probe muon. 
 While the invariant mass of the initially produced $\tau$ leptons or hadrons is expected to peak near the Z mass, the final state muons or mesons which are selected in this search are expected to have substantially shifted invariant mass distributions due to only selecting a portion of the produced particles.
 Simulated DY events which match the selected probes to gen level $\tau$ particles or hadrons are used to confirm that they do not produce an invariant mass peak within the signal region.
 
 Because of the very low rate of these events passing the probe isolation requirements, the invariant mass distributions are measured without applying track or ECAL isolation requirements.
-The invariant mass of selected tag and probe pairs from Z decays to $\tau$ leptons or hadrons in MC without the full isolation selections applied is shown in figure ().
+The invariant mass of selected tag and probe pairs from Z decays to $\tau$ leptons or hadrons in MC without the full isolation selections applied is shown in \Cref{fig:ZtoTauTau}.
 As expected, the additional particles produced in hadronic and $\tau$ decays of the Z boson shift the invariant mass of the tag and probe such that there is no longer a peak near the Z mass, and these potential background sources are effectively included by the non-peaking $\mu$+X fit.
 
-\begin{equation} \label{eq:bkgfunc}
-f(s)=A+B(s-C)e^{-Ds} 
-\end{equation}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/tauZInvMass.pdf}
+    \includegraphics[width=0.45\textwidth]{figures/hadronZInvMass.pdf}
+     \caption[The invariant mass of hadronic and $\tau$ Z decays]{The invariant mass distributions of DY events which match gen level $\tau$ leptons to the selected probes (left) and hadronic Z decays (right). Neither background process has significant peaks within the signal region, and they should therefore be included effectively in the off peak control region fits.}
+    \label{fig:ZtoTauTau}
+\end{figure}
 
-\subsubsection{Same Sign Control Region}
-\label{sec:sameSign}
-As the most significant non-muon probe backgrounds are expected to be produced by processes without charge-correlated tags and probes, the rate of these events with same-sign pairs should be very close to the rate with opposite-sign pairs, and a same-sign control region can be defined to verify that and cross-check the expected background rates. The same-sign control region is defined with the tag and probe charge requirement inverted and otherwise identical selections for both the complete and partial disappearance regions. Because of the close similarity to the signal region, the BDT scores of partial disappearance background events in this control region can be used to predict the expected background rate from $\mu+$X events. In the current skim 14.73 $\fbinv$ of 2018 data was available and one same-sign event passed the partial region selection. That event has a BDT score of $<$0.001. In Figure \ref{fig:sameSign}, the same-sign events in the complete disappearance region are plotted along with the fit function from the off-peak control region scaled to the same luminosity. The expected same-sign rate is within uncertainty of the measured rate, indicating that there is not an excess of opposite-sign events and that the assumption that the background is primarily from non-charge-correlated pairs is valid.
-
-\subsection{Signal Contamination}
+\section{Signal Contamination}
 \label{sec:SigContamination}
-A table of the relative rates of signal in each control region to each signal region for all mass points is presented in Table \ref{tab:SigCont}.
 In the Off-peak control region, signal contamination would increase the predicted $\mu+X$ background by being included in the non-peaking fit applied to the control region. Using the functional form of the off-peak fit used in Figure \ref{fig:offpeakfit}, each signal event in the off-peak control region will add 0.5 expected $\mu+X$ events. Because of the strongly peaking nature of the signal events in invariant mass, signal contamination would reduce the observed by at most $2.5\%$ for all signal masses and regions.
 
 While the off-peak signal contamination is small enough that it can be used to predict the rate of background $\mu$+X events, it is significant enough to prevent the use of the region as validation for the partial disappearance region. The signal contamination rate is almost entirely produced by the peaking shape of the invariant mass distribution, and any corrections or uncertainties derived using off-peak partial disappearance resulting from signal contamination would scale with the peaking DY shape instead of the smooth $\mu$+X background, resulting in a loss of signal near 100$\%$.
