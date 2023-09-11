@@ -16,7 +16,7 @@ Signal events may also have significant CSC hit offsets due to the angular scatt
 
 To take advantage of the wide variety of weak input separators available in this region, a Boosted Decision Tree (BDT) classifier is used to reduce these inputs to one classification variable.
 
-\subsection{Boosted Decision Trees}
+\section{Boosted Decision Trees}
 Boosted decision trees are a type of supervised machine learning where separate additive functions are used to map a set of inputs to a single output.
 Each individual function consists of a single 'tree', where input data is split recursively over a series of 'depths'. 
 The depths are made of 'nodes', where the data is split based on a selection applied to some input variables, and 'leaves', a terminal value of the tree where a value is output.
@@ -43,7 +43,7 @@ In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework \
 
 The BDT is trained using only the signal masses and DY MC background, as the preselection and standalone muon requirements alone are significant enough to reduce $\mu+X$ events to manageable levels. 
 
-\subsection{Inputs}
+\section{Inputs}
 There are 21 event variables which are used as inputs to the BDT, which can be grouped into five categories.
 
 The first are variables related to the probe track kinematics. 
@@ -74,7 +74,7 @@ Lastly, the HCAL energy in each depth along the probe trajectory is used to iden
 The number of depths traversed by any given muon depends on its position in HCAL.
 To accomodate this, projected tracks which do not pass through a given depth in HCAL are assigned an energy of -1. 
 
-\subsection{Optimization}
+\section{Optimization}
 The primary challenge with training the partial region BDT is the imbalance between signal and background events. 
 Because \dbrem is expected to be a rare process, there are should be many more background events than signal events in the data sample, and background rejection must be strongly prioritized over signal purity.
 
@@ -91,7 +91,7 @@ By using the parameters with the average mean squared error, the optimum paramet
 
 The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used, the weighting factor of each new tree, the loss reduction requred to create new leaves, and fraction of features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
 
-\subsection{Validation}
+\section{Validation}
 \label{sec:BDTvalid}
 A control region consisting of probe tracks with large HCAL isolation ($>$\SI{30}{\giga\eV}) is used to validate the performance of the BDT using data.
 The HCAL energy requirement tends to select for muons which have had hard SM scatters within the detector, and thus have more signal-like features in the muon chambers and more background-like features in the HCAL.

@@ -50,7 +50,7 @@ Pseudorapidity is zero when perpendicular to the beam, and approaches positive a
 Using this angular measure, selections using the angular separation of particles do not have strong dependence on longitudinal momentum and the overall distribution of outgoing collision products is nearly uniform in $\eta$ instead of strongly peaked towards zero and $\pi$ as it is in $\theta$.  
 The angular distance in this coordinate system is defined as $\Delta R = \sqrt{(\eta_1-\eta_2)^2+(\phi_1-\phi_2)^2}$.
 
-\begin{figure}[h]
+\begin{figure}[htpb]
     \includegraphics[width=\textwidth]{figures/cmsDetector.png}
     \centering
     \caption{The CMS detector.}
@@ -79,7 +79,7 @@ The combination of pixel and strip trackers results in very good track reconstru
 Muon tracks are reconstructed with $>99\%$ efficiency over the entire $\eta$ range of the tracker, and vertices from multiple tracks originating at the same point are reconstructed with resolutions near \SI{50}{\micro\meter}.
 Because higher energy tracks have less curvature, the \pt resolution of tracks decreases as the \pt itself increases. Tracks with typical \pt and $\eta$ used in this analysis (\pt near \SI{100}{\giga\eV} and $1.4<\eta<2.4$) have resolutions near 4$\%$. 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \includegraphics[width=\textwidth]{figures/cms_tracker.png}
     \centering
     \caption{A radial slice of the CMS Tracker.}
@@ -101,7 +101,7 @@ During 2018 data taking, several supercrystals within the ECAL endcaps observed 
 Accurate measurements of ECAL deposits are necessary to reject potential backgrounds tracks with energy loss in ECAL.
 To avoid potential backgrounds from tracks with missing energy from showers in these masked regions, signal tracks are required to have $\Delta R>0.1$ to any masked supercrystal.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \includegraphics[width=\textwidth]{figures/EEChannelMasks.png}
     \centering
 	\caption[Masked ECAL cells]{Transverse slices of the two ECAL endcaps showing the channel status for 2018 data taking. Active channels are in light gray, while inactive channels are colored dark red. The 3x3 squares of inactive tiles represent the inactive superclusters, with three in the negative $\eta$ endcap (left) and four in the positive $\eta$ endcap (right). In this view, the beam line is located at the center of the each ring, and the position of the cells from the middle of their respective center roughly corresponds to their position in r. \cite{EcalDPG}. While there are many individual inactive cells throughout both endcaps, no excess in background was observed outside of the inactive superclusters due to the diffuse nature of the electromagnetic showers in those events.}
@@ -165,7 +165,7 @@ Each DT chamber has one or two RPCs attached to it, and several CSCs have accomp
 The RPCs follow the same gas ionization principles used in the CSCs and DTs, but use segmented metallic plates for both the anode and cathode.
 The RPCs have much worse position resolution than the other two detectors, on the order of \SI{1}{\centi\meter}, but have an improved timing resolution of up to \SI{1}{\nano\second} to compliment the position measurements from the other systems.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \includegraphics[width=\textwidth]{figures/cms_quadrant_run_ii.pdf}
     \centering
     \caption[Muon chamber layout in Run 2]{The muon chamber layout in one quadrant of CMS. The steel used for the return yoke is shown in dark gray, while the DTs, CSCs, and RPCs are shown in tan, green, and blue, respectively.}
