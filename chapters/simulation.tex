@@ -20,7 +20,7 @@ Due to the complexity and importance of these simulations much of the underlying
 Simulating events in CMS begins with a 'generation' step, which simulates the collision of the initial protons, the production of the primary physics process of interest, and its initial decay. 
 This is typically split into an initial event generation step which simulates the initial hard scattering process and a hadronization step which simulates the decays and radiation of the final state particles resulting from the initial scatter.
 
-In this analysis the hard scatter is simulated using \mg, which calculates the matrix elements of a given interaction, which encodes the probability of a given initial state to produce outgoing particles of particular energies and momenta.
+In this analysis the hard scatter is simulated using \mg \cite{Maltoni_2003}, which calculates the matrix elements of a given interaction, which encodes the probability of a given initial state to produce outgoing particles of particular energies and momenta.
 \mg calculates the matrix element using Feynman diagrams and rules to perturbatively calculate the matrix element at a given order in the number of diagrams considered.
 Due to the relative insensitivity in this analysis to the precision of the initial state muons, leading order diagrams are used to calculate this matrix element to reduce the required computation time.
 For all MC samples used, version 2.6.5 of \mg is used to generate hard scatters involving the Drell-Yan process at leading order. 
@@ -43,7 +43,7 @@ Several different schemes are used to calculate these functions, and in this ana
 \section{Detector Response Simulation}
 
 After producing the initial partons for DY events, the behavior of these particles and the corresponding response of the detector to them must be simulated to allow for direct comparison to data.
-In this analysis, the response simulation is performed using \geant, which contains a realistic simulation of the CMS detector and magnetic field.
+In this analysis, the response simulation is performed using \geant \cite{geantRef}, which contains a realistic simulation of the CMS detector and magnetic field.
 \geant tracks each particle as it passes through the detector, simulating their ionization, scattering, and decays, as well as the response of the detector to these effects.
 
 To account for pileup, samples of 'minimum-bias' events simulated with \pythia and \geant are generated to replicate proton scatters without applied requirements for specific interactions.
@@ -72,9 +72,28 @@ Signal contamination in the muon efficiency studies would result in small reduct
 As the efficiency corrections are only applied to the tagging muon and the expected cross section for \dbrem is small, this signal contamination would only result in small reductions in the expected number of tagging muons selected.
 While this signal contamination could result in significant signal loss if applied to the probe muons, the custom validation techniques developed for the selections applied can be chosen to minimize signal contamination and avoid this issue.
 
-Corrections to the muon efficiency are applied to tagging muons in MC as a function of $\eta$ and $p_t$, calculated using the difference in muon quality and isolation efficiency for probe muons in data and MC. 
+Corrections to the muon efficiency are applied to tagging muons in MC as a function of $\eta$ and $p_t$ (\Cref{fig:muIdIsoEff}), calculated using the difference in muon quality and isolation efficiency for probe muons in data and MC. 
 The uncertainty on these efficiency corrections is estimated by varying the tagging muon selections, background and signal models, and MC samples used. 
 This muon efficiency uncertainty is applied as a systematic uncertainty in the search and estimated by varying all muon efficiencies by $\pm$ one standard deviation.
+The resulting scale factors for DY MC, as well as their up- and down- variations, are shown in \Cref{fig:muIdIsoSFs}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/muEtaEff_lowEta.pdf}
+        \hspace{0.01\textwidth}
+        \includegraphics[width=0.45\textwidth]{figures/muPtEff_highEta.pdf}
+	\caption[Muon ID and Isolation Effiencies]{Muon ID and Isolation efficiencies calculated using tag-and-probe methods as a function of $p_t$ (left) and $eta$ (right) for data and simulation. The ID and Isolation scale factors applied to simulated tagging muons are calculated using the ratio of the data and MC efficiencies within 2-dimensional $\eta$ and $p_t$ bins.}
+        \label{fig:muIdIsoEff}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/idSF.pdf}
+        \hspace{0.01\textwidth}
+        \includegraphics[width=0.45\textwidth]{figures/isoSF.pdf}
+	\caption[Muon ID and Isolation Scale Factors]{The Muon ID and Isolation scale factors applied to the simulated DY events, calculated using the $\eta$ and $p_t$ of the tagging muon.}
+        \label{fig:muIdIsoSFs}
+\end{figure}
 
 The efficiency of the isolated muon triggers used in this search are corrected using similar tag-and-probe techniques as the identification efficiency. 
 By selecting events with high-quality tagging muons which pass the trigger requirements and selecting probe muons with reduced identification requirements, the rate of muons with particular $\eta$, $\pt$, and isolation passing the trigger can be compared in data and MC.
