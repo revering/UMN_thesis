@@ -99,7 +99,17 @@ The efficiency of the isolated muon triggers used in this search are corrected u
 By selecting events with high-quality tagging muons which pass the trigger requirements and selecting probe muons with reduced identification requirements, the rate of muons with particular $\eta$, $\pt$, and isolation passing the trigger can be compared in data and MC.
 
 All MC events are then applied a weight based on the relative rate of their tagging muons passing the trigger in data and MC, and a systematic uncertainty in this trigger efficiency is applied by changing the trigger efficiency by one standard deviation.
+The measured trigger efficiencies, as well as the resulting weights and their up- and down- variations, are presented in \Cref{fig:muTrigSFs}.
 To ensure that this efficiency is calculated for the correct muon, all tagging muons selected are required to pass the isolated muon trigger used in this search.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/muTrigEff_2018.pdf}
+        \hspace{0.01\textwidth}
+        \includegraphics[width=0.45\textwidth]{figures/trigSF.pdf}
+	\caption[Muon Trigger Efficiencies and Weights]{The isolation muon trigger efficiencies (left) and resulting weight (right) for DY MC events. The bimodal distributions are produced from the differences in typical scale factors between tagging muons in the barrel and endcap regions.}
+        \label{fig:muTrigSFs}
+\end{figure}
 
 \subsection{Muon Energy Scale Corrections}
 While this analysis has a weak overall sensitivity to the tagging muon kinematics, small differences that may be present between simulation and data in the tagging muon energy could cause shifts in the invariant mass distribution which change the event acceptance rate.
