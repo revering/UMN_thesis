@@ -77,7 +77,7 @@ The uncertainty on these efficiency corrections is estimated by varying the tagg
 This muon efficiency uncertainty is applied as a systematic uncertainty in the search and estimated by varying all muon efficiencies by $\pm$ one standard deviation.
 The resulting scale factors for DY MC, as well as their up- and down- variations, are shown in \Cref{fig:muIdIsoSFs}.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/muonEtaEff.pdf}
         \hspace{0.01\textwidth}
@@ -86,7 +86,7 @@ The resulting scale factors for DY MC, as well as their up- and down- variations
         \label{fig:muIdIsoEff}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/idSF.pdf}
         \hspace{0.01\textwidth}
@@ -102,7 +102,7 @@ All MC events are then applied a weight based on the relative rate of their tagg
 The measured trigger efficiencies, as well as the resulting weights and their up- and down- variations, are presented in \Cref{fig:muTrigSFs}.
 To ensure that this efficiency is calculated for the correct muon, all tagging muons selected are required to pass the isolated muon trigger used in this search.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/muTrigEff_2018.pdf}
         \hspace{0.01\textwidth}
@@ -133,12 +133,25 @@ In order to use this level of detail, the muon HCAL deposits in MC must be valid
 This is done through study of muon deposits along the trajectory of selected tagging muons.
 
 As the global muon associated with the tag may have improved trajectory accuracy due to the inclusion of information from the muon systems, the tracker track matching the global muon is projected into HE to match the information available for the selected probes.
-The HCAL energy is then collected in each depth along the trajectory of the track, and the distributions of energy are compared in data and DY MC. 
+The HCAL energy is then collected in each depth along the trajectory of the track, and the distributions of energy are compared in data and DY MC.
 
-Initial studies of the muon energy deposits found significant excesses in data of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing' hits (\Cref{fig:missingHits}. 
-Study of these events found that events with many missing hits correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and are likely caused by a combination of effects from differences in light collection efficiency with particle position that are not replicated in simulation, gaps between cells causing small regions of missing coverage, and misalignment between the CMS tracker and HCAL in reconstruction.
+The energy distributions along tag-muon aligned tracks for HE depths 1 and 4 are shown in \Cref{fig:unCorrHEDepths}.
+As the depth increases, the thickness of the layers increases and the backgrounds decrease, improving the amplitude and resolution of the muon peak.
+The simulated and data events were found to have peak energies near the same values, but significant excesses of events with very low energy ($<$\SI{0.1}{\giga\eV}) were seen in data, while simulated events were seen to have higher rates of events with HE energy in the high tails.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/hcalAllE_depth0.pdf}
+        \hspace{0.01\textwidth}
+        \includegraphics[width=0.45\textwidth]{figures/hcalAllE_depth3.pdf}
+        \caption[HE Energy Deposits Along Tag-Aligned Muons]{The HE energy for two individual depths from cells aligned with tagging muons. Significant excess is seen in data events with very low HE energy and MC events with large energy.}
+        \label{fig:unCorrHEDepths}
+\end{figure}
+
+To study these events, the number of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing' hits (\Cref{fig:missingHits}, was measured for each event, and a subsample of events with multiple missing hits was created. 
+Events with many missing hits were found to correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and are likely caused by a combination of effects from differences in light collection efficiency with particle position that are not replicated in simulation, gaps between cells causing small regions of missing coverage, and misalignment between the CMS tracker and HCAL in reconstruction.
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/hcalAllMissingHits.pdf}
         \hspace{0.01\textwidth}
@@ -147,7 +160,7 @@ Study of these events found that events with many missing hits correspond to pro
         \label{fig:missingHits}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/HEEdgeDistance_all_smallCell.pdf}
         \hspace{0.01\textwidth}
@@ -161,7 +174,7 @@ Study of these events found that events with many missing hits correspond to pro
 \end{figure}
 
 Anomalous low-hit events that are produced by misalignment between the HE and the tracker in reconstruction will have correlations between the probe track trajectory and the $\Delta\eta$ and $\Delta\phi$ to cell edges which produce significant missing hits. 
-To study these correlations, the $\eta$ edge and $\phi$ edge events are first categorized using requirements of |$\Delta\phi$| $<$0.004 a |$\Delta\eta$| $<$0.016, respectively. 
+To study these correlations, the $\eta$ edge and $\phi$ edge events are first categorized using requirements of $\mid\Delta\phi\mid$ $<$0.004 and $\mid\Delta\eta\mid$ $<$0.016, respectively. 
 By defining tag-aligned probe track data events which are not near $\phi$ edges as well as similar tag-aligned events which are not near $\eta$ edges, the two patterns can be separated and correlations in the cell edge distances which produce many missing hits and the probe track trajectory can be found. 
 The minimum $\Delta\phi$ in non-$\eta$-edge events with multiple missing hits is shown as a function of $\phi$ in \Cref{fig:phiEdgeCorr}, and the minimum $\Delta\eta$ in non-$\phi$-edge events with multiple missing hits is shown as a function of $\eta$ for both endcaps in \Cref{fig:etaEdgeCorr}.
 
@@ -181,17 +194,34 @@ The minimum $\Delta\phi$ in non-$\eta$-edge events with multiple missing hits is
     \label{fig:etaEdgeCorr}
 \end{figure}
 
-To accounting for these correlations, the 'on-edge' requirements are chosen to be dependent on the probe track trajectory as well as the cell edge distance. 
+To account for these correlations, the 'on-edge' requirements are chosen to be dependent on the probe track trajectory as well as the cell edge distance. 
 Probe tracks are designated as on-edge in $\eta$ if -0.002$<\Delta\eta<$0.016 and the probe track trajectory has $\eta<0$, or if -0.016$<\Delta\eta<$0.002 and the probe track trajectory
 has $\eta>0$.
 Probe tracks are designated as on-edge in $\phi$ if -0.001$<\Delta\phi<$0.004 and the probe track trajectory has $|\phi|>\pi/$2, or if -0.004$<\Delta\phi<$0.001 and the probe track trajectory has $|\phi|<\pi/$2.
 
 Events which are on-edge in $\eta$, $\phi$, or both are excluded from the partial disappearance region due to the significant differences observed between data and MC in the individual HE hits, which are necessary in that region to remove soft SM Bremsstrahlung backgrounds.
-In complete disappearance events, the HCAL hits are implemented using sums of all HCAL cells within a $\Delta$R cone of 0.3, which is sufficiently large to include all adjacent cells and so does not have visible differences due to this misalignment.
+In complete disappearance events, the HCAL hits are implemented using sums of all HCAL cells within a $\Delta$R cone of 0.3, which is sufficiently large to include all adjacent cells and is not significantly affected by this misalignment.
 
-After removing the on-edge events, small variations in the energy of muons in HE are still observed. 
+After removing the on-edge events, small variations in the energy of muons in HE are still observed \cref{fig:nonEdgeHEenergy}. 
 To correct for these differences, event weights are derived for each depth in HE as a function of the energy in that depth based on the difference observed between DY MC and data.
 Additionally, to avoid potential differences in the simulated zero-suppression thresholds which may cause significant changes in events with very low HE energy, all HE hits with reconstructed energy below \SI{0.1}{\giga\eV} are set to zero.
+The resulting scale factors for simulated DY events are shown in \Cref{fig:HESFs}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/hcalE_depth0.pdf}
+        \hspace{0.01\textwidth}
+        \includegraphics[width=0.45\textwidth]{figures/hcalE_depth4.pdf}
+	\caption[Center-Aligned HE Energy]{The HE energy of in depths along tag-aligned muons for events not near the edge of HE cells. After removing the tracks with trajectories near cell edges, the excess in data events for events with very low energy is greatly reduced, and the ratio of simulated and data events is from these comparisons is later applied as a correction factor to DY MC.} 
+        \label{fig:nonEdgeHEEnergy}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/totalHEWeights.pdf}
+	\caption[Applied HCAL Scale Factors]{The weights applied to simulated DY events from resulting from the individual HE depth corrections. The corrections are derived iteratively for each successive depth, and the resulting weight is the product of the weights from each HE depth along the probe trajectory.} 
+        \label{fig:HESFs}
+\end{figure}
 
 \subsection{Pileup Correction}
 Generation of simulated events generally occurs during the data taking period, when the exact pileup distribution is not well known.
