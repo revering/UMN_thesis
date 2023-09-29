@@ -38,25 +38,25 @@ Together, the proton constituents are referred to as partons, and their relative
 
 Parton distribution functions (PDFs) represent the probability to find a parton of a given flavor with a particular fraction of the proton's momentum at a fixed energy scale.
 To fully calculate the cross section of an interaction in CMS, the matrix element showing the probability of any two partons to produce that interaction must be integrated over all possible partons and momentum fractions and weighted by the corresponding PDF. 
-Several different schemes are used to calculate these functions, and in this analysis the $NNPDF31$\_$nnlo$\_$as$\_$0118$ PDF \cite{nnpdf} is used for all simulated samples.
+Several different schemes can used to calculate these functions, and in this analysis the NNPDF31$\_$nnlo$\_$as$\_$0118 PDF \cite{nnpdf} is used for all simulated samples.
 
 \section{Detector Response Simulation}
 
 After producing the initial partons for DY events, the behavior of these particles and the corresponding response of the detector to them must be simulated to allow for direct comparison to data.
-In this analysis, the response simulation is performed using \geant \cite{geantRef}, which contains a realistic simulation of the CMS detector and magnetic field.
-\geant tracks each particle as it passes through the detector, simulating their ionization, scattering, and decays, as well as the response of the detector to these effects.
+In this analysis, the response simulation is performed using \geant \cite{geantRef}, which is provided a realistic simulation of the CMS detector and magnetic field.
+\geant tracks each particle as it passes through the detector, simulating their ionization, scattering, and decays, and the resulting energy deposited in each region of the detector.
+
+The reponse of each detector element to these energy and ionization deposits is then simulated and used to replicate the digital output of the real detector, and the events are then reconstructed using the same algorithms used in data events.
 
 To account for pileup, samples of 'minimum-bias' events simulated with \pythia and \geant are generated to replicate proton scatters without applied requirements for specific interactions.
 The minimum-bias samples are then selected at random to be combined with the inelastic scatter to replicate their appearance in data and match the distributions of pileup vertices expected during each data-taking period.
-
-The simulated detector responses from \geant are then reconstructed using identical techniques to those used in data. 
 
 \section{Monte Carlo Corrections}
 Differences in generated MC samples and data that could impact variables relevant to this search can arise from many possible sources.
 The response of the detector to high-energy particles can be very difficult to model accurately, as it may depend on the exact detector configuration and geometry, the complex interactions that the particle undergoes, and the efficiency of the particular electronics used to read the signal out.
 Some parts of the detector do not have precise alignment schemes to position each sub-component, which can cause missing signals in expected locations or appearance in unexpected ones. 
-The data taking conditions, such as the exact configuration of the magnetic field, the efficiency of each channel in each detector, and the zero suppression thresholds applied can change as each run progresses in ways that are difficult to replicate in simulation.
-To produce the best possible match between MC simulations and data, several corrections are applied to known quantities in MC to match those observed in control regions in data to remove or constrain potential differences due to these effects.
+The data taking conditions, such as the exact configuration of the magnetic field, the efficiency of each channel in each detector, and the zero suppression thresholds applied can change as each run progresses or require specific calibrations that are difficult to replicate in simulation.
+To produce the best possible match between MC simulations and data, several corrections are applied to the final reconstructed objects in MC to match those observed in control regions in data to remove or constrain potential differences due to these effects.
 
 \subsection{Muon Identification and Trigger Efficiencies}
 The reconstruction of muons is vital to the search presented in this thesis, both for identifying tagging muons and classifying potential signal.
@@ -107,7 +107,7 @@ To ensure that this efficiency is calculated for the correct muon, all tagging m
 	\includegraphics[width=0.45\textwidth]{figures/muTrigEff_2018.pdf}
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/trigSF.pdf}
-	\caption[Muon Trigger Efficiencies and Weights]{The isolation muon trigger efficiencies (left) and resulting weight (right) for DY MC events. The bimodal distributions are produced from the differences in typical scale factors between tagging muons in the barrel and endcap regions.}
+	\caption[Muon Trigger Scale Factors and Weights]{The isolation muon trigger scale factors as a function of muon $\eta$ and $\phi$ (left) and resulting weight (right) for DY MC events. The bimodal distributions in the event weight are produced from the differences in typical scale factors between tagging muons in the barrel and endcap regions.}
         \label{fig:muTrigSFs}
 \end{figure}
 
@@ -169,7 +169,7 @@ Events with many missing hits were found to correspond to probe trajectories tha
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/HEEdgeDistance_multMissing.pdf}
 
-        \caption[Muon distances to HE cell edges]{The distance of closest approach (DCA) to any HE cell edge for tagging muons used to validate HE hits. Events with more than two missing hits (right) are clustered near the edges of HE cells, while the overall distribution of tracks is spread evenly across the cell size. The vertical splitting reflects the two different cell sizes in the detector, although the cell size is not observed to significantly change the size of the regions with many missing hits.}
+        \caption[Muon distances to HE cell edges]{The distance of closest approach (DCA) to any HE cell edge for tagging muons used to validate HE hits. Events with more than two missing hits (right) are clustered near the edges of HE cells, while the overall distribution of tracks is spread evenly across the cell size. The vertical splitting reflects the two different cell sizes in the detector, with the cell size in each region represented by the dotted line. The cell size is not observed to significantly change the size of the $\Delta\eta$ and $\Delta\phi$ regions with many missing hits.}
         \label{fig:cellEdges}
 \end{figure}
 
@@ -202,7 +202,7 @@ Probe tracks are designated as on-edge in $\phi$ if -0.001$<\Delta\phi<$0.004 an
 Events which are on-edge in $\eta$, $\phi$, or both are excluded from the partial disappearance region due to the significant differences observed between data and MC in the individual HE hits, which are necessary in that region to remove soft SM Bremsstrahlung backgrounds.
 In complete disappearance events, the HCAL hits are implemented using sums of all HCAL cells within a $\Delta$R cone of 0.3, which is sufficiently large to include all adjacent cells and is not significantly affected by this misalignment.
 
-After removing the on-edge events, small variations in the energy of muons in HE are still observed \cref{fig:nonEdgeHEenergy}. 
+After removing the on-edge events, small variations in the energy of muons in HE are still observed \cref{fig:nonEdgeHEEnergy}. 
 To correct for these differences, event weights are derived for each depth in HE as a function of the energy in that depth based on the difference observed between DY MC and data.
 Additionally, to avoid potential differences in the simulated zero-suppression thresholds which may cause significant changes in events with very low HE energy, all HE hits with reconstructed energy below \SI{0.1}{\giga\eV} are set to zero.
 The resulting scale factors for simulated DY events are shown in \Cref{fig:HESFs}.
@@ -227,7 +227,7 @@ The resulting scale factors for simulated DY events are shown in \Cref{fig:HESFs
 Generation of simulated events generally occurs during the data taking period, when the exact pileup distribution is not well known.
 As a result, estimates of the distribution of pileup vertices are used during the initial MC generation. 
 After data taking is complete and the resulting pileup distribution is measured, the simulated events are re-weighted to recreate the observed pileup.
-Pileup events may produce particles which are mistakenly identified as muons or are in the vicinity of a probe track and cause it to fail isolation requirements, so potential differences in the number of pileup particles between data and MC could impact the expected signal strength.
+Pileup events may produce particles which are mistakenly identified as muons or are in the vicinity of a probe track and cause it to fail isolation requirements, so potential differences in the number of pileup particles between data and MC could change the efficiency of selecting disappearing tracks, and thus impact the expected signal strength.
 
 To perform this re-weighting, histograms of the amount of pileup observed in data are divided by those used to generate the MC samples to find the weight for each potential number of pileup interactions (\Cref{fig:pileup}).
 The number of pileup interactions used for this re-weighting is not directly the number of pileup vertices in the event, which is dependent on the vertex reconstruction efficiency in the event and can introduce large systematic errors and biases.

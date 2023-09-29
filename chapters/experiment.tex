@@ -80,7 +80,7 @@ Muon tracks are reconstructed with $>99\%$ efficiency over the entire $\eta$ ran
 Because higher energy tracks have less curvature, the \pt resolution of tracks decreases as the \pt itself increases. Tracks with typical \pt and $\eta$ used in this analysis (\pt near \SI{100}{\giga\eV} and $1.4<\eta<2.4$) have resolutions near 4$\%$. 
 
 \begin{figure}[htbp]
-    \includegraphics[width=\textwidth]{figures/cms_tracker.png}
+    \includegraphics[width=1.1\textwidth]{figures/cms_tracker.png}
     \centering
     \caption{A radial slice of the CMS Tracker.}
     \label{fig:cmsTracker}
@@ -88,7 +88,8 @@ Because higher energy tracks have less curvature, the \pt resolution of tracks d
 
 
 \section{ECAL}
-The electromagnetic calorimeter sits outside of the tracker, and is split into a barrel and two endcap sections. 
+The electromagnetic calorimeter sits outside of the tracker, and is split into one barrel section and two endcap sections. 
+A full description of the ECAL can be found in Reference \cite{ECALtdr}.
 The ECAL barrel covers $\lvert\eta\rvert<$1.479 and r$<$\SI{160}{\centi\meter}, while the endcaps cover 1.479$<\lvert\eta\rvert<$3 and $\lvert z \rvert<$\SI{4}{\meter}. 
 Both sections consist of lead tungstate (PbWO$_4$) crystals, a dense (\SI{8.28}{\gram\per\cubic\centi\meter}) transparent crystal which produces scintillation light when it interacts with a high-energy particle. 
 The scintillating radiation is absorbed by Avalanche Photo-diodes in the barrel and Vacuum Phototriodes in the endcaps to measure the energy deposited within each 
@@ -102,7 +103,7 @@ Accurate measurements of ECAL deposits are necessary to reject potential backgro
 To avoid potential backgrounds from tracks with missing energy from showers in these masked regions, signal tracks are required to have $\Delta R>0.1$ to any masked supercrystal.
 
 \begin{figure}[ht]
-    \includegraphics[width=\textwidth]{figures/EEChannelMasks.png}
+    \includegraphics[width=1.2\textwidth]{figures/EEChannelMasks.png}
     \centering
 	\caption[Masked ECAL cells]{Transverse slices of the two ECAL endcaps showing the channel status for 2018 data taking. Active channels are in light gray, while inactive channels are colored dark red. The 3x3 squares of inactive tiles represent the inactive superclusters, with three in the negative $\eta$ endcap (left) and four in the positive $\eta$ endcap (right). In this view, the beam line is located at the center of the each ring, and the position of the cells from the middle of their respective center roughly corresponds to their position in r. \cite{EcalDPG}. While there are many individual inactive cells throughout both endcaps, no excess in background was observed outside of the inactive superclusters due to the diffuse nature of the electromagnetic showers in those events.}
     \label{fig:EEmasks}
@@ -110,6 +111,7 @@ To avoid potential backgrounds from tracks with missing energy from showers in t
 
 \section{HCAL}
 The CMS hadronic calorimeter (HCAL) is a sampling calorimeter, which consists of alternating layers of brass absorber and plastic scintillator. 
+A complete description of the CMS HCAL can be found in Reference \cite{HCALtdr}.
 Hadronic showers are primarily induced in the absorber, while the energy of the shower is sampled in each layer of scintillator and the sampled energy is used to estimate the total energy of the shower. 
 While this sampling method lowers the precision of the energy measurement, it allows most of the detector material to be made of relatively cheap absorber instead of scintillating material, which results in a very substantial cost reduction due to the large amount of material required to stop high-energy hadrons.
 The HCAL endcaps have 17 active layers of plastic scintillator and \SI{8}{\centi\meter} absorber, covering 1.4$<\eta<$2.4 and extending to $\lvert z \rvert<$ \SI{5.6}{\meter}, with a total radiation length near 200 X$_0$. 
@@ -125,8 +127,8 @@ Using this, energy information from HE after the SiPM installation is now groupe
 
 \begin{figure}[!htpb]
 	   \centering
-	      \includegraphics[width=\textwidth]{figures/HE_upgrade.jpg}
-		 \caption[The 2018 HE upgrade]{The CMS HCAL geometry before (left) and after (right) the SiPM installation. Each rectangle represents a cell, and like-colored cells in HCAL at each i$\eta$ and i$\phi$ are summed to create a 'hit' at the depth represented by their color. These hits are the most granular HE information available. As the upgrade was only performed in HE for 2018 data taking, individual depth information is only available in the endcap for this analysis.}
+	      \includegraphics[width=0.8\textwidth]{figures/HE_upgrade.pdf}
+		 \caption[The 2018 HE upgrade]{The CMS HCAL geometry before (above) and after (below) the SiPM installation. Each rectangle represents a cell, and like-colored cells in HCAL at each i$\eta$ and i$\phi$ are summed to create a 'hit' at the depth represented by their color. These hits are the most granular HE information available. As the upgrade was only performed in HE for 2018 data taking, individual depth information is only available in the endcap for this analysis.}
 	    \label{fig:HElayout}
 \end{figure}
 
