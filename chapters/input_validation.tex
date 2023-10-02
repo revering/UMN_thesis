@@ -75,25 +75,25 @@ The number of depths traversed by any given muon depends on its position in HCAL
 To accomodate this, projected tracks which do not pass through a given depth in HCAL are assigned an energy of -1. 
 
 \section{Optimization}
-The primary challenge with training the partial region BDT is the imbalance between signal and background events. 
-Because \dbrem is expected to be a rare process, there are should be many more background events than signal events in the data sample, and background rejection must be strongly prioritized over signal purity.
+A significant difficulty in training the partial region BDT is the imbalance between signal and background events. 
+Because \dbrem is expected to be a rare process, many more background events are expected than signal events, and the background rejection rate must be prioritized over signal selection efficiency.
 
 To represent this, signal events are given reduced weights to replicate their lower relative rate and increase the importance of background rejection.
 Prior to optimization of the other parameters, a scan of this signal weight is made and the value which produces the strongest signal limit is selected.
 To reduce the necessary validation and simplify the network, each signal mass is combined into one training input and weighted to give equal importance to each mass.
 
 The internal parameters of the BDT are chosen using a randomized search, where each parameter is sampled from a flat distribution of possible values for a large number of trials.
-To reduce the impact of overtraining in this parameter choosing, the training data is split into five randombly sampled independent subsets called \emph{folds}.
-Five separate testing and training subsamples are then defined, each with the test set as one fold and the training set as the other four.
+To reduce the impact of overtraining in this parameter optimization, the training data is split into five randombly sampled independent subsets called \emph{folds}.
+Five separate testing and training combinations sets are then defined, each with the test set as one fold and the training set as the other four.
 
 Five separate BDTs are then trained using these datasets, and the average weighted mean squared error of the five BDTs is used as the figure of merit in the randomized parameter search.
-By using the parameters with the average mean squared error, the optimum parameters can be selected by using the entire dataset to test the performance, as every event has a BDT which did not use it as training data, reducing the potential bias caused by the testing selection.
+By selecting the parameters with the smallest average mean squared error, the optimum parameters can be chosen by using the entire dataset to test the performance, as every event has a BDT which did not use it as training data, reducing the potential bias caused by the testing selection.
 
-The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used, the weighting factor of each new tree, the loss reduction requred to create new leaves, and fraction of features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
+The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used, the weighting factor of each new tree, the loss reduction required to create new leaves, the fraction of input features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
 
 \section{Validation}
 \label{sec:BDTvalid}
-A control region consisting of probe tracks with large HCAL isolation ($>$\SI{30}{\giga\eV}) is used to validate the performance of the BDT using data.
+Two control regions are used to validate the performance of the BDT on background events, one consisting of probe tracks with large HCAL isolations ($>$\SI{30}{\giga\eV}), and one consisting of events with BDT scores less than 0.7. 
 The HCAL energy requirement tends to select for muons which have had hard SM scatters within the detector, and thus have more signal-like features in the muon chambers and more background-like features in the HCAL.
 
 Events with poor HCAL isolation also select for $\mu+X$ backgrounds at a much larger rate than in the signal region.
@@ -155,10 +155,23 @@ The shift in the overall DY BDT distribution with the CSC scale factors applied 
 	\label{fig:BDTsfvalid}
 	\centering
 	%\includegraphics[width=0.6\textwidth]{figures/highHcal_cscSF.pdf}
-        \caption[BDT Score Variance with Applied CSC Scale Factors]{The disribution of BDT output scores for DY Mc events with and without CSC scale factors applied.}
+        \caption[BDT Score Variance with Applied CSC Scale Factors]{The distribution of BDT output scores for DY Mc events with and without CSC scale factors applied.}
 \end{figure}
 
-In the signal region (BDT > 0.98), the application of the scale factors produces 8$\%$ fewer DY events in the signal region, which is included as a systematic
-uncertainty on the rate of DY background in the partial disappearance region. 
+In the signal region (BDT Score$>0.98$), the application of the scale factors produces 8$\%$ fewer DY events, which is included as an overall systematic uncertainty on the rate of expected DY background in the partial disappearance region. 
+
+In contrast to the high-HCAL energy region, events with low BDT scores (BDT score $<0.7$) contain background-like features in both the CSCs and HCAL, and can be used to validate the simulation of the DY backgrounds as well as the performance of the BDT on these events.
+In intial studies of this region, significant differences were observed in several features related to the standalone muons, with excess events showing large $\DeltaR$ to the nearest standalone muon, low standalone muon energy, and large trajectory change between the probe track and the nearest standalone muon.
+
+In addition, large differences in the overall normalization were observed between the data events and the expected rate of DY backgrounds, with nearly twice as many events selected as expected.
+Through study of these anomalous events, it was found that they correspond to cases where large differences in CSC segment position were present between the first CSC station and the later three.
+These position differences cause the reconstruction of the standalone muon to produce anomalously low energy and altered trajectories, resulting in several signal-like differences in the final objects. 
+
+Large positional differences between the first and later CSC stations is not frequently seen in signal events, as energy loss within the HCAL results in significant deflection before reaching the CSC chambers, but relatively small deflection from station to station. 
+As a result, these anomalous standalone muons can be removed using quality requirements based on the $\DeltaR$ of the nearest CSC segments in stations two, three, and four to the position of the nearest CSC segment in station one.
+After removing events with no CSC segments within $\DeltaR<0.04$ of the nearest CSC segment in station one, significant improvement is seen in the individual standalone muon features.
+The overall normalization after this additional requirement differs on the scale of $20\%$, roughly in expectation with the combined cross section, luminosity, and selection efficiency uncertainties.
+
+The behavior of the remaining input features in the low BDT score control region is shown in , and the resulting BDT score is shown in .
 
 
