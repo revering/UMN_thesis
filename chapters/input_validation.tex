@@ -74,6 +74,21 @@ Lastly, the HCAL energy in each depth along the probe trajectory is used to iden
 The number of depths traversed by any given muon depends on its position in HCAL.
 To accomodate this, projected tracks which do not pass through a given depth in HCAL are assigned an energy of -1. 
 
+The distribution of the highest-performing input variable in each category for DY MC and several signal masses is shown in \Cref{fig:bdtFeatures}.
+
+\begin{figure}[htpb]
+	\label{fig:bdtFeatures}
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatscscDRbyStation_1.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatsHEDepth_4.pdf}
+	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatsstaChi.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatseta.pdf}
+	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatsstaPhi.pdf}
+	\caption[Input BDT Classification Features]{The distributions of the highest-relevance input feature to the BDT for signal and DY MC events. While some variables, such as the CSC hit $\Delta$R and standalone muon $\Delta\phi$, have clear separation between signal and background, others have very similar behavior, and are used to reject DY events with otherwise signal-like features.}
+\end{figure}
+
 \section{Optimization}
 A significant difficulty in training the partial region BDT is the imbalance between signal and background events. 
 Because \dbrem is expected to be a rare process, many more background events are expected than signal events, and the background rejection rate must be prioritized over signal selection efficiency.
@@ -139,7 +154,7 @@ As expected, the region is relatively shifted to higher BDT scores than the over
 \begin{figure}[htbp]
 	\label{fig:BDTscorevalid}
 	\centering
-	%\includegraphics[width=0.6\textwidth]{figures/highHcal_BDTScore.pdf}
+	\includegraphics[width=0.6\textwidth]{figures/highHcalValid.pdf}
         \caption[BDT Validation in the High HCAL Energy Control Region]{The distribution of BDT scores for data and DY MC events in the high HCAL control region.}
 \end{figure}
 
@@ -154,14 +169,28 @@ The shift in the overall DY BDT distribution with the CSC scale factors applied 
 \begin{figure}[htbp]
 	\label{fig:BDTsfvalid}
 	\centering
-	%\includegraphics[width=0.6\textwidth]{figures/highHcal_cscSF.pdf}
-        \caption[BDT Score Variance with Applied CSC Scale Factors]{The distribution of BDT output scores for DY Mc events with and without CSC scale factors applied.}
+	\includegraphics[width=0.6\textwidth]{figures/highHcal_cscReweight.pdf}
+        \caption[BDT Score Variance with Applied CSC Scale Factors]{The distribution of BDT output scores for DY MC events with and without CSC scale factors applied, as well as the distribution of scores in data. Applying the CSC scale factors significantly reduces the excess in DY MC events with scores in the signal region, and the resulting rate matches the rate seen in data.}
 \end{figure}
 
-In the signal region (BDT Score$>0.98$), the application of the scale factors produces 8$\%$ fewer DY events, which is included as an overall systematic uncertainty on the rate of expected DY background in the partial disappearance region. 
+In the signal region (BDT Score$>0.98$), the application of the scale factors produces 30$\%$ fewer DY events, which is included as an overall systematic uncertainty on the rate of expected DY background in the partial disappearance region. 
+This systematic results in close agreement between DY MC and the observed data.
 
 In contrast to the high-HCAL energy region, events with low BDT scores (BDT score $<0.7$) contain background-like features in both the CSCs and HCAL, and can be used to validate the simulation of the DY backgrounds as well as the performance of the BDT on these events.
-In intial studies of this region, significant differences were observed in several features related to the standalone muons, with excess events showing large $\Delta$R to the nearest standalone muon, low standalone muon energy, and large trajectory change between the probe track and the nearest standalone muon.
+In intial studies of this region, significant differences were observed in several features related to the standalone muons, with excess events showing large $\Delta$R to the nearest standalone muon, low standalone muon energy, and large trajectory change between the probe track and the nearest standalone muon \Cref{fig:lowScoreVariableMismatch}.
+
+\begin{figure}[htbp]
+	\label{fig:lowScoreVariableMismatch}
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/badPartialRegioncscDR.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/badPartialRegionstandaloneDEoverE.pdf}
+	\vspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/badPartialRegionstaDR.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/badPartialRegionstaPhi.pdf} 
+        \caption[Low-Score Event Validation Before Correction]{Input features showing significant differences between data and DY simulation in the low BDT score control region.}
+\end{figure}
 
 In addition, large differences in the overall normalization were observed between the data events and the expected rate of DY backgrounds, with nearly twice as many events selected as expected.
 Through study of these anomalous events, it was found that they correspond to cases where large differences in CSC segment position were present between the first CSC station and the later three.
@@ -169,7 +198,28 @@ These position differences cause the reconstruction of the standalone muon to pr
 
 Large positional differences between the first and later CSC stations is not frequently seen in signal events, as energy loss within the HCAL results in significant deflection before reaching the CSC chambers, but relatively small deflection from station to station. 
 As a result, these anomalous standalone muons can be removed using quality requirements based on the $\Delta$R of the nearest CSC segments in stations two, three, and four to the position of the nearest CSC segment in station one.
-After removing events with no CSC segments within $\Delta\mathrm{R}<0.04$ of the nearest CSC segment in station one, significant improvement is seen in the individual standalone muon features.
+After removing events with no CSC segments within $\Delta\mathrm{R}<0.04$ of the nearest CSC segment in station one, significant improvement is seen in the individual standalone muon features (\Cref{fig:lowScoreInputCorrection}).
 The overall normalization after this additional requirement differs on the scale of $20\%$, roughly in expectation with the combined cross section, luminosity, and selection efficiency uncertainties.
 
-The behavior of the remaining input features in the low BDT score control region is shown in , and the resulting BDT score is shown in .
+\begin{figure}[htbp]
+	\label{fig:lowScoreInputCorrection}
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/partialRegioncscDR.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/partialRegionstandaloneDEoverE.pdf}
+	\vspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/partialRegionstaDR.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/partialRegionstaPhi.pdf} 
+        \caption[Low-Score Event Validation After Correction]{The input features which originally showed significant differences between data and DY simulation in the low BDT score control region after removing events with large angular differences between the first and later CSC stations.}
+\end{figure}
+
+The behavior of the remaining input features in the low BDT score control region is shown in , and the resulting BDT score is shown in \Cref{BDTlowvalid}.
+
+\begin{figure}[htbp]
+	\label{fig:BDTlowvalid}
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/partialBDTScore.pdf}
+        \caption[Low BDT Score Validation]{The distribution of BDT output scores for all DY MC events and for data events with BDT scores less than 0.7.}
+\end{figure}
+
