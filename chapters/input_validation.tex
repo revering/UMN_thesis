@@ -41,7 +41,7 @@ The tree optimization and re-weighting is then continued for several iterations 
 The main advantage of tree boosting is that it allows many weak classifiers in the individual trees to be combined into one strong classifier using the ensemble output score.
 In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework \cite{XGBoost} interfaced with Scikit-learn \cite{scikit}. 
 
-The BDT is trained using only the signal masses and DY MC background, as the preselection and standalone muon requirements alone are significant enough to reduce $\mu+X$ events to manageable levels. 
+The BDT is trained using only the signal masses and DY MC background, as the preselection and standalone muon requirements alone are significant enough to control the rate of $\mu+X$ events. 
 
 \section{Inputs}
 There are 21 event variables which are used as inputs to the BDT, which can be grouped into five categories.
@@ -214,12 +214,12 @@ The overall normalization after this additional requirement differs on the scale
         \caption[Low-Score Event Validation After Correction]{The input features which originally showed significant differences between data and DY simulation in the low BDT score control region after removing events with large angular differences between the first and later CSC stations.}
 \end{figure}
 
-The behavior of the remaining input features in the low BDT score control region is shown in , and the resulting BDT score is shown in \Cref{BDTlowvalid}.
+The behavior of the remaining input features in the low BDT score control region is shown in , and the resulting BDT score is shown in \Cref{fig:BDTlowvalid}.
 
 \begin{figure}[htbp]
 	\label{fig:BDTlowvalid}
 	\centering
-	\includegraphics[width=0.6\textwidth]{figures/partialBDTScore.pdf}
+	\includegraphics[width=0.5\textwidth]{figures/partialBDTScore.pdf}
         \caption[Low BDT Score Validation]{The distribution of BDT output scores for all DY MC events and for data events with BDT scores less than 0.7.}
 \end{figure}
 
