@@ -157,10 +157,25 @@ As expected, the additional particles produced in hadronic and $\tau$ decays of 
 
 \section{Signal Contamination}
 \label{sec:SigContamination}
-In the Off-peak control region, signal contamination would increase the predicted $\mu+X$ background by being included in the non-peaking fit applied to the control region. Using the functional form of the off-peak fit used in Figure \ref{fig:offpeakfit}, each signal event in the off-peak control region will add 0.5 expected $\mu+X$ events. Because of the strongly peaking nature of the signal events in invariant mass, signal contamination would reduce the observed by at most $2.5\%$ for all signal masses and regions.
+While the control regions used are generally chosen to contain as few signal events as possible, some signal events may still be present within them.
+This effect, referred to as signal contamination, can have several impacts on the measured result, depending on the amount of signal present and the control regions in which it is found.
 
-While the off-peak signal contamination is small enough that it can be used to predict the rate of background $\mu$+X events, it is significant enough to prevent the use of the region as validation for the partial disappearance region. The signal contamination rate is almost entirely produced by the peaking shape of the invariant mass distribution, and any corrections or uncertainties derived using off-peak partial disappearance resulting from signal contamination would scale with the peaking DY shape instead of the smooth $\mu$+X background, resulting in a loss of signal near 100$\%$.
+In the off-peak control region, signal contamination could potentially increase the predicted $\mu+X$ background by being included in the non-peaking fit. 
+Using the functional form of the off-peak fit used in Figure \ref{fig:offpeakfit}, each signal event in the off-peak control region fit will add 0.5 expected $\mu+X$ events to the background prediction in the signal region.
 
-For the same-sign control region, signal contamination would produce a peak in the invariant mass distribution reducing the quality of the fit. No MC signal events passed the signal selection with a same-sign requirement for the tag muon and probe track, and no excess of same-sign events is observed near the Z peak in data.
+In partial disappearance events the single-bin fit results in these additional events directly contributing to the expected background and therefore reducing the signal sensitivity. 
+In complete disappearance events ,the off-peak prediction is only used to predict the nominal $\mu$+X scale, and the simultaneous fit within the signal region reduces the impact of signal contamination by exploiting the shape difference between $\mu$+X and signal or DY events.
 
-In the hard Bremsstrahlung control region, signal contamination could result in shifts in the expected rate of Standard Model Bremsstrahlung and increased uncertainty in the measurement of HE energy deposits. Signal events are less likely to have hard Bremsstrahlung events before producing dark matter due to the dependence of the production cross section on muon energy, and less likely to deposit large amounts of energy in HE after a dark matter interaction due to reduced available muon energy. In addition, DY events in the hard Bremsstrahlung control region appear much more background-like than in the signal region due to energy loss from SM processes. As a result, background events pass the requirement of BDT score $>0.98$ much more frequently in the hard Bremmstrahlung control region than the signal region, while signal events have similar BDT score distributions in both regions. The combination of these effects results in an expected signal loss of 4$\%$ from signal contamination in the corrections derived in the hard Bremsstrahlung region.
+Because of the strongly peaking nature of the invariant mass in signal events, one signal event is expected to appear in the off-peak region for every 20 events in the signal region.
+Combining the effects of the off-peak fit extrapolation and the invariant mass shape, the expected signal contamination in the off-peak control region would reduce the signal sensitivity by at most $2.5\%$ for all signal masses and regions.
+
+In the hard Bremsstrahlung control region, events are selected which have large HCAL energy along the probe track trajectory in order to validate the simulation of MC events with visible energy deposits from standard model Bremmstrahlung, as well as to test the partial disappearance BDT classification using data. 
+As the difference in the BDT shape between data and MC in this region is used to derive systematic uncertainty on the BDT shape of DY backgrounds, extra high-scoring events from signal contamination would increase this uncertainty and reduce the final signal sensitivity.
+
+There are several factors which reduce the impact of this effect.
+Signal events are less likely to have hard Bremsstrahlung interactions before producing dark matter, as Bremsstrahlung reduces the muon energy and lowers the resulting production cross section of dark Bremsstrahlung.
+Signal events are also less likely to deposit large amounts of energy in HE after a dark matter interaction, as the low energy of outgoing muons reduces the energy available for SM Bremsstrahlung. 
+
+In addition, DY events in the hard Bremsstrahlung control region appear much more background-like than in the signal region due to energy loss from SM processes.
+DY background events pass the requirement of BDT score $>0.98$ much more frequently in the hard Bremmstrahlung control region than the signal region, while signal events have similar BDT score distributions in both regions. 
+The combination of these effects results in an expected signal loss of 4$\%$ from signal contamination in the corrections derived in the hard Bremsstrahlung region.
