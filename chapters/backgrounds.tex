@@ -126,21 +126,35 @@ The results of this fit for data events in the complete disappearance off-peak e
     \includegraphics[width=0.45\textwidth]{figures/offPeakCr_noIso.pdf}
     \hspace{0.01\textwidth}
     \includegraphics[width=0.45\textwidth]{figures/offPeakCr_fit.pdf} 
-     \caption[$\mu$+X background fits in the off-peak control region]{The invariant mass distribution in the signal region without HCAL isolation requirements for data and MC (left), and the complete disappearance off-peak control region fit in data (right).}
+     \caption[$\mu$+X background fits in the off-peak control region for complete disappearance events]{The invariant mass distribution in the signal region without HCAL isolation requirements for data and MC (left), and the complete disappearance off-peak control region fit in data (right).}
     \label{fig:offpeakfit}
  \end{figure}
  
-
 This fit is then used to predict the nominal $\mu+$X background amplitude in the complete disappearance region, but is dependent on the chosen functional form. 
 Two separate fits are performed - one 'free' fit which directy uses the background function, and one which first fits data events in the non-isolated region and then re-scales the result to the isolated region. 
 The re-scaled fit has less statistical uncertainty due to the larger sample size in the non-isolated region, but does not include any potential change in shape due to applying the isolation requirements. 
 The free fit results in a 15$\%$ larger expected background than the re-scaled fit. 
 The re-scaled fit is taken as the central value of the predicted yield, and the difference between the two is applied to the signal region fit as a shape uncertainty.
 
+In partial disappearance events, the requirement of nearby standalone muons greatly reduces the rate of non-Z backgrounds, resulting in very low occupancy in the off-peak region. 
+In addition, the high rate of expected DY backgrounds results combined with the width of the Z-peak results in two expected DY background events included in this region, shifting the expected distribution from the nominal non-peaking function.
+Because of the poor fit quality for the non-peaking background function resulting from the low occupancy and DY contamination, the alternate fit function used in this region is a constant value.
+Data events in the complete disappearance region, along with fits to the non-peaking background function and a constant value, are shown in \Cref{fig:offPeakPartialDis}.
+The inclusion of the DY contribution in the off-peak fit and the resulting non-Z background prediction results in a small decrease in the signal sensitivity.
+Due to the much larger rate of DY backgrounds than non-Z backgrounds, this decrease in sensitivity is $<$1$\%$.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/offPeakFitPartialDisappearance.pdf}
+     \caption[$\mu$+X background fits in the off-peak control region for partial disappearance events]{The partial disappearance off-peak control region in data, as well as fits to the non-peaking background function and an alternate fit to a constant value. Events with invariant masses between 70 and 110 GeV are explicitly excluded from the control region as well as the fits.}
+    \label{fig:offPeakPartialDis}
+ \end{figure}
+
 \subsection{Non-Muonic Z decays}
-A potential $\mu$+X background which could have a peaking invariant mass which does not follow the assumption of a smoothly falling distribution used in its fit are Z bosons which decay to hadrons or $\tau$ leptons.
+The core assumption used in measuring the rate of $\mu$+X backgrounds using data is that their tag and probe invariant mass distributions follow some smooth function which does not peak near the Z-mass or have significant shape differences to the fit functions used.
+Conceptually, a source of $\mu$+X backgrounds which could have peaking invariant mass distributions which may not be effectively fit by the off-peak control region are Z bosons which decay to hadrons or $\tau$ leptons.
 These events can produce potentially dangerous backgrounds in cases where one $\tau$ decays leptonically and produces a good tag muon, while the other might decay into a pion or other particle which fakes a probe muon. 
-While the invariant mass of the initially produced $\tau$ leptons or hadrons is expected to peak near the Z mass, the final state muons or mesons which are selected in this search are expected to have substantially shifted invariant mass distributions due to only selecting a portion of the produced particles.
+While the invariant mass of the initially produced $\tau$ leptons or hadrons is expected to be near the Z mass, the final state muons or mesons which are selected in this search are expected to have substantially shifted invariant mass distributions due to only selecting a portion of the produced particles.
 Simulated DY events which match the selected probes to gen level $\tau$ particles or hadrons are used to confirm that they do not produce an invariant mass peak within the signal region.
 
 Because of the very low rate of these events passing the probe isolation requirements, the invariant mass distributions are measured without applying track or ECAL isolation requirements.

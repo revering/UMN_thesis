@@ -243,23 +243,39 @@ A muon-philic cross section would also have a larger thermal relic cross section
 \section{Z-Bosons and the DY Process}
 For muons to potentially interact within the CMS detector and produce dark photons, they must first be created within the initial collision.
 Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for very high signal rate the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
-To help control these backgrounds, muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce opposite-sign pairs of muons.
-Because they are produced from the decays of mediator particles, the invariant mass of the dimuon pairs produced in these resonances peaks sharply near the particle mass, with a width proportional to its lifetime. 
-By using muons from particle resonances, one outgoing muon can be used to 'tag' the event, and the other can be used to 'probe' its response in the detector to search for non-standard interactions. 
+To help control these backgrounds, muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce oppositely-charged pairs of muons.
+When di-muon pairs are produced via mediator particles, the invariant mass spectrum of the produced particles peaks sharply near the mediator particle mass, with the peak width proportional to the lifetime of the mediator. 
+By selecting muons from particle resonances, one outgoing muon can be used to 'tag' the event, and the other can be used to 'probe' the response of the detector along its trajectory to search for non-standard interactions. 
 
-While many such resonances exist in CMS (\Cref{fig:diMuonSpectrum}), this search targets muon originating the decay of Z bosons, due to their higher energy of the produced muons and the reduced rates of non-resonant muon pairs near the Z mass.
+While many such resonances exist in the CMS di-muon spectrum (\Cref{fig:diMuonSpectrum}), this search targets muon originating the decay of Z bosons due to the relatively higher energy of the produced final-state muons and the reduced rates of non-resonant muon pairs near the Z mass.
 Z bosons are the neutral carrier of the nuclear weak force, which unlike the electromagnetic and nuclear strong forces has massive force carrying bosons.
 Specifically, the Z boson mass is near \SI{90}{\giga\eV}, 
-Z bosons will decay into dilepton pairs with nearly equal rates between electrons, muons, and taus. 
-
-The Z boson resonance in dimuon pairs is primarily produced through the Drell-Yan (DY) process, in which a pair of quarks in the initial hadron collision annihilate to a Z boson which subsequently decays into leptons.
-The typical invariant mass of dimuon pairs produced in the DY process with minimal selection requirements is shown in \Cref{fig:diMuonSpectrum}, along with the typical muon energy in. %\ref{dimuonEnergy}.
+Z bosons will decay into dilepton pairs with nearly equal rates between electrons, muons, and tau leptons. 
 
 \begin{figure}[ht]
-	\label{fig:diMuonSpectrum}
 	\centering
 	\includegraphics[width=\textwidth]{figures/cms_diMuonSpectrum.jpg}
-	\caption[Inclusive dimuon spectrum in CMS]{The dimuon invariant mass spectrum in the CMS high-level trigger. Each peak represents one or more particle resonances. Figure from \cite{cmsMuonPerformance}}
+	\caption[Inclusive dimuon spectrum in CMS]{The dimuon invariant mass spectrum in the CMS high-level trigger, measured using data collected in 2015. Figure from \cite{cmsMuonPerformance}.}
+	\label{fig:diMuonSpectrum}
+\end{figure}
+
+The Z boson resonance in di-muon pairs is primarily produced through the Drell-Yan (DY) process \cite{origDYPaper,DYSummary}, in which a pair of quarks in the initial hadron collision annihilate into a pair of leptons (\Cref{fig:dyDiagram}).
+The invariant mass of di-muon pairs produced in the DY process with minimal selection requirements is shown in \Cref{fig:diMuonSpectrum}, as well as the energy of the individual muons produced. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/dyProcess.pdf}
+	\caption[Feynman Diagram for the DY Process]{The Drell-Yan process. A quark from one hadron annihilates with an anti-quark from another, resulting in the production of two leptons. Figure from \cite{bechtel2023}.}
+	\label{fig:dyDiagram}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/cms_diMuonSpectrum.jpg}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/dyMuonEnergySpectrum.jpg}
+	\caption[DY Process Di-muon Invariant Mass and Outgoing Muon Energy]{The simulated di-muon invariant mass spectrum for DY events in CMS with minimal selection criteria.}
+	\label{fig:dySpectrum}
 \end{figure}
 
 
