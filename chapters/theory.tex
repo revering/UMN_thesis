@@ -4,13 +4,13 @@
 \chapter{Theoretical Framework}
 \label{theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-There are two key aspects to the theory used in the search presented here: a model of a new physics which could produce dark matter used to simulate its interactions and determine our sensitivity, and a model of known physics, necessary to understand conventional processes which could mimic dark matter interactions as well as describe the initial states produced in the collision and the response of the detector to any produced particles.
+There are two key aspects to the theory used in the search presented here: a model of a new physics process which could produce dark matter, used to generate simulated interactions and determine the sensitivity of the search to them, and a model of known physics, necessary to understand conventional processes which could mimic dark matter interactions as well as describe the initial states produced in the collision and the response of the detector to any produced particles.
 
 The primary framework used to describe currently known particle physics is the standard model (SM), a quantum field theory which describes the set of known fundamental particles and their interactions.
 In classical theories, particle interactions can be described via forces proportional to fields, such as the electromagnetic field applying a force directly proportional to the charge of a given particle.
 In quantum field theories, particle interactions are instead described through the exchange of a gauge boson, allowing them to satisfy the requirements of special relativity and quantum physics. 
 The SM contains five gauge bosons, which describe interactions with the nuclear strong, electroweak, and Higgs fields.
-In addition, the SM includes six quarks, colored particles which can interact via the strong force, and six leptons, particles which only interact via the electroweak force.
+In addition, the SM includes six quarks, particles with 'color' charge which can interact via the strong force and make up the constituent particles of hadrons, and six leptons, particles which primarily interact via the electroweak force, mediated by photons, W bosons, and Z bosons.
 A graphical representation of these fundamental particles is shown in \Cref{fig:SM}, along with numerical values of some of their physical properties.
 
 \begin{figure}[htpb]
@@ -27,20 +27,24 @@ A graphical representation of these fundamental particles is shown in \Cref{fig:
 	\label{fig:SMratePreds}
 \end{figure}
 
-Developed over several decades through close collaboration between theory and experiment, the SM has been extremely successful at predicting a wide range of observed physics phenomena \Cref{fig:SMratePreds}.
-Despite this success, there are several missing pieces in the SM such as gravity, neutrino masses, dark energy, and most significant to this paper, dark matter.
-While these phenomena are observed in experiments, the lack of full information about the nature of the particles themselves or their interaction prevent their inclusion in the SM, and so keep it from being a complete description of all observed particle interactions.  
+Developed over several decades through close collaboration between theory and experiment, the SM has been extremely successful at predicting a wide range of observed physics phenomena, an example of which can be seen in \Cref{fig:SMratePreds}, where the observed production cross sections for a wide range of processes are compared with predictions determined from the standard model.
+.
+Very close agreement is seen between the observed production rates and their corresponding SM predictions over nine orders of magnitude in cross section and a very wide range of physics interactions.
+
+Despite this success, there are several missing pieces in the SM which are observed in experiments but not predicted from the existing theory.
+These beyond-the-SM (BSM) phenomena include gravity, neutrino masses, dark energy, and most significant to this paper, dark matter.
+While the effects of these missing processes are observed in experiments, the lack of full information about the nature of the particles themselves or their interactions prevents their inclusion in the SM, and so prevent it from being a complete description of all observed particle interactions, motivating experimental searches to find these processes and incorporate them into a more complete understanding of nature.
 
 \section{Particulate Dark Matter}
-
+To begin searching for direct evidence of dark matter, several additional inferences can be made about its properties in order to narrow the range of potential models which can produce the observed effects.
+Observations of excess mass determined from stellar rotation alone could be produced by a wide variety of physical effects, such as modifications to Newtonian dynamics or non-luminous interstellar gas, but there exist several additional astronomical observations and theoretical consideration which indicate the presence of some type of dark matter particle.
+In this section, a brief overview of additional evidence for the existence of dark matter is presented, as well as motivation for a particle explanation for the observed phenomena.
 %Graviational Lensing / Bullet Cluster
-In addition to observations of excess mass in galaxies and nubulae from excess velocity in stellar motion, there are several other observations which indicate a particle origin for dark matter and constrain some aspects of its properties. 
-While the velocities alone could be explained by alternate theories, such as non-luminous interstellar gas or modified newtonian dynamics, successful dark matter theories must address these additional astronomical observations as well. 
 
 One of the best tools available to observe the dark matter distribution in the modern universe is gravitational lensing data \cite{Massey_2010}.
-When photons pass through the warped spacetime of a gravitational field, their trajectories are deflected.
-Massive objects, such as clusters of galaxies or dark matter, can create gravitational fields which deflect light rays analagously to a refracting lens.
-When viewed from earth, light from distant objects can pass through these 'lenses' and be distorted or amplified, and through measuring this distortion the total mass required to produce it can be determined.
+When photons pass through the warped spacetime produced by a gravitational field, their trajectories are deflected.
+Massive objects, such as clusters of galaxies or dark matter, can thus create gravitational fields which deflect light rays analagously to a refracting lens.
+When viewed from earth, list from distant objects can pass through these 'lenses', causing their images to be distorted or amplified, and through measuring this distortion the total mass required to produce the gravitational fields of the lens can be determined.
 
 \begin{figure}
 	\label{fig:gravLensing}
@@ -50,26 +54,28 @@ When viewed from earth, light from distant objects can pass through these 'lense
 \end{figure}
 
 Gravitational lensing is traditionally split into 'strong' and 'weak' lensing regimes. 
-In strong lensing, the space-time warping is strong enough for light to travel multiple paths along the lens and still reach the observer, resulting in light spreading into rings when lensed directly past a large mass, or potentially producing multiple images in lenses with complex shape.
-Strong lensing can also occur in a 'microlensing' effect, where a source is directly along the line of sight to a star or other small object such that a lensing effect can be produced.
-Because of the extremely small cross sectional area these stars that light must pass to produce microlensing, these events are typically observed transiently, as a background object passes directly behind a microlens and experiences a temporary magnification. 
+In strong lensing, the space-time warping is strong enough for light to travel multiple paths along the lens and still reach the observer, resulting in images spreading into rings when passing directly through the lens from a large mass, or potentially producing multiple images in lenses with complex shapes.
+
+Strong lensing can also been seen in an effect known as 'microlensing', where a star or other small object is directly along the line of sight to a light source, causing a strong lensing effect from the large gravitational fields present very close to the object.
+Because of the extremely small cross sectional area of these objects that light must pass close to in order to produce microlensing, these events are typically observed transiently, as a background object passes directly behind a microlens and experiences a temporary magnification which fades as the object moves out of alignment. 
 
 In weak lensing, the light deflection is small, often appearing as local linear transformations of magnification, shear, and rotation. 
-While difficult to measure directly, the images of multiple galaxies passing through the same dark matter halo will have identical shear transformations, producing correlations in their shapes.
-By measuring these correlations over nominally uncorrelated galaxy shapes, the shear strength of this weak lensing can be statistically determined, allowing for measurements of dark matter distributions without requiring very high density.
-Like traditional lenses, gravitational lenses are most effective when they are halfway between the source and observers on earth, though contributions from lensing along the entire path length impact the observed image.
+While difficult to measure individually due to uncertainty in the un-transformed galaxy images, the images of multiple galaxies passing through the same dark matter halo will have identical shear transformations, producing correlations in their shapes.
+By measuring these correlations over the nominally uncorrelated galaxy shapes, the shear strength of this weak lensing can be statistically determined, allowing for measurements of dark matter distributions in regions of relatively low density.
+Like traditional lenses, gravitational lenses are most effective when they are halfway between the distant light sources and observers on earth, though contributions from lensing along the entire path length impact the observed image.
 
-Maps of the distribution of dark matter in the universe can be created by studying the lensing effect on light from distant galaxies which passes through dark matter clusters, even in cases where the luminous matter is insufficient to make direct velocity measurements, such as outer radii in galaxy halos beyond the range of the visible stars.
+Maps of the distribution of dark matter in the universe can thus be created by studying the lensing effect on light from distant galaxies which passes through dark matter clusters, even in cases where the luminous matter is insufficient to make direct velocity measurements, such as outer radii in galaxy halos beyond the range of the visible stars.
 Lensing data produces many important observations for determining the properties of dark matter.
-Using strong lensing data, the total mass of galaxy clusters can be measured, measuring the dark matter abundance to be roughly five times greater than luminous matter.
-From microlensing data it can be determined that dark matter in our galaxy does not originate from free-floating, planet-sized non-luminous rock, as these 'free' planets would occasionally pass directly between earth and distant stars, causing temporary changes in brightness that have not been observed in microlensing surveys.
+Using strong lensing data, the total mass of galaxy clusters can be measured, with the total dark matter abundance observed to be roughly five times greater than luminous matter.
+Additionally, from microlensing data it can be determined that dark matter in our galaxy does not originate from free-floating, planet-sized non-luminous rock, as these 'free' planets would occasionally pass directly between earth and distant stars, causing temporary changes in brightness that have not been observed in microlensing surveys.
 
-A particularly striking example of a particle dark matter comes from the bullet cluster, shown in \Cref{fig:bullet}. 
-Galaxy clusters are formed from galaxies, interstellar gas, and dark matter.
+Lensing data can also be used to separate observations of mass distributions from the visible light in galaxies, allowing relative differences in their interactions to be observed. 
+A particularly striking example of this comes from the bullet cluster, shown in \Cref{fig:bullet}. 
+Galaxy clusters, like the bullet cluster, are formed from galaxies, interstellar gas, and dark matter.
 In normal galaxy clusters these three constituents occupy the same general space and so their signatures are difficult to separate.
-Unlike traditional clusters, the bullet cluster is formed from two galaxy clusters that collided around 150 million years ago. 
-Because the galaxies and stars within the clusters are well spaced, their collision cross section was small, and most passed through without undergoing any collisions.
-Unlike the galaxies, the interstellar gas in the clusters was uniformly spread and had a large interaction cross section causing it to be slowed by the collision, separating the gas from the main galaxy clusters and forming a shock front in the smaller of the two.
+Unlike traditional galaxy clusters, the bullet cluster is formed from two galaxy clusters that collided around 150 million years ago. 
+Because the galaxies and stars within the clusters are well spaced their collision cross section was small, and most passed through without undergoing any significant interactions.
+Unlike the galaxies, the interstellar gas in the clusters was relatively uniformly spread in space, and had a large interaction cross section which caused it to be slowed by the collision, separating the gas from the main galaxy clusters and forming a shock front in the smaller of the two.
 
 \begin{figure}[htpb]
 	\label{fig:bullet}
@@ -84,26 +90,26 @@ This eliminates interstellar gasses of SM particles as a potential source of dar
 
 %Cosmic Microwave Background
 Some of the most detailed measurements of the relative abundance of dark matter come from observations of the cosmic microwave background (CMB).
-The CMB is radiation which originated in the early universe, when SM matter consisted of hydrogen and helium plasma and free electrons.
+The CMB is radiation which originated in the early universe, when SM matter consisted of hydrogen and helium plasma as well as free electrons.
 Because of scattering with these free electrons, the universe was opaque on cosmological scales until the plasma cooled and was converted into a gas. 
-At this point, thermal radiation from the plasma could travel through the universe without significant scattering probability, and these photons can be observed today as the CMB, constant microwave radiation that is visible from every direction (\Cref{fig:CMB}).
+At this point, thermal radiation from the plasma could travel through the universe without significant scattering probability and these photons can be observed today as the CMB, constant microwave radiation that is visible from every direction (\Cref{fig:CMB}).
 
 \begin{figure}[htpb]
 	\label{fig:CMB}
 	\centering
 	\includegraphics[width=1.1\textwidth]{figures/cmb.png}
-	\caption[The CMB temperature anisotropy]{The temperature anisotropy of the CMB. Outlined in gray are regions of high microwave background, primarily aligned with the main body of the milky way, which are treated specially to reduce their backgrounds \cite{PlanckCMB}.}
+	\caption[The CMB temperature anisotropy]{The temperature anisotropy of the CMB. Outlined in gray are regions of high microwave background, primarily aligned with the main body of the milky way, which are treated specially to reduce the additional background \cite{PlanckCMB}.}
 \end{figure}
 
 The conversion of primordial plasma into a hydrogen and helium gas occurred when the universe was roughly 400,000 years old, and the CMB therefore provides an image of its temperature and density distribution at that time.
 While the primordial plasma was nearly homogeneous, there were slight variations of order one part in ten thousand, which later grew by gravitational attraction and led to the formation of galaxies and stars \cite{kurkisuonio}.
 By studying these anisotropies, the dynamics of the baryon-photon plasma can be inferred, and several properties of early cosmology, including the mass density of dark matter, can be determined.
 
-The anisotropy of the CMB is measured through correlations in the temperature of different points as a function of the length scale between them. 
+The anisotropy of the CMB is measured through correlations in the temperature of different spatial points as a function of the length scale between them. 
 As the CMB forms a 'sphere' of the observable sky, these distance are expressed as length scales, and it is convienient to analyze them as expansions of spherical harmonics, which can be shown to only depend on the order of the angular scale parameter $l$. 
-By measuring the pertubation of the CMB and decomposing it into sperical harmonics, the angular power spectrum can be measured \Cref{fig:CMBpowerSpectrum}, from which details about the composition of the early universe can be inferred.
+By measuring the pertubation of the CMB and decomposing it into sperical harmonics, the angular power spectrum can be created \Cref{fig:CMBpowerSpectrum}, from which details about the composition of the early universe can be inferred.
 
-The angular power spectrum of the CMB consists of a series of peaks of decreasing amplitude with increasing multiple moments. 
+The angular power spectrum of the CMB consists of a series of peaks of decreasing amplitude with increasing multipole moments. 
 At large scales, $\theta >> $\ang{1}, the distances between spatial points are larger than the Hubble distance between them, and therefore cannot have any dynamic evolution in the primordial plasma.
 At smaller scales, $\theta < $\ang{1}, the perturbations are close enough to communicate before the plasma condenses, and so can show evidence of plasma dynamics.
 
@@ -114,7 +120,7 @@ At smaller scales, $\theta < $\ang{1}, the perturbations are close enough to com
 	\caption[The temperature angular power spectrum of the CMB]{The temperature angular power spectrum of the CMB. The points correspond to measured data from the Planck satellite, while the line is formed from a best-fit to a six-parameter cold dark matter model \cite{PlanckCMB}.}
 \end{figure}
 
-Initially, anisotopies are present from quantum fluctuations which expanded to cosmological scales during inflation.
+Initially, anisotropies are present from quantum fluctuations which expanded to cosmological scales during inflation.
 Regions with increased densities then attract the photon-baryon fluid gravitationally, amplifying the flucutation.
 This increased density then causes a corresponding increase in the temperature of these regions and thus their radiation pressure, which eventually overcomes the gravitational attraction and begins to push the fluid out of the region. 
 This pattern of gravitational and radiation driven motion form acoustic oscillations with Fourier modes that oscillate at frequencies dependant on the sound speed in the baryon-photon fluid.
@@ -124,11 +130,11 @@ This produces the peak structure seen in the CMB power spectra, with each maximu
 
 Beyond solely acoustic oscillations, this pattern is also strongly impacted by the presence of dark matter.
 Initially distributed similarly to the photon-baryon plasma, dark matter will also be drawn into gravitational wells caused by regions of increased density produced by quantum flucutations before inflation.
-Unlike SM matter, dark matter has very little or no radiation pressure, and thus will not directly undergo acoustic oscillations with the plasma. 
-Only interacting via gravitational potential, dark matter follows the plasma into the gravitational wells but not leaving from the radiation pressure. 
+Unlike SM matter, dark matter has very little or no radiation pressure, and thus will not directly undergo acoustic oscillations as the plasma does. 
+Only interacting via gravitational potential, dark matter follows the plasma into the gravitational wells but is not ejected from the radiation pressure, resulting in an amplification of the gravitational well and a delay of its dissipation. 
 
-Due to this interaction difference, the presence of dark matter significantly changes the oscillation frequency and the relative amplitude of each acoustic peak.
-The angular power spectrum can thus be fit with a seven parameter cold dark matter model and produce strong constraints on the abundance of dark matter.
+Due to this, the presence of dark matter significantly changes the oscillation frequency and the relative amplitude of each acoustic peak.
+The angular power spectrum can thus be fit with a seven-parameter dark matter model and produce strong constraints on the relative dark matter abundance.
 Through these fits, the mass density of dark matter in the universe is determined to be \SI{4.1e-27}{\kilo\gram\per\meter\squared} \cite{PlanckCMB}, roughly 5 times more than the total abundance of SM matter.
 
 %Structure Formation
@@ -138,10 +144,10 @@ By providing centers of gravitational attraction, the dark matter clusters great
 
 In models constructed using only gas from the condensed plasma with mass anisotropy matching the known distribution of the CMB, star formation occurs at much longer timescales than models which include dark matter.
 Because of these longer timescales, the resulting distribution of the simulated modern universe shows much greater uniformity than is observed today. 
-By using information from weak lensing, the current structure of dark matter halos can be measured, and compared with various simulations of structure formation to test the validity of different dark matter models.
+By using information from weak lensing, the current structure of dark matter halos can be measured and compared with various simulations of structure formation to test the validity of different dark matter models.
 
 In addition to the total mass and initial distribution of dark matter, these models also provide information on the possible temperature of dark matter.
-Cold dark matter models, where dark matter decouples from SM matter at lower temperatures, , the lower relative velocity allows the gravitational attraction to dominate dark matter dynamics, forming clusters similar to those observed today.
+In 'cold' dark matter models, where dark matter decouples from SM matter at lower temperatures, the lower relative velocity allows the gravitational attraction to dominate dark matter dynamics, forming clusters similar to those observed today.
 In models with higher temperature dark matter the thermal motion plays a much larger role, resulting in chaotic waves of dark matter which do not form these clusters and can destroy structure in SM matter when they pass near it and disrupt the gravitational wells.
 
 %Baryogenesis
@@ -156,19 +162,22 @@ The relative production of these light elements depends on the total Baryon dens
 	\caption[Relative Light Baryon Abundancies]{The relative abundancies of primordial nuclei as a function of the total baryon density and the 'critical' density, the matter density requred to produce the observed flat curvature of the universe. The boxes represent observed estimates of the primordial abundancies, and the shaded blue region the range of densities determined from deuterium, the most precisely measured of the abundancies. Figure from \cite{charbonnel2002}.}
 \end{figure}
 
-Direct observations of the baryon density have large uncertainties due to the significant fraction of non-luminous matter contained in interstellar gas, but using this method precise measurements can be made without relying on estimations of the proportion of luminous to non-luminous matter.
+Direct observations of the baryon density in today's universe have large uncertainties due to the significant fraction of non-luminous matter contained in interstellar gas, but by comparing the relative abundances of these light elements precise measurements can be made without relying on estimations of the proportion of luminous to non-luminous matter.
 Comparing this measurement of the total baryon density in the universe to the total mass density observed from cosmological observations, it is seen that the baryon density is roughly 4\% of the total \cite{Tytler_2000}, indicating that a very significant portion of the total mass density in the universe must originate from some beyond the standard model source.
 
+Together, these effects present strong motivation for a particle explanation of dark matter, as a new particle with very low interaction with SM particles could produce the mass halos seen in galaxy rotation curves and gravitational lensing, the observed anisotropy of the CMB, the relative abundance of light Baryons, the low dark matter self-interaction seen in colliding galaxies, and replicate the stellar structure seen today and produced in simulations.
+While other theories can often explain some of these effects, no other commonly accepted theories have been able to produce them all, and these alternate theories often require multiple additional physics processes or even include some dark matter particles of their own.
+
 \section{Thermal Dark Matter}
-While a particulate explanation of dark matter is well motivated, very little can be concluded about its properties, and a very wide range of potential models can be searched for in experiments.
-To help identify dark matter signatures that may be visible in a detector based experiment, several assumptions are be made relating to its nature, the first being a thermal origin for dark matter.
+While a particulate explanation of dark matter is well-motivated, very little can be concluded about its particle properties and a very wide range of potential models can be searched for in experiments.
+To help identify dark matter signatures that may be visible in a detector based experiment, several assumptions can be made relating to its nature, the first being a thermal origin for dark matter.
 
 The core assumption of thermal dark matter models is that the interaction between dark matter and SM matter is significant enough that for some period of time in the early universe dark matter was in thermal equilibrium with standard model matter.
 This allows dark matter to be produced simultaneously with SM matter during the universe's inception rather than as a separate process, and also requires that dark matter have some coupling to SM matter, which would also be necessary for its observation in an experiment like CMS.
 
-This thermal equilibrium is achieved to due the high temperature and density of the early universe where, despite small SM couplings, dark matter particles can be frequently produced through interactions with standard model particles and produce standard model particles through their own interactions and decays.
-As the universe expands and cools, the relatively large mediator mass causes the production of dark matter from collisions of SM particles to cease, thermally decoupling SM matter from dark matter.
-After dark matter production ceases, its annihilation continues for some time until the expansion of the universe causes the density to fall, reducing the interaction rate below the Hubble expansion rate so that dark matter "freezes out", leaving a fixed number density of dark matter with its phase-space distribution subject only to the universe expansion and eventual structure formation \cite{thermalDM} (\Cref{fig:freezeout}).
+This thermal equilibrium is achieved to due the high temperature and density of the early universe where, despite small SM couplings, dark matter particles can be frequently produced through interactions with standard model particles and correspondingly produce standard model particles through their own interactions and decays.
+By implementing this SM/dark matter interaction with some massive mediator particle, the production of dark matter from collisions of SM particles will cease as the universe expands and cools to the point where typical collisions lack the energy to produce the mediator, thermally decoupling SM matter from dark matter.
+After dark matter production ceases, its annihilation continues for some time as the expansion of the universe causes the dark matter density to fall, until the interaction rate is reduced below the Hubble expansion rate so that dark matter "freezes out", leaving a fixed number density of dark matter with its phase-space distribution subject only to the expansion of the universe and its eventual structure formation \cite{thermalDM} (\Cref{fig:freezeout}).
 
 \begin{figure}
 	\label{fig:freezeout}
@@ -177,13 +186,14 @@ After dark matter production ceases, its annihilation continues for some time un
 	\caption[Thermal Freeze-Out]{A thermal freeze-out model for some stable species. At early times, the particle is in thermal equilibrium with SM matter and has a constant density. As time progresses, the production ceases while annihilation continues, resulting in a continuously decreasing density. Eventually, the production probability becomes small enough that the particle annihilation also ceases leaving behind a constant relic abundance, with density related to the interaction cross section and mean particle velocity. Figure from \cite{hooper2009tasi}.}
 \end{figure}
 
-For any given thermal dark matter model a 'relic target' cross section can be calculated - the cross section required to produce the density of dark matter seen today.
-For any given dark matter coupling strength and particle mass, the thermal relic model will set a specific freeze-out temperature and number density.
+As a result, in thermal dark matter models a 'relic target' cross section can be calculated - the cross section required to produce the mass density of dark matter seen today.
+For any given dark matter coupling strength, the thermal relic model will set a specific freeze-out temperature and number density.
 By combining this number density with the observed astronomical mass density, the coupling strength can be related directly to a dark matter mass, with heavier particles requiring lower number densities and therefore later freeze-out temperatures and larger interaction cross sections.
+These relic target cross sections are very useful experimentally, providing a target interaction strength to search for and setting the required sensitivity for observing any given model.
 
 \section{Light Dark Matter}
 Traditional searches for thermal dark matter have tended to focus on models which interact via the nuclear weak force, which have relatively larger dark matter mass requirements (M$>\sim$few GeV), and so are easier to observe with indirect detection experiments searching for collisions of halo dark matter particles with passive detectors.
-While this larger mediator mass, weakly interacting phase space is well-covered from a wide variety of experiments, dark matter could also be explained using mediators in a 'light' mass region, ~MeV to ~GeV, which act as a 'portal' to couple dark sector particles to the SM \cite{darkSectors}.
+While this larger mediator mass and weakly interacting phase space is well-covered from a wide variety of experiments, dark matter could also be explained using mediators in a 'light' mass region, ~MeV to ~GeV, which act as a 'portal' to couple dark sector particles to the SM \cite{darkSectors}.
 
 A simple renormalizable interaction which can be introduced to the SM which could create this light coupling is a kinetic mixing between a new gauge boson with field strength $F'_{\mu\nu}$ and the hypercharge field $B^{\mu\nu}$ through the operator $\mathcal{L}$ (\Cref{eq:LDMlagrangian}). 
 
@@ -193,35 +203,36 @@ A simple renormalizable interaction which can be introduced to the SM which coul
 \end{equation}
 
 For small mixing parameter $\epsilon$ and light gauge bosons, these new couplings align with those of the SM photon \cite{Bauer_2018} and so this new gauge boson is referred to as the "dark photon", or A'.
-Through these couplings, any SM process which produces a photon could instead produce a dark photon, with suppression proportional to the mixing parameter.
+Through these couplings, any SM process which produces a photon could instead produce a dark photon, with suppression proportional to the mixing parameter and the mediator mass.
 
-This coupling represents the minimal kinetic mixing, encoding the kinetic coupling as a free parameter instead of arising from specific interactions within a chosen theory. 
-While technically forming a dark sector on its own, this model must be extended with additional particles to act as dark matter candidates, as models with only dark photons would cause them to decay back into SM particles.
-These dark matter candidates would couple to the dark photon via dark-sector gauge interactions with some coupling strength $g_D$, and can be either fermions or scalar bosons.
+This coupling represents a minimal kinetic mixing, encoding the kinetic coupling as a free parameter instead of arising from specific interactions within a chosen theory. 
+While technically forming a dark sector on its own, this model must be extended with additional particles to act as dark matter candidates, as models with only dark photons would always result in decays back into SM particles, failing to produce the observed dark matter density.
+
+These dark matter candidates can couple to the dark photon via dark-sector gauge interactions with some coupling strength $g_D$, and can be either fermions or scalar bosons.
 As these dark sector particles are assumed to not leave visible signatures within our detector, their influence in this search is limited to setting the branching fraction of the dark photon decaying to either visible SM particles or 'invisible' dark matter.
-As this search focuses on these invisible dark photon signatures, it is assumed that $g_D$ is much larger than $\epsilon$ and that the mass of the dark matter candidates is less than twice the A' mass such that they will decay dominantly to dark matter particles or have significantly long lifetimes to pass out of the detector acceptance.
-
+This search focuses on these invisible dark photon signatures, and it is assumed that $g_D$ is much larger than $\epsilon$ and that the mass of the dark matter candidates is less than twice the A' mass such that they will decay dominantly to dark matter particles or have significantly long lifetimes to pass out of the detector acceptance.
 
 \section{Targeting Dark Matter Production}
 If a light dark matter coupling were present, there are several potential signatures that could appear in an experiment like CMS.
-Traditional searches in CMS look for particle production in the initial scattering process between proton constituents.
+Traditional searches in CMS look for particle production in the initial scattering process between proton constituents, where the largest energy interactions take place.
 As a light dark matter coupling would allow mixing between the \aprime and any standard model photon, dark matter could be produced in initial state collisions with electromagnetic interactions between partons that produce photons that then mix with the \aprime.
 
-Unfortunately, decays of the \aprime outside of the detector or into other dark matter particles which are invisible to CMS make this initial production mode very difficult to distinguish.
-Events with large initial state radiation from the partons can make this signal visible as a large missing transverse momentum in the event, but the large reduction in acceptance from this type of requirement causes the resulting limit to be very weak.
+Unfortunately, decays of the \aprime outside of the detector or into other dark matter particles which are invisible to CMS make this initial production mode very difficult to identify.
+In cases where high energy SM particles are produced in association with dark matter this can appear as a measureable missing transverse momentum, but the reduction in acceptance from the requirement of additional particle emission causes the resulting limit to be very weak.
 
-Instead of searching for dark matter production in the initial state, the signal could appear in a secondary interaction between a final state particle and the detector itself.
+To avoid these issues, an alternate approach has been developed for this analysis to search for these invisible signatures.
+Instead of searching for dark matter production in the initial state, the dark matter interaction could appear in a secondary interaction between a final state particle from the collision and the detector itself.
 The relatively small masses of light dark matter particles limits the loss in the interaction rate due to the much lower center of mass energy in these secondary interactions compared to the initial collision, and the high particle flux and large size of the detector result in a significant fixed target luminosity.
 
-The primary signature of a secondary interactions between a particle emitted from the initial collision and the detector would be missing energy carried by the invisible \aprime and a change in the trajectory of the visible particle.
+The primary signature of a secondary interaction between a particle emitted from the initial collision and the detector would be missing energy carried by the invisible \aprime and a resulting change in the trajectory of the visible particle.
 These types of signatures are difficult to observe in particles with large standard model interaction rates, as the shower of particles produced in their interactions can lead to large uncertainties in their energy measurement and little hope of observing trajectory differences.
-In addition, high interaction rates expose particles to less of the detector as they are stopped relatively quickly, reducing the effective luminosity.
+In addition, high interaction rates expose particles to less material within the detector, as they are stopped relatively quickly, reducing the effective luminosity.
 
 For these reasons, the selections in this search focus on potential dark matter interactions of final state muons.
-As muons have small standard model cross sections they lose very little energy while they traverse the detector, leading to high consistency in projecting their trajectory and observing potential changes, as well as low rates of stopped muons due to standard model processes which could fake the energy loss to an \aprime.
+As muons have small standard model interaction rates with material they traverse they lose very little energy while they pass through the detector, leading to high consistency in projecting their trajectory and observing potential changes, as well as low rates of stopped muons due to standard model processes which could fake the energy loss to an \aprime.
 
-With a light dark matter mixing, muons would primarily produce dark matter in the mass ranges of interest via a process known as \dbrem, where a dark matter particle is emitted from a muon as it recoils from the electromagnetic field of a nucleus in the detector (\Cref{fig:dbrem_feyn}).
-While other processes, such as photoproduction of vector mesons which then decay invisibly through dark matter coupling, would also be present with the assumed coupling, only \dbrem is considered in this search due to its significantly larger production rate.
+With a light dark matter mixing, muons would primarily produce dark matter in the detector for the A' mass ranges of interest via a process known as \dbrem, where a dark matter particle is emitted from a muon after the muon exchanges a photon with a nucleus in the detector (\Cref{fig:dbrem_feyn}).
+While other processes, such as photoproduction of vector mesons which then decay invisibly through dark matter coupling, would also be present with the assumed kinetic mixing, only \dbrem is considered in this search due to its significantly larger production rate.
 
 \begin{figure}[ht]
 	\centering
@@ -230,27 +241,28 @@ While other processes, such as photoproduction of vector mesons which then decay
         \caption[Dark Bremsstrahlung Feynman Diagram]{Dark Bremsstrahlung caused by a muon interacting with a nucleus with atomic number Z.}
 \end{figure}
 
-As an additional feature of muon-initiated \dbrem, results from this search are also sensitive to dark matter models which replace the generic dark matter mixing with an asymmetric coupling to the lepton generations.
+As an additional feature of muon-initiated \dbrem, results from this search are also sensitive to dark matter models which replace the generic dark matter mixing with an asymmetric coupling to the different lepton generations (electrons, muons, and taus).
+In the SM, the non-gravitational couplings of each lepton generation are identical, a feature known as lepton universality.
 While lepton universality is built into the standard model, no such requirement is necessary for new physics models. 
 Instead of the fully generic kinetic mixing presented in \Cref{eq:LDMlagrangian}, the dark photon gauge field can be chosen to contain an additional current which carries charge proportional to muon number minus tau number, ($L_\mu - L_\tau$) \cite{neut_trident}.
 This type of field would result in a dark matter coupling that preferentially interacts with muons and taus, and has few existing constraints as it only would affect neutrinos and unstable leptons.
 
 There are several experimental anomalies which could potentially be explained by an asymmetric lepton coupling of this type.
-The measurement of the muon magnetic moment by the Fermilab E989 experiment \cite{gminus2}, combined with the original result from Brookhaven \cite{gminus2_bnl} leads to a 4.2 $\sigma$ discrepancy with the theoretical prediction \cite{gminus2_theory}. 
-This could potentially be explained by a dark matter signal which preferentially couples to muons, as the dark matter coupling would alter the muon magnetic moment through additional loop diagrams.
-A muon-philic cross section would also have a larger thermal relic cross section, as requiring a muon or tau coupling in its production reduces the available paths in its creation and so requires increasing the remaining cross section to achieve the same freeze-out number density.
+The measurement of the muon magnetic moment by the Fermilab E989 experiment \cite{gminus2}, combined with the original result from Brookhaven \cite{gminus2_bnl} currently leads to a 4.2 $\sigma$ discrepancy with the theoretical prediction \cite{gminus2_theory}. 
+This could potentially be explained by a dark matter signal which preferentially couples to muons, as a dark matter coupling would introduce new terms in its calculation from interactions including dark matter loops.
+A muon-philic cross section would also have a larger thermal relic cross section, as requiring a muon or tau coupling in its production reduces the available processes in its creation and so requires increasing the remaining cross section to achieve the same freeze-out number density.
 
 \section{Z-Bosons and the DY Process}
 For muons to potentially interact within the CMS detector and produce dark photons, they must first be created within the initial collision.
-Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for very high signal rate the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
+Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for high signal efficiency, the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
 To help control these backgrounds, muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce oppositely-charged pairs of muons.
 When di-muon pairs are produced via mediator particles, the invariant mass spectrum of the produced particles peaks sharply near the mediator particle mass, with the peak width proportional to the lifetime of the mediator. 
-By selecting muons from particle resonances, one outgoing muon can be used to 'tag' the event, and the other can be used to 'probe' the response of the detector along its trajectory to search for non-standard interactions. 
+By selecting muons from particle resonances, stringent identification requirements can be applied to one outgoing muon in order to 'tag' the event, and reduced selections can be applied to the other muon to 'probe' the response of the detector along its trajectory to search for non-standard interactions. 
 
 While many such resonances exist in the CMS di-muon spectrum (\Cref{fig:diMuonSpectrum}), this search targets muon originating the decay of Z bosons due to the relatively higher energy of the produced final-state muons and the reduced rates of non-resonant muon pairs near the Z mass.
-Z bosons are the neutral carrier of the nuclear weak force, which unlike the electromagnetic and nuclear strong forces has massive force carrying bosons.
-Specifically, the Z boson mass is near \SI{90}{\giga\eV}, 
-Z bosons will decay into dilepton pairs with nearly equal rates between electrons, muons, and tau leptons. 
+Z bosons are the electromagnetically neutral force carrier of the nuclear weak force, which unlike the electromagnetic and nuclear strong forces has massive force carriers in the W and Z bosons.
+Specifically, the Z boson mass is \SI{91.1876\pm0.0021}{\giga\eV}. 
+Z bosons predominantly decay into hadrons (~70$\%$), invisible particles (neutrinos or unknown particles, ~20$\%$), and lepton pairs (~10$\%$), with roughly equal branching to electrons, muons and tau leptons.
 
 \begin{figure}[ht]
 	\centering

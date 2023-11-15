@@ -8,29 +8,28 @@
 The Compact Muon Solenoid (CMS) detector is one of two general-purpose detectors located at the large hadron collider (LHC) near Geneva, Switzerland. 
 Within the 27 km ring of the LHC, two counter-rotating proton beams cross at several designated points, producing particle collisions with center-of-mass energies near \SI{13.7}{\tera\eV}. 
 One of these crossing points is in the center of the CMS detector, where 'bunches' of $\thicksim10^{11}$ protons collide every \SI{25}{\nano\second} in a beam spot less than \SI{3}{\centi\meter} in length and \SI{20}{\micro\meter} in width. 
-On average, each bunch crossing produces 32 proton-proton interactions, though most are 'pileup' interactions from soft QCD.
+On average, each bunch crossing produces 32 proton-proton interactions, though most are 'pileup' interactions from low-energy nuclear strong force interactions.
 
-Occasionally, these collisions will produce exotic, high energy interactions between the quarks within the protons. 
+Occasionally, these collisions will produce exotic, high energy 'primary' interactions between the constituent particles within the protons, which quickly decay into SM particles which can be measured in the detector.
 Together, the primary and pileup interactions emit large numbers of secondary particles which radiate outward from the beam spot. 
-The detector then measures and identifies these particles in order to reconstruct the physics processes that occurred during the collisions. 
-While the bunches interact at a rate of \SI{40}{\mega\hertz}, the large amount of data produced in each collision and the limited data transfer and storage ability limits the final readout to $\thicksim$\SI{1}{\kilo\hertz}.
+The detector then measures and identifies these particles in order to reconstruct the physics processes that occurred during the collision. 
+While the bunches interact at a rate of \SI{40}{\mega\hertz}, the large amount of data produced in each collision and the limited data transfer and storage ability of the experiment limits the maximum final readout rate to $\thicksim$\SI{1}{\kilo\hertz}.
 
-To successfully operate as a general purpose physics machine, the CMS detector must be able to rapidly identify outgoing particles from a large number of collisions, separate them into individual interactions, determine when physics processes of interest have occurred, record full event information in triggered events, and lastly accurately reconstruct final state particles in order to allow for detailed physics analysis. 
+To successfully operate as a general purpose physics experiment, the CMS detector must be able to rapidly identify outgoing particles from a large number of collisions, separate them into individual interactions, determine when physics processes of interest have occurred to trigger detector readout, record full event information in triggered events, and accurately reconstruct the final state particles in order to allow for detailed physics analysis. 
 
 To fulfill the necessary timing, resolution, and particle identification requirements the CMS detector is split into several subsystems located concentrically around the collision point in a roughly cylindrical shape (\Cref{fig:detector}). 
 Starting from the center, particles first pass through the pixel and strip trackers, which measure the position of charged particles to determine their vertex locations, trajectories, and momenta.
-Next, particles enter the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers and measuring the resulting energy deposits.
-After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures neutral hadrons and other less-frequently-interacting particles which may pass through the ECAL. This is done by having many layers of dense absorber which induce hadronic showers, interleaved with scintillator layers to sample the resulting energy.
-Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas chambers which all track the motion of muons, as they are the only known particles visible to our detector which are unlikely to be stopped in the calorimeters.
+Next, particles enter the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers, where electromagnetically-induced interactions between the particle and the detector material produce large numbers of lower-energy particles, and measuring the resulting energy deposits.
+After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures neutral hadrons and other less-frequently-interacting particles which may pass through the ECAL. This is done by having many layers of dense absorber which induce hadronic showers, interleaved with scintillator layers to sample the energy deposited by the resulting shower products.
+Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas-ionization chambers which all track the motion of muons, as they are the only known particles visible to our detector which are unlikely to be stopped in the calorimeters.
 
 In addition to the detecting subsystems, the central feature of the CMS detector is a superconducting solenoid located between the HCAL and muon chambers, which produces a \SI{3.8}{\tesla} magnetic field along the axis of the beam. 
-A steel return yoke is located within the muon chambers to capture the fringe field from the solenoid, producing a field in the opposite direction to aid with the measurement of muon momenta.
-The strong magnetic field provided by the solenoid reduces the necessary detector size to measure particle momentum and increases the precision of the measured \pt. 
+A steel return yoke is located within the muon chambers to capture the fringe field from the solenoid, producing a field in the opposite direction to aid with the measurement of muon momenta, as the curvature of charged particles passing through magnetic fields is proportional to their momentum. The strong magnetic field provided by the solenoid lowers the radii of this curvature, reducing the necessary detector size to measure particle momentum and increasing the precision of the measured transverse momentum (\pt). 
 The relatively small size of the resulting detector and use of the return yoke for muon measurements give the detector its name.
 
 To best describe particle momenta and take advantage of the nearly cylindrical symmetry of the detector, a special coordinate system is defined. 
-The Z-axis is chosen to be oriented along the beam line, and the transverse distance from it is referred to as $\rho$. 
-Instead of the polar angle $\theta$, we use the pseudorapidity $\eta$,
+The Z-axis is chosen to be oriented along the beam line, and the transverse distance from it is referred to as $r$. 
+Instead of the polar angle $\theta$, the pseudorapidity $\eta$ is used,
 
 \begin{equation}
     \label{eq:pseudo}
@@ -45,10 +44,10 @@ The definition of particle rapidity is shown in \Cref{eq:rapidity}, where E is t
     y = \frac{1}{2} ~\ln \left(\frac{E+p_z}{E-p_z}\right)
 \end{equation}
 
-Pseudorapidity is constructed to form an analogue of rapidity using only geometric information, and converges to match rapidity in the high-energy limit when particle mass is negligible.
+Pseudorapidity is constructed to form an analogue of rapidity using only geometric information, and converges to match rapidity in the limit of high particle energy when the rest mass is negligible.
 Pseudorapidity is zero when perpendicular to the beam, and approaches positive and negative infinity along the z axis. 
-Using this angular measure, selections using the angular separation of particles do not have strong dependence on longitudinal momentum and the overall distribution of outgoing collision products is nearly uniform in $\eta$ instead of strongly peaked towards zero and $\pi$ as it is in $\theta$.  
-The angular distance in this coordinate system is defined as $\Delta R = \sqrt{(\eta_1-\eta_2)^2+(\phi_1-\phi_2)^2}$.
+Using this angular measure, selections using the angular separation of particles do not have strong dependence on longitudinal momentum, and the overall distribution of outgoing collision products is nearly uniform in $\eta$ instead of strongly peaked towards zero and $\pi$ as it is in $\theta$.  
+Frequently, the angular distance between two particles is used in this coordinate system, which is represented by the quantity $\Delta R = \sqrt{(\eta_1-\eta_2)^2+(\phi_1-\phi_2)^2}$.
 
 \begin{figure}[htpb]
     \includegraphics[width=\textwidth]{figures/cmsDetector.png}
@@ -63,19 +62,19 @@ A full description of this detector can be found in Reference \cite{trackerTDR}.
 When ionizing particles pass through the silicon sensors, they excite electron-hole pairs within the silicon, which are collected via an applied electric field in the material and produce an output current pulse in the readout electronics.
 The positions of these deposits in the silicon are then used to reconstruct the tracks of charged particles.
 Using tracks, the charge and momentum of particles can be determined through their curvature in the magnetic field and particle trajectories can be extrapolated to the collision point in order to group tracks from the same interaction into vertices. 
-High positional resolution is very important for track reconstruction to resolve individual vertices and separate pileup interactions as well as to precisely determine the track curvature over the length of the tracker. 
+High positional resolution is very important for track reconstruction to resolve individual vertices, where multiple tracks can be determined to originate from the same point, and separate pileup interactions as well as to precisely determine the track curvature. 
 
 The pixel detectors are positioned in the inner part of the CMS tracker, where the high particle density requires the best position resolution. 
 The pixel detector was upgraded in 2017 \cite{pixelUpgrade}, and the upgraded version is used in this description and all of the data samples in this analysis. 
-The individual pixels are made of 100 $\times$ \SI{150}{\micro\meter} sensors which are placed in three disks in the endcap ($1.5<\lvert\eta\rvert<2.5$) region and four layers in the barrel ($\lvert\eta\rvert<1.5$) region, and have the short axis aligned in the $\phi$ direction so that measurements of curvature in $\phi$ from the magnetic field will have increased resolution from the smaller cell size. 
+The individual pixels are made of thin 100 $\times$ \SI{150}{\micro\meter} sensors which are placed in three disks in the endcap ($1.5<\lvert\eta\rvert<2.5$) region and four layers in the barrel ($\lvert\eta\rvert<1.5$) region, and have their short axes aligned in the $\phi$ direction so that measurements of curvature in $\phi$ from the magnetic field will have increased resolution from the smaller angular size. 
 The resolution is further increased to sub-cell precision through charge-sharing from capacitive coupling in adjacent pixels, resulting in final position resolution on the order of \SI{10}{\micro\meter} along the short axis and \SI{20}{\micro\meter} in the longitudinal direction.
 
-In deeper parts of the tracking system, the increased spatial dimension and reduced particle density reduces the need for pixel resolution and instead silicon strips of up to \SI{10}{\centi\meter} in length are used. 
+In deeper parts of the tracking system, the increased spatial dimension and reduced particle density reduces the need for the resolution of the pixels and instead silicon strips of up to \SI{10}{\centi\meter} in length are used. 
 In the barrel region, ten strip layers are present, reaching up to \SI{110}{\centi\meter} from the beam, and the strips are oriented slightly off-axis in alternating layers to increase the resolution in the z-direction. 
 In the endcap, the strips are oriented perpendicularly to the beam in 12 disks up to a radial distance of \SI{270}{\centi\meter}.
 Hits in the strip tracker have typical resolutions near \SI{200}{\micro\meter} in the Z-direction and \SI{20}{\micro\meter} in the $\phi$ direction.
 
-The combination of pixel and strip trackers results in very good track reconstruction efficiency and position and momentum resolution.
+The combination of pixel and strip trackers results in very good track reconstruction efficiency, position resolution, and momentum resolution.
 Muon tracks are reconstructed with $>99\%$ efficiency over the entire $\eta$ range of the tracker, and vertices from multiple tracks originating at the same point are reconstructed with resolutions near \SI{50}{\micro\meter}.
 Because higher energy tracks have less curvature, the \pt resolution of tracks decreases as the \pt itself increases. Tracks with typical \pt and $\eta$ used in this analysis (\pt near \SI{100}{\giga\eV} and $1.4<\eta<2.4$) have resolutions near 4$\%$. 
 
@@ -97,12 +96,26 @@ crystal.
 
 The crystals are tapered and arranged projectively at a slight angle to minimize inter-crystal gaps, pointing roughly \SI{3}{\degree} away from the collision point. 
 They are about 23 cm, or 25 $X_0$, in depth, and have a transverse size of 2.2 $\times$ \SI{2.2}{\centi\meter^2} in the barrel and 2.9$\times$\SI{2.9}{\centi\meter^2} in the endcap. 
-Each endcap is divided vertically into two 'Dees', each with 3660 crystals grouped into 5x5 units called 'Supercrystals'. 
+Each endcap is divided vertically into two 'Dees', each with 3660 crystals grouped into 5x5 units called 'Supercrystals'.
+
+Just in front of the ECAL lies the CMS pre-shower detector. 
+The pre-shower consists of two layers containing lead radiators (with thicknesses of two $X_0$ and one $X_0$, respectively) which initiate electromagnetic showers and silicon strip sensors to measure energy and determine the transverse shower profiles. 
+Though it has less absorber material than the full ECAL, pre-shower is designed with higher granularity cells in order to detect showers with small angular separations which may be combined into one object in the ECAL.
+While the granularity of the sensors is not directly used in this analysis, the additional absorber from the lead layers in the preshower is used as a potential target for the \dbrem interaction.
+A schematic layout of the ECAL and pre-shower is shown in \Cref{fig:ecalLayout}.
+
+\begin{figure}[htbp]
+    \includegraphics[width=\textwidth]{figures/ecal_layout.jpg}
+    \centering
+	\caption[The CMS Electromagnetic Calorimeter]{The layout of the CMS ECAL. One 'Dee' of the endcap can be seen at the left of the diagram, with the ECAL crystals forming the shaded layer furthest from the center with the pre-shower just to the right of it. Figure from Ref. \cite{cooke2022}.}
+    \label{fig:ecalLayout}
+\end{figure}
+
 During 2018 data taking, several supercrystals within the ECAL endcaps observed problems during data quality monitoring, and were 'masked' to remove their measurements from the total energy sums \Cref{fig:EEmasks}, removing roughly 2$\%$ of the total ECAL area.
 Accurate measurements of ECAL deposits are necessary to reject potential backgrounds tracks with energy loss in ECAL.
 To avoid potential backgrounds from tracks with missing energy from showers in these masked regions, signal tracks are required to have $\Delta R>0.1$ to any masked supercrystal.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \includegraphics[width=\textwidth]{figures/EEChannelMasks.png}
     \centering
 	\caption[Masked ECAL cells]{Transverse slices of the two ECAL endcaps showing the channel status for 2018 data taking. Active channels are in light gray, while inactive channels are colored dark red. The 3x3 squares of inactive tiles represent the inactive superclusters, with three in the negative $\eta$ endcap (left) and four in the positive $\eta$ endcap (right). In this view, the beam line is located at the center of the each ring, and the position of the cells from the middle of their respective center roughly corresponds to their position in r. \cite{EcalDPG}. While there are many individual inactive cells throughout both endcaps, no excess in background was observed outside of the inactive superclusters due to the diffuse nature of the electromagnetic showers in those events.}
