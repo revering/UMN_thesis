@@ -80,14 +80,14 @@ The layout of a transverse slice of the CMS tracker is shown in \Cref{fig:cmsTra
 In deeper parts of the tracking system, the increased spatial dimension and reduced particle density reduces the need for the resolution of the pixels and instead silicon strips of up to \SI{10}{\centi\meter} in length are used. 
 In the barrel region, ten strip layers are present, reaching up to \SI{110}{\centi\meter} from the beam, and the strips are oriented slightly off-axis in alternating layers to increase the resolution in the z-direction. 
 In the endcap, the strips are oriented perpendicularly to the beam in 12 disks up to a radial distance of \SI{270}{\centi\meter}.
-A drawing of one half-disk in the tracker endcap is shown in \Cref{fig:trackerEndcap}, along with a close-up of a single pixel module.
+A drawing of one half-disk in the tracker endcap is shown in \Cref{fig:fpixExample}, along with a close-up of a single pixel module.
 Hits in the strip tracker have typical resolutions near \SI{200}{\micro\meter} in the Z-direction and \SI{20}{\micro\meter} in the $\phi$ direction.
 
 \begin{figure}[htbp]
     \includegraphics[width=1.1\textwidth]{figures/fpix_drawing.png}
     \centering
-	\caption[Schematic of a forward tracker half-disk]{A drawing of a forward pixel detector half-disk. The pixel modules are oriented perpendicular to the beamline to measure the radial component of tracks with high precision, and are mounted at an angle in a 'fan' pattern in order to further increase the resolution. Figure from Ref. \cite{pixelUpgrade}.}
-    \label{fig:cmsTracker}
+	\caption[Schematic of a forward tracker half-disk]{A drawing of a forward pixel detector half-disk. The pixel modules in the endcap are oriented perpendicular to the beamline to measure the radial component of tracks with high precision, and are mounted at an angle in a 'fan' pattern in order to further increase the resolution. Figure from Ref. \cite{pixelUpgrade}.}
+    \label{fig:fpixExample}
 \end{figure}
 
 The combination of pixel and strip trackers results in very good track reconstruction efficiency, position resolution, and momentum resolution.
@@ -108,14 +108,14 @@ Each endcap is divided vertically into two 'Dees', each with 3660 crystals group
 
 Just in front of the ECAL lies the CMS pre-shower detector (ES). 
 The ES covers 1.653$<\eta<$2.6, and consists of two layers containing lead absorber (with thicknesses of two $X_0$ and one $X_0$, respectively) which initiate electromagnetic showers and silicon strip sensors to measure energy and determine the transverse shower profiles. 
-Though it has less absorber material than the full ECAL, pre-shower is designed with higher granularity readout cells in order to detect showers with small angular separations which may be combined into one object in the ECAL.
-While the granularity of the sensors is not directly used in this analysis, the additional absorber from the lead layers in the ES is used as a potential target for the \dbrem interaction.
+Though it has less absorber material than the full ECAL, the pre-shower is designed with higher granularity readout cells in order to detect electromagnetic showers with small angular separations which may be combined into one object in the ECAL.
+While the granularity of ES is not directly used in this analysis, the additional absorber from the lead layers within it is used as a potential target for the \dbrem interaction.
 A schematic layout of the ECAL and pre-shower is shown in \Cref{fig:ecalLayout}.
 
 \begin{figure}[htbp]
     \includegraphics[width=\textwidth]{figures/ecal_layout.jpg}
     \centering
-	\caption[The CMS Electromagnetic Calorimeter]{The layout of the CMS ECAL. One 'Dee' of the endcap can be seen at the left of the diagram, with the ECAL crystals forming the shaded layer furthest from the center and the pre-shower just to the right of it. Figure from Ref. \cite{cooke2022}.}
+	\caption[The CMS Electromagnetic Calorimeter]{The layout of the CMS ECAL. One 'Dee' of the endcap can be seen at the left of the diagram, with the ECAL crystals forming the shaded layers furthest from the center and the pre-shower just to inside of them. Figure from Ref. \cite{cooke2022}.}
     \label{fig:ecalLayout}
 \end{figure}
 
@@ -126,7 +126,7 @@ To avoid these backgrounds produced by tracks in the masked regions, signal trac
 \begin{figure}[htbp]
     \includegraphics[width=\textwidth]{figures/EEChannelMasks.png}
     \centering
-	\caption[Masked ECAL cells]{Transverse slices of the two ECAL endcaps showing the channel status for 2018 data taking. Active channels are in light gray, while inactive channels are colored dark red. The 3x3 squares of inactive tiles represent the inactive superclusters, with three in the negative $\eta$ endcap (left) and four in the positive $\eta$ endcap (right). In this view, the beam line is located at the center of the each ring, and the position of the cells from the middle of their respective center roughly corresponds to their position in r. \cite{EcalDPG}. While there are many individual inactive cells throughout both endcaps, no excess in background was observed outside of the inactive superclusters due to the diffuse nature of the electromagnetic showers in those events.}
+	\caption[Masked ECAL cells]{Transverse slices of the two ECAL endcaps showing the channel status for 2018 data taking. Active channels are lightly shaded, while inactive channels are darkly shaded. The 3x3 squares of inactive tiles represent the inactive superclusters, with three in the negative $\eta$ endcap (left) and four in the positive $\eta$ endcap (right). In this view, the beam line is located at the center of the each ring, and the position of the cells from the middle of their respective center roughly corresponds to their position in r. \cite{EcalDPG}. While there are many individual inactive cells throughout both endcaps, no excess in background was observed outside of the inactive superclusters due to the diffuse nature of the electromagnetic showers in those events.}
     \label{fig:EEmasks}
 \end{figure}
 
@@ -140,9 +140,17 @@ The HCAL endcaps have 17 active layers consisting of plastic scintillator and \S
 The thickness of ECAL and HCAL is sufficient to stop nearly all mesons and hadrons produced in the collision, leaving only neutrinos, which are not visible in the detector, and muons. 
 As the effective fixed target cross section for \dbrem is proportional to the thickness of the target, the large quantity of brass used in HCAL makes it the ideal location to produce potential signal events.
 
-To record the energy deposited in the sampling layers, the scintillation light is collected in wavelength-shifting fibers then transported to readout electronics.
+When ionizing particles produced in showers within the absorber layers passes through the scintillating layers, interactions between the particles and the scintillator produces light.
+To record the energy deposited in the sampling layers, the scintillation light is collected in wavelength-shifting fibers then transported to readout electronics (\Cref{fig:megatile}), where the amount of light produced can be used to determine the energy deposited in the layer.
 This light collection is done in the HCAL barrel (and Endcaps, prior to 2018) by hybrid photo-diodes (HPDs). 
 Scintillation light from successive HPDs is summed together into 'towers' during readout, reducing the available depth segmentation to one or two layers depending on the location of the tower in the detector.
+
+\begin{figure}[!htpb]
+	   \centering
+	      \includegraphics[width=0.8\textwidth]{figures/megatile.pdf}
+		 \caption[An HCAL Tile]{A schematic layout of a single HE 'megatile'. The scintillation light is collected in wavelength-shifting fibers, then transported to SiPMs for readout. Figure from Ref.\cite{sipmRadDam}}
+	    \label{fig:megatile}
+\end{figure}
 
 In the HCAL endcap (HE), radiation damage to the scintillating tiles caused by high particle flux necessitated the replacement of the hybrid photo-diodes with silicon photomultipliers (SiPMs) in 2018, which have three times better photon detection efficiency than HPDs.  
 The SiPMs also have smaller footprints than the HPDs, allowing for more of them to be placed in the volume previously occupied by the HPDs and reducing the need for depth summation before readout. 
@@ -151,11 +159,11 @@ Because of these improvements, energy information from HE after the SiPM install
 \begin{figure}[!htpb]
 	   \centering
 	      \includegraphics[width=0.8\textwidth]{figures/HE_upgrade.pdf}
-		 \caption[The 2018 HE upgrade]{The CMS HCAL geometry before (above) and after (below) the SiPM installation. Each rectangle represents a cell, and like-colored cells in HCAL at each i$\eta$ and i$\phi$ are summed to create a 'hit' at the depth represented by their color. These hits are the most granular HE information available. As the upgrade was only performed in HE for 2018 data taking, individual depth information is only available in the endcap for this analysis.}
+		 \caption[The 2018 HE upgrade]{The CMS HCAL geometry before (above) and after (below) the SiPM installation. Each rectangle represents a cell, and identically shaded cells in HCAL at the same $\eta$ and $\phi$ position are summed together to create a 'hit' at the depth represented by their shade. These hits are the most granular HE information available after the full reconstruction.}
 	    \label{fig:HElayout}
 \end{figure}
 
-To reduce the data rate and the storage requirements, information from HCAL channels which fail to exceed set energy thresholds during data taking is not recorded. 
+To reduce the data rate and the storage requirements, information from HCAL channels which fail to exceed set energy thresholds during data taking is not recorded, as these low-energy hits generally do not contain useful physics information. 
 This 'zero-suppression' is necessary for the detector to meet the strict timing requirements set by the number of collisions and the high frequency of the particle beams, but can distort the spectra of muon energy depositions by removing deposits in the lower region of their ionization energy distributions.
 The increase in energy resolution from the SiPM upgrade greatly reduces this distortion by moving typical muon energy deposits further from the zero suppression threshold.
  
@@ -187,14 +195,14 @@ A diagram of a muon interaction with a CSC chamber is shown in \Cref{fig:CSCInte
 Each CSC chamber consists of six layers, and four disks of two chambers each are located at staggered positions in the endcaps, shown in \Cref{fig:cscLayout}. 
 The CSC chambers have similar resolution to the DTs, with the spatial resolution from each chamber ranging from 60 to \SI{120}{\micro\meter}.
 
-\begin{figure}[ht]
-    \includegraphics[width=\textwidth]{figures/cscInteractionExample.jpg}
+\begin{figure}[htbp]
+    \includegraphics[width=0.45\textwidth]{figures/cscInteractionExample.jpg}
     \centering
 	\caption[A muon interacting with a CSC chamber]{A diagram of a muon interacting with a CSC chamber in the CMS endcap muon detector. When a muon passes through the CSC, ionization energy is drawn to the cathode strips and planes, as well as the anode wires. The location of the strips and wires which see energy deposits can then be combined to reconstruct the 2-D position of the passing muon. Figure from Ref. \cite{hauser2004}}
     \label{fig:CSCInteraction}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \includegraphics[width=\textwidth]{figures/cms_quadrant_run_ii.pdf}
     \centering
     \caption[Muon chamber layout in Run 2]{The muon chamber layout in one quadrant of CMS. The steel used for the return yoke is shown in dark gray, while the DTs, CSCs, and RPCs are shown in tan, green, and blue, respectively.}
@@ -211,36 +219,42 @@ Designed to capture the fringe field of the solenoid, the return yoke produces a
 For this analysis, the steel return yoke can produce additional backgrounds by inducing SM showers from muon bremsstrahlung, which may mimic the energy loss in a \dbrem event.
 
 \section{Triggering}
-The CMS trigger is performed using a two-stage approach. The first layer is the level one (L1) trigger, which uses limited event information to reduce the incoming event rate from \SI{40}{\mega\hertz} to about \SI{100}{\kilo\hertz} within \SI{2}{\pico\second}. 
+The CMS trigger is implemented using a two-stage approach. The first layer is the level one (L1) trigger, which uses limited event information to reduce the incoming event rate from \SI{40}{\mega\hertz} to about \SI{100}{\kilo\hertz} within \SI{2}{\pico\second}. 
 Because of the high speed required, the L1 trigger uses dedicated hardware to make trigger decisions using simplified versions of the event reconstruction.
-In the 2018 data set the L1 trigger uses only the muon chambers and calorimeters and includes no information from the tracker.
-Clustering algorithms are used to reconstruct ECAL and HCAL to form electron, photon, jet, and hadronic $\tau$ candidates, while basic tracking algorithms are used to reconstruct muon candidates from hits in the muon chambers.
-The L1 candidates in the event are then checked against existing selections for object kinematics and multiplicities, and events are chosen based on target physics of interest chosen by the CMS collaboration.
+In the 2018 dataset the L1 trigger uses only the muon chambers and calorimeters, and includes no information from the tracker.
+Clustering algorithms are used to reconstruct information from ECAL and HCAL to form electron, photon, jet, and hadronic $\tau$ candidates, while basic tracking algorithms are used to reconstruct muon candidates from hits in the muon chambers.
+The L1 candidates in the event are then checked against existing selections for object kinematics and multiplicities, and events are chosen based on target physics processes of interest chosen by the CMS collaboration.
 
 Events that pass the L1 trigger are then sent to the high-level trigger (HLT), which uses the full event information to make the more sophisticated final selections and reduce the event rate to near \SI{100}{\hertz}.
-The increased calculation time allowed by the lower rate of events from the L1 trigger allows HLT to perform more complex object reconstruction and event selection than L1 using off-detector electronics, which calculated for L1 objects which match the requirements for HLT 'paths'.
+The increased calculation time allowed by the lower rate of events passing the L1 trigger allows HLT to perform more complex object reconstruction and event selection than L1 using off-detector electronics, which is performed for L1 objects which match the requirements for HLT 'paths'.
 Each path runs reconstruction and filtering steps for the specific objects and detector regions it defines.
-For example, the isolated muon path (used in this analysis) reconstructs information from the muon systems and tracker near L1 muons which may pass the isolation and pt requirements of the path, stopping the calculation if the event fails the requirements at any point.
-Events which fulfill all of the requirements of any HLT path are saved, and the event is stored for later reconstruction.
+For example, the isolated muon path (used in this analysis) reconstructs information from the muon systems and tracker near L1 muons which pass the isolation and pt requirements of the path, stopping the calculation if the event fails the requirements at any point.
+The full event information for any event which fulfills all of the requirements of any HLT path is saved, and the event is stored for later reconstruction.
 
 \section{Muon Reconstruction}
 \label{sec:muonReco}
-Muon reconstruction in CMS aims to convert event data of individual hits in the muon chambers and tracker into information about the underlying particle that produced those hits.
+Muon reconstruction in CMS aims to convert event data of individual hits in the muon chambers and inner tracker into information about the underlying particle that produced those hits.
 For the purposes of this search, tagging muons must be identified with very high purity to reduce background from fakes. 
-Additionally, energy loss from signal events may appear as lowered energy in the reconstructed muons or interfere with their reconstruction such that it fails entirely, so detailed information about the reconstructed muons is used to identify potential signal events.
+Additionally, energy loss from signal events may appear as lowered energy in reconstructed muons or interfere with muon reconstruction such that it fails entirely.
+Potential signal muons are thus identified using partial information from the muon reconstruction and lower-level detector information, and so details of the reconstruction process and which pieces are selected is described here.
 A full description of the muon reconstruction, as well as the resulting efficiency and resolution, can be seen in \cite{cmsMuonPerformance}.
 
+General muon reconstruction in CMS is performed 'outside-in', where muon tracks are found in the muon chambers and then matched to tracks from the inner tracker.
 First, hits from within a DT or CSC station are locally fit into tracks to form muon 'segments'.
 The muon segments, along with any nearby RPC hits, are then fit together using a Kalman-Filter algorithm to form 'standalone' muons, which use only information from the muon chambers and the collision point.
 Each standalone muon is then propagated back to the collision point through the magnetic field and detector material using estimates for the expected energy loss and track curvature.
+
 The back-propagated muon is compared to each track from the silicon tracker in the event, and if a track is found with a similar trajectory the hits from the two candidates are combined into a global track.
-An additional \kf algorithm is then used on the global track to make a global fit using the full information, creating a 'global' muon. 
-In addition to the back-propagation, the tracking system tracks are extrapolated outward to the muon systems using the same assumptions, and any tracks which have at least one nearby muon segment are paired with those segments to form 'tracker' muons. 
+An additional \kf algorithm is then used on the global track to make a global fit using information from both the tracker and muon chambers, creating a 'global' muon. 
+
+In addition to the outside-in algorithms used to create global muons, muons can be constructed 'inside-out' by taking tracking system tracks and extrapolating them outward to the muon systems using the same assumptions, and any tracks which have at least one nearby muon segment are paired with those segments to form 'tracker' muons. 
 When tracker, standalone, and global muons overlap, the candidate objects are combined into a single "particle flow" muon with separate references to the output of each reconstruction algorithm preserved.
 
-In this work, we use both standalone and global muons. 
-For the tagging muon, the high purity requirements make global muons the best choice of reconstruction algorithm. 
-As no BSM processes should occur in the tag, the tracker information and muon segments should align, and the combination of the two gives the highest precision in momentum and location. 
-For the probe muon, the large energy loss caused by \dbrem in the HCAL will introduce a mismatch between the muon chambers and the silicon tracker. 
+In this work, we use both standalone and particle flow muons. 
+For the tagging muon, the high purity requirements necessary to reject fake muons, along side the expectation of no exotic interactions along their trajectories, make particle flow muons the best choice of reconstruction algorithm. 
+As no BSM processes should occur for the tagging muon, the tracker information and muon segments should align, and the combination of the two gives the highest precision in momentum and location. 
+
+For the probe muon, the large energy loss caused by \dbrem in the HCAL will introduce a mismatch between muon information reconstructed within the muon chambers and the silicon tracker. 
 Because of the increased position resolution in the pixel and strip trackers, the momentum of global muons favors the inner track information to the muon chambers in reconstruction.
 As a result, if global muons are reconstructed in signal events the visible energy loss in the CSCs will be greatly reduced by this favoring of the tracker, and so the standalone muon reconstruction is used instead and compared with the selected track to look for potential energy differences.
+Additionally, the large energy loss in \dbrem can prevent muons from reaching the muon chambers at all, which can be selected for by searching for muon tracks which have no nearby standalone muons.
