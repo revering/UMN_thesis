@@ -4,17 +4,17 @@
 \chapter{Partial Disappearance Event Classification}
 \label{sec:BDT}
 Unlike the total disappearance region, where rejecting standalone muons and limiting calorimeter energy is sufficient to control muon backgrounds, the partial disappearance region must separate potential signal events based on a large number of input features, often with subtle correlations between them.
-The primary distinguishing feature of signal events in this region is a large mismatch in the energy of the nearest standalone muon and the selected probe track, but the requirement that the standalone muon have less than 30$\%$ of the probe track still leaves several thousand background events.
+The primary distinguishing feature of signal events in this region is a large mismatch in the energy of the nearest standalone muon and the selected probe track, but the requirement that the standalone muon have less than 30$\%$ of the probe track still leaves a large number of background events from DY muons.
 
 Primarily caused by poorly reconstructed standalone muons, these backgrounds often have poorer fit qualities, CSC hits closer to the projected track, and larger HCAL energy deposits.
 These effects are not fully independent.
 For instance, muons with large HCAL energy may have genuine track deflection from SM scattering, so their fit qualities will be better.
 Similarly, muons with poor quality fits will often have several missing CSC hits, allowing poor standalone muons with large energy differences to be reconstructed.
 
-Signal events often have differences in the $\phi$ of the standalone muon which are correlated with the track charge, as the lower energy deflected muons have additional curvature in the magnetic field.
-Signal events may also have significant CSC hit offsets due to the angular scatter caused by \dbrem, or missing energy in several HCAL depths from muons deflecting outside of their acceptance.
+Signal events often have differences in $\phi$ of between the standalone muon and probe track which are correlated with the track charge, as the lower energy deflected muons have additional curvature in the magnetic field.
+Signal events may also have significant CSC hit offsets from the projected track location due to the angular scatter caused by \dbrem, or missing energy in several HCAL depths from muons deflecting outside of their acceptance.
 
-To take advantage of the wide variety of weak input separators available in this region, a Boosted Decision Tree (BDT) classifier is used to reduce these inputs to one classification variable.
+To take advantage of the wide variety of weak input separators available in this region, a BDT classifier is used to reduce these inputs to one classification variable.
 
 \section{Boosted Decision Trees}
 Boosted decision trees are a type of supervised machine learning where separate additive functions are used to map a set of inputs to a single output.
@@ -42,6 +42,7 @@ The main advantage of tree boosting is that it allows many weak classifiers in t
 In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework \cite{XGBoost} interfaced with Scikit-learn \cite{scikit}. 
 
 The BDT is trained using only the signal masses and DY MC background, as the preselection and standalone muon requirements alone are significant enough to control the rate of $\mu+X$ events. 
+An equally weighted combination of all signal masses is used for the signal sample during the BDT training.
 
 \section{Inputs}
 There are 21 event variables which are used as inputs to the BDT, which can be grouped into five categories.
@@ -50,7 +51,7 @@ The first are variables related to the probe track kinematics.
 The $p_t$, $\eta$, $\phi$, and charge of the probe track are used in order to allow the network to encode effects which may be local to certain regions of the detector.
 As the CSCs have known gaps in particular depths and regions of poor reconstruction, these variables can help identify tracks which may be expected to have lower quality.
 
-Second are the standalone muon kinematics, specifically its energy and $\chi^{2}$ %\Cref{fig:staKin}).
+Second are the standalone muon kinematics, specifically its energy and $\chi^{2}$. %\Cref{fig:staKin}).
 The $\chi^{2}$ of the standalone muon fit is used to measure its quality, and helps to separate muons with genuine energy loss from those with poor fits.
 The overall standalone muon energy is used in addition to the difference in standalone muon and probe track energy in case there are energy-dependent factors that may be lost when using only the relative measure.
 
@@ -67,7 +68,7 @@ In each CSC station, the minimum $\Delta$R is measured from each CSC segment to 
 Signal events often see finite differences in these CSC hit differences, while background events often have very close CSC hits in every station or have several stations with no nearby segments resulting in a poor fit and significant mismeasured energy.
 
 Fourth, the difference between the standalone muon and the probe track in energy, $\Delta$R, and $\Delta \phi$ are used.
-Signal events are have significantly lower energy standalone muons from energy loss to the \aprime, as well as larger $\Delta$R from angular deflection in \dbrem and additional curvature in the magnetic field.
+Signal events tend to have significantly lower energy standalone muons from energy loss to the \aprime, as well as larger standalone muon $\Delta$R from angular deflection in \dbrem and additional curvature in the magnetic field.
 To help distinguish angular changes caused by energy loss, the $\Delta \phi$ between the standalone muon and probe track is multiplied by the track charge, as differences due to random scatters and poor reconstruction should have no correlation between the charge and $\Delta \phi$.
 
 Lastly, the HCAL energy in each depth along the probe trajectory is used to identify events with high energy deposits corresponding to SM processes, or multiple low energy deposits corresponding to potential signal events.
@@ -77,7 +78,6 @@ To accomodate this, projected tracks which do not pass through a given depth in 
 The distribution of the highest-performing input variable in each category for DY MC and several signal masses is shown in \Cref{fig:bdtFeatures}.
 
 \begin{figure}[htpb]
-	\label{fig:bdtFeatures}
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatscscDRbyStation_1.pdf}
 	\hspace{0.01\textwidth}
@@ -87,24 +87,27 @@ The distribution of the highest-performing input variable in each category for D
 	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatseta.pdf}
 	\includegraphics[width=0.45\textwidth]{figures/bdtInputFeatsstaPhi.pdf}
 	\caption[Input BDT Classification Features]{The distributions of the highest-relevance input feature to the BDT for signal and DY MC events. While some variables, such as the CSC hit $\Delta$R and standalone muon $\Delta\phi$, have clear separation between signal and background, others have very similar behavior, and are used to reject DY events with otherwise signal-like features.}
+	\label{fig:bdtFeatures}
 \end{figure}
 
 \section{Optimization}
 A significant difficulty in training the partial region BDT is the imbalance between signal and background events. 
-Because \dbrem is expected to be a rare process, many more background events are expected than signal events, and the background rejection rate must be prioritized over signal selection efficiency.
+Because \dbrem is expected to be a rare process and large numbers of DY events pass the base event selection, many more background events are present than signal events and the background rejection rate must be prioritized over signal selection efficiency.
 
 To represent this, signal events are given reduced weights to replicate their lower relative rate and increase the importance of background rejection.
 Prior to optimization of the other parameters, a scan of this signal weight is made and the value which produces the strongest signal limit is selected.
 To reduce the necessary validation and simplify the network, each signal mass is combined into one training input and weighted to give equal importance to each mass.
 
 The internal parameters of the BDT are chosen using a randomized search, where each parameter is sampled from a flat distribution of possible values for a large number of trials.
-To reduce the impact of overtraining in this parameter optimization, the training data is split into five randombly sampled independent subsets called \emph{folds}.
-Five separate testing and training combinations sets are then defined, each with the test set as one fold and the training set as the other four.
+To reduce the impact of overtraining in this parameter optimization, the training data is randomly split into five independent subsets called \emph{folds}.
+Five separate testing and training combinations sets are then defined, each with one fold used as a testing dataset and the other four used as a training dataset.
 
-Five separate BDTs are then trained using these datasets, and the average weighted mean squared error of the five BDTs is used as the figure of merit in the randomized parameter search.
-By selecting the parameters with the smallest average mean squared error, the optimum parameters can be chosen by using the entire dataset to test the performance, as every event has a BDT which did not use it as training data, reducing the potential bias caused by the testing selection.
+Five separate BDTs are then trained using these combinations.
+During the training, only the training datasets are provided to the BDTs to prevent anomalous results from the network rejecting individual events based on non-generic event features.
+The performance of the resulting BDTs is determined by their ability to correctly score their respective testing datasets, and the average weighted mean squared error of the five BDTs is used as the figure of merit in the randomized parameter search.
+By selecting the parameters with the smallest average mean squared error the optimum parameters can be chosen by using the entire dataset to test the performance, as every event has a BDT which did not use it as training data, reducing the potential bias caused by the testing selection.
 
-The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used, the weighting factor of each new tree, the loss reduction required to create new leaves, the fraction of input features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
+The parameters which are optimized are the number of trees, the maximum tree depth, the fraction of each training sample used in each training stage, the weighting factor of each new tree, the loss reduction required to create new leaves, the fraction of input features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
 
 The output BDT score for DY MC and two representative A' masses is shown in \Cref{fig:BDToutput}. 
 To reduce the sensitivity of the result to potential differences between the expected and observed BDT shape in DY events, a single signal bin is defined by selecting events with BDT scores $>$0.98 instead of using the BDT output shape in the final likelihood fits.
@@ -157,9 +160,7 @@ As with the tag-muon aligned segments, station 1 has significant excesses of eve
         \caption[CSC Segment Validation]{The distance to the nearest CSC segment in each station measured along the probe track trajectory for partial disappearance events in the high HCAL energy control region. Events with no CSC hits in a station within $\Delta$R of 2 are assigned a value of -1.}
 \end{figure}
 
-Despite these modeling differences, the BDT scores of events in this region do not see substantial differences between data and MC (\Cref{fig:BDTscorevalid}).
-This is likely due to counteracting influences from the poorly modeled features, and the relatively small absolute event rates in these regions. 
-Events with more missing CSC hits will appear more signal-like due to the potential for lower reconstructed standalone energy and larger $\Delta$R, but also have correspondingly higher $\chi^{2}$, reducing their output scores.
+The BDT scores of events in this region for data and MC are shown in \Cref{fig:BDTscorevalid}.
 As expected, the region is relatively shifted to higher BDT scores than the overall DY background due to the more signal-like event features in this region produced by energy loss to standard model processes in the HCAL. 
 
 \begin{figure}[htbp]
@@ -185,7 +186,7 @@ In intial studies of this region, significant differences were observed in sever
 	\includegraphics[width=0.45\textwidth]{figures/badPartialRegionstaDR.pdf}
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/badPartialRegionstaPhi.pdf} 
-        \caption[Low-Score Event Validation Before Correction]{Input features showing significant differences between data and DY simulation in the low BDT score control region.}
+        \caption[Low-Score Event Validation Before Correction]{Input features showing significant differences between data and DY simulation in the low BDT score control region prior to the rejection of low-quality standalone muons.}
 \end{figure}
 
 In addition, large differences in the overall normalization were observed between the data events and the expected rate of DY backgrounds, with nearly twice as many events selected as expected.
