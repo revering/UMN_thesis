@@ -54,13 +54,14 @@ For a high energy muon incident on some nucleus in the detector, the calculation
 This integrated flux, $\chi$, is shown in \Cref{eq:chi}, where $E_0$ is the initial muon energy, $m_\mu$ is the muon mass, $m_A$ is the dark photon mass, $m_p$ is the proton mass, $\mu_p$ is the magnetic moment of the proton, and Z and A are the proton number and atomic mass of the target material.
 The first term in this integral represents the  elastic scattering component, proportional to the electron screening form factor $a$ and finite nuclear size $d$, which dominates at small \aprime masses .
 The second term represents inelastic scatters, proportional to the inelastic atomic form factor $a_p$, which becomes comparable to the elastic term for larger \aprime masses.
-More information on this calculation can be found in References~\cite{kim_1973} and~\cite{tsai_1974}. 
-\resizebox{0.9\textwidth}{!}{
-	\begin{equation}
-		\label{eq:chi}
-		\chi = \int^{E_0^2}_{t_{min}} dt \left( \frac{Z^2a^4t^2}{(1+a^2t)^2(1+t/d)^2}+\frac{Za_p^4t^2}{(1+a_p^2t)^2(1+t/0.71)^8}\left(1+\frac{t(\mu_p^2-1)}{4m_p^2}\right)^2\right)\frac{t-t_{min}}{t^2}
-	\end{equation}	
-}
+More information on this calculation can be found in references~\cite{kim_1973} and~\cite{tsai_1974}. 
+
+\begin{equation}
+    \label{eq:chi}
+    \resizebox{\textwidth}{!}{
+    $\chi = \int^{E_0^2}_{t_{min}} dt \left( \frac{Z^2a^4t^2}{(1+a^2t)^2(1+t/d)^2}+\frac{Za_p^4t^2}{(1+a_p^2t)^2(1+t/0.71)^8}\left(1+\frac{t(\mu_p^2-1)}{4m_p^2}\right)^2\right)\frac{t-t_{min}}{t^2}$
+    }
+\end{equation}	
 
 \begin{equation}
 	\label{eq:utilde}
@@ -82,14 +83,16 @@ Given this effective photon flux, the total cross section from the \ww approxima
 To reduce computation time the outgoing dark photon angle, $\theta$, is limited to $<$0.3 and terms of order $m_\mu^2$ in the initial matrix element are dropped.
 As the vast majority of dark photons produced have very small scattering angles and the muon mass is small with respect to the other terms in the matrix element, these approximations have negligible impacts on the total cross section calculation.
 
-\resizebox{0.9\textwidth}{!}{
-	\begin{equation}
-		\label{eq:fullCX}
-	        \sigma = \frac{pb}{GeV} \int_0^{0.3} \int_0^{\min(1-m_\mu/E_0,1-m_A/E_0)} 2 \alpha_{EW}^3\epsilon^2 \sqrt{x^2E_0^2 - m_A^2}E_0(1-x) 
-		    \frac{\chi(x,\theta)}{\tilde{u}^2} \mathcal{A}^2
+\begin{equation}
+    \resizebox{\textwidth}{!}{
+    $
+	    \sigma = \frac{pb}{GeV} \int_0^{0.3} \int_0^{\min(1-m_\mu/E_0,1-m_A/E_0)} 2 \alpha_{EW}^3\epsilon^2 \sqrt{x^2E_0^2 - m_A^2}E_0(1-x) 
+		\frac{\chi(x,\theta)}{\tilde{u}^2} \mathcal{A}^2
 ~dx~d\theta
-	\end{equation}
-}
+    $
+    }
+    \label{eq:fullCX}
+\end{equation}
 
 \begin{equation}
 	\label{eq:afunc}
