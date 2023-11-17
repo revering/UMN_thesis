@@ -192,8 +192,8 @@ By combining this number density with the observed astronomical mass density, th
 These relic target cross sections are very useful experimentally, providing a target interaction strength to search for and setting the required sensitivity for observing any given model.
 
 \section{Light Dark Matter}
-Traditional searches for thermal dark matter have tended to focus on models which interact via the nuclear weak force, which have relatively larger dark matter mass requirements (M$>\sim$few GeV), and so are easier to observe with indirect detection experiments searching for collisions of halo dark matter particles with passive detectors.
-While this larger mediator mass and weakly interacting phase space is well-covered from a wide variety of experiments, dark matter could also be explained using mediators in a 'light' mass region, ~MeV to ~GeV, which act as a 'portal' to couple dark sector particles to the SM \cite{darkSectors}.
+Traditional searches for thermal dark matter generally targeted dark matter models which interact via the nuclear weak force, which have relatively larger dark matter mass requirements (M$>\sim$few GeV), and so are easier to observe with indirect detection experiments which aim to detect collisions of local dark matter halo particles with passive detectors.
+While this weakly interacting phase space is well-covered from a wide variety of experiments, dark matter could also be described using mediators in a 'light' mass region, $\sim$MeV to $\sim$GeV, which act as a 'portal' to couple dark sector particles to the SM \cite{darkSectors}.
 
 A simple renormalizable interaction which can be introduced to the SM which could create this light coupling is a kinetic mixing between a new gauge boson with field strength $F'_{\mu\nu}$ and the hypercharge field $B^{\mu\nu}$ through the operator $\mathcal{L}$ (\Cref{eq:LDMlagrangian}). 
 
@@ -203,26 +203,28 @@ A simple renormalizable interaction which can be introduced to the SM which coul
 \end{equation}
 
 For small mixing parameter $\epsilon$ and light gauge bosons, these new couplings align with those of the SM photon \cite{Bauer_2018} and so this new gauge boson is referred to as the "dark photon", or A'.
-Through these couplings, any SM process which produces a photon could instead produce a dark photon, with suppression proportional to the mixing parameter and the mediator mass.
+Through these couplings, any SM process which produces a photon and has sufficient energy could instead produce a dark photon, with a suppression of the interaction rate proportional to the mixing parameter and the mediator mass.
 
 This coupling represents a minimal kinetic mixing, encoding the kinetic coupling as a free parameter instead of arising from specific interactions within a chosen theory. 
-While technically forming a dark sector on its own, this model must be extended with additional particles to act as dark matter candidates, as models with only dark photons would always result in decays back into SM particles, failing to produce the observed dark matter density.
+While technically forming a dark sector on its own, this model must be extended with additional particles to act as dark matter candidates as models with only dark photons would always result in decays back into SM particles, failing to reproduce the observed dark matter density.
 
 These dark matter candidates can couple to the dark photon via dark-sector gauge interactions with some coupling strength $g_D$, and can be either fermions or scalar bosons.
-As these dark sector particles are assumed to not leave visible signatures within our detector, their influence in this search is limited to setting the branching fraction of the dark photon decaying to either visible SM particles or 'invisible' dark matter.
-This search focuses on these invisible dark photon signatures, and it is assumed that $g_D$ is much larger than $\epsilon$ and that the mass of the dark matter candidates is less than twice the A' mass such that they will decay dominantly to dark matter particles or have significantly long lifetimes to pass out of the detector acceptance.
+As the dark sector particles are assumed to not leave visible signatures within our detector, their influence in this search is limited to setting the branching fraction of the dark photon decaying to either visible SM particles or 'invisible' dark matter.
+This search focuses on these invisible dark photon signatures, and it is assumed that $g_D$ is much larger than $\epsilon$ and that the mass of the dark matter candidates is less than twice the A' mass.
+Under these conditions, any dark photons produced will decay dominantly to dark matter particles or have significantly long lifetimes for any decay products to pass out of the geometric acceptance of the detector, leaving no visible deposits.
 
 \section{Targeting Dark Matter Production}
 If a light dark matter coupling were present, there are several potential signatures that could appear in an experiment like CMS.
 Traditional searches in CMS look for particle production in the initial scattering process between proton constituents, where the largest energy interactions take place.
 As a light dark matter coupling would allow mixing between the \aprime and any standard model photon, dark matter could be produced in initial state collisions with electromagnetic interactions between partons that produce photons that then mix with the \aprime.
 
-Unfortunately, decays of the \aprime outside of the detector or into other dark matter particles which are invisible to CMS make this initial production mode very difficult to identify.
-In cases where high energy SM particles are produced in association with dark matter this can appear as a measureable missing transverse momentum, but the reduction in acceptance from the requirement of additional particle emission causes the resulting limit to be very weak.
+Several searches which are sensitive to visible dark photon interactions have been conducted in CMS, such as looking for peaks in the di-lepton invariant mass at low energy and showers of long-lived particles in the muon chambers.
+As these existing searches require SM decays of the \aprime, they are insensitive to very long-lived mediators or those with dark sector decays.
+In cases where high energy SM particles are produced in association with dark matter, the momentum of the A' can appear as a measureable missing transverse momentum, but the reduction in acceptance from the requirement of additional particle emission causes the resulting limit to be very weak.
 
 To avoid these issues, an alternate approach has been developed for this analysis to search for these invisible signatures.
-Instead of searching for dark matter production in the initial state, the dark matter interaction could appear in a secondary interaction between a final state particle from the collision and the detector itself.
-The relatively small masses of light dark matter particles limits the loss in the interaction rate due to the much lower center of mass energy in these secondary interactions compared to the initial collision, and the high particle flux and large size of the detector result in a significant fixed target luminosity.
+Instead of searching for dark matter production in the initial state, the dark matter interaction could appear in a secondary interaction between a final state particle emitted from the proton-proton interaction and the detector itself.
+The relatively small masses of light dark matter particles limits the reduction in the interaction rate due to the much lower center of mass energy in these secondary interactions compared to the initial collision, and the high particle flux and large size of the detector result in a significant 'fixed target' luminosity, which determines the likelihood for any given particle to have an interaction.
 
 The primary signature of a secondary interaction between a particle emitted from the initial collision and the detector would be missing energy carried by the invisible \aprime and a resulting change in the trajectory of the visible particle.
 These types of signatures are difficult to observe in particles with large standard model interaction rates, as the shower of particles produced in their interactions can lead to large uncertainties in their energy measurement and little hope of observing trajectory differences.
@@ -231,53 +233,56 @@ In addition, high interaction rates expose particles to less material within the
 For these reasons, the selections in this search focus on potential dark matter interactions of final state muons.
 As muons have small standard model interaction rates with material they traverse they lose very little energy while they pass through the detector, leading to high consistency in projecting their trajectory and observing potential changes, as well as low rates of stopped muons due to standard model processes which could fake the energy loss to an \aprime.
 
-With a light dark matter mixing, muons would primarily produce dark matter in the detector for the A' mass ranges of interest via a process known as \dbrem, where a dark matter particle is emitted from a muon after the muon exchanges a photon with a nucleus in the detector (\Cref{fig:dbrem_feyn}).
-While other processes, such as photoproduction of vector mesons which then decay invisibly through dark matter coupling, would also be present with the assumed kinetic mixing, only \dbrem is considered in this search due to its significantly larger production rate.
+Under the dark photon kinetic mixing model presented here, muons would primarily produce dark matter in the detector for the A' mass ranges of interest via a process known as \dbrem, where a dark matter particle is emitted from a muon after the muon exchanges a photon with a nucleus in the detector (\Cref{fig:dbrem_feyn}).
+While other processes, such as photoproduction of vector mesons which then decay invisibly through dark matter coupling, would also be present with the assumed kinetic mixing only \dbrem is considered in this search due to its significantly larger production rate.
 
 \begin{figure}[ht]
 	\centering
 	\label{fig:dbrem_feyn}
 	\includegraphics[width=0.8\textwidth]{figures/dbrem_feyn_diagram.jpg}
-        \caption[Dark Bremsstrahlung Feynman Diagram]{Dark Bremsstrahlung caused by a muon interacting with a nucleus with atomic number Z.}
+        \caption[Dark Bremsstrahlung Feynman Diagram]{Dark Bremsstrahlung caused by a muon interacting with a nucleus with atomic number Z. Read from left to right, the diagram shows a muon exchanging a photon with the nucleus, then emitting an A'. When the A' is more massive than the muon, it is kinematically favored to carry most of the outgoing momentum.}
 \end{figure}
 
 As an additional feature of muon-initiated \dbrem, results from this search are also sensitive to dark matter models which replace the generic dark matter mixing with an asymmetric coupling to the different lepton generations (electrons, muons, and taus).
 In the SM, the non-gravitational couplings of each lepton generation are identical, a feature known as lepton universality.
-While lepton universality is built into the standard model, no such requirement is necessary for new physics models. 
+Though lepton universality holds in standard model interactions, no such requirement is necessary for new physics models. 
 Instead of the fully generic kinetic mixing presented in \Cref{eq:LDMlagrangian}, the dark photon gauge field can be chosen to contain an additional current which carries charge proportional to muon number minus tau number, ($L_\mu - L_\tau$) \cite{neut_trident}.
-This type of field would result in a dark matter coupling that preferentially interacts with muons and taus, and has few existing constraints as it only would affect neutrinos and unstable leptons.
+This type of field would result in a dark matter coupling that preferentially interacts with muons and tau leptons, and has few existing constraints.
 
 There are several experimental anomalies which could potentially be explained by an asymmetric lepton coupling of this type.
-The measurement of the muon magnetic moment by the Fermilab E989 experiment \cite{gminus2}, combined with the original result from Brookhaven \cite{gminus2_bnl} currently leads to a 4.2 $\sigma$ discrepancy with the theoretical prediction \cite{gminus2_theory}. 
-This could potentially be explained by a dark matter signal which preferentially couples to muons, as a dark matter coupling would introduce new terms in its calculation from interactions including dark matter loops.
+The magnetic moment of the muon can be measured very precisely in experiments, and predicted to similar precision using known interactions in the SM.
+Its measurement by the Fermilab E989 experiment \cite{gminus2}, combined with the original result from Brookhaven \cite{gminus2_bnl} currently leads to a 4.2 $\sigma$ discrepancy with the theoretical prediction \cite{gminus2_theory}. 
+This could potentially be explained by a dark matter signal which preferentially couples to muons, as a dark matter coupling would introduce new terms in the calculation of the muon magnetic moment from interactions including dark matter loops.
 A muon-philic cross section would also have a larger thermal relic cross section, as requiring a muon or tau coupling in its production reduces the available processes in its creation and so requires increasing the remaining cross section to achieve the same freeze-out number density.
 
 \section{Z-Bosons and the DY Process}
 For muons to potentially interact within the CMS detector and produce dark photons, they must first be created within the initial collision.
 Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for high signal efficiency, the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
-To help control these backgrounds, muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce oppositely-charged pairs of muons.
-When di-muon pairs are produced via mediator particles, the invariant mass spectrum of the produced particles peaks sharply near the mediator particle mass, with the peak width proportional to the lifetime of the mediator. 
+
+To help control these backgrounds muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce oppositely-charged pairs of muons.
+When di-muon pairs are produced via mediator particles, the invariant mass spectrum of the produced particles peaks sharply near the mediator particle mass, with the width of the produced peak proportional to the lifetime of the mediator. 
 By selecting muons from particle resonances, stringent identification requirements can be applied to one outgoing muon in order to 'tag' the event, and reduced selections can be applied to the other muon to 'probe' the response of the detector along its trajectory to search for non-standard interactions. 
+Using this method, the probe muons can be selected without requiring information from the full detector, as potential \dbrem interactions could greatly alter their behavior within further detector components, or prevent them from reaching them at all.
 
 While many such resonances exist in the CMS di-muon spectrum (\Cref{fig:diMuonSpectrum}), this search targets muon originating the decay of Z bosons due to the relatively higher energy of the produced final-state muons and the reduced rates of non-resonant muon pairs near the Z mass.
 Z bosons are the electromagnetically neutral force carrier of the nuclear weak force, which unlike the electromagnetic and nuclear strong forces has massive force carriers in the W and Z bosons.
 Specifically, the Z boson mass is \SI{91.1876\pm0.0021}{\giga\eV}. 
-Z bosons predominantly decay into hadrons (~70$\%$), invisible particles (neutrinos or unknown particles, ~20$\%$), and lepton pairs (~10$\%$), with roughly equal branching to electrons, muons and tau leptons.
+Z bosons predominantly decay into hadrons ($\sim$70$\%$), invisible particles (neutrinos or unknown particles, $\sim$20$\%$), and lepton pairs ($\sim$10$\%$), with roughly equal branching to electrons, muons and tau leptons.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{figures/cms_diMuonSpectrum.jpg}
-	\caption[Inclusive dimuon spectrum in CMS]{The dimuon invariant mass spectrum in the CMS high-level trigger, measured using data collected in 2015. Figure from \cite{cmsMuonPerformance}.}
+	\caption[Inclusive dimuon spectrum in CMS]{The dimuon invariant mass spectrum in the CMS high-level trigger, measured using data collected in 2015. Figure from Ref.~\cite{cmsMuonPerformance}.}
 	\label{fig:diMuonSpectrum}
 \end{figure}
 
-The Z boson resonance in di-muon pairs is primarily produced through the Drell-Yan (DY) process \cite{origDYPaper,DYSummary}, in which a pair of quarks in the initial hadron collision annihilate into a pair of leptons (\Cref{fig:dyDiagram}).
+The Z boson resonance in di-muon pairs is primarily produced through the Drell-Yan (DY) process (\cite{origDYPaper,DYSummary}), in which a pair of quarks in the initial proton-proton collision annihilate into a pair of leptons (\Cref{fig:dyDiagram}).
 The invariant mass of di-muon pairs produced in the DY process with minimal selection requirements is shown in \Cref{fig:dySpectrum}, as well as the energy of the individual muons produced. 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/dyProcess.pdf}
-	\caption[Feynman Diagram for the DY Process]{The Drell-Yan process. A quark from one hadron annihilates with an anti-quark from another, resulting in the production of two leptons. Figure from \cite{bechtel2023}.}
+	\caption[Feynman Diagram for the DY Process]{The Drell-Yan process. A quark from one hadron annihilates with an anti-quark from another, resulting in the production of two leptons. Figure from Ref.~\cite{bechtel2023}.}
 	\label{fig:dyDiagram}
 \end{figure}
 
