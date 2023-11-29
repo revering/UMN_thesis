@@ -10,16 +10,18 @@ Within the 27 km ring of the LHC, two counter-rotating proton beams cross at sev
 One of these crossing points is in the center of the CMS detector, where 'bunches' of $\thicksim10^{11}$ protons collide every \SI{25}{\nano\second} in a beam spot less than \SI{3}{\centi\meter} in length and \SI{20}{\micro\meter} in width. 
 On average, each bunch crossing produces 32 proton-proton interactions, though most are 'pileup' interactions from low-energy nuclear strong force interactions.
 
-Occasionally, these collisions will produce exotic, high energy 'primary' interactions between the constituent particles within the protons, which quickly decay into SM particles which can be measured in the detector.
+Occasionally, these collisions will produce exotic, high energy 'primary' interactions between the constituent particles within the protons, which quickly decay into SM particles that can be measured in the detector.
 Together, the primary and pileup interactions emit large numbers of secondary particles which radiate outward from the beam spot. 
-The detector then measures and identifies these particles in order to reconstruct the physics processes that occurred during the collision. 
+The detector then must identify these particles and measure their properties in order to reconstruct the physics processes that occurred during the collision. 
 While the bunches interact at a rate of \SI{40}{\mega\hertz}, the large amount of data produced in each collision and the limited data transfer and storage ability of the experiment limits the maximum final readout rate to $\thicksim$\SI{1}{\kilo\hertz}.
 
 To successfully operate as a general purpose physics experiment, the CMS detector must be able to rapidly identify outgoing particles from a large number of collisions, separate them into individual interactions, determine when physics processes of interest have occurred to trigger detector readout, record full event information in triggered events, and accurately reconstruct the final state particles in order to allow for detailed physics analysis. 
 
 To fulfill the necessary timing, resolution, and particle identification requirements the CMS detector is split into several subsystems located concentrically around the collision point in a roughly cylindrical shape (\Cref{fig:detector}). 
 Starting from the center, particles first pass through the pixel and strip trackers, which measure the position of charged particles to determine their vertex locations, trajectories, and momenta.
-Next, particles enter the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers, where electromagnetically-induced interactions between the particle and the detector material produce large numbers of lower-energy particles, and measuring the resulting energy deposits.
+Next, particles enter the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers, where electromagnetically-induced interactions between the particle and the detector material produce large numbers of lower-energy particles.
+By measuring the resulting energy deposits of these showers, the calorimeter is able to find the total energy of the particle which induced them.
+
 After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures neutral hadrons and other less-frequently-interacting particles which may pass through the ECAL. This is done by having many layers of dense absorber which induce hadronic showers, interleaved with scintillator layers to sample the energy deposited by the resulting shower products.
 Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas-ionization chambers which all track the motion of muons, as they are the only known particles visible to our detector which are unlikely to be stopped in the calorimeters.
 
