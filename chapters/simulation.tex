@@ -5,18 +5,18 @@
 \label{simulation_chapter}
 The complex, quantum nature of high energy particle interactions within the detector generally makes direct computation of the expected behavior of collision products extremely difficult.
 To avoid this issue, typical analyses using the CMS detector rely on detailed simulations of the physics processes and particle reconstruction within each event to compare with observations in data.
-The standard tool used to produce these simulations is the Monte Carlo (MC) method, where the detector and potential initial states are used with random number generators to individually simulate full events.
-By producing large numbers of individual events, the underlying distributions of the observables can be determined and compared to data, and modifications to the available physics can be added to find the expected impact of any given physics model and determine whether its signature is present in data.
+The standard tool used to produce these simulations is the Monte Carlo (MC) method, where physics processes of interest and their interactions with the detector are simulated using random number generators to individually produce full events.
+
+By creating large numbers of individual events, the underlying distributions of their observables can be determined and compared to data, and modifications to the available physics can be added to find the expected impact of any given physics model and determine whether its signature is present in data.
 Because of the underlying uncertainties and assumptions required to create these simulated events, careful validation of their behavior through comparisons with data in control regions is necessary to determine whether any observed differences are due to new physics or are artifacts produced by the simulation process.
 
 Many inputs are required to produce accurate simulations of CMS events.
 First, the initial proton collision must be simulated for the process of interest, as well as its resulting decay into observable particles, generally referred to as the 'generation' step.
-Next, the propagation, interactions, and decays of the initial collision products with the CMS detector must be simulated, a fundamentally quantum and probabilistic process, as well as the response of the detector to these interactions, which together are known as the 'simulation' step.
-Lastly, the response of the active detector elements to these particles is siumated, and transformed into the digital formats used in the real detector so that identical reconstruction algorithms can be applied to simulated and data event, known as the 'digitization' step.
+Next, the propagation, interactions, and decays of the initial collision products in the CMS detector must be simulated, a fundamentally quantum and probabilistic process, as well as the deposits in the detector from these interactions, which together are known as the 'simulation' step.
+Lastly, the response of the active detector elements to these particles is simulated and transformed into the digital formats used in the real detector so that identical reconstruction algorithms can be applied to simulated and data events, known as the 'digitization' step.
 
 In this section, each step of the CMS simulation, as well as its particular relevance to this seach, is presented.
-Due to the complexity and importance of these simulations much of the underlying technique is shared between analyses, and several techniques for correcting the simulations to better match data that have been developed are applied here and described at the end of the chapter. 
-
+Due to the complexity and importance of these simulations much of the underlying technique is shared between CMS analyses, and several techniques for correcting the simulations to better match data that have been developed by the collaboration or derived specifically for this search are applied here and described at the end of the chapter. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Event generation and hadronization}
