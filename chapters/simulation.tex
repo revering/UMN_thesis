@@ -20,19 +20,23 @@ Due to the complexity and importance of these simulations much of the underlying
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Event generation and hadronization}
-Simulating events in CMS begins with a 'generation' step, which replicates the collision of the initial protons, the production of the primary physics process of interest, and its initial decay, producing the set of particles that enter into the detector. 
-The generation is typically split into an initial event generation step, which simulates the initial hard scattering process, and a hadronization step, which simulates the decays and radiation of the final state particles resulting from the initial scatter.
+Simulating events in CMS begins with a 'generation' step which replicates the collision of the initial beam protons, the production of the primary physics process of interest, and its initial decay, producing the set of particles that enter into the detector. 
+The generation is typically split into an initial event generation step, which simulates the initial hard scattering process, and a hadronization step, which simulates the decays and radiation of the particles resulting from the initial scatter.
 
-In this analysis the initial parton interaction is simulated using \mg \cite{Maltoni_2003}, which begins by calculating the 'matrix elements' of a given interaction, which encode the probability of a given initial state to produce outgoing particles of particular energies and momenta.
-\mg calculates the matrix elements using Feynman diagrams and rules to perturbatively calculate the matrix element at a given order in the number of diagrams considered.
-Due to the relative insensitivity in this analysis to the precise production rate of the initial state muons, leading order diagrams are used to calculate this matrix element to reduce the required computation time.
-For all MC samples used, version 2.6.5 of \mg is used to generate hard scatters involving the Drell-Yan process at leading order. 
+In this analysis the initial proton interaction is simulated using \mg~\cite{Maltoni_2003}, which begins by calculating the 'matrix elements' of a given interaction, which encode the probability of an initial state undergoing the interaction and producing outgoing particles of particular energies and momenta.
+\mg calculates the matrix elements using Feynman diagrams and rules to perturbatively calculate the matrix element at a given order.
+Each Feynman diagram represents a possible quantum interaction which could produce the final state, with the 'order' of the diagram related to the number of interactions within it. 
+For the DY process, additional interactions in a diagram correspond to reduced probability of that diagram occurring, such that most of the dynamics are driven by the lowest-order, highest-weighted diagrams.
+
+Due to the relative insensitivity in this analysis to the precise production rate of the initial state muons, the lowest, or 'leading', order diagrams are used to calculate this matrix element to reduce the required computation time and the kinematics of the simulated muons are validated using control regions in data to verify their behavior.
+For all MC samples used, version 2.6.5 of \mg is used to generate collisions between contituent particles in the beam protons involving the Drell-Yan process at leading order. 
 
 Before entering the detector, the resulting products of the hard scatter can decay further or emit radiation.
 Here, the outgoing leptons from the DY process can emit photons, and gluon radiation from the initial quarks before collision can create outgoing quarks that must be converted into hadrons. 
-This process is performed using parton shower models, which simulate the process of high energy quarks emitting radiation to produce more quarks and other particles while losing energy with each radiation step until the quarks have low enough energy to bind together and form hadrons, resulting in a 'jet' of hadrons and other particles.
-The hadronization step is performed using \pythia, which uses 'tunes' of parameter settings to best match the showering and hadronization process with the physics of interest. 
-All simulations performed in this analysis use the CP5 tune of \pythia \cite{pythia_tune}. 
+This process is performed using parton shower models, which simulate the process of high energy quarks emitting radiation to produce more quarks and other particles.
+The quarks lose energy at each radiation step until they have low enough energy to bind together and form hadrons, resulting in a 'jet' of hadrons and other particles.
+The hadronization step is performed using \pythia, which uses 'tunes' of parameter settings to best match the showering and hadronization process for the physics of interest. 
+All simulations performed in this analysis use the CP5 tune of \pythia~\cite{pythia_tune}. 
 
 As an additional input to the generation, the distributions of potential initial states must be determined.
 While the LHC formally collides protons, the hard interaction in the initial collision occurs between individual particles within them.
@@ -40,30 +44,30 @@ The quantum numbers of a proton are determined from its valence quarks, two up-f
 Together, the proton constituents are referred to as partons, and their relative distribution must be included in the simulation to describe accurate initial states of the collision.
 
 Parton distribution functions (PDFs) represent the probability to find a parton of a given flavor with a particular fraction of the proton's momentum at a fixed energy scale.
-To fully calculate the cross section of an interaction in CMS, the matrix element showing the probability of any two partons to produce that interaction must be integrated over all possible partons and momentum fractions and weighted by the corresponding PDF. 
-Several different schemes can used to calculate these functions, and in this analysis the NNPDF31$\_$nnlo$\_$as$\_$0118 PDF \cite{nnpdf} is used for all simulated samples.
+To fully calculate the cross section of an interaction in CMS, the matrix element showing the probability of any two partons to produce that interaction must be integrated over all possible partons and momentum fractions, each weighted by the corresponding PDF. 
+Several different schemes can used to calculate these functions, and in this analysis the NNPDF31$\_$nnlo$\_$as$\_$0118 PDF~\cite{nnpdf} is used for all simulated samples.
 
 \section{Detector Response Simulation}
 
-After simulating the initial particles produced in DY events, the behavior of these particles and the corresponding response of the detector to them must be simulated to allow for direct comparison to data.
-In this analysis, the response simulation is performed using \geant \cite{geantRef}, which is provided a realistic simulation of the CMS detector and magnetic field.
-\geant tracks each particle as it passes through the detector, simulating their ionization, scattering, and decays, and the resulting energy deposited in each region of the detector.
+After simulating the initial particles produced in DY events, the propagation of these particles and the corresponding response of the detector to them must be simulated to allow for direct comparison to data.
+In this analysis, the response simulation is performed using \geant~\cite{geantRef}, which is provided a realistic simulation of the CMS detector and magnetic field.
+\geant tracks each particle as it passes through the detector and simulates their ionization, scattering, and decays, as well as the resulting energy deposited in each region of the detector.
 
-The reponse of each detector element to these energy and ionization deposits is then simulated and used to replicate the digital output of the real detector, and the events are then reconstructed using the same algorithms used in data events.
-The accuracy of this process is a key challenge in this analysis, as differences in the simulated and real response of the detector to passing muons could replicate muon disappearance through poor reconstruction in data. 
-Control regions containing the detector response to muons are studied in order to verify the performance of the simulated response, and to derive potential uncertainties from mis-modeling.
+The reponse of each detector element to the energy and ionization deposits is then simulated and used to replicate the digital output of the real detector, and the events are then reconstructed using the same algorithms used in data events.
+The accuracy of this process is a key challenge in this analysis, as differences in the simulated and real response of the detector to passing muons could replicate muon disappearance through poor reconstruction in data in ways that are not observed in simulation. 
+Control regions containing the detector response to muons are studied in order to verify the performance of the simulation and to derive potential uncertainties from mis-modeling.
 
-To account for pileup, samples of 'minimum-bias' events simulated with \pythia and \geant are generated to replicate proton scatters without applied requirements for specific interactions.
+To account for pileup, samples of 'minimum-bias' events simulated with \pythia and \geant are generated to replicate proton scatters without applied requirements for specific initial state interactions.
 The minimum-bias samples are then selected at random to be combined with the inelastic scatter to replicate their appearance in data and match the distributions of pileup vertices expected during each data-taking period.
 Pile-up events can create additional backgrounds if pileup tracks are paired with tagging muons, or reduce the signal efficiency when energy deposits from pileup cause probe muons to fail isolation requirements, as energy deposited from pileup could mask energy deposited by SM bremsstrahlung.
 Due to these effects and the relative uncertainty on the expected number of pileup events in simulation, the pileup distribution produces one of the largest systematic uncertainties for this analysis.
 
 \section{Monte Carlo Corrections}
 Differences in generated MC samples and data that could impact variables relevant to this search can arise from many possible sources.
-The response of the detector to high-energy particles can be very difficult to model accurately, as it may depend on the exact detector configuration and geometry, the complex interactions that the particle undergoes, and the efficiency of the particular electronics used to read the signal out.
+The response of the detector to high-energy particles can be difficult to model accurately, as it may depend on the exact detector configuration and geometry, the complex interactions that the particle undergoes, and the efficiency of the particular electronics used to read the signal out.
 Some parts of the detector do not have precise alignment schemes to position each sub-component, which can cause missing signals in expected locations or appearance in unexpected ones. 
 The data taking conditions, such as the efficiency of each channel in each detector and the zero suppression thresholds applied can change as each run progresses or require specific calibrations that are difficult to replicate in simulation.
-To produce the best possible match between MC simulations and data, several corrections are applied to the final reconstructed objects in MC to match those observed in control regions in data to remove or constrain potential differences due to these effects.
+To produce the best possible match between MC simulations and data, several corrections are applied to the final reconstructed objects in MC to match those observed in control regions in data to remove or constrain potential differences caused to these effects.
 
 \subsection{Muon Identification and Trigger Efficiencies}
 The reconstruction of muons is vital to the search presented in this thesis, both for identifying tagging muons and classifying potential signal events.
@@ -71,18 +75,18 @@ While the custom selections used to find signal events are unique enough that a 
 
 Identification and isolation efficiency corrections are derived for the tagging muons using a tag-and-probe technique much like the one used to select signal in this analysis, where events with two opposite sign muons are selected in order to find muons which are likely to originate from the decays of Z bosons.
 One muon is required to pass strict selection criteria and serve as the tagging muon, while the other must pass a looser selection criteria and is chosen to be the probe muon.
-By studying the rate of the probe muon passing various id requirements beyond those used for selection, the efficiency of reconstructed muons passing any given set of selections can be studied as a function of the muon kinematics and corrections can be derived to match MC reconstruction efficiencies to those seen in data. 
-A complete description of the tag-and-probe techniques and muon efficiencies can be found in \cite{cmsMuonPerformance}.
+By studying the rate of the probe muon passing various identification requirements beyond those used for the track selection, the efficiency of reconstructed muons passing any given set of selections can be studied as a function of the muon kinematics and corrections can be derived to match MC reconstruction efficiencies to those seen in data. 
+A complete description of the tag-and-probe techniques and muon efficiencies can be found in~\cite{cmsMuonPerformance}.
 
-The use of muons from Z decays leads to a very close similarities expected kinematics of the probe muons used in this search, but would also include potential signal events in their efficiency calculations. 
+The use of muons from Z decays in the calculation of these efficiencies leads to very close similarities to the expected kinematics of the probe muons used in this search, but would also include potential signal events in the efficiency calculations. 
 The presence of signal events in the muon efficiency studies would result in small reductions in muon reconstruction efficiency, as selected probes could have undergone \dbrem which would reduce the quality of the reconstructed muons due to the large energy loss. 
-As the efficiency corrections are only applied to the tagging muon and the expected cross section for \dbrem is small, this signal contamination would only result in small reductions in the expected number of tagging muons selected.
+As the efficiency corrections are only applied to the tagging muon and the expected cross section for \dbrem is small, this signal contamination would result in small reductions in the expected number of tagging muons selected.
 While this effect could result in significant signal loss if applied to the probe muons, the custom validation techniques developed for the selections applied are derived in control regions with low signal occupancy in order to minimize this issue.
 
-Corrections to the muon efficiency are applied to tagging muons in MC as a function of $\eta$ and $p_t$ (\Cref{fig:muIdIsoEff}), calculated using the difference in muon quality and isolation efficiency for probe muons in data and MC. 
+The corrections to the muon identification and isolation efficiency are applied by assigning event weights to tagging muons in MC as a function of $\eta$ and $p_t$ (\Cref{fig:muIdIsoEff}) which are calculated using the difference in muon quality and isolation efficiency for probe muons in data and MC. 
 The uncertainty on these efficiency corrections is estimated by varying the tagging muon selections, background and signal models, and MC samples used. 
-This muon efficiency uncertainty is applied as a systematic uncertainty in the search and estimated by varying all muon efficiencies by $\pm$ one standard deviation.
-The resulting scale factors for DY MC, as well as their up- and down-variations, are shown in \Cref{fig:muIdIsoSFs}.
+The systematic uncertainty arising from the muon efficiency corrections is estimated by varying all muon efficiencies by $\pm$ one standard deviation.
+The resulting event weights for DY MC, as well as their up- and down-variations, are shown in \Cref{fig:muIdIsoSFs}.
 
 \begin{figure}[htbp]
 	\centering
@@ -103,7 +107,7 @@ The resulting scale factors for DY MC, as well as their up- and down-variations,
 \end{figure}
 
 The efficiency of the isolated muon triggers used in this search are corrected using similar tag-and-probe techniques as the identification efficiency. 
-By selecting events with high-quality tagging muons which pass the trigger requirements and selecting probe muons with reduced identification requirements, the rate of muons with particular $\eta$, $\pt$, and isolation passing the trigger can be compared in data and MC.
+By selecting events with high-quality tagging muons which pass the trigger requirements and probe muons with reduced identification requirements, the rate of muons with particular $\eta$, $\pt$, and isolation passing the trigger can be compared in data and MC.
 
 All MC events are then re-weighted based on the relative rate of their tagging muons passing the trigger in data and MC, and a systematic uncertainty in this trigger efficiency is applied by changing the trigger efficiency by one standard deviation.
 The measured trigger efficiencies, as well as the resulting weights and their up- and down-variations, are presented in \Cref{fig:muTrigSFs}.
@@ -119,8 +123,8 @@ To ensure that this efficiency is calculated for the correct muon, all tagging m
 \end{figure}
 
 \subsection{Muon Energy Scale Corrections}
-While this analysis has a weak overall dependence on the tagging muon kinematics, small differences that may be present between simulation and data in the tagging muon energy could cause shifts in the invariant mass distribution which would change the event acceptance rate.
-To account for these potential differences, muon energy scale corrections are applied using the Rochester method \cite{rochester_corr}.
+While this analysis does not strongly depend on the precision of the tagging muon kinematics, small differences that may be present between simulation and data in the tagging muon energy could cause shifts in the invariant mass distribution which would change the event acceptance rate.
+To account for these potential differences, muon energy scale corrections are applied using the Rochester method~\cite{rochester_corr}.
 
 The Rochester method is a data-driven correction to reconstructed muon energies as a function of $\eta$, $\phi$, and charge.
 The correction is derived using a two-step approach which uses $Z/\gamma* \rightarrow \mu\mu$ events.
@@ -138,12 +142,12 @@ In addition, the depth-by-depth information can be used to search for evidence o
 In order to use this level of detail, the muon HCAL deposits in MC must be validated and corrected to match those seen in data.
 This is done through study of muon deposits along the trajectory of selected tagging muons.
 
-As the global muon associated with the tagging muon may have improved trajectory accuracy due to the inclusion of information from the muon systems, only the tracker track matching the global muon is projected into HE to match the information available for the selected probes.
+As the global muon associated with the tagging muon may have improved trajectory accuracy due to the inclusion of information from the muon systems, only the inner track matching the global muon is projected into HE to match the information available for selected probes in the final analysis.
 The HCAL energy is then collected in each depth along the trajectory of the track, and the distributions of energy are compared in data and DY MC.
 
-The energy distributions along tag-muon aligned tracks for HE depths 1 and 4 are shown in \Cref{fig:unCorrHEDepths}.
-As the depth increases, the thickness of the layers increases and the backgrounds deposits decrease, as nearby non-muon particles are absorbed by the calorimeter, improving the amplitude and resolution of the muon peak.
-The simulated and data events were found to have peak energies near the same values, but significant excesses of events with very low energy ($<$\SI{0.1}{\giga\eV}) were seen in data, while simulated events were seen to have higher rates of events with large HE energy deposits.
+The energy distributions along tag-muon aligned tracks for the first and fourth HE depths are shown in \Cref{fig:unCorrHEDepths}.
+As the depth increases, the thickness of the layers increases and deposits from pileup decrease, as nearby non-muon particles are absorbed by the calorimeter, improving the amplitude and resolution of the muon peak.
+The simulated and data events were found to have peak energies near the same values but significant excesses of events with very low energy ($<$\SI{0.1}{\giga\eV}) were seen in data, while simulated events were seen to have higher rates of events with large HE energy deposits.
 
 \begin{figure}[htbp]
 	\centering
@@ -154,7 +158,7 @@ The simulated and data events were found to have peak energies near the same val
         \label{fig:unCorrHEDepths}
 \end{figure}
 
-To study these events, the number of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing' hits (\Cref{fig:missingHits}), was measured for each event, and a subsample of events with multiple missing hits was created. 
+To study these events, the number of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing hits' (\Cref{fig:missingHits}), was measured for each event and a subsample of events with multiple missing hits was created. 
 Events with many missing hits were found to correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and are likely caused by a combination of effects from differences in light collection efficiency with particle position that are not replicated in simulation, gaps between cells causing small regions of missing coverage, and misalignment between the CMS tracker and HCAL in reconstruction.
 
 \begin{figure}[htbp]
