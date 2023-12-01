@@ -185,8 +185,8 @@ Events with many missing hits were found to correspond to probe trajectories tha
 
 Anomalous low-hit events that are produced by misalignment between the HE and the tracker in reconstruction will have correlations between the probe track trajectory and the $\Delta\eta$ and $\Delta\phi$ to cell edges which produce significant missing hits. 
 To study these correlations, the $\eta$ edge and $\phi$ edge events are first categorized using requirements of $\mid\Delta\phi\mid$ $<$0.004 and $\mid\Delta\eta\mid$ $<$0.016, respectively. 
-By defining tag-aligned probe track data events which are not near $\phi$ edges as well as similar tag-aligned events which are not near $\eta$ edges, the two patterns can be separated and correlations in the cell edge distances which produce many missing hits and the probe track trajectory can be found. 
-The minimum $\Delta\phi$ in non-$\eta$-edge events with multiple missing hits is shown as a function of $\phi$ in \Cref{fig:phiEdgeCorr}, and the minimum $\Delta\eta$ in non-$\phi$-edge events with multiple missing hits is shown as a function of $\eta$ for both endcaps in \Cref{fig:etaEdgeCorr}.
+By defining events with probe tracks aligned with tagging muons which are not near $\phi$ edges as well as similar tag-aligned events which are not near $\eta$ edges, the two patterns can be separated and correlations in the cell edge distances which produce many missing hits and the probe track trajectory can be found. 
+The $\Delta\phi$ from the probe track to the nearest HE cell edge in non-$\eta$-edge events with multiple missing hits is shown as a function of $\phi$ in \Cref{fig:phiEdgeCorr}, and the $\Delta\eta$ from the probe track to the nearest HE cell edge in non-$\phi$-edge events with multiple missing hits is shown as a function of $\eta$ for both endcaps in \Cref{fig:etaEdgeCorr}.
 
 \begin{figure}[htpb]
     \includegraphics[width=0.45\textwidth]{figures/phiEdgeEventsData.png} 
@@ -206,12 +206,13 @@ The minimum $\Delta\phi$ in non-$\eta$-edge events with multiple missing hits is
 
 Strong correlations are observed between the location of the projected tracks and the cell edge distances which produce missing hits, indicating that these 'missing hit' events are primarily caused by differences in the simulated and real position of the HE detector.
 To account for these correlations, the 'on-edge' requirements are chosen to be dependent on the probe track trajectory as well as the cell edge distance. 
-Probe tracks are designated as on-edge in $\eta$ if -0.002$<\Delta\eta$(-$\Delta\eta$)$<$0.016 and the probe track trajectory has $\eta<$($>$)0, and on-edge in $\phi$ if -0.001$<\Delta\phi$(-$\Delta\phi$)$<$0.004 and the probe track trajectory has $|\phi|>$($<$)$\pi$/2.
+Probe tracks with $\eta<$0 are designated as on-edge in $\eta$ if -0.002$<\Delta\eta<$0.016, and probe tracks with $\eta>$0 are designated as on-edge in $\eta$ if -0.016$<\Delta\eta<$0.002.
+Probe tracks with $|\phi|>\pi$/2 are designated as on-edge in $\phi$ if -0.001$<\Delta\phi<$0.004, and probe tracks with $|\phi|<\pi$/2 are designated as on-edge in $\phi$ is -0.004$<\Delta\phi$<0.001.
 
 Events which are on-edge in $\eta$, $\phi$, or both are excluded from the partial disappearance region due to the significant differences observed between data and MC in the individual HE hits, which are necessary in that region to remove soft SM Bremsstrahlung backgrounds.
 In complete disappearance events, the HCAL hits are implemented using sums of all HCAL cells within a $\Delta$R cone of 0.3, which is sufficiently large to include all adjacent cells and is not significantly affected by this misalignment.
 
-After removing the on-edge events, small variations in the energy of muons in HE are still observed \cref{fig:nonEdgeHEEnergy}. 
+After removing the on-edge events, small variations in the energy of muons in HE are still observed, as shown in \Cref{fig:nonEdgeHEEnergy}. 
 To correct for these differences, event weights are derived for each depth in HE as a function of the energy in that depth based on the difference observed between DY MC and data.
 The total re-weighting factor is calculated as the product of the weight in each depth that the track is expected to traverse.
 To avoid potential differences in the simulated zero-suppression thresholds which may cause significant changes in events with very low HE energy, all HE hits with reconstructed energy below \SI{0.1}{\giga\eV} are set to zero.
@@ -222,20 +223,20 @@ The resulting scale factors for simulated DY events are shown in \Cref{fig:HESFs
 	\includegraphics[width=0.45\textwidth]{figures/hcalE_depth0.pdf}
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/hcalE_depth4.pdf}
-	\caption[Center-Aligned HE Energy]{The HE energy of in depths along tag-aligned muons for events not near the edge of HE cells. After removing the tracks with trajectories near cell edges, the excess in data events for events with very low energy is greatly reduced, and the ratio of simulated and data events is from these comparisons is later applied as a correction factor to DY MC.} 
+	\caption[Center-Aligned HE Energy]{The HE energy in two depths along tag-aligned muons for events not near the edge of HE cells. After removing the tracks with trajectories near cell edges, the excess in data events for events with very low energy is greatly reduced, and the ratio of simulated and data events from these comparisons is later applied as a correction factor to DY MC.} 
         \label{fig:nonEdgeHEEnergy}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/totalHEWeights.pdf}
-	\caption[Applied HCAL Scale Factors]{The weights applied to simulated DY events from resulting from the individual HE depth corrections. The corrections are derived iteratively for each successive depth, and the resulting weight is the product of the weights from each HE depth along the probe trajectory.} 
+	\caption[Applied HCAL Scale Factors]{The weights applied to simulated DY events resulting from the individual HE depth corrections. The corrections are derived iteratively for each successive depth, and the resulting weight is the product of the weights from each HE depth along the probe trajectory.} 
         \label{fig:HESFs}
 \end{figure}
 
 \subsection{Pileup Correction}
-Generation of simulated events generally occurs during the data taking period, when the exact pileup distribution is not well known.
-As a result, estimates of the distribution of pileup vertices are used during the initial MC generation. 
+Generation of simulated events generally occurs concurrently with the operation of the experiment, when the exact pileup distribution is not well known.
+As a result, estimates of the distribution of pileup vertices are used during the initial MC generation which may be significantly different from the real conditions within the detector. 
 After data taking is complete and the resulting pileup distribution is measured, the simulated events are re-weighted to recreate the observed pileup.
 Pileup events may produce particles which are mistakenly identified as muons or are in the vicinity of a probe track and cause it to fail isolation requirements, so potential differences in the number of pileup particles between data and MC could change the efficiency of selecting disappearing tracks and thus impact the expected signal strength.
 
@@ -246,14 +247,14 @@ The amount of pileup in each event is then found by dividing this rate by the co
 
 As a result of this process, the measured pileup has a systematic uncertainty produced by uncertainty on the measured total proton-proton inelastic cross section as well as the instantaneous luminosity. 
 These effects are included as a pileup re-weighting uncertainty by varying the product of cross section and luminosity by one standard deviation in each direction.
-For the pileup calculation, the nominal total inelastic cross section of $\sigma_{pp}=$\SI{69.2}{\milli\barn} was used with an overall uncertainty of $\pm4.6\%$\cite{pileupCx}.
+For the pileup calculation, the nominal total inelastic cross section of $\sigma_{pp}=$\SI{69.2}{\milli\barn} was used with an overall uncertainty of $\pm4.6\%$~\cite{pileupCx}.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/PileupDists.pdf}
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/PileupRatioDists.pdf}
-        \caption[Pileup Re-weighting Histograms]{The number of pileup interactions (left) and the pileup re-weighting factors (right) derived from their ratio.}
+        \caption[Pileup Re-weighting Histograms]{The number of pileup interactions in data and simulation(left) and the pileup re-weighting factors (right) derived from their ratio.}
         \label{fig:pileup}
 \end{figure}
 
