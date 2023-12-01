@@ -8,15 +8,16 @@ Additionally, muon candidates must be selected with very high purity to eliminat
 Lastly, events must pass one of the available CMS triggers in order to be saved.
 If signal muons have significant energy loss from \dbrem they may no longer pass the reconstruction requirements necessary for typical trigger selections, and only events containing alternate particles which do fulfill the trigger selections will be kept.
 
-For these reasons, a tag-and-probe method is used to select events with muon pairs produced in Z decays, with high-quality 'tagging' muons reconstructed with full muon chamber information and passing requirements for CMS muon triggers are paired with 'probe' tracks which are likely to be produced by the other muon from the decay.
+For these reasons, a tag-and-probe method is used to select events with muon pairs produced in Z decays, where high-quality 'tagging' muons reconstructed with full muon chamber information and passing requirements for CMS muon triggers are paired with 'probe' tracks which are likely to be produced by the other muon from the decay.
 By requiring that the tag and probe pair have an invariant mass near the mass of the Z boson and pass several isolation requirements designed to remove non-muon tracks, probe tracks can be selected which have high likelihoods of originating from muons without using information from the muon chambers along their trajectory.
 
 Once probe tracks are selected, they can then be extrapolated into the HCAL and CSCs in order to search for evidence of missing energy that may have been caused by the production of an \aprime.
 Signal events are split into two categories based on the presence of nearby standalone muons.
 'Complete disappearance' events have no nearby standalone muons, and correspond to events where the track is fully stopped before reaching the muon chambers or suffers a complete reconstruction failure within them.
 'Partial disappearance' events have standalone muons nearby to the probe track, but have large energy differences in the reconstructed standalone muon and the selected track.
+
 In the complete disappearance region a simultaneous fit of the invariant mass distribution is made to distinguish signal and DY events from non-muon backgrounds, while in the partial disappearance region a binary decision tree is used to better differentiate potential signal events from background and a single-bin count is made for the final selection.
-A sketch of an example complete disappearance event and an example partial disappearance event is shown in \Cref{fig:sigCatSketch}.
+A sketch of an example complete disappearance event and a partial disappearance event is shown in \Cref{fig:sigCatSketch}.
 
 \begin{figure}[htpb]
 	\centering
@@ -30,8 +31,9 @@ A sketch of an example complete disappearance event and an example partial disap
 \section{Base Event Selection}
 The initial process of pairing probe tracks with tagging muons is referred to as the Base Event Selection, and is used in both the signal regions and a variety of control regions.
 This definition of a "base event" is also useful for interpreting the final results of the search, when the observed number of signal events is compared to the expected number of background events and the signal sensitivity.
-This process initially produces results in terms of an arbitrary 'signal strength', related to the normalization of the signal events, which must be re-interpreted into a meaningful physical quantity.
-By measuring the rate at which events which pass the base event selection in MC pass the base event selection at a given cross section and scaling them to the number of base events seen in data, the signal strength can be re-interpreted as the cross section for \dbrem.
+This process initially produces results in terms of an arbitrary 'signal strength', related to the normalization of the signal events, which must be re-interpreted to produce a meaningful physical quantity.
+
+By measuring the rate at which events which pass the base event selection in MC pass the base event selection at a given cross section, then scaling them to the number of base events seen in data, the signal strength can be re-interpreted as the cross section for \dbrem.
 Using this method, uncertainties from the CMS collision luminosity, the DY cross section, and the parton distribution functions used can be greatly reduced, as the number of predicted probe tracks would otherwise include the product of those quantities.
 
 The base event selection begins with the tagging muons, used to pass the CMS trigger and to pair with probe tracks to find Z-candidates.
