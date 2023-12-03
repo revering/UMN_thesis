@@ -3,44 +3,47 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Backgrounds}
 \label{backgrounds}
-There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data as a limit on the signal strength of beyond the standard model processes.
+There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data as a limit on the signal strength of new processes.
 Wherever possible, the backgrounds are determined using control regions in data where orthogonal selections to the signal region are applied in order to find regions enriched in backgrounds to study their properties and extrapolate their rate to the final selection.
+By using data-driven methods, the background rates can be predicted without uncertainty from differences in simulated and data events. 
+However, control regions which can effectively isolate background processes and be extrapolated into the signal region without significantly altering the event topology are not always available, and so some backgrounds must be predicted using MC and validated using data to limit effects from uncertainties in the simulation method.
 
 Heuristically, the backgrounds in this search are split into two types: those where the probe track is produced by a muon ("muon backgrounds") and those where it is produced by any other particle in the event ($\mu+X$ events).
 In practice, the invariant mass of the tag/probe pair is the primary feature used to distinguish events with non-muon probes, as muon-system and calorimeter information are heavily used in the signal definition and therefore unavailable for simple definitions of control regions.
-As a result, the $\mu+X$ backgrounds include any processes where the invariant mass of the tag and probe pair does not peak near the Z-mass, effectively serving as a background of events without muons from Z decays.
-While these muons from other sources could potentially produce signal events in the same manner as muons from Z bosons, their much smaller relative rate causes this choice to have a negligible impact on the resulting signal sensitivity.
+As a result, the $\mu+X$ backgrounds include any processes where the invariant mass of the tag and probe pair does not peak near the Z-mass, effectively serving as a background of events where the probe does not originate directly from a DY muon.
+While muons from other sources could potentially produce signal events in the same manner as muons from Z bosons, their much smaller relative rates causes their inclusion as backgrounds to have a negligible impact on the resulting signal sensitivity.
 
 \section{DY Muon Backgrounds}
 Standard model DY backgrounds occur when the base event selection successfully finds a probe track which matches to a muon originating from the DY process which then passes the signal selection without undergoing a Dark Bremsstrahlung. 
 This can occur either when muons lose energy via conventional physics interactions without producing enough visible energy in the detector to reject the event or when the muon signature in HE and the CSC chambers is missed.
 Often, some combination of both effects is present, as muons with altered energy from interactions within the detector can have genuine deflections causing them to pass through unexpected stations in the muon chambers, greatly increasing the probability of reconstructing them poorly.
 
-The primary difficulty of muon backgrounds is the lack of control regions enriched in muon backgrounds which do not contain significant signal contamination.
+The primary difficulty of muon backgrounds is the lack of control regions enriched in DY muons which do also efficiently reject signal events.
 Like signal events, muon backgrounds have opposite-sign tag and probe pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
-Muon backgrounds tend to have slightly higher HCAL energy deposits than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem.
+Muon backgrounds tend to have slightly higher HCAL energy deposits along the track trajectory than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem.
 Unfortunately, events with large HCAL deposits have correspondingly large rates of SM Bremsstrahlung, which produces genuine muon deflections and significantly alters the observed behavior within the muon chambers.
 As a result, the control regions with large HCAL energy near the probe track are useful for validating the performance of the muon chamber behavior for signal-like events, but cannot be used to directly extrapolate a background rate into the signal region. 
 
-Due to the difficulty in defining control regions without significant signal contamination or large differences from the signal selection, we predict the muon background rate for both complete and partial disappearance events using MC, and perform several validation studies to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
-For the complete disappearance region, control regions containing tight-ID muons are used to predict the probability of a muon failing to produce a muon segment in any given muon chamber, and corrections are derived for differences observed in data and simulation.
+Due to the difficulty in defining control regions without significant signal contamination or large differences from the signal selection, the muon background rate for both complete and partial disappearance events is predicted using MC, and several validation studies are performed to confirm that the features used to define missed and deflected muons in simulation closely match those seen in data.
+For the complete disappearance region, control regions containing fully reconstructed muons are used to predict the probability of a muon failing to produce a muon segment in any given muon chamber, and corrections are derived for differences observed in data and simulation.
 
 For partial disappearance events, events with large energy deposits in HCAL aligned with the probe muons are used to validate the simulation of standalone muon reconstruction in events with deflected muons.
-To reduce muon backgrounds, a binary decision tree is trained to separate muon backgrounds from signal events, and the large HCAL energy region is also used to validate the performance of the BDT on data events and the simulated rate of SM muon Bremsstrahlung.
+The high-HCAL-energy region is also used to validate the performance of the BDT on data events and the simulated rate of SM muon Bremsstrahlung.
 Additionally, events with low BDT scores are used to validate the simulation of non-signal-like muons as well as the performance of the BDT in scoring them.
 
 \subsection{Missed Muons}
+\label{sec:missedMuons}
 In complete disappearance events, muon backgrounds may pass the signal selection by having the muon fail to produce hits in any CSC station due to poor reconstruction. 
 These 'missed muon' events can potentially be caused by inefficient CSC stations, gaps in the detector, or physics process that deflect the muon sufficiently to pass the nearby CSC hit requirements without depositing enough energy in the calorimeters to fail isolation requirements. 
 This background is predicted using simulation, with an additional correction factor applied using studies of CSC hit reconstruction efficiency in data. 
 
-Because of the tight isolation requirements applied in the probe track selection, the rate of missed muons depends only on the kinematics of the selected track and is otherwise expected to be independent of the initial process. 
+Because the isolation requirements applied in the probe track selection result in very few non-muon tracks, the rate of missed muons depends only on the kinematics of the selected track and is otherwise expected to be independent of the initial process. 
 As the DY process produces the vast majority of selected muons, only simulated events produced from Z decays are used to determine the rate of missed muon backgrounds.
-The simulation includes muon backgrounds from both SM scattering of the muon within the HCAL and missed muon segments, as both effects are included in the detector response.
+This approach includes muon backgrounds from both SM scattering within the HCAL and missed muon segments caused by poor reconstruction, as both effects are included in the detector response simulation.
 
-To account for potential differences in the efficiency of the simulated CSC response, corrections are applied to the simulated events based on the position-dependent CSC reconstruction efficiency measured using control regions containing CSC hits aligned with tight-ID muons.
-While these tight-ID muons are required to have at least two muon segments along their trajectories, the other two CSC stations frequently do not contain muon segments due to gaps in the detector or regions of reduced performance.
-The rate of finding muon segments within $\Delta$R$<$0.05 of the tight-ID muon is measured for each CSC station as a function of $\eta$ and $\phi$, and the ratios of the measured efficiencies in data and simulation are taken to identify regions which are not effectively simulated.
+To account for potential differences in the efficiency of the simulated CSC response with respect to the real detector, corrections are applied to the simulated events based on the position-dependent CSC reconstruction efficiency measured using control regions containing CSC hits aligned with fully reconstructed muons.
+While these muons are required to have at least two muon segments along their trajectories, the other CSC stations they pass can be used to determine the efficiency of muons producing CSC hits at the location they traverse.
+The rate of finding muon segments within $\Delta$R$<$0.05 of the muon trajectory is measured for each CSC station as a function of $\eta$ and $\phi$, and the ratios of the measured efficiencies in data and simulation are taken to identify regions which have difference between the real and simulated detectors.
 The CSC reconstruction efficiencies for data and MC as a function of $\eta$ and $\phi$ are shown in \Cref{fig:CSCeff} and \Cref{fig:CSCeff2}.
 
 \begin{figure}[htbp]
@@ -51,7 +54,7 @@ The CSC reconstruction efficiencies for data and MC as a function of $\eta$ and 
     \includegraphics[width=0.45\textwidth]{figures/cscNearbyFracData_station1.pdf}
     \hspace{0.01\textwidth}
     \includegraphics[width=0.45\textwidth]{figures/cscNearbyFracMC_station1.pdf}
-	\caption[CSC segment efficiencies for stations 1 and 2]{The fraction of tag muons with nearby CSC hits in stations 1 and 2 for data and MC. While the overall rate of stations with distant CSC hits sees good agreement across most depths, there are several locations in data that see poorer reconstruction than simulation. These regions are included in the complete disappearance region by removing CSC hits in MC which occur within them with event weights corresponding to the difference in reconstruction efficiency.}
+	\caption[CSC segment efficiencies for stations 1 and 2]{The fraction of tag muons with nearby CSC hits in stations 1 and 2 for data and MC. While the overall rate of stations with distant CSC hits sees good agreement across most depths, there are several locations in data that see poorer reconstruction than simulation, such as the inefficient wedge in station 2 for data near $\phi$=1,$\eta$=2 which does not appear in simulation. These regions are included in the complete disappearance region by removing CSC hits in MC which occur within them with event weights corresponding to the difference in reconstruction efficiency.}
     \label{fig:CSCeff}
 
 \end{figure}
@@ -63,7 +66,7 @@ The CSC reconstruction efficiencies for data and MC as a function of $\eta$ and 
     \includegraphics[width=0.45\textwidth]{figures/cscNearbyFracData_station3.pdf}
     \hspace{0.01\textwidth}
     \includegraphics[width=0.45\textwidth]{figures/cscNearbyFracMC_station3.pdf}
-    \caption[CSC segment efficiencies for stations 3 and 4]{The fraction of tag muons with nearby CSC hits in stations 3 and 4 for data and MC.}
+    \caption[CSC segment efficiencies for stations 3 and 4]{The fraction of tag muons with nearby CSC hits in stations 3 and 4 for data and MC. The lines of inefficient reconstruction near $|\eta|$=1.7 are produced by gaps in the CSCs which are designed to be non-projective across stations.}
     \label{fig:CSCeff2}
 \end{figure}
 

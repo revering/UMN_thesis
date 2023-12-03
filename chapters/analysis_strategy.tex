@@ -103,15 +103,15 @@ Conversely, a requirement that at least two HCAL cells along the probe trajector
 In addition to the requirement of no nearby standalone muons, events with any CSC hits within $\Delta$R of 0.05 to the probe track are rejected in order to remove events where mis-identified hadrons or mesons pass through HCAL without fully showering and deposit some energy in the muon chambers, as well as events that may have muon deposits in the CSCs and significant failures in muon reconstruction such that no standalone muons are formed.
 
 In the partial disappearance region, the requirement of a nearby standalone muon greatly reduces the backgrounds caused by mis-identified tracks, and the dominant backgrounds are caused by DY muons with poorly-reconstructed standalone muons or large SM energy loss.
-Due to the relatively large uncertainty in standalone muon reconstruction (see \Cref{fig:staDEoverE}), the requirement that the standalone muon have $<$40$\%$ of the probe track energy still results in $\mathcal{O}(10^{5})$ selected DY muons.
+Due to the relatively large uncertainty in standalone muon reconstruction (shown for DY events and signal in \Cref{fig:staDEoverE}), the requirement that the standalone muon have $<$40$\%$ of the probe track energy still results in $\mathcal{O}(10^{5})$ selected DY muons.
 To reduce this background, a binary decision tree (BDT) is used to separate signal from DY backgrounds, which scores each event on a range from 0 (background-like) to 1 (signal-like) and is described in detail in \Cref{sec:BDT}.
 Partial disappearance events are thus required to have 'signal-like' BDT scores of $>$0.98, reducing the expected DY backgrounds by several orders of magnitude.
-As the individual HCAL depth energies are used as in input to the BDT, events with probe track trajectories near the edges of and HE cell are rejected to prevent issues from mis-alignment (\Cref{sec:HCALeff}).
+As the individual HCAL depth energies are used as in input to the BDT, events with probe track trajectories near the edges of and HE cell are rejected to prevent issues from mis-alignment (see \Cref{sec:HCALeff}).
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/allEventsStandaloneMuondEoverE_stack.pdf}
-	\caption[Standalone Muon Energy Differences]{The difference in standalone muon and probe track energy divided by the probe track energy for DY events and two signal masses. The energy lost to the production of dark photons cause the signal to peak near -0.9, where the standalone muon has less than 10$\%$ of the probe track energy, while the large width of DY events results in a significant number of background events in this region.}
+	\caption[Standalone Muon Energy Differences]{The difference in standalone muon and probe track energy divided by the probe track energy for DY events and two signal masses. The energy lost to the production of dark photons cause the signal to peak near -0.9, where the standalone muon has less than 10$\%$ of the probe track energy, while the large width of DY events results in a significant background contribution.}
 	\label{fig:staDEoverE}
 \end{figure}
 
