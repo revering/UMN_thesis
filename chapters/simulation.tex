@@ -15,7 +15,7 @@ First, the initial proton collision must be simulated for the process of interes
 Next, the propagation, interactions, and decays of the initial collision products in the CMS detector must be simulated, a fundamentally quantum and probabilistic process, as well as the deposits in the detector from these interactions, which together are known as the 'simulation' step.
 Lastly, the response of the active detector elements to these particles is simulated and transformed into the digital formats used in the real detector so that identical reconstruction algorithms can be applied to simulated and data events, known as the 'digitization' step.
 
-In this section, each step of the CMS simulation, as well as its particular relevance to this seach, is presented.
+In this section, each step of the CMS simulation, as well as its particular relevance to this search, is presented.
 Due to the complexity and importance of these simulations much of the underlying technique is shared between CMS analyses, and several techniques for correcting the simulations to better match data that have been developed by the collaboration or derived specifically for this search are applied here and described at the end of the chapter. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,7 +29,7 @@ Each Feynman diagram represents a possible quantum interaction which could produ
 For the DY process, additional interactions in a diagram correspond to reduced probability of that diagram occurring, such that most of the dynamics are driven by the lowest-order, highest-weighted diagrams.
 
 Due to the relative insensitivity in this analysis to the precise production rate of the initial state muons, the lowest, or 'leading', order diagrams are used to calculate this matrix element to reduce the required computation time and the kinematics of the simulated muons are validated using control regions in data to verify their behavior.
-For all MC samples used, version 2.6.5 of \mg is used to generate collisions between contituent particles in the beam protons involving the Drell-Yan process at leading order. 
+For all MC samples used, version 2.6.5 of \mg is used to generate collisions between constituent particles in the beam protons involving the Drell-Yan process at leading order. 
 
 Before entering the detector, the resulting products of the hard scatter can decay further or emit radiation.
 Here, the outgoing leptons from the DY process can emit photons, and gluon radiation from the initial quarks before collision can create outgoing quarks that must be converted into hadrons. 
@@ -53,13 +53,13 @@ After simulating the initial particles produced in DY events, the propagation of
 In this analysis, the response simulation is performed using \geant~\cite{geantRef}, which is provided a realistic simulation of the CMS detector and magnetic field.
 \geant tracks each particle as it passes through the detector and simulates their ionization, scattering, and decays, as well as the resulting energy deposited in each region of the detector.
 
-The reponse of each detector element to the energy and ionization deposits is then simulated and used to replicate the digital output of the real detector, and the events are then reconstructed using the same algorithms used in data events.
+The response of each detector element to the energy and ionization deposits is then simulated and used to replicate the digital output of the real detector, and the events are then reconstructed using the same algorithms used in data events.
 The accuracy of this process is a key challenge in this analysis, as differences in the simulated and real response of the detector to passing muons could replicate muon disappearance through poor reconstruction in data in ways that are not observed in simulation. 
 Control regions containing the detector response to muons are studied in order to verify the performance of the simulation and to derive potential uncertainties from mis-modeling.
 
 To account for pileup, samples of 'minimum-bias' events simulated with \pythia and \geant are generated to replicate proton scatters without applied requirements for specific initial state interactions.
 The minimum-bias samples are then selected at random to be combined with the inelastic scatter to replicate their appearance in data and match the distributions of pileup vertices expected during each data-taking period.
-Pile-up events can create additional backgrounds if pileup tracks are paired with tagging muons, or reduce the signal efficiency when energy deposits from pileup cause probe muons to fail isolation requirements, as energy deposited from pileup could mask energy deposited by SM bremsstrahlung.
+Pile-up events can create additional backgrounds if pileup tracks are paired with tagging muons, or reduce the signal efficiency when energy deposits from pileup cause probe muons to fail isolation requirements, as energy deposited from pileup could mask energy deposited by SM Bremsstrahlung.
 Due to these effects and the relative uncertainty on the expected number of pileup events in simulation, the pileup distribution produces one of the largest systematic uncertainties for this analysis.
 
 \section{Monte Carlo Corrections}
@@ -93,7 +93,7 @@ The resulting event weights for DY MC, as well as their up- and down-variations,
 	\includegraphics[width=0.45\textwidth]{figures/muonEtaEff.pdf}
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/muonPtEff.pdf}
-	\caption[Muon ID and Isolation Effiencies]{Muon ID and Isolation efficiencies calculated using tag-and-probe methods as a function of $p_t$ (left) and $eta$ (right) for data and simulation. The ID and Isolation scale factors applied to simulated tagging muons are calculated using the ratio of the data and MC efficiencies within 2-dimensional $\eta$ and $p_t$ bins.}
+	\caption[Muon ID and Isolation Efficiencies]{Muon ID and Isolation efficiencies calculated using tag-and-probe methods as a function of $p_t$ (left) and $eta$ (right) for data and simulation. The ID and Isolation scale factors applied to simulated tagging muons are calculated using the ratio of the data and MC efficiencies within 2-dimensional $\eta$ and $p_t$ bins.}
         \label{fig:muIdIsoEff}
 \end{figure}
 
@@ -118,7 +118,7 @@ To ensure that this efficiency is calculated for the correct muon, all tagging m
 	\includegraphics[width=0.5\textwidth]{figures/muTrigEff_2018.pdf}
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/trigSF.pdf}
-	\caption[Muon Trigger Scale Factors and Weights]{The isolation muon trigger scale factors as a function of muon $\eta$ and $\phi$ (left) and resulting weight (right) for DY MC events. The bimodal distributions in the event weight are produced from the differences in typical scale factors between tagging muons in the barrel and endcap regions.}
+	\caption[Muon Trigger Scale Factors and Weights]{The isolation muon trigger scale factors as a function of muon $\eta$ and $\phi$ (left) and resulting weight (right) for DY MC events. The bi-modal distributions in the event weight are produced from the differences in typical scale factors between tagging muons in the barrel and endcap regions.}
         \label{fig:muTrigSFs}
 \end{figure}
 
@@ -158,7 +158,7 @@ The simulated and data events were found to have peak energies near the same val
         \label{fig:unCorrHEDepths}
 \end{figure}
 
-To study these events, the number of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing hits' (\Cref{fig:missingHits}), was measured for each event and a subsample of events with multiple missing hits was created. 
+To study these events, the number of depths with less than \SI{0.1}{\giga\eV}, referred to as 'missing hits' (\Cref{fig:missingHits}), was measured for each event and a sub-sample of events with multiple missing hits was created. 
 Events with many missing hits were found to correspond to probe trajectories that align with the edges of HE cells (\Cref{fig:cellEdges}), and are likely caused by a combination of effects from differences in light collection efficiency with particle position that are not replicated in simulation, gaps between cells causing small regions of missing coverage, and misalignment between the CMS tracker and HCAL in reconstruction.
 
 \begin{figure}[htbp]
@@ -166,7 +166,7 @@ Events with many missing hits were found to correspond to probe trajectories tha
 	\includegraphics[width=0.45\textwidth]{figures/hcalAllMissingHits.pdf}
         \hspace{0.01\textwidth}
         \includegraphics[width=0.45\textwidth]{figures/hcalMissingHits.pdf}
-        \caption[Missing muon hits in HE]{The number of HE depths along tagging muon trajectories below \SI{0.1}{\giga\eV} for all selected muons (left) and for those not near HE cell edges (right). Significant excess in events with many missing hits is seen in data events with tracks near cell edges, and the non-exponential shape of teh data events indicates that there is some systematic effect producing these missing hits.}
+        \caption[Missing muon hits in HE]{The number of HE depths along tagging muon trajectories below \SI{0.1}{\giga\eV} for all selected muons (left) and for those not near HE cell edges (right). Significant excess in events with many missing hits is seen in data events with tracks near cell edges, and the non-exponential shape of the data events indicates that there is some systematic effect producing these missing hits.}
         \label{fig:missingHits}
 \end{figure}
 

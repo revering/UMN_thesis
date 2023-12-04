@@ -8,7 +8,9 @@ The primary distinguishing feature of signal events in this region is a large mi
 
 Primarily caused by poorly reconstructed standalone muons, these backgrounds often have lower fit qualities, CSC hits closer to the projected track, and larger HCAL energy deposits.
 These effects are not fully independent; for instance, muons with large HCAL energy may have genuine track deflection from SM scattering, so their CSC hits will be more consistent across stations resulting in better fit qualities.
-Similarly, muons with low quality fits will often have several missing CSC hits, producing standalone muons with large energy differences to the real muothe real muons often have differences in $\phi$ of between the standalone muon and probe track which are correlated with the track charge, as the lower energy deflected muons are deflected more by the magnetic field.
+Similarly, muons with low quality fits will often have several missing CSC hits, producing standalone muons with large energy differences to the probe track. 
+
+Events with real energy loss often have differences in $\phi$ of between the standalone muon and probe track which are correlated with the track charge, as the lower energy muons are deflected more by the magnetic field.
 Signal events may also have significant CSC hit displacements from the projected track location due to the angular scatter caused by \dbrem, or missing energy in several HCAL depths from muons deflecting away from the expected HE cells.
 
 To take advantage of the wide variety of weak input separators available in this region, as well as the correlations between them, a BDT classifier is used to reduce these inputs to one classification variable.
@@ -32,8 +34,8 @@ where N is the total number of training events, $y_i$ is the true value of each 
 The binary logistic loss function is small for predictions which are close to the true value, and increases exponentially for predictions which are far from the true value to increase the penalty for incorrect classification.
 
 Each tree is then given a weight according to its accuracy and combined to produce a continuous output score from zero to one, with events near zero being the most background-like and events near one being the most signal-like. 
-After each step of optimizing the tree weights, the training data is re-weighted to increase the importance of events that are more frequently misclassified in order to more quickly approach the strongest classification.
-The tree optimization and re-weighting is then continued for several iterations in order to minimize an objective function consisting of the loss function and a regularization function, which reduces overtraining by penalizing the complexity of the trees used.
+After each step of optimizing the tree weights, the training data is re-weighted to increase the importance of events that are more frequently mis-classified in order to more quickly approach the strongest classification.
+The tree optimization and re-weighting is then continued for several iterations in order to minimize an objective function consisting of the loss function and a regularization function, which reduces over-training by penalizing the complexity of the trees used.
 
 The main advantage of tree boosting is that it allows many weak classifiers in the individual trees to be combined into one strong classifier using the ensemble output score.
 In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework~\cite{XGBoost} interfaced with Scikit-learn~\cite{scikit}. 
@@ -70,7 +72,7 @@ To help distinguish angular changes caused by energy loss, the $\Delta \phi$ bet
 
 Lastly, the HCAL energy in each depth along the probe trajectory is used to identify events with high energy deposits corresponding to SM processes, or multiple low energy deposits corresponding to potential signal events.
 The number of depths traversed by any given muon depends on its position in HCAL.
-To accomodate this, depths in HCAL which are not along the track trajectory are assigned an energy of -1 GeV. 
+To accommodate this, depths in HCAL which are not along the track trajectory are assigned an energy of -1 GeV. 
 
 The distribution of the highest-performing input variable in each category for DY MC and several signal masses is shown in \Cref{fig:bdtFeatures}.
 
@@ -96,7 +98,7 @@ Prior to optimization of the other parameters, a scan of this signal weight is m
 To reduce the necessary validation and simplify the network, each signal mass is combined into one training input and weighted to give equal importance to each mass.
 
 The internal parameters of the BDT are chosen using a randomized grid search, where each parameter is sampled from a flat distribution of possible values for a large number of trials.
-To reduce the impact of overtraining in this parameter optimization, the training data is randomly split into five equally-sized independent subsets called \emph{folds}.
+To reduce the impact of over-training in this parameter optimization, the training data is randomly split into five equally-sized independent subsets called \emph{folds}.
 Five separate testing and training combinations sets are then defined, each with one fold used as a testing dataset and the other four used as a training dataset.
 
 Five separate BDTs are then trained using these combinations.
