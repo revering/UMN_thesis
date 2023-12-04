@@ -14,7 +14,7 @@ The events in the partial disappearance region and the tag/probe invariant mass 
 \end{figure}
 
 The results are combined with the measured fixed target luminosities from the signal simulation in order to interpret them as limits on the square of the mixing paramer, which the \dbrem interaction rate is directly proportional to.
-The obtained upper limits are presented in \Cref{fig:limits} as a function of the dark photon mass. 
+The expected upper limits are presented in \Cref{fig:limits} as a function of the dark photon mass. 
 
 \begin{figure}[htbp]
 	\centering
@@ -25,9 +25,8 @@ The obtained upper limits are presented in \Cref{fig:limits} as a function of th
 
 At lower masses the partial disappearance region dominates, as the lighter mass dark photons tend to have higher energy outgoing muons, while the complete disappearance region is stronger for larger A' masses. 
 The decreasing cross section with dark photon mass decreases the interaction rate more quickly than the relative increase in selection efficiency created by the lower energy outgoing muons at large A' mass, resulting in stronger exclusion limits at small mediator masses. 
-In cases where the dark photon mass becomes comparible to the muon mass ($\sim$0.1 GeV), the \ww approximation used to calculate the interaction probability breaks down, and so these points are not included in the produced limits.
 
-Distributions of variables used for signal selection are predicted using MC for DY backgrounds and re-scaling events from the off-peak control region for $\mu$+X backgrounds.
+Distributions of variables used for signal selection are predicted by using MC for DY backgrounds and re-scaling events from the off-peak control region for $\mu$+X backgrounds.
 For the complete disappearance region, the expected HCAL and ECAL isolations are shown in \Cref{fig:totHcalIso}. 
 The distance from the probe track to the nearest CSC segment and the nearest standalone muon are shown in \Cref{fig:totCSCStaDr}.
 The number of HE hits along the probe track is shown in \Cref{fig:totHitsOverThresh}.
@@ -37,7 +36,7 @@ The number of HE hits along the probe track is shown in \Cref{fig:totHitsOverThr
 	\includegraphics[width=0.45\textwidth]{figures/totDisappHcalIso.pdf}
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/totDisappEcalIso.pdf}
-	\caption[Expected Complete Disappearance Isolation]{The expected distributions of HCAL (left) and ECAL (right) isolation for the complete disappearance region.}
+	\caption[Expected Complete Disappearance Isolation]{The expected distributions of HCAL (left) and ECAL (right) isolation for the complete disappearance region. Signal events tend to have lower isolation in both the ECAL and HCAL, as $\mu$+X events frequently occur in particle showers and DY events have visible energy deposits from SM bremsstrahlung.}
 	\label{fig:totHcalIso}
 \end{figure}
 
@@ -46,14 +45,18 @@ The number of HE hits along the probe track is shown in \Cref{fig:totHitsOverThr
 	\includegraphics[width=0.45\textwidth]{figures/totDisappStaDr.pdf}
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/totDisappCscDr.pdf}
-	\caption[Expected Complete Disappearance Muon Chamber Features]{The expected distance to the nearest standalone muon (left) and nearest CSC segment (right) for the complete disappearance region. The DY events below 0.1 originate from the CSC efficiency correction applied, where events with only one nearby CSC segment are counted as having zero (see \Cref{sec:missedMuons}).}
+	\caption[Expected Complete Disappearance Muon Chamber Features]{The expected distance to the nearest standalone muon (left) and nearest CSC segment (right) for the complete disappearance region. The DY events below 0.1 originate from the CSC efficiency correction applied, where events with only one nearby CSC segment are counted as having zero to correct for inefficiencies in the detector (see \Cref{sec:missedMuons}).}
 	\label{fig:totCSCStaDr}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/totDisappHitsOverThresh.pdf}
-	\caption[Expected Complete Disappearance HE Hits]{The expected number of HE hits along the probe track trajectory in the complete disappearance region. $\mu$+X backgrounds tend to have low HE hits as non-muon backgrounds are absorbed before traversing the full HCAL, while signal events frequently have several missing hits due to being stopped after \dbrem.}
+	\caption[Expected Complete Disappearance HE Hits]{The expected number of HE hits along the probe track trajectory in the complete disappearance region. $\mu$+X backgrounds tend to have fewer HE hits as non-muon backgrounds are absorbed before traversing the full HCAL, while signal events frequently have several missing hits due to being stopped after \dbrem.}
 	\label{fig:totHitsOverThresh}
 \end{figure}
+
+For the partial disappearance region, the expected BDT score distribution is shown in. 
+The distributions of the five input features with the highest importance are shown in.
+DY backgrounds form by far the largest background process in this region, and are shown as the only background.
 
