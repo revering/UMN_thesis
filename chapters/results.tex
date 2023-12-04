@@ -23,13 +23,11 @@ The expected upper limits are presented in \Cref{fig:limits} as a function of th
 	\label{fig:limits}
 \end{figure}
 
-At lower masses the partial disappearance region dominates, as the lighter mass dark photons tend to have higher energy outgoing muons, while the complete disappearance region is stronger for larger A' masses. 
-The decreasing cross section with dark photon mass decreases the interaction rate more quickly than the relative increase in selection efficiency created by the lower energy outgoing muons at large A' mass, resulting in stronger exclusion limits at small mediator masses. 
+At lower masses the partial disappearance region dominates, as the lighter mass dark photons tend to have higher energy outgoing muons, while the complete disappearance region has more significance for larger A' masses. 
+The decreasing cross section with dark photon mass decreases the interaction rate more quickly than the relative increase in selection efficiency created by the lower energy outgoing muons at large A' mass, resulting in overall lower exclusion limits on $\epsilon^{2}$ at small mediator masses. 
 
 Distributions of variables used for signal selection are predicted by using MC for DY backgrounds and re-scaling events from the off-peak control region for $\mu$+X backgrounds.
-For the complete disappearance region, the expected HCAL and ECAL isolations are shown in \Cref{fig:totHcalIso}. 
-The distance from the probe track to the nearest CSC segment and the nearest standalone muon are shown in \Cref{fig:totCSCStaDr}.
-The number of HE hits along the probe track is shown in \Cref{fig:totHitsOverThresh}.
+For the complete disappearance region, the expected HCAL and ECAL isolations are shown in \Cref{fig:totHcalIso}, the distance from the probe track to the nearest CSC segment and the nearest standalone muon are shown in \Cref{fig:totCSCStaDr}, and the number of HE hits along the probe track is shown in \Cref{fig:totHitsOverThresh}.
 
 \begin{figure}[htbp]
 	\centering
@@ -56,7 +54,32 @@ The number of HE hits along the probe track is shown in \Cref{fig:totHitsOverThr
 	\label{fig:totHitsOverThresh}
 \end{figure}
 
-For the partial disappearance region, the expected BDT score distribution is shown in. 
-The distributions of the five input features with the highest importance are shown in.
-DY backgrounds form by far the largest background process in this region, and are shown as the only background.
+For the partial disappearance region, the distributions of standalone muon $\Delta$E/E, standalone muon $\Delta$R, CSC $\Delta$R in station one, HE energy in depth four, standalone muon $\chi^{2}$, and standalone muon $\Delta\phi$ are shown in \Cref{fig:partSta,fig:partStat,fig:partStaFeat} for events with BDT scores $>$0.98.
+DY events form by far the largest background process in this region, and so only DY MC and signal MC are included.
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/partDisStaDE.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/partDisStaDr.pdf}
+	\caption[Expected Partial Disappearance Standalone Muon Features]{The distributions of the fractional difference between the standalone muon energy and the probe track energy and the $\Delta$R to the nearest standalone muon for events with BDT scores $>$0.98.}
+	\label{fig:partSta}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/partDisCSCdr_one.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/partDisHCALE_four.pdf}
+	\caption[Expected Partial Disappearance CSC and HCAL Features]{The distance to the nearest muon segment in the first CSC station and the HCAL energy in the fourth HE depth. Station one and depth four have the highest feature importance of the CSC stations and HE depths, respectively.}
+	\label{fig:partStat}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/partDisStaChi.pdf}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.45\textwidth]{figures/partDisStaPhi.pdf}
+	\caption[Expected Partial Disappearance Standalone Muon Quality]{The reduced $\chi^{2}$ and the $\Delta\phi$ between the probe track and standalone muon multiplied by the probe charge for partial disappearance events with BDT scores $>$0.98.}
+	\label{fig:partStaFeat}
+\end{figure}
