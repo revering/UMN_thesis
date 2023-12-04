@@ -18,6 +18,14 @@ While the bunches interact at a rate of \SI{40}{\mega\hertz}, the large amount o
 To successfully operate as a general purpose physics experiment, the CMS detector must be able to rapidly identify outgoing particles from a large number of collisions, separate them into individual interactions, determine when physics processes of interest have occurred to trigger detector readout, record full event information in triggered events, and accurately reconstruct the final state particles in order to allow for detailed physics analysis. 
 
 To fulfill the necessary timing, resolution, and particle identification requirements the CMS detector is split into several subsystems located concentrically around the collision point in a roughly cylindrical shape (\Cref{fig:detector}). 
+
+\begin{figure}[htpb]
+    \includegraphics[width=\textwidth]{figures/cmsDetector.png}
+    \centering
+	\caption[The CMS Detector]{A schematic drawing of the CMS detector with the major detecting subsystems labeled. The two beam pipes can be seen entering at the top left and bottom right, with particle collisions occurring in the exact center of the detector.}
+    \label{fig:detector}
+\end{figure}
+
 Starting from the center, particles first pass through the pixel and strip trackers, which measure the position of charged particles to determine their vertex locations, trajectories, and momenta.
 Next, particles enter the electromagnetic calorimeter (ECAL) which measures the energy of electrons, photons, and some mesons by completely stopping them through electromagnetic showers, where electromagnetically-induced interactions between the particle and the detector material produce large numbers of lower-energy particles.
 By measuring the resulting energy deposits of these showers, the calorimeter is able to find the total energy of the particle which induced them.
@@ -25,12 +33,13 @@ By measuring the resulting energy deposits of these showers, the calorimeter is 
 After the ECAL, particles enter the hadronic calorimeter (HCAL), which measures neutral hadrons and other less-frequently-interacting particles which may pass through the ECAL. This is done by having many layers of dense absorber which induce hadronic showers, interleaved with scintillator layers to sample the energy deposited by the resulting shower products.
 Similarly to the ECAL, the HCAL aims to completely stop hadrons through these particle showers so that the total energy of the incident particle can be determined.
 Finally, any remaining particles will pass into the muon chambers, which consist of cathode strips, resistive plates, and gas-ionization chambers which all track the motion of muons, as they are the only known particles visible to our detector which are unlikely to be stopped in the calorimeters.
+A schematic drawing of a transverse slice through CMS, showing the typical behavior of several particle types, is presented in \Cref{fig:cmsSlice}.
 
 \begin{figure}[htpb]
-    \includegraphics[width=\textwidth]{figures/cmsDetector.png}
+    \includegraphics[width=\textwidth]{figures/cmsSlice.jpg}
     \centering
-	\caption[The CMS Detector]{A schematic drawing of the CMS detector with the major detecting subsystems labeled. The two beam pipes can be seen entering at the top left and bottom right, with particle collisions occurring in the exact center of the detector.}
-    \label{fig:detector}
+	\caption[A Transverse Slice of the CMS Detector]{A transverse slice of the CMS detector, with the typical behavior of several particle species within it shown. Figure created by Dave Barney.}
+    \label{fig:cmsSlice}
 \end{figure}
 
 In addition to the detecting subsystems, the central feature of the CMS detector is a superconducting solenoid located between the HCAL and muon chambers, which produces a \SI{3.8}{\tesla} magnetic field along the axis of the beam. 

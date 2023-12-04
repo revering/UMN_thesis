@@ -11,9 +11,28 @@ By comparing the number of expected event rates to those observed in data constr
 The primary framework used to describe currently known particle physics is the standard model (SM), a quantum field theory which describes a set of fundamental particles and their interactions.
 In classical theories, particle interactions can be described via forces proportional to fields, such as the electromagnetic field applying a force directly proportional to the charge of a given particle.
 In quantum field theories, particle interactions are instead described through the exchange of a gauge boson, allowing them to satisfy the requirements of special relativity and quantum physics. 
+
 The SM contains five gauge bosons, which describe interactions with the nuclear strong, electroweak, and Higgs fields.
-In addition, the SM includes six quarks, particles with 'color' charge which can interact via the strong force and combine to form hadrons or mesons, and six leptons, particles which primarily interact via the electroweak force, mediated by photons, W bosons, and Z bosons.
-A graphical representation of these fundamental particles is shown in \Cref{fig:SM}, along with numerical values of some of their physical properties.
+In addition, the SM includes six quarks, particles with 'color' charge which can interact via the strong force and combine to form hadrons, composite objects made from three quarks, and mesons, which are made from pairs of quarks. 
+Only the up- and down-flavored quarks are stable, and they make up the 'valence' quarks, which determine the quantum numbers of a particle, of protons and neutrons.
+
+Quarks carry hypercharge, which allows them to interact with photons, W, and Z bosons, as well as color charge, which allows them to interact with gluons. 
+Due to the way that gluons carry color charge, the nuclear strong force has an `anti-screening' effect, where virtual gluon pairs cause an increase in the effective interaction strength. 
+As a result, the nuclear strong force is weak at small-distance scales and high energy interactions, and diverges at low-energy, large distance scales. 
+This causes quark `confinement' where at low temperatures particles carrying color charge cannot be isolated, as quark-antiquark pairs are spontaneously created until all of the quarks are grouped into colorless hadrons or mesons.
+
+The SM also includes six leptons, particles that interact via the electroweak force which is mediated by photons, W bosons, and Z bosons.
+Three of the leptons carry electric charge and can interact directly with photons: the electron, the muon, and the tau.
+Of these, only the electron is stable.
+Due to their low masses muons are only able to decay to final states with electrons, neutrinos, and photons, producing an electron, an electron neutrino, and a $\mu$ neutrino in nearly 100$\%$ of decays, and they have lifetimes near \SI{2}{\micro\second}.
+Due to their much larger mass ($\sim$\SI{1.78}{\giga\eV}) $\tau$ leptons are able to decay to final states with mesons as well as leptons and have much shorter lifetimes, on the order of \SI{2.9e-13}{\second}.
+Because of this, muons produced in CMS collisions generally pass entirely through the detector before decaying, while $\tau$ leptons decay before entering the active detector material.
+
+The other three leptons are the three neutrinos, which each have a `flavor' corresponding to one of the charged leptons.
+Neutrinos only interact via the nuclear weak force, and as a result have very low interaction rates with SM matter.
+Due to their low interaction rates, the CMS detector is not able to measure neutrinos, and so processes which may cause muons to produce neutrinos with a significant fraction of the initial kinetic energy can potentially imitate signal events.
+
+A graphical representation of the fundamental particles in the SM is shown in \Cref{fig:SM}, along with numerical values of some of their physical properties.
 
 \begin{figure}[htpb]
 	\includegraphics[width=0.9\textwidth]{figures/smParticles.pdf}
@@ -22,15 +41,20 @@ A graphical representation of these fundamental particles is shown in \Cref{fig:
 	\label{fig:SM}
 \end{figure}
 
+Using the particles and interactions described by the SM, the probability of any given high energy interaction occuring can be predicted.
+These probabilities are measured in terms of a `cross section' which is expressed in terms of area, using a special unit known as a `barn', equal to \SI{10e-28}{\meter\squared}.
+The number of expected interactions in an experiment is found by multiplying the cross section of a particular interaction by the `luminosity', measured in events per unit area, which encodes how many potential particle interactions were done.
+For collider experiments like CMS, the luminosity is set by the number of particles in the beams and how small the interaction point is.
+
+Developed over several decades through close collaboration between theory and experiment, the SM has been extremely successful at predicting a wide range of observed physics phenomena, an example of which can be seen in \Cref{fig:SMratePreds}, where the observed production cross sections for a wide range of processes are compared with predictions determined from the standard model.
+Very close agreement is seen between the observed production rates and their corresponding SM predictions over nine orders of magnitude in cross section and a very wide range of physics interactions.
+
 \begin{figure}[htpb]
 	\includegraphics[width=0.9\textwidth]{figures/smRatePreds.pdf}
 	\centering
 	\caption[CMS Cross Section Results]{Predicted and measured cross sections over several sectors of CMS physics analyses. The predictions of the SM match the observed interaction rates to high precision over many orders of magnitude in cross section and a broad spectrum of processes.}
 	\label{fig:SMratePreds}
 \end{figure}
-
-Developed over several decades through close collaboration between theory and experiment, the SM has been extremely successful at predicting a wide range of observed physics phenomena, an example of which can be seen in \Cref{fig:SMratePreds}, where the observed production cross sections for a wide range of processes are compared with predictions determined from the standard model.
-Very close agreement is seen between the observed production rates and their corresponding SM predictions over nine orders of magnitude in cross section and a very wide range of physics interactions.
 
 Despite this success, there are several missing pieces in the SM which are observed in experiments but not predicted from the existing theory.
 These beyond-the-SM (BSM) phenomena include gravity, neutrino masses, dark energy, and most significant to this paper, dark matter.
@@ -242,7 +266,7 @@ While other processes, such as photoproduction of vector mesons which then decay
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figures/dbrem_feyn_diagram.jpg}
+	\includegraphics[width=0.4\textwidth]{figures/dbrem_feyn_diagram.jpg}
         \caption[Dark Bremsstrahlung Feynman Diagram]{Dark Bremsstrahlung caused by a muon interacting with a nucleus with atomic number Z. Read from left to right, the diagram shows a muon exchanging a photon with the nucleus, then emitting an A'. When the A' is more massive than the muon, it is kinematically favored to carry most of the outgoing momentum.}
 	\label{fig:dbrem_feyn}
 \end{figure}
