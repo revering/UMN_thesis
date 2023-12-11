@@ -22,14 +22,12 @@ The depths are made of 'nodes', where the data is split based on a selection app
 Each node is chosen to optimize the information gained by the split made, and the tree continues until the maximum depth is reached or no further information is gained.
 
 The "boosting" originates from the method used to produce many input trees and combine their outputs~\cite{GradBoost}. 
-As it is normally impossible to create all potential tree structures, trees are generated iteratively by starting from a single leaf and adding branches which minimize the "loss function", which is some function used to quantify the distance between the true and predicted value.
+As it is normally impossible to create all potential tree structures, trees are generated iteratively by starting from a single leaf and adding branches which minimize the "loss function", which is a function used to quantify the distance between the true and predicted value.
 In this analysis, the loss function is chosen to be a binary logistic function,
-
 \begin{equation}
 	\label{binLogFunc}
-	L = - \frac{1}{N} \sum_{i=1}^{N} y_i log(p(y_i)) + (1-y_i) log(1-p(y_i))
+	L = - \frac{1}{N} \sum_{i=1}^{N} y_i \log(p(y_i)) + (1-y_i) \log(1-p(y_i))
 \end{equation} 
-
 where N is the total number of training events, $y_i$ is the true value of each point with zero for background and one for signal, and $p(y_i)$ is the output score for that point.
 The binary logistic loss function is small for predictions which are close to the true value, and increases exponentially for predictions which are far from the true value to increase the penalty for incorrect classification.
 
@@ -38,9 +36,7 @@ After each step of optimizing the tree weights, the training data is re-weighted
 The tree optimization and re-weighting is then continued for several iterations in order to minimize an objective function consisting of the loss function and a regularization function, which reduces over-training by penalizing the complexity of the trees used.
 
 The main advantage of tree boosting is that it allows many weak classifiers in the individual trees to be combined into one strong classifier using the ensemble output score.
-In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework~\cite{XGBoost} interfaced with Scikit-learn~\cite{scikit}. 
-
-The BDT is trained using only signal and DY MC, as the preselection and standalone muon requirements alone are significant enough to control the rate of $\mu+X$ events. 
+In this analysis, a "Gradient" BDT was used, provided by the XGBoost framework~\cite{XGBoost} interfaced with Scikit-learn~\cite{scikit}. The BDT is trained using only signal and DY MC, as the preselection and standalone muon requirements alone are significant enough to control the rate of $\mu+X$ events. 
 An equally weighted combination of all signal masses is used for the signal sample during the BDT training.
 
 \section{Inputs}
@@ -104,7 +100,7 @@ Five separate testing and training combinations sets are then defined, each with
 Five separate BDTs are then trained using these combinations.
 During the training, only the training datasets are provided to the BDTs to prevent anomalous results from the network rejecting individual events based on non-generic event features.
 The performance of the resulting BDTs is determined by their ability to correctly score their respective testing datasets, and the average weighted mean squared error of the five BDTs is used as the figure of merit in the randomized parameter search.
-By selecting the parameters with the smallest average mean squared error the optimization can be performed while using the entire dataset to test the performance, as every event has a BDT which did not use it as training data, reducing the potential bias caused by the testing selection.
+By selecting the parameters with the smallest average mean squared error, the optimization can be performed while using the entire dataset to test the performance every since event has a BDT which did not use it as training data, reducing the potential bias caused by the testing selection.
 
 The parameters which are optimized during the grid search are the number of trees, the maximum tree depth, the fraction of each training sample used in each training stage, the weighting factor of each new tree, the loss reduction required to create new leaves, the fraction of input features used in each tree, the minimum weight in each node, and the strength of the regularization terms used in the objective function.
 
@@ -121,7 +117,7 @@ Lower A' masses typically have smaller deflections and energy loss, and therefor
 
 \section{Validation}
 \label{sec:BDTvalid}
-Two control regions are used to validate the performance of the BDT on background events, one consisting of probe tracks with large HCAL isolations ($>$\SI{30}{\giga\eV}), and one consisting of events with BDT scores less than 0.7. 
+Two control regions are used to validate the performance of the BDT on background events, one consisting of probe tracks with large HCAL isolation energy ($>$\SI{30}{\giga\eV}), and one consisting of events with BDT scores less than 0.7. 
 The HCAL energy requirement tends to select for muons which have significant SM scatters within the detector, and thus have more signal-like features in the muon chambers and more background-like features in the HCAL.
 
 Events with poor HCAL isolation also select for $\mu+X$ backgrounds at a much larger rate than in the signal region.
@@ -148,7 +144,6 @@ Some differences between MC and data are observed in the CSC $\Delta$R distribut
 As with the tag-muon aligned segments, the first CSC station has significant excesses of events with large $\Delta$R to the nearest hit and no nearby hits, while the other three depths have better overall agreement but overestimate the rates of events with intermediate $\Delta$R to the nearest CSC segment in the range of 0.1 to 2.
 
 \begin{figure}[htbp]
-	\label{fig:BDTcscvalid}
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/highHcal_cscDr_station0.pdf}
 	\hspace{0.01\textwidth}
@@ -158,16 +153,17 @@ As with the tag-muon aligned segments, the first CSC station has significant exc
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/highHcal_cscDr_station3.pdf} 
         \caption[CSC Segment Validation]{The distance to the nearest CSC segment in each station measured along the probe track trajectory for partial disappearance events in the high HCAL energy control region. Events with no CSC hits in a station within $\Delta$R$<$2 are assigned a value of -1.}
+	\label{fig:BDTcscvalid}
 \end{figure}
 
 The BDT scores of events in this region for data and MC are shown in \Cref{fig:BDTscorevalid}.
 As expected, the region is relatively shifted to higher BDT scores than DY events which are isolated in HCAL due to the more signal-like event features in this region produced by energy loss to standard model processes in the HCAL. 
 
 \begin{figure}[htbp]
-	\label{fig:BDTscorevalid}
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/highHcalValid.pdf}
         \caption[BDT Validation in the High HCAL Energy Control Region]{The distribution of BDT scores for data and DY MC events in the high HCAL control region.}
+	\label{fig:BDTscorevalid}
 \end{figure}
 
 While good agreement is seen in high-HCAL energy events with intermediate scores, an excess of simulated events in the signal region (BDT score $>$0.98) is observed.
@@ -175,10 +171,9 @@ Because of the difference in event features between the signal region and the hi
 Though this region produces a deficit of background events, this uncertainty is allowed to either increase or decrease the expected rate, using the observed difference as an estimate of the magnitude of change that might be present.
 
 In contrast to the high-HCAL energy region, events with low BDT scores (BDT score $<0.7$) contain background-like features in both the CSCs and HCAL and can be used to validate the simulation of the DY backgrounds as well as the performance of the BDT on these events.
-In initial studies of this region, significant differences were observed in several features related to the standalone muons, with excess events containing large $\Delta$R to the nearest standalone muon, low standalone muon energy, and large trajectory change between the probe track and the nearest standalone muon \Cref{fig:lowScoreVariableMismatch}.
+In initial studies of this region, significant differences were observed in several features related to the standalone muons with excess events containing large $\Delta$R to the nearest standalone muon, low standalone muon energy, and large trajectory change between the probe track and the nearest standalone muon (\Cref{fig:lowScoreVariableMismatch}).
 
 \begin{figure}[htbp]
-	\label{fig:lowScoreVariableMismatch}
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/badPartialRegioncscDR.pdf}
 	\hspace{0.01\textwidth}
@@ -188,6 +183,7 @@ In initial studies of this region, significant differences were observed in seve
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/badPartialRegionstaPhi.pdf} 
         \caption[Low-Score Event Validation Before Correction]{Input features showing significant differences between data and DY simulation in the low BDT score control region prior to the rejection of low-quality standalone muons.}
+	\label{fig:lowScoreVariableMismatch}
 \end{figure}
 
 In addition, large differences in the overall normalization were observed between the data events and the expected rate of DY backgrounds, with nearly twice as many events selected as expected.
@@ -200,7 +196,6 @@ After removing events with no CSC segments in the later stations within $\Delta\
 The overall normalization after this additional requirement differs by $8\%$, roughly in expectation with the combined cross section, luminosity, and selection efficiency uncertainties.
 
 \begin{figure}[htbp]
-	\label{fig:lowScoreInputCorrection}
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/partialRegioncscDR.pdf}
 	\hspace{0.01\textwidth}
@@ -210,15 +205,16 @@ The overall normalization after this additional requirement differs by $8\%$, ro
 	\hspace{0.01\textwidth}
 	\includegraphics[width=0.45\textwidth]{figures/partialRegionstaPhi.pdf} 
         \caption[Low-Score Event Validation After Correction]{The input features which originally showed significant differences between data and DY simulation in the low BDT score control region after removing events with large angular differences between the first and later CSC stations.}
+	\label{fig:lowScoreInputCorrection}
 \end{figure}
 
 The resulting BDT score for DY MC and low-score data events is shown in \Cref{fig:BDTlowvalid}.
 Good agreement is in the BDT score, as well as the individual input features.
 
 \begin{figure}[htbp]
-	\label{fig:BDTlowvalid}
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/partialBDTScore.pdf}
+	\includegraphics[width=0.8\textwidth]{figures/partialBDTScore.pdf}
         \caption[Low BDT Score Validation]{The distribution of BDT output scores for all DY MC events and for data events with BDT scores less than 0.7.}
+	\label{fig:BDTlowvalid}
 \end{figure}
 

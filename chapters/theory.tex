@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 There are two key aspects to the theory used in the search presented here: a model of a new physics process which could produce dark matter, used to generate simulated interactions and determine the sensitivity of the search to them, and a model of known physics interactions, necessary to understand conventional processes which could mimic dark matter interactions as well as describe the initial states produced in the collision and the response of the detector to any produced particles.
 Together, these models allow us to determine how new physics models might influence the data in our experiment and what selections we can make to target them, as well as how frequently known physics processes can mimic these events.
-By comparing the number of expected event rates to those observed in data constraints can be set on the interaction strength of new physics models, or excesses can be attributed to new processes.
+By comparing the predicted event rates to those observed in data, constraints can be set on the interaction strength of new physics models, or excesses can be attributed to new processes.
 
 The primary framework used to describe currently known particle physics is the standard model (SM), a quantum field theory which describes a set of fundamental particles and their interactions.
 In classical theories, particle interactions can be described via forces proportional to fields, such as the electromagnetic field applying a force directly proportional to the charge of a given particle.
@@ -19,13 +19,15 @@ Only the up- and down-flavored quarks are stable, and they make up the 'valence'
 Quarks carry electric charge and weak hypercharge, which allow them to interact with photons, W, and Z bosons, as well as color charge, which allows them to interact with gluons. 
 Due to the way that gluons carry color charge, the nuclear strong force has an `anti-screening' effect, where virtual gluon pairs can cause an increase in the effective interaction strength proportional to the distance from the charge. 
 As a result, the nuclear strong force is weak at small distance, high-energy scales, and diverges at large distance, low-energy scales. 
-This causes quark `confinement' where at particles carrying color charge cannot be isolated except at very high temperatures, as quark-antiquark pairs are spontaneously created until all of the quarks are grouped into colorless hadrons or mesons.
+This causes quark `confinement', where particles carrying color charge cannot be isolated except at very high temperatures, as quark-antiquark pairs are spontaneously created until all of the quarks are grouped into colorless hadrons or mesons.
 
 The SM also includes six leptons, particles that interact via the electroweak force which is mediated by photons, W bosons, and Z bosons.
 Three of the leptons carry electric charge and can interact directly with photons: electrons, muons, and tau leptons.
 Of these, only the electron is stable.
-Due to their low masses muons are only able to decay to final states with electrons, neutrinos, and photons, producing an electron, an electron neutrino, and a $\mu$ neutrino in nearly 100$\%$ of decays, and they have lifetimes near \SI{2}{\micro\second}.
-Due to their much larger mass ($\sim$\SI{1.78}{\giga\eV}) $\tau$ leptons are able to decay to final states with mesons as well as leptons and have much shorter lifetimes, on the order of \SI{2.9e-13}{\second}.
+Due to their low masses, muons are only able to decay to final states with electrons, neutrinos, and photons,.
+Muons produce an electron, an electron neutrino, and a $\mu$ neutrino in nearly 100$\%$ of their decays, and they have lifetimes near \SI{2}{\micro\second}.
+$\tau$ leptons have much larger mass ($\sim$\SI{1.78}{\giga\eV}), and are able to decay to final states with mesons as well as leptons.
+They also have much shorter lifetimes, on the order of \SI{2.9e-13}{\second}.
 Because of this, muons produced in CMS collisions usually pass entirely through the detector before decaying, while $\tau$ leptons generally decay before entering the active detector material.
 
 The other three leptons are the three neutrinos, which each have a `flavor' corresponding to one of the charged leptons.
@@ -50,7 +52,7 @@ Developed over several decades through close collaboration between theory and ex
 Very close agreement is seen between the observed production rates and their corresponding SM predictions over nine orders of magnitude in cross section and a very wide range of physics interactions.
 
 \begin{figure}[htpb]
-	\includegraphics[width=0.9\textwidth]{figures/smRatePreds.pdf}
+	\includegraphics[width=1.1\textwidth]{figures/smRatePreds.pdf}
 	\centering
 	\caption[CMS Cross Section Results]{Predicted and measured cross sections over several sectors of CMS physics analyses. The predictions of the SM match the observed interaction rates to high precision over many orders of magnitude in cross section and a broad spectrum of processes.}
 	\label{fig:SMratePreds}
@@ -69,13 +71,13 @@ In this section, a brief overview of additional evidence for the existence of da
 One of the best tools available to observe the dark matter distribution in the modern universe is gravitational lensing data~\cite{Massey_2010}.
 When photons pass through the warped space-time produced by a gravitational field, their trajectories are deflected.
 Massive objects, such as clusters of galaxies or dark matter, can thus create gravitational fields which deflect light rays analogously to a refracting lens.
-When viewed from earth, light from distant objects can pass through these 'lenses', causing their images to be distorted or amplified, and through measuring this distortion the total mass required to produce the gravitational fields within the lens can be determined.
+When viewed from Earth, light from distant objects can pass through these 'lenses', causing their images to be distorted or amplified, and through measuring this distortion the total mass required to produce the gravitational fields within the lens can be determined.
 
 \begin{figure}
 	\label{fig:gravLensing}
 	\centering
-	\includegraphics[width=0.4\textwidth]{figures/grav_lensing.jpg}
-	\caption[Gravitational lensing of galaxy cluster CL0024+17]{ Color composite image of the galaxy cluster CL 0024+17. Ring-like distortions can be seen in projected images around the cluster due to lensing, as well as several cases where multiple images are formed from a single source. Five multiple images of a single magnified source are labeled as A1-5, while other potential candidates for multiple images are labeled as B1-B2 and C1-C2~\cite{jee2007}.}
+	\includegraphics[width=0.8\textwidth]{figures/grav_lensing.jpg}
+	\caption[Gravitational lensing of galaxy cluster CL0024+17]{ Color composite image of the galaxy cluster CL 0024+17. This cluster displays several ring-like distortions due to lensing, as well as cases where multiple images of more distant galaxies are formed from a single source. Five multiple images of a single magnified source are labeled as A1-5, while other potential candidates for multiple images are labeled as B1-B2 and C1-C2~\cite{jee2007}.}
 \end{figure}
 
 Gravitational lensing is traditionally split into 'strong' and 'weak' lensing regimes. 
@@ -88,12 +90,12 @@ Because of the extremely small cross sectional area of the objects that light mu
 In weak lensing, the light deflection is small, often appearing as local linear transformations of magnification, shear, and rotation. 
 While difficult to measure individually due to uncertainty in the un-transformed galaxy images, the images of multiple galaxies passing through the same dark matter halo will have identical shear transformations, producing correlations in their shapes.
 By measuring these correlations over the nominally uncorrelated galaxy shapes, the shear strength of this weak lensing can be statistically determined, allowing for measurements of dark matter distributions in regions of relatively low density.
-Like traditional lenses, gravitational lenses are most effective when they are halfway between the distant light sources and observers on earth, though contributions from lensing along the entire path length impact the observed image.
+Like traditional lenses, gravitational lenses are most effective when they are halfway between the distant light sources and observers on Earth, though contributions from lensing along the entire path length impact the observed image.
 
 Maps of the distribution of dark matter in the universe can thus be created by studying the lensing effect on light from distant galaxies which passes through dark matter clusters, even in cases where the luminous matter is insufficient to make direct velocity measurements, such as outer radii in galaxy halos beyond the range of the visible stars.
 Lensing data produces many important observations for determining the properties of dark matter.
 Using strong lensing data, the total mass of galaxy clusters can be measured, with the total dark matter abundance observed to be roughly five times greater than luminous matter.
-From micro-lensing data it can be determined that dark matter in our galaxy does not originate from free-floating, planet-sized non-luminous rock, as these 'free' planets would occasionally pass directly between earth and distant stars, causing temporary changes in brightness that have not been observed in micro-lensing surveys.
+From micro-lensing data it can be determined that dark matter in our galaxy does not originate from free-floating, planet-sized non-luminous rock, as these 'free' planets would occasionally pass directly between Earth and distant stars, causing temporary changes in brightness that have not been observed in micro-lensing surveys.
 
 Lensing data can also be used to separate observations of mass distributions from observations of the visible light in galaxies, allowing relative differences in their distributions to be observed. 
 A particularly striking example of this comes from the bullet cluster, shown in \Cref{fig:bullet}. 
@@ -104,10 +106,10 @@ Because the galaxies and stars within the clusters are well spaced their collisi
 Unlike the galaxies, the interstellar gas in the clusters was relatively uniformly spread in space, and had a large interaction cross section which caused it to be slowed by the collision, separating the gas from the main galaxy clusters and forming a visible shock front in the smaller of the two.
 
 \begin{figure}[htpb]
-	\label{fig:bullet}
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/bullet_cluster.jpg}
 	\caption[Visible, x-ray, and gravitational lensing images of the bullet cluster]{ A combined optical, gravitational, and x-ray image of the bullet cluster. Galaxies are shown in orange and white, while the x-ray image of the intracluster gas is in pink and the gravitational lensing data in blue. The mass distribution from lensing data is shown to remain with the galaxies and exhibit no signs of slowing from the collision, while the intracluster gas is greatly slowed and produces a collision shockwave in the smaller of the two clusters. X-ray: NASA/CXC/CfA/ M.Markevitch et al.; Lensing Map: NASA/STScI; ESO WFI; Magellan/U.Arizona/ D.Clowe et al. Optical image: NASA/STScI; Magellan/U.Arizona/D.Clowe et al.}
+	\label{fig:bullet}
 \end{figure}
 
 By combining images of the cluster using visible light, showing the distribution of galaxies, x-ray emissions, produced from hot interstellar gas, and gravitational lensing, showing the total mass distribution, the behavior of each component during the collision can be seen. 
@@ -121,10 +123,10 @@ Because of scattering with these free electrons, the universe was opaque on cosm
 At this point, thermal radiation from the plasma could travel through the universe without significant scattering probability and these photons can be observed today as the CMB, constant microwave radiation that is visible from every direction (\Cref{fig:CMB}).
 
 \begin{figure}[htpb]
-	\label{fig:CMB}
 	\centering
 	\includegraphics[width=1.1\textwidth]{figures/cmb.png}
-	\caption[The CMB temperature anisotropy]{The temperature anisotropy of the CMB. Outlined in gray are regions of high microwave background, primarily aligned with the main body of the milky way, which are treated specially to reduce the additional background~\cite{PlanckCMB}.}
+	\caption[The CMB temperature anisotropy]{The temperature anisotropy of the CMB. Outlined in gray are regions of high microwave background, primarily aligned with the main body of the Milky Way, which are treated specially to reduce the additional background~\cite{PlanckCMB}.}
+	\label{fig:CMB}
 \end{figure}
 
 The conversion of primordial plasma into a hydrogen and helium gas occurred when the universe was roughly 400,000 years old, and the CMB therefore provides an image of its temperature and density distribution at that time.
@@ -132,11 +134,12 @@ While the primordial plasma was nearly homogeneous, there were slight variations
 By studying these anisotropies, the dynamics of the baryon-photon plasma can be inferred, and several properties of early cosmology, including the mass density of dark matter, can be determined.
 
 The anisotropy of the CMB is measured through correlations in the temperature of different spatial points as a function of the length scale between them. 
-As the CMB forms a 'sphere' of the observable sky, these distance are expressed as length scales, and it is convenient to analyze them as expansions of spherical harmonics, which can be shown to only depend on the order of the angular scale parameter $l$. 
-By measuring the perturbation of the CMB and decomposing it into spherical harmonics, the angular power spectrum can be created \Cref{fig:CMBpowerSpectrum}, from which details about the composition of the early universe can be inferred.
+As the CMB forms a 'sphere' of the observable sky, these distances are expressed as length scales, and it is convenient to analyze them as expansions of spherical harmonics, which can be shown to only depend on the order of the angular scale parameter $l$. 
+By measuring the perturbation of the CMB and decomposing it into spherical harmonics, the angular power spectrum can be created, shown in \Cref{fig:CMBpowerSpectrum}.
+From the observed power spectrum, details about the composition of the early universe can be inferred.
 
 The angular power spectrum of the CMB consists of a series of peaks of decreasing amplitude with increasing multipole moments. 
-At large scales, $\theta >> $\ang{1}, the distances between spatial points are larger than the Hubble distance between them, and therefore cannot have any dynamic evolution in the primordial plasma.
+At large scales, $\theta \ggt $\ang{1}, the distances between spatial points are larger than the Hubble distance between them, and therefore cannot have any dynamic evolution in the primordial plasma.
 At smaller scales, $\theta < $\ang{1}, the perturbations are close enough to communicate before the plasma condenses, and so can show evidence of plasma dynamics.
 
 \begin{figure}[htpb]
@@ -208,7 +211,7 @@ After dark matter production ceases, its annihilation continues for some time as
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/thermal_relic.png}
+	\includegraphics[width=0.9\textwidth]{figures/thermal_relic.png}
 	\caption[Thermal Freeze-Out]{A thermal freeze-out model for some stable particle species. At early times, the particle is in thermal equilibrium with SM matter and has a constant density. As time progresses, the production ceases while annihilation continues, resulting in a decreasing density. Eventually, the interaction probability becomes small enough that annihilation also ceases, leaving behind a constant relic abundance with density related to the interaction cross section and mean particle velocity. Figure from~\cite{hooper2009tasi}.}
         \label{fig:freezeout}
 \end{figure}
@@ -259,9 +262,11 @@ These types of signatures are difficult to observe in particles with large stand
 In addition, high interaction rates expose particles to less material within the detector as they are stopped relatively quickly, reducing the effective luminosity.
 
 For these reasons, the selections in this search focus on potential dark matter interactions of final state muons.
-As muons have relatively small standard model interaction rates with material they traverse they lose very little energy when they pass through the detector, leading to high consistency in projecting their trajectory and observing potential changes, as well as low rates of stopped muons due to standard model processes with high momentum transfer which could fake the energy loss to an \aprime.
+As muons have relatively small standard model interaction rates with material they traverse, they lose very little energy when they pass through the detector.
+This leads to high consistency in projecting their trajectory across subdetectors and observing potential changes, as well as low rates of stopped muons due to standard model processes with high momentum transfer which could fake the energy loss to an \aprime.
 
-Under the dark photon kinetic mixing model presented here, muons would primarily produce dark matter in the detector for the A' mass ranges of interest via a process known as \dbrem, where a dark matter particle is emitted from a muon after the muon exchanges a photon with a nucleus in the detector (\Cref{fig:dbrem_feyn}).
+Under the dark photon kinetic mixing model presented here, muons would primarily produce dark matter in the detector for the A' mass ranges of interest via a process known as \dbrem.
+In \dbrem, a dark matter particle is emitted from a muon after the muon exchanges a photon with a nucleus in the detector (\Cref{fig:dbrem_feyn}).
 While other processes, such as photoproduction of vector mesons which then decay invisibly through dark matter coupling, would also be present with the assumed kinetic mixing only \dbrem is considered in this search due to its significantly larger production rate.
 
 \begin{figure}[ht]
@@ -285,9 +290,9 @@ A muon-philic cross section would also have a larger thermal relic cross section
 
 \section{Z-Bosons and the DY Process}
 For muons to potentially interact within the CMS detector and produce dark photons, they must first be created within the initial collision.
-Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for high signal efficiency the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
+Many processes in CMS collisions can produce outgoing muons, but while accepting muons from any process would allow for high signal rate, the difficulty of identifying a muon using only inner detector information (see \Cref{sec:muonReco}) would result in large contributions from backgrounds where the reconstructed particle does not originate from a real muon.
 
-To help control these backgrounds muons from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce oppositely-charged pairs of muons.
+To help control these backgrounds muons, from particle resonances can be selected, where neutral particles created in the hard scatter between the initial state quarks produce oppositely-charged pairs of muons.
 When di-muon pairs are produced via mediator particles, the invariant mass spectrum of the produced particles peaks sharply near the mediator particle mass, with the width of the produced peak proportional to the lifetime of the mediator. 
 By selecting muons from particle resonances, stringent identification requirements can be applied to one outgoing muon in order to 'tag' the event, and reduced selections can be applied to the other muon to 'probe' the response of the detector along its trajectory to search for non-standard interactions. 
 Using this method, the probe muons can be selected without requiring information from the full detector, as potential \dbrem interactions could greatly alter their behavior within further detector components or prevent them from reaching them at all.
@@ -306,7 +311,7 @@ Z bosons predominantly decay into hadrons ($\sim$70$\%$), invisible particles (n
 \end{figure}
 
 The Z boson resonance in di-muon pairs is primarily produced through the Drell-Yan (DY) process~(\cite{origDYPaper,DYSummary}), in which a pair of quarks in the initial proton-proton collision annihilate into a pair of leptons (\Cref{fig:dyDiagram}).
-The invariant mass of di-muon pairs produced in the DY process with minimal selection requirements is shown in \Cref{fig:dySpectrum}, as well as the energy of the individual muons produced. 
+The invariant mass of di-muon pairs produced in the DY process where selection requirements are only applied for the detector acceptance is shown in \Cref{fig:dySpectrum}, as well as the energy of the individual muons produced. 
 
 \begin{figure}[ht]
 	\centering

@@ -16,7 +16,7 @@ Signal events are split into two categories based on the presence of nearby stan
 'Complete disappearance' events have no nearby standalone muons, and correspond to events where the track is fully stopped before reaching the muon chambers or suffers a complete reconstruction failure within them.
 'Partial disappearance' events have standalone muons nearby to the probe track, but have large energy differences in the reconstructed standalone muon and the selected track.
 
-In the complete disappearance region a simultaneous fit of the invariant mass distribution is made to distinguish signal and DY events from non-muon backgrounds, while in the partial disappearance region a binary decision tree is used to better differentiate potential signal events from background and a single-bin count is made for the final selection.
+In the complete disappearance region a simultaneous fit of the invariant mass distribution is made to distinguish signal and DY events from non-muon backgrounds, while in the partial disappearance region a boosted decision tree is used to better differentiate potential signal events from background and a single-bin count is made for the final selection.
 A sketch of an example complete disappearance event and a partial disappearance event is shown in \Cref{fig:sigCatSketch}.
 
 \begin{figure}[htpb]
@@ -83,7 +83,7 @@ Several additional selections are applied to each region to further separate sig
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/allEventsDrtoNearestStandalone_stack.pdf}
+	\includegraphics[width=0.8\textwidth]{figures/allEventsDrtoNearestStandalone_stack.pdf}
 	\caption[Standalone Muon Displacement]{The angular distance from the probe track to the nearest standalone muon for signal and DY background. The peaks near $\Delta$R=3.14 are produced in events where the nearest standalone muon corresponds to the tagging muon.}
 	\label{fig:staDR}
 \end{figure}
@@ -95,7 +95,7 @@ Conversely, a requirement that at least two HCAL cells along the probe trajector
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/allEventshcalIso0p3_stack.pdf}
+	\includegraphics[width=0.8\textwidth]{figures/allEventshcalIso0p3_stack.pdf}
 	\caption[HCAL Isolation]{The simulated HCAL isolation for DY events and two signal masses. The presence of signal has little impact on the total energy deposited in HCAL. Partial disappearance events must have HCAL isolations less than 30 GeV, while complete disappearance events must have isolation less than 15 GeV to reduce non-DY backgrounds.}
 	\label{fig:hcalIso}
 \end{figure}
@@ -104,13 +104,13 @@ In addition to the requirement of no nearby standalone muons, events with any CS
 
 In the partial disappearance region, the requirement of a nearby standalone muon greatly reduces the backgrounds caused by mis-identified tracks, and the dominant backgrounds are caused by DY muons with poorly-reconstructed standalone muons or large SM energy loss.
 Due to the relatively large uncertainty in standalone muon reconstruction (shown for DY events and signal in \Cref{fig:staDEoverE}), the requirement that the standalone muon have $<$40$\%$ of the probe track energy still results in $\mathcal{O}(10^{5})$ selected DY muons.
-To reduce this background, a binary decision tree (BDT) is used to separate signal from DY backgrounds, which scores each event on a range from 0 (background-like) to 1 (signal-like) and is described in detail in \Cref{sec:BDT}.
+To reduce this background, a boosted decision tree (BDT) is used to separate signal from DY backgrounds, which scores each event on a range from 0 (background-like) to 1 (signal-like) and is described in detail in \Cref{sec:BDT}.
 Partial disappearance events are thus required to have 'signal-like' BDT scores of $>$0.98, reducing the expected DY backgrounds by several orders of magnitude.
 As the individual HCAL depth energies are used as in input to the BDT, events with probe track trajectories near the edges of and HE cell are rejected to prevent issues from mis-alignment (see \Cref{sec:HCALeff}).
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/allEventsStandaloneMuondEoverE_stack.pdf}
+	\includegraphics[width=0.8\textwidth]{figures/allEventsStandaloneMuondEoverE_stack.pdf}
 	\caption[Standalone Muon Energy Differences]{The difference in standalone muon and probe track energy divided by the probe track energy for DY events and two signal masses. The energy lost to the production of dark photons cause the signal to peak near -0.9, where the standalone muon has less than 10$\%$ of the probe track energy, while the large width of DY events results in a significant background contribution.}
 	\label{fig:staDEoverE}
 \end{figure}

@@ -4,7 +4,8 @@
 \chapter{Backgrounds}
 \label{backgrounds}
 There are several ways that standard model physics processes could mimic signal events, and the expected rate of these processes must be understood in order to meaningfully interpret the number of observed events in the signal regions in data as a limit on the signal strength of new processes.
-Wherever possible, the backgrounds are determined using control regions in data where orthogonal selections to the signal region are applied in order to find regions enriched in backgrounds to study their properties and extrapolate their rate to the final selection.
+Wherever possible, the backgrounds are determined from data by applying selections which exclude signal events to define 'control' regions.
+These control regions are defined in order to increase the rate of background events to study their properties and extrapolate their rate to the final selection.
 By using data-driven methods, the background rates can be predicted without uncertainty from differences in simulated and data events. 
 However, control regions which can effectively isolate background processes and be extrapolated into the signal region without significantly altering the event topology are not always available, and so some backgrounds must be predicted using MC and validated using data to limit effects from uncertainties in the simulation method.
 
@@ -18,8 +19,8 @@ Standard model DY backgrounds occur when the base event selection successfully f
 This can occur either when muons lose energy via conventional physics interactions without producing enough visible energy in the detector to reject the event or when the muon signature in HE and the CSC chambers is missed.
 Often, some combination of both effects is present, as muons with altered energy from interactions within the detector can have genuine deflections causing them to pass through unexpected stations in the muon chambers, greatly increasing the probability of reconstructing them poorly.
 
-The primary difficulty of muon backgrounds is the lack of control regions enriched in DY muons which do also efficiently reject signal events.
-Like signal events, muon backgrounds have opposite-sign tag and probe pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
+The primary difficulty of muon backgrounds is the difficulty in selecting control regions enriched in them which do not also have significant rates of signal events without large changes in the event kinematics.
+Like signal events, muon backgrounds typically have opposite-sign tag and probe pairs, and have nearly identical distributions of invariant mass, track isolation, and muon kinematics.
 Muon backgrounds tend to have slightly higher HCAL energy deposits along the track trajectory than signal events, as muons with large energy loss to SM particles have lower energies and therefore reduced cross sections for \dbrem.
 Unfortunately, events with large HCAL deposits have correspondingly large rates of SM Bremsstrahlung, which produces genuine muon deflections and significantly alters the observed behavior within the muon chambers.
 As a result, the control regions with large HCAL energy near the probe track are useful for validating the performance of the muon chamber behavior for signal-like events, but cannot be used to directly extrapolate a background rate into the signal region. 
@@ -74,9 +75,10 @@ To correct for these differences, simulated events which have only one nearby CS
 These corrections increase the expected muon background rate by 22$\%$, and their uncertainties are dominated by the statistical uncertainty resulting from the sample size of simulated DY events with one or fewer nearby CSC segments.
 Events with multiple nearby CSC segments are not included in this correction as the product of the CSC efficiency differences across multiple CSC stations reduces the impact below the 1$\%$ level, significantly smaller than the overall uncertainty of the expected background.
 
-Using this simulation, 10.1$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8$\fbinv$ of Run 2. 
+Using this simulation, 10.1$\pm$3 missed muon events are predicted in the complete disappearance category for the full 59.8 $\mathrm{fb}^{-1}$ of Run 2. 
 This background prediction accounts for backgrounds both from failed reconstruction and hard bremsstrahlung or other scattering processes, and relies on the accuracy of the muon scattering in simulation which are validated using studies of the high-HCAL control region and HE hits aligned with tagging muons.
 
+\newpage
 \subsection{Partial Disappearance Muon Backgrounds}
 While the requirements of no nearby Standalone muons, CSC segments, or RPC hits are sufficient in the complete disappearance region to reduce muon backgrounds to a manageable level, the missing energy requirement (standalone muon energy $<$40$\%$ of probe track energy) alone still results in roughly 200,000 selected DY muons due to the relatively poor resolution of the standalone muon reconstruction.
 To reduce this background, a binary decision tree is trained to separate potential signal events from muon backgrounds. 
@@ -101,7 +103,6 @@ The overall rate of these meson backgrounds is reduced by several factors.
 The initial meson must decay within the detector to a signal-like final state, and must do so before undergoing significant showering in the detector.
 The typical branching fractions to final states with muons and neutrinos and the relatively long lifetimes of these mesons, along with their Lorentz boosts when decaying in the lab frame, produce decay rates within the detector on the order of 0.1$\%$ for most mesons without accounting for interactions with the detector.
 Mesons are likely to produce showers in the ECAL or HCAL before decaying, increasing their likelihood to fail the isolation requirements and reducing the rate of their selection.
-
 The low mass of the neutrino favors the muon carrying most of the outgoing momentum in the collision, so that only a small fraction of meson decays result in significant energy differences between the outgoing muon and the initial meson.
 Lastly, mesons produced in the collision are rarely isolated, and are generally produced in jets of particles which are likely to cause the event to fail the isolation selections through their own tracks and deposits in the calorimeters.
 
@@ -116,7 +117,7 @@ In the complete disappearance region, the off-peak events are also used to set t
 For the final simultaneous fits in the complete disappearance region, the $\mu+X$ background is fit using a non-peaking background with nominal fit shape and amplitude from the off-peak control regions, and the combined signal and muon backgrounds are fit using the DY invariant mass shape determined from data events in order to account for potential inaccuracies in the simulated DY invariant mass distribution.
 Events used to find this shape are selected using events with two tight-ID muons which otherwise pass the kinematic, pairing, and isolation requirements used for the base event selection, and a shape uncertainty of $\pm$1 GeV is applied which shifts the peak location of the invariant mass to account for potential bias from the energy dependence of the signal interaction.
 
-In the partial disappearance region, the low rate of $\mu+X$ backgrounds compared to DY backgrounds prevents effective fitting of the two shapes, and so a single bin fit is performed using the expected number of $\mu+X$ events from the off-peak region and the number of DY events expected from simulation.
+In the partial disappearance region, the low rate of $\mu+X$ backgrounds compared to DY backgrounds prevents effective fitting of the two shapes, and a single bin counting experiment is performed using the expected number of $\mu+X$ events from the off-peak region and the number of DY events predicted from simulation.
 
 \subsection{Off Peak Control Region}
 In the off-peak control region, the full signal selections are applied with the invariant mass requirement inverted to be far from the Z-peak ($50<M_{\mu\mu}<70$ or $110<M_{\mu\mu}<150$ \GeV). 

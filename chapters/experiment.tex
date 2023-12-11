@@ -77,7 +77,7 @@ Using tracks, the charge and momentum of particles can be determined through the
 High positional resolution is very important for track reconstruction to resolve individual vertices in the high-multiplicity environment of the CMS collisions as well as to precisely determine the track curvature to obtain precision measurements of particle momentum. 
 
 In the innermost part of the CMS tracker are the silicon pixel detectors, where the high particle density requires the best position resolution. 
-The pixel detector was upgraded in 2017 \cite{pixelUpgrade}, and the upgraded version is used in this description and all of the data samples in this analysis. 
+The pixel detector was upgraded in 2017 \cite{pixelUpgrade}, and the upgraded version described here is used all of the data samples in this analysis. 
 The individual pixels are made of thin 100 $\times$ \SI{150}{\micro\meter} sensors which are placed in three disks in the endcap ($1.5<\lvert\eta\rvert<2.5$) region and four layers in the barrel ($\lvert\eta\rvert<1.5$) region, and have their short axes aligned in the $\phi$ direction so that measurements of curvature in $\phi$ from the magnetic field will have increased resolution from the smaller angular size. 
 The resolution is further increased to sub-cell precision through charge-sharing from capacitive coupling in adjacent pixels, resulting in final position resolution on the order of \SI{10}{\micro\meter} along the short axis and \SI{20}{\micro\meter} in the longitudinal direction.
 The layout of a transverse slice of the CMS tracker is shown in \Cref{fig:cmsTracker}.
@@ -146,7 +146,7 @@ Events where the energy deposits from these interactions are in the masked ECAL 
 The CMS hadronic calorimeter (HCAL) is a sampling calorimeter which consists of alternating layers of brass absorber and plastic scintillator. 
 A complete description of the CMS HCAL can be found in Reference \cite{HCALtdr}.
 Hadronic showers are primarily induced in the absorber, while the energy of the shower is sampled in each layer of scintillator and then used to estimate the total energy of the shower. 
-While this sampling method lowers the precision of the energy measurement, it allows most of the detector material to be made of relatively cheap absorber instead of scintillating material, which results in a very substantial cost reduction due to the large amount of material required to stop high-energy hadrons.
+While this sampling method lowers the precision of the energy measurement, it allows most of the detector material to be made of relatively cheap absorber instead of scintillating material, which results in a very substantial cost reduction given the large amount of material required to stop high-energy hadrons.
 
 The HCAL endcaps have 17 active layers consisting of plastic scintillator and \SI{8}{\centi\meter} thick brass absorber, covering 1.4$<\eta<$2.4 and extending to $\lvert z \rvert<$ \SI{5.6}{\meter}, with a total radiation length near 200 X$_0$. 
 The thickness of ECAL and HCAL is sufficient to stop nearly all mesons and hadrons produced in the collision, leaving only neutrinos, which are not visible in the detector, and muons. 
@@ -155,7 +155,7 @@ As the effective fixed target cross section for \dbrem is proportional to the th
 When ionizing particles produced in showers within the absorber layers pass through the scintillating layers, interactions between the particles and the scintillator produce light.
 To record the energy deposited in the sampling layers, the scintillation light is collected in wavelength-shifting fibers, which shift the wavelength of the light to one that can be more efficiently collected, then transported to readout electronics (\Cref{fig:megatile}), where the amount of light produced can be used to determine the energy deposited in the layer.
 This light collection is done in the HCAL barrel (and Endcaps, prior to 2018) by hybrid photo-diodes (HPDs). 
-Scintillation light from successive HPDs is summed together into 'towers' during readout, reducing the available depth segmentation to one or two layers depending on the location of the tower in the detector.
+Scintillation light from successive tiles in depth illuminate the same channel within the HPD, summing the signal together into 'towers' during readout and reducing the available depth segmentation to one or two layers depending on the location of the tower in the detector.
 
 \begin{figure}[!htpb]
 	   \centering
@@ -190,7 +190,8 @@ To avoid these regions, all probe tracks are required to be outside of the regio
 After the tracker, ECAL, and HCAL, all standard model particles are expected to be absorbed except for muons and neutrinos, due to their relatively smaller interaction probabilities.
 While neutrinos are invisible to our detector, muons are electrically charged and so can deposit visible ionization when passing through a material.
 To produce and capture this ionization and therefore identify and measure muons, muon chambers are placed outside of the solenoid which track muon trajectories using contained gases.
-The measurement of muons is vital to this study, as precise muon measurements in the far reaches of the detector can look for energy loss with respect to the track and muon detectors with very high efficiency can allow the identification of "missing" muons, where there is some real energy loss, without major backgrounds from "missed" muons, where a normal muon fails to be reconstructed.
+The measurement of muons is vital to this study, as precise muon measurements in the far reaches of the detector can look for energy loss with respect to the track and muon detectors with high efficiency. 
+Having highly efficient measurements can allow the identification of "missing" muons, where there is some real energy loss, without major backgrounds from "missed" muons, where a normal muon fails to be reconstructed.
 
 In the barrel region, $\lvert\eta\rvert<$1.2, drift tube (DT) detectors measure the position of passing high-energy muons. 
 Each drift tube consists of a gas-filled metallic prism with an anode wire in the center and the metallic shell used as a cathode.

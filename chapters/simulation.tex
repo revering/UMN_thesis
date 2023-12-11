@@ -50,8 +50,10 @@ Several different schemes can used to calculate these functions, and in this ana
 \section{Detector Response Simulation}
 
 After simulating the initial particles produced in DY events, the propagation of these particles and the corresponding response of the detector to them must be simulated to allow for direct comparison to data.
-In this analysis, the response simulation is performed using \geant~\cite{geantRef}, which is provided a realistic simulation of the CMS detector and magnetic field.
+In this analysis, the response simulation is performed using \geant~\cite{geantRef}, which is provided a realistic description of the CMS detector and magnetic field.
 \geant tracks each particle as it passes through the detector and simulates their ionization, scattering, and decays, as well as the resulting energy deposited in each region of the detector.
+To effectively simulate physics events, \geant must have models for all relevant physics processes, including the \dbrem process in cases where signal is present. 
+To achieve this, a model of \dbrem was developed and included in the \geant simulation, and this model is discussed in detail in \Cref{sec:sigSim}.
 
 The response of each detector element to the energy and ionization deposits is then simulated and used to replicate the digital output of the real detector, and the events are then reconstructed using the same algorithms used in data events.
 The accuracy of this process is a key challenge in this analysis, as differences in the simulated and real response of the detector to passing muons could replicate muon disappearance through poor reconstruction in data in ways that are not observed in simulation. 
