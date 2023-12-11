@@ -26,7 +26,7 @@ As it is normally impossible to create all potential tree structures, trees are 
 In this analysis, the loss function is chosen to be a binary logistic function,
 \begin{equation}
 	\label{binLogFunc}
-	L = - \frac{1}{N} \sum_{i=1}^{N} y_i \log(p(y_i)) + (1-y_i) \log(1-p(y_i))
+	L = - \frac{1}{N} \sum_{i=1}^{N} y_i \ln{p(y_i)} + (1-y_i) \ln{1-p(y_i)}
 \end{equation} 
 where N is the total number of training events, $y_i$ is the true value of each point with zero for background and one for signal, and $p(y_i)$ is the output score for that point.
 The binary logistic loss function is small for predictions which are close to the true value, and increases exponentially for predictions which are far from the true value to increase the penalty for incorrect classification.
